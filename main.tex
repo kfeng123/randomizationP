@@ -1,0 +1,226 @@
+\documentclass[review]{elsarticle}
+
+\usepackage{lineno,hyperref}
+
+\modulolinenumbers[5]
+
+\journal{Journal of \LaTeX\ Templates}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Elsevier bibliography styles
+%%%%%%%%%%%%%%%%%%%%%%%
+%% To change the style, put a % in front of the second line of the current style and
+%% remove the % from the second line of the style you would like to use.
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Numbered
+%\bibliographystyle{model1-num-names}
+
+%% Numbered without titles
+%\bibliographystyle{model1a-num-names}
+
+%% Harvard
+%\bibliographystyle{model2-names.bst}\biboptions{authoryear}
+
+%% Vancouver numbered
+%\usepackage{numcompress}\bibliographystyle{model3-num-names}
+
+%% Vancouver name/year
+%\usepackage{numcompress}\bibliographystyle{model4-names}\biboptions{authoryear}
+
+%% APA style
+%\bibliographystyle{model5-names}\biboptions{authoryear}
+
+%% AMA style
+%\usepackage{numcompress}\bibliographystyle{model6-num-names}
+
+%% `Elsevier LaTeX' style
+%\bibliographystyle{elsarticle-num}
+%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xeCJK}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{booktabs}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{\quad\quad Theorem}
+\newtheorem{proposition}{\quad\quad Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{assumption}{\quad\quad Assumption}
+\newtheorem{condition}{Condition}
+
+\theoremstyle{definition}
+\newtheorem{remark}{\quad\quad Remark}
+\theoremstyle{remark}
+
+
+
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Elsevier \LaTeX\ template\tnoteref{mytitlenote}}
+\tnotetext[mytitlenote]{Fully documented templates are available in the elsarticle package on \href{http://www.ctan.org/tex-archive/macros/latex/contrib/elsarticle}{CTAN}.}
+
+%% Group authors per affiliation:
+\author{Elsevier\fnref{myfootnote}}
+\address{Radarweg 29, Amsterdam}
+\fntext[myfootnote]{Since 1880.}
+
+%% or include affiliations in footnotes:
+\author[mymainaddress,mysecondaryaddress]{Elsevier Inc}
+\ead[url]{www.elsevier.com}
+
+\author[mysecondaryaddress]{Global Customer Service\corref{mycorrespondingauthor}}
+\cortext[mycorrespondingauthor]{Corresponding author}
+\ead{support@elsevier.com}
+
+\address[mymainaddress]{1600 John F Kennedy Boulevard, Philadelphia}
+\address[mysecondaryaddress]{360 Park Avenue South, New York}
+
+\begin{abstract}
+This template helps you to create a properly formatted \LaTeX\ manuscript.
+\end{abstract}
+
+\begin{keyword}
+\texttt{elsarticle.cls}\sep \LaTeX\sep Elsevier \sep template
+\MSC[2010] 00-01\sep  99-00
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+
+\section{model}
+
+Consider i.i.d.\ random sample $X_{1},\ldots,X_{n}\in \mathbb{R}^p$ which has means $\mu={(\mu_1,\ldots,\mu_p)}^T$ and covariance matrix $\Sigma$. We consider testing the following high-dimensional hypothesis:
+\begin{equation}
+    H_0:\mu=0_p\quad \textrm{versus} \quad H_1:\mu\neq 0_p.
+\end{equation}
+
+We assume, like chen qin and bai, the following multivariate model:
+\begin{equation}
+    X_i=\mu+\Gamma Z_i\quad \textrm{for}\, i=1,\ldots,n,
+\end{equation}
+where $\Gamma$ is a $p\times m$ matrix for some $m\geq p$ such that $\Gamma_i\Gamma_i^T=\Sigma_i$ and ${\{Z_{i}\}}_{i=1}^n$ are $m$-variate i.i.d.\ random vectors satisfying $\mathrm{E}(Z_i)=0$ and $\mathrm{Var}(Z_i)=I_m$, the $m\times m$ identity matrix. Write $Z_i={(z_{i1},\ldots,z_{im})}^T$, we assume $\mathrm{E}(z_{ij}^4)=3+\Delta<\infty$ and
+\begin{equation}
+    \mathrm{E}(z_{il_1}^{\alpha_1}z_{il_2}^{\alpha_2}\cdots z_{il_q}^{\alpha_q})=\mathrm{E}(z_{il_1}^{\alpha_1})\mathrm{E}(z_{il_2}^{\alpha_2})\cdots \mathrm{E}(z_{il_q}^{\alpha_q})
+\end{equation}
+for a positive integer $q$ such that $\sum_{l=1}^q \alpha_l\leq 8$ and $l_1\neq l_2\neq \cdots \neq l_q$.
+
+Consider the test statistic 
+\begin{equation}
+    T=\|\bar{X}\|^2.
+\end{equation}
+Statistics like this are studied in some high dimensional mean test literature. Most of existing papers determined the critical value by asymptotic distribution, which is not exact. Randomization method have the advantages that the test is exact. However, as far as we know, there's no existing work give a theoretical justification of the power behavior of randomization method.
+
+\paragraph{Randomization}
+For a test statistic $T(X_1,\ldots, X_n)$. Suppose $\epsilon_1,\ldots,\epsilon_n$ are i.i.d. Rademacher variables ($\Pr(\epsilon_i=1)=\Pr(\epsilon_i=-1)=1/2$) which are independent of the data. The critical value is defined as the $1-\alpha$ quantile of the conditional distribution
+\begin{equation}
+    \mathcal{L}(T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)|X_1,\ldots,X_n).
+\end{equation}
+
+It's easy to see that the randomization test based on $\|\bar{X}\|^2$ , 
+$\|\bar{X}\|^2-\frac{1}{n}S$ ($S$ is the sample covariance matrix) and $\sum_{j<i}X_i^T X_j$ are equivalent.
+In what follows, we will consider
+\begin{equation}
+    T_2(X_1,\ldots,X_n)=\sum_{j<i}X_i^TX_j.
+\end{equation}
+Then $T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)=\sum_{j<i}X_i^T X_j \epsilon_i \epsilon_j$.
+
+
+We will study the quadratic form of Rademacher variables.
+ Let $\epsilon_1,\ldots,\epsilon_n$ be indepent Rademacher  variables. 
+ Consider quadratic form $W_n=\sum_{1\leq j<i\leq n} a_{ij}\epsilon_i \epsilon_j$, where $\{a_{ij}\}$ are nonrandom numbers. Here $\{\epsilon_i\}$ and $\{a_{ij}\}$ may depend on $n$, a parameter we suppress.
+ Obviously, $\mathrm{E}(W_n)=0$ and $\mathrm{Var}(W_n)=\sum_{1\leq j<i\leq n} a_{ij}^2$.
+
+ \begin{proposition}
+     A sufficient condition for
+     \begin{equation}
+         \frac{W_n}{\sqrt{\sum_{1\leq j<i\leq n} a_{ij}^2}}\xrightarrow{\mathcal{L}} N(0,1)
+     \end{equation}
+     is that
+     \begin{equation}
+         \sum_{j<k}{(\sum_{i:i>k}a_{ij}a_{ik})}^2+
+         \sum_{j<i}a_{ij}^4+
+         \sum_{j<k<i}a_{ij}^2 a_{ik}^2
+         =o\big({(\sum_{j<i} a_{ij}^2)}^2\big).
+     \end{equation}
+ \end{proposition}
+
+ \begin{proof}
+     Define $U_{in} =\epsilon_i \sum_{j=1}^{i-1} a_{ij}\epsilon_j$, $i=2,\ldots,n$, and $\mathcal{F}_{in}=\sigma\{\epsilon_1,\ldots,\epsilon_i\}$, $i=1,\ldots, n$.
+     Now $W_n=\sum_{i=2}^n U_{in}$ and $\{U_{in}\}$ is a martingale difference array with respect to $\{\mathcal{F}_{in}\}$. 
+     To prove the proposition, we shall verify two conditions (See David Pollard's book):
+     \begin{equation}\label{MCLTcondition1}
+         \frac{\sum_{i=2}^n \mathrm{E}(U_{in}^2 |\mathcal{F}_{i-1,n})}{\sum_{1\leq j<i\leq n} a_{ij}^2}\xrightarrow{P} 1,
+     \end{equation}
+     and
+     \begin{equation}\label{MCLTcondition2}
+         \frac{\sum_{i=2}^n \mathrm{E}\big(U_{in}^2\big\{U_{in}^2>\epsilon \sum_{1\leq j<i\leq n} a_{ij}^2\big\}\big|\mathcal{F}_{i-1,n}\big)}{\sum_{1\leq j<i\leq n} a_{ij}^2}\xrightarrow{P} 0,
+     \end{equation}
+     for every $\epsilon>0$.
+
+     \paragraph{Proof of~\eqref{MCLTcondition1}}
+     Since $\mathrm{E}(U_{in}^2 |\mathcal{F}_{i-1,n})={(\sum_{j=1}^{i-1}a_{ij}\epsilon_j)}^2$, we have
+     \begin{equation*}
+         \begin{aligned}
+\sum_{i=2}^n \mathrm{E}(U_{in}^2 |\mathcal{F}_{i-1,n})
+             &=\sum_{i=2}^n \big(\sum_{j=1}^{i-1}a_{ij}\epsilon_j \big)^2\\
+             &=\sum_{i=2}^n \big( \sum_{j=1}^{i-1} a_{ij}^2 +2\sum_{j,k:j<k<i} a_{ij}a_{ik}\epsilon_j \epsilon_k \big)\\
+             &=\sum_{i=2}^n  \sum_{j=1}^{i-1} a_{ij}^2 +2\sum_{j<k<i} a_{ij}a_{ik}\epsilon_j \epsilon_k.
+         \end{aligned}
+     \end{equation*}
+
+     But
+     \begin{equation*}
+         \begin{aligned}
+         \mathrm{E}{(\sum_{j<k<i} a_{ij}a_{ik}\epsilon_j \epsilon_k)}^2
+             &=
+             \mathrm{E}{\big(\sum_{j<k} (\sum_{i:i>k}a_{ij}a_{ik})\epsilon_j \epsilon_k \big)}^2\\
+             &=
+             \sum_{j<k} (\sum_{i:i>k}a_{ij}a_{ik})^2\\
+             &=
+             o\big({(\sum_{j<i} a_{ij}^2)}^2\big),
+         \end{aligned}
+     \end{equation*}
+     where the last equality holds by assumption. Hence~\eqref{MCLTcondition1} holds.
+     \paragraph{Proof of~\eqref{MCLTcondition2}}
+     By Markov's inequality, we only need to prove
+     \begin{equation}\label{temp1}
+         \frac{\sum_{i=2}^n \mathrm{E}\big(U_{in}^4\big|\mathcal{F}_{i-1,n}\big)}{{\big(\sum_{1\leq j<i\leq n} a_{ij}^2\big)}^2}\xrightarrow{P} 0.
+     \end{equation}
+     Since the relavant random variables are all positive, we only need to prove~\eqref{temp1} converges to $0$ in mean. But
+     \begin{equation*}
+         \begin{aligned}
+         \sum_{i=2}^n \mathrm{E} U_{in}^4
+             &=
+             \sum_{i=2}^n \mathrm{E} {(\sum_{j:j<i}a_{ij}\epsilon_j)}^4\\
+             &=
+             \sum_{i=2}^n \mathrm{E} {(\sum_{j:j<i}a_{ij}^2+2\sum_{j,k:j<k<i}a_{ij}a_{ik}\epsilon_j \epsilon_k)}^2\\
+             &=
+             \sum_{i=2}^n  \big({(\sum_{j:j<i}a_{ij}^2)}^2+4\mathrm{E}{(\sum_{j,k:j<k<i}a_{ij}a_{ik}\epsilon_j \epsilon_k)}^2 \big)\\
+             &=
+             \sum_{i=2}^n  (\sum_{j:j<i}a_{ij}^4+6\sum_{j,k:j<k<i}a_{ij}^2 a_{ik}^2)\\
+             &=
+             \sum_{j<i}a_{ij}^4+6\sum_{j<k<i}a_{ij}^2 a_{ik}^2\\
+             &=
+             o\big({(\sum_{j<i} a_{ij}^2)}^2\big),
+         \end{aligned}
+     \end{equation*}
+     where the last equality holds by assumption. Hence~\eqref{MCLTcondition2} holds.
+ \end{proof}
+
+
+\section*{References}
+
+\bibliography{mybibfile}
+
+\end{document}
