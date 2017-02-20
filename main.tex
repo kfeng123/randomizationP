@@ -135,13 +135,13 @@ In what follows, we will consider
 \end{equation}
 Then $T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)=\sum_{j<i}X_i^T X_j \epsilon_i \epsilon_j$.
 
-
+\paragraph{CLT for quadratic form of Rademacher varaibles}
 We will study the quadratic form of Rademacher variables.
  Let $\epsilon_1,\ldots,\epsilon_n$ be indepent Rademacher  variables. 
  Consider quadratic form $W_n=\sum_{1\leq j<i\leq n} a_{ij}\epsilon_i \epsilon_j$, where $\{a_{ij}\}$ are nonrandom numbers. Here $\{\epsilon_i\}$ and $\{a_{ij}\}$ may depend on $n$, a parameter we suppress.
  Obviously, $\mathrm{E}(W_n)=0$ and $\mathrm{Var}(W_n)=\sum_{1\leq j<i\leq n} a_{ij}^2$.
 
- \begin{proposition}
+ \begin{proposition}\label{CLTprop}
      A sufficient condition for
      \begin{equation}
          \frac{W_n}{\sqrt{\sum_{1\leq j<i\leq n} a_{ij}^2}}\xrightarrow{\mathcal{L}} N(0,1)
@@ -217,6 +217,257 @@ We will study the quadratic form of Rademacher variables.
      \end{equation*}
      where the last equality holds by assumption. Hence~\eqref{MCLTcondition2} holds.
  \end{proof}
+
+\section{Asymptotic normality}
+
+\begin{lemma}\label{lemmaQ}
+    Suppose $A=(a_{ij})$ is an $m\times m$ positive semi-definite matrix, then
+    \begin{equation}
+        \mathrm{E} {(Z_i^T A Z_i)}^2\asymp (\mathrm{tr}(A))^2+\mathrm{tr}A^2
+    \end{equation}
+\begin{proof}
+Notice that
+\begin{equation}
+    \begin{aligned}
+        {(Z_i^T A Z_i)}^2
+        =&
+        (\sum_{j=1}^m a_{jj}z_{ij}^2+2\sum_{k<j}a_{jk}z_{ij}z_{ik})^2\\
+        =&
+        (\sum_{j=1}^m a_{jj}z_{ij}^2)^2+
+        4(\sum_{j=1}^m a_{jj}z_{ij}^2)(\sum_{k<j}a_{jk}z_{ij}z_{ik})+
+        4(\sum_{k<j}a_{jk}z_{ij}z_{ik})^2\\
+        =&
+        \sum_{j=1}^m a_{jj}^2z_{ij}^4+2\sum_{k<j}a_{jj}a_{kk}z_{ij}^2 z_{ik}^2+
+        4(\sum_{j=1}^m a_{jj}z_{ij}^2)(\sum_{k<j}a_{jk}z_{ij}z_{ik})\\
+        &+
+        4(\sum_{k<j}a_{jk}^2z_{ij}^2z_{ik}^2+\sum_{k<j,l<\alpha:\mathrm{card}(\{i,j\}\cap\{l,\alpha\})<2} a_{jk}a_{\alpha l}z_{ij}z_{ik}z_{i\alpha}z_{il})\\
+    \end{aligned}
+\end{equation}
+Hence
+\begin{equation}
+    \begin{aligned}
+        \mathrm{E}{(Z_i^T A Z_i)}^2
+        =&
+        \sum_{j=1}^n a_{jj}^2 \mathrm{E}z_{ij}^4+2\sum_{k<j}a_{jj}a_{kk}\mathrm{E}(z_{ij}^2 z_{ik}^2)+
+        4\sum_{k<j}a_{jk}^2 \mathrm{E}(z_{ij}^2z_{ik}^2)\\
+        \asymp &
+        \sum_{j=1}^n\sum_{k=1}^n a_{jj}a_{kk}+
+        \sum_{j=1}^n\sum_{k=1}^n a_{jk}^2
+        ={(\mathrm{tr}(A))}^2+\mathrm{tr}A^2
+    \end{aligned}
+\end{equation}
+
+\end{proof}
+\end{lemma}
+
+\begin{lemma}\label{ratioLemma}
+    Suppose condition~\eqref{chenCondition} holds, then
+    \begin{equation}
+        \frac{\sum_{j<i}{(X_i^T X_j)}^2}{\frac{n(n-1)}{2}\mathrm{tr} (\Sigma+\mu\mu^T)^2}
+        \xrightarrow{P}1.
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    \begin{equation}
+        \begin{aligned}
+            \mathrm{E}{(X_i^T X_j)}^2=&
+            \mathrm{E}(X_i^T X_j X_j^T X_i)=
+            \mathrm{E}(X_i^T (\Sigma+\mu \mu^T) X_i)\\
+            =&
+            \mathrm{E}\mathrm{tr}((\Sigma+\mu \mu^T) X_i X_i^T)=\mathrm{tr}{(\Sigma+\mu \mu^T)}^2
+        \end{aligned}
+    \end{equation}
+    Hence
+    \begin{equation}
+        \mathrm{E}\sum_{j<i}{(X_i^T X_j)}^2=\frac{n(n-1)}{2}\mathrm{tr}{(\Sigma+\mu\mu^T)}^2
+    \end{equation}
+    So we only need to consider the variance. According to $\mathrm{card}(\{i,j\}\cap\{k,l\})=0,1,2$, we have
+    \begin{equation}\label{eq:1}
+    \begin{aligned}
+        &{\big(\sum_{j<i}{(X_i^T X_j)}^2\big)}^2
+        =
+        \sum_{j<i}{(X_i^T X_j)}^4+
+        \sum_{j<i,k<l:\{i,j\}\cap \{k,l\}=\phi}{(X_i^T X_j)}^2{(X_k^T X_l)}^2\\
+        &+2\sum_{j<i<k}\big(
+        {(X_i^T X_j)}^2{(X_k^T X_i)}^2+
+{(X_i^T X_j)}^2{(X_k^T X_j)}^2+
+{(X_k^T X_j)}^2{(X_k^T X_i)}^2
+        \big)
+    \end{aligned}
+    \end{equation}
+
+
+    \begin{equation}
+        \begin{aligned}
+            {(X_i^T X_j)}^4=&
+            {(Z_i^T \Gamma^T \Gamma Z_j+\mu^T \Gamma Z_i+\mu^T \Gamma Z_j+\mu^T \mu)}^4\\
+            \leq &
+            64\big((Z_i^T \Gamma^T \Gamma Z_j)^4+(\mu^T \Gamma Z_i)^4+(\mu^T \Gamma Z_j)^4+(\mu^T \mu)^4\big)\\
+        \end{aligned}
+    \end{equation}
+    Note that by lemma~\ref{lemmaQ}, we have
+    \begin{equation}
+        \mathrm{E}(\mu^T \Gamma Z_i)^4=
+        \mathrm{E}(Z_i^T \Gamma^T \mu\mu^T \Gamma Z_i)^2
+        \asymp  {(\mu^T \Sigma \mu)}^2\leq \lambda_{\max}^2(\Sigma){(\mu^T\mu)}^2.
+    \end{equation}
+    and apply lemma~\ref{lemmaQ}, we get
+    \begin{equation}
+        \begin{aligned}
+            \mathrm{E}(Z_i^T \Gamma^T \Gamma Z_j)^4=&
+        \mathrm{E}(Z_i^T \Gamma^T \Gamma Z_j Z_j^T \Gamma^T \Gamma Z_i)^2\\
+            =&
+            \mathrm{E}\mathrm{E}\big((Z_i^T \Gamma^T \Gamma Z_j Z_j^T \Gamma^T \Gamma Z_i)^2 | Z_j\big)\\
+            \asymp &  \mathrm{E}{(Z_j^T \Gamma^T \Sigma \Gamma Z_j)}^2\\
+            \asymp &  (\mathrm{tr}\Sigma^2)^2+\mathrm{tr}\Sigma^4\\
+            \leq &  (\mathrm{tr}\Sigma^2)^2+\lambda_{\max}^2(\Sigma)\mathrm{tr}\Sigma^2.
+        \end{aligned}
+    \end{equation}
+    By condition~\eqref{chenCondition}, we have 
+    \begin{equation}\label{eq:20170220}
+        \mathrm{E}{(X_i^T X_j)}^4=O\Big({\big(\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)}^2\Big)
+    \end{equation}
+Similarly, we have
+    \begin{equation}\label{eq:2}
+        \begin{aligned}
+            &\mathrm{E}{(X_i^T X_j)}^2{(X_k^T X_i)}^2\\
+            = &
+            \mathrm{E}\mathrm{E}\big({(X_i^T X_j)}^2{(X_k^T X_i)}^2| X_i\big)\\
+            =&
+            \mathrm{E}{(X_i^T (\Sigma+\mu\mu^T) X_i )}^2\\
+            =&
+            \mathrm{E}{(Z_i^T \Gamma^T (\Sigma+\mu\mu^T) \Gamma Z_i+ 2\mu^T (\Sigma+\mu\mu^T)\Gamma Z_i +\mu \Sigma \mu +(\mu^T\mu)^2 )}^2\\
+            \leq&
+            4\mathrm{E}(Z_i^T \Gamma^T (\Sigma+\mu\mu^T) \Gamma Z_i)^2+ 16\mathrm{E}(\mu^T (\Sigma+\mu\mu^T)\Gamma Z_i)^2 +4(\mu \Sigma \mu)^2 +4(\mu^T\mu)^4 \\
+            \asymp&
+            (\mathrm{tr}(\Gamma^T (\Sigma+\mu\mu^T)\Gamma))^2+\mathrm{tr}(\Gamma^T (\Sigma+\mu\mu^T)\Sigma(\Sigma+\mu\mu^T)\Gamma)\\
+            &+ \mu^T (\Sigma+\mu\mu^T)\Sigma (\Sigma+\mu\mu^T)\mu+(\mu \Sigma \mu)^2 +(\mu^T\mu)^4 \\
+            =&
+            \mathrm{tr}\Sigma^4+
+            {(\mu^T \mu)}^4+
+            {(\mathrm{tr}\Sigma^2)}^2+
+            2\mathrm{tr}\Sigma^2 (\mu^T \Sigma \mu)+
+            3 {(\mu^T \Sigma \mu)}^2\\
+            &+
+            3\mu^T\Sigma^3 \mu+
+            2(\mu^T\Sigma^2 \mu)(\mu^T\mu)+
+            (\mu^T\Sigma \mu){(\mu^T\mu)}^2\\
+            =&
+            O(1)({(\mathrm{tr}\Sigma^2)}^2+(\mu^T\mu)^4)\\
+            =&O\Big({\big(\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)}^2\Big)
+        \end{aligned}
+    \end{equation}
+    The last $2$ equality follows by the fact $\mu^T \Sigma^i \mu\leq \lambda_{\max}^i(\Sigma)\mu^T\mu$ ($i=1,2,\ldots$), the condition~\eqref{chenCondition} and the inequality $ab\leq a^p/p+b^q/p$ for $1/p+1/q=1$ and $p,q>0$.
+   
+   In~\eqref{eq:1}, there are $n(n-1)/2$, $n(n-1)(n-2)(n-3)/4$ and $n(n-1)(n-2)/6$ terms in each summation. Hence
+    \begin{equation}
+    \begin{aligned}
+        \mathrm{E}{\big(\sum_{j<i}{(X_i^T X_j)}^2\big)}^2
+            =&\frac{n(n-1)(n-2)(n-3)}{4}{\big(\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)}^2\\
+            &+O(1)(\frac{n(n-1)}{2}+n(n-1)(n-2)){\big(\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)}^2
+    \end{aligned}
+    \end{equation}
+Hence $\mathrm{Var}(\sum_{j<i}{(X_i^T X_j)}^2)=o\Big(\big(\mathrm{E}(\sum_{j<i}{(X_i^T X_j)}^2)\big)^2\Big)$, which prove the lemma.
+\end{proof}
+
+\begin{lemma}
+    Suppose~\eqref{chenCondition} holds. Assume
+    \begin{equation} 
+        \mu^T \mu=o(\sqrt{\mathrm{tr}\Sigma^2}),
+    \end{equation}
+then
+    \begin{equation}\label{lemma2R1}
+        \sum_{j<k}{(\sum_{i:i>k}X_i^T X_j X_i^T X_k)}^2
+        =o_P\Big(\big(\frac{n(n-1)}{2}\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)^2\Big)
+    \end{equation}
+    \begin{equation}\label{lemma2R2}
+        \sum_{j<k}{(X_i^T X_j)}^4=o_P\Big(\big(\frac{n(n-1)}{2}\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)^2\Big)
+    \end{equation}
+    \begin{equation}\label{lemma2R3}
+        \sum_{j<k<i}{(X_i^T X_j)}^2{(X_i^T X_k)}^2 =o_P\Big(\big(\frac{n(n-1)}{2}\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)^2\Big)
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    \begin{equation}
+    \begin{aligned}
+        &\mathrm{E}\sum_{j<k}{(\sum_{i:i>k}X_i^T X_j X_i^T X_k)}^2\\
+        =&
+        \mathrm{E}\sum_{j<k}\Big(\sum_{i:i>k}(X_i^T X_j)^2 (X_i^T X_k)^2+2\sum_{i_1,i_2:i_1>i_2>k}X_{i_1}^T X_j X_{i_1}^T X_k X_{i_2}^T X_j X_{i_2}^T X_k\Big).\\
+    \end{aligned}
+    \end{equation}
+
+    By~\eqref{eq:2}, we have
+    \begin{equation}
+    \begin{aligned}
+        \mathrm{E}\sum_{j<k<i}(X_i^T X_j)^2 (X_i^T X_k)^2    =O(n^3)\big(\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)^2
+    \end{aligned}
+    \end{equation}
+    But
+    \begin{equation}
+    \begin{aligned}
+        &\mathrm{E}\sum_{j<k<i_2<i_1}X_{i_1}^T X_j X_{i_1}^T X_k X_{i_2}^T X_j X_{i_2}^T X_k\\
+        =&\frac{n(n-1)(n-2)(n-3)}{6}\mathrm{tr}{(\Sigma+\mu\mu^T)}^4\\
+        \leq& \frac{n(n-1)(n-2)(n-3)}{6}8(\mathrm{tr}{(\Sigma)}^4+(\mu^T \mu)^4)\\
+        \leq& O(n^4)(\lambda_{\max}^2(\Sigma)\mathrm{tr}{(\Sigma)}^2+(\mu^T \mu)^4)\\
+        =&
+        o\Big(n^4{\big(\mathrm{tr}\Sigma^2\big)}^2\Big).
+    \end{aligned}
+    \end{equation}
+    It follows that~\eqref{lemma2R1} holds.~\eqref{lemma2R2} and~\eqref{lemma2R3} can be proved similarly by~\eqref{eq:2} and~\eqref{eq:20170220}.
+
+\end{proof}
+
+
+As Janssen's paper, let $d$ denote any metric on the set of probability measures $\mathcal{M}_1(\mathbb{R})$ on $\mathbb{R}$ such that convergence in $(\mathcal{M}_1(\mathbb{R}),d)$ is equivalent to weak convergence.
+\begin{theorem}
+     Suppose
+    \begin{equation}\label{chenCondition}
+        \frac{\lambda_{\max}^2(\Sigma)}{\mathrm{tr}\Sigma^2}\to 0,
+    \end{equation}
+    and
+    \begin{equation}
+        \mu^T\mu=o(\sqrt{\mathrm{tr}\Sigma^2}),
+    \end{equation}
+    then
+    \begin{equation}
+        d\Big(\mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),
+        N(0,1)\Big)
+        \xrightarrow{P}0.
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    Similar to the proof of Chen's theorem and by Lemma~\ref{ratioLemma}, we have
+    \begin{equation}
+        \frac{T_2(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}}\xrightarrow{\mathcal{L}}N(0,1).
+    \end{equation}
+    For every subsequence of $\{n\}$, there is a further subsequence $\{n(k)\}$ along which~\eqref{lemma2R1},~\eqref{lemma2R2} and~\eqref{lemma2R3} holds almost surely.
+    By Proposition~\ref{CLTprop}, we have
+    \begin{equation}
+        \mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big)\xrightarrow{\mathcal{L}}N(0,1)
+    \end{equation}
+    almost surely.
+    Denote by $\xi_{\alpha}^*$ the $1-\alpha$ quantile of the above conditional distribution, then along $\{n(m)\}$ we have $\xi_{\alpha}^*\to \Phi(1-\alpha)$ almost surely, where $\Phi(\cdot)$ is the CDF of standard normal distribution. Then $\xi^*_{\alpha}\xrightarrow{P}\Phi(1-\alpha)$.
+    Now the asymptotic power function can be derived by Slutsky's theorem
+    \begin{equation}
+        \begin{aligned}
+            &\Pr\Big(\frac{T_2( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
+            =&
+            \Pr\Big(\frac{T_2( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^*-\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \Big)\\
+            =&
+            \Pr\Big(\frac{T_2( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}-
+            \frac{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}\xi_{\alpha}^*>
+            -\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}} \Big)\\
+            =&
+            \Pr\Big(N(0,1)-\Phi(1-\alpha)>-\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}}\Big)+o(1)\\
+            =&
+            \Phi(-\Phi(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}})+o(1),
+        \end{aligned}
+    \end{equation}
+    where the last two equality holds because an exersize of durrett.
+
+
+
+\end{proof}
 
 
 \section*{References}

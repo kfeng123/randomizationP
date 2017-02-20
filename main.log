@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.5.17)  18 FEB 2017 23:08
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.5.17)  20 FEB 2017 15:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1309,30 +1309,34 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 [1
 
 
-]
-Overfull \hbox (8.74503pt too wide) in paragraph at lines 139--143
-\EU1/lmr/m/n/10 indepent Rademacher variables. Consider quadratic form $\OML/cm
-m/m/it/10 W[] \OT1/cmr/m/n/10 = [][] \OML/cmm/m/it/10 a[]^^O[]^^O[]$\EU1/lmr/m/
-n/10 ,
+] [2] [3] [4] [5] [6]
+Overfull \hbox (3.80812pt too wide) in paragraph at lines 369--371
+\EU1/lmr/m/n/10 Hence $[]\OT1/cmr/m/n/10 ([][] [][]) = \OML/cmm/m/it/10 o[][][]
+\OT1/cmr/m/n/10 ([][] [][])[][][]$\EU1/lmr/m/n/10 , which prove the lemma.
  []
 
-[2] [3]
+[7]
+Overfull \hbox (29.66446pt too wide) detected at line 465
+[] []
+ []
+
+[8]
 No file main.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 226.
-[4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 226.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 477.
+[9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 477.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 226.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 226.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 226.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 477.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 477.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 477.
  ) 
 Here is how much of TeX's memory you used:
- 25053 strings out of 493638
- 456024 string characters out of 6146796
- 479287 words of memory out of 5000000
- 28230 multiletter control sequences out of 15000+600000
+ 25063 strings out of 493638
+ 456123 string characters out of 6146796
+ 481420 words of memory out of 5000000
+ 28240 multiletter control sequences out of 15000+600000
  17088 words of font info for 83 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 45i,12n,78p,10426b,476s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,12n,78p,10426b,542s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (4 pages).
+Output written on main.pdf (9 pages).
