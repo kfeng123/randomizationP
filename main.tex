@@ -45,6 +45,11 @@
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+
 
 \theoremstyle{plain}
 \newtheorem{theorem}{\quad\quad Theorem}
@@ -468,6 +473,33 @@ As Janssen's paper, let $d$ denote any metric on the set of probability measures
 
 
 \end{proof}
+
+
+\section{Algorithm}
+
+\begin{algorithm}
+    \caption{Randomization Algorithm}
+\label{theAlgorithm}
+    \begin{algorithmic}
+        \REQUIRE  $\alpha$
+        \STATE Set $A\gets 0$, $T_0\gets T(X_1,\ldots,X_n)$.
+        \STATE Set $M$ by Hoeffding's inequality
+        \FOR{$i=1$ to $M$}
+            \STATE Generate $\epsilon_1,\ldots,\epsilon_n$
+            \IF{$T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)>T_0$}
+            \STATE $A\gets A+1$
+            \ENDIF
+            \IF{$A\geq M\alpha$}
+            \STATE Accept null
+            \RETURN
+            \ENDIF
+            \IF{$M-A>M(1-\alpha)$}
+            \STATE Reject null
+            \RETURN
+            \ENDIF
+        \ENDFOR
+    \end{algorithmic}
+\end{algorithm}
 
 
 \section*{References}
