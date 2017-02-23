@@ -103,7 +103,12 @@ This template helps you to create a properly formatted \LaTeX\ manuscript.
 
 \linenumbers
 
-\section{model}
+
+\section{Introduction}
+If the distribution of $X_i$ is symmetric, then the randomization test is exact. We prove even if $X_i$ is not symmetric, the randomization test is asymptotically exact.
+
+We give a fast algorithm. Surprisingly, the randomization test can be implemented efficiently than asymptotically method since we don't need to estimate the variance of the test statistic.
+\section{Model}
 
 Consider i.i.d.\ random sample $X_{1},\ldots,X_{n}\in \mathbb{R}^p$ which has means $\mu={(\mu_1,\ldots,\mu_p)}^T$ and covariance matrix $\Sigma$. We consider testing the following high-dimensional hypothesis:
 \begin{equation}
@@ -477,25 +482,56 @@ As Janssen's paper, let $d$ denote any metric on the set of probability measures
 
 \section{Algorithm}
 
+The quantile might not be computationally feasible, since the randomized test statistic is (conditionally) uniformly distributed on $2^n$ different values.
+In practice, randomization test is often realized through an approximation of $p$-value.
+More specifically, first choose a large integer $M$.
+We can sample from conditional distribution of randomized statistic by generate $\epsilon_1,\ldots,\epsilon_n$ and compute $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)$.
+Repeat $M$ times and we obtain $T_i^*$, $i=1,\ldots,M$.
+Denote $\xi_i=\mathbf{1}_{\{T_i^*\geq T_0\}}$.
+Then  $\sum_{i=1}^M \xi_i/M$ is an approximation of the $p$-value 
+$$p(X_1,\ldots,X_n)=\Pr(T_i^*\geq T_0|X_1,\ldots,X_n).$$
+Hence we reject the null if $\sum_{i=1}^M \xi_i/M\leq \alpha$.
+
+Sometimes we can stop and draw a conclusion before sampling $M$ times.
+In fact, we can accept the null once the sum of $\xi_i$ exceeds $M\alpha$ and reject the null once the sum of $1-\xi_i$ reaches $M(1-\alpha)$.
+
+Note that once we have obtained $X_i^T X_j$, the computation of $T_i^*$ has only complexity $O(n^2)$.
+The total complexity is $O(n^2 (p+M))$, which is fast.
+This is different from low dimensional setting where randomization is a lot slower than asymptotic method.
+For example, when $M=p$, time spent by randomization is at most twice of that of asymptotic method.
+
+
+
+%We shall choose $M$ large enough such that 
+%$$\Pr\Big(\Big|\frac{1}{M}\sum_{i=1}^M \xi-p(X_1,\ldots,X_n)\Big|>t|X_1,\ldots,X_n\Big)$$
+%is smaller than $\epsilon$, where $t$ and $\epsilon$ are specified. By Hoeffding's inequality,
+%\begin{equation*}
+    %\Pr\Big(\Big|\frac{1}{M}\sum_{i=1}^M \xi-p(X_1,\ldots,X_n)\Big|>t|X_1,\ldots,X_n\Big)\leq 2e^{-2Mt^2}.
+%\end{equation*}
+%Hence we choose $M=\big[\frac{1}{2t^2}\log(\frac{2}{\epsilon})\big]+1$.
+
+
+
+
+
+
 \begin{algorithm}
     \caption{Randomization Algorithm}
 \label{theAlgorithm}
     \begin{algorithmic}
-        \REQUIRE  $\alpha$
+        \REQUIRE  $\alpha$, $M$
         \STATE Set $A\gets 0$, $T_0\gets T(X_1,\ldots,X_n)$.
-        \STATE Set $M$ by Hoeffding's inequality
+        \STATE Compute $X_i^T X_j$ for $1\leq j< i\leq n$
         \FOR{$i=1$ to $M$}
-            \STATE Generate $\epsilon_1,\ldots,\epsilon_n$
+            \STATE Generate $\epsilon_1,\ldots,\epsilon_n$ and compute $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)=\sum_{j<i} X_i^T X_j\epsilon_i\epsilon_j$.
             \IF{$T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)>T_0$}
             \STATE $A\gets A+1$
             \ENDIF
-            \IF{$A\geq M\alpha$}
-            \STATE Accept null
-            \RETURN
+            \IF{$A> M\alpha$}
+            \RETURN{Accept}
             \ENDIF
-            \IF{$M-A>M(1-\alpha)$}
-            \STATE Reject null
-            \RETURN
+            \IF{$i-A\geq M(1-\alpha)$}
+            \RETURN{Reject}
             \ENDIF
         \ENDFOR
     \end{algorithmic}
