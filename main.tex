@@ -105,10 +105,6 @@ This template helps you to create a properly formatted \LaTeX\ manuscript.
 
 
 \section{Introduction}
-If the distribution of $X_i$ is symmetric, then the randomization test is exact. We prove even if $X_i$ is not symmetric, the randomization test is asymptotically exact.
-
-We give a fast algorithm. Surprisingly, the randomization test can be implemented efficiently than asymptotically method since we don't need to estimate the variance of the test statistic.
-\section{Model}
 
 Consider i.i.d.\ random sample $X_{1},\ldots,X_{n}\in \mathbb{R}^p$ which has means $\mu={(\mu_1,\ldots,\mu_p)}^T$ and covariance matrix $\Sigma$. We consider testing the following high-dimensional hypothesis:
 \begin{equation}
@@ -127,24 +123,41 @@ for a positive integer $q$ such that $\sum_{l=1}^q \alpha_l\leq 8$ and $l_1\neq 
 
 Consider the test statistic 
 \begin{equation}
-    T=\|\bar{X}\|^2.
+    T(X_1,\ldots,X_n)=\sum_{j<i}X_i^TX_j.
 \end{equation}
-Statistics like this are studied in some high dimensional mean test literature. Most of existing papers determined the critical value by asymptotic distribution, which is not exact. Randomization method have the advantages that the test is exact. However, as far as we know, there's no existing work give a theoretical justification of the power behavior of randomization method.
+
+Statistics like this are studied in some high dimensional mean test literature. Most of existing papers determined the critical value by asymptotic distribution, which is not exact.
 
 \paragraph{Randomization}
-For a test statistic $T(X_1,\ldots, X_n)$. Suppose $\epsilon_1,\ldots,\epsilon_n$ are i.i.d. Rademacher variables ($\Pr(\epsilon_i=1)=\Pr(\epsilon_i=-1)=1/2$) which are independent of the data. The critical value is defined as the $1-\alpha$ quantile of the conditional distribution
-\begin{equation}
-    \mathcal{L}(T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)|X_1,\ldots,X_n).
-\end{equation}
+Suppose $\epsilon_1,\ldots,\epsilon_n$ are i.i.d. Rademacher variables ($\Pr(\epsilon_i=1)=\Pr(\epsilon_i=-1)=1/2$) which are independent of the data.
+Suppose under the null hypothesis is symmetric about $0$, then the conditional distribution
+\begin{equation*}
+    \mathcal{L}(T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)|X_1,\ldots,X_n)
+\end{equation*}
+is the uniform distribution on $2^n$ values.
+The critical value of the randomization test is defined as the $1-\alpha$ quantile of the above distribution.
+ More specifically, the test function equals to $1$ or $0$ if $T(X_1,\ldots, X_n)$ is greater or not greater than the critical value. The resulting test is a level $\alpha$ test.
+If the test function equals to a certain value in $(0,1)$ when $T(X_1,\ldots,X_n)$ is exactly equal to the critical value,  the test is exact.
+Since such extreme case occurs with little probability, in practice the former procedure is often adopted, which only drop minor power.
+
+
 
 It's easy to see that the randomization test based on $\|\bar{X}\|^2$ , 
-$\|\bar{X}\|^2-\frac{1}{n}S$ ($S$ is the sample covariance matrix) and $\sum_{j<i}X_i^T X_j$ are equivalent.
-In what follows, we will consider
-\begin{equation}
-    T_2(X_1,\ldots,X_n)=\sum_{j<i}X_i^TX_j.
-\end{equation}
-Then $T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)=\sum_{j<i}X_i^T X_j \epsilon_i \epsilon_j$.
+$\|\bar{X}\|^2-\frac{1}{n}S$ ($S$ is the sample covariance matrix) and $\sum_{j<i}X_i^T X_j$ are equivalent. Hence the randomization version of Bai's test and Chen's test are equivalent. There's no need to estimate the variance of the statistic.
 
+
+Randomization method has the advantages that the test is exact when the null distribution is symmetric. A question is that if the ranodomization test can still work if the symmetry condition breaks down.
+As far as we know, there's no theoretical work concerning the asymptotic property of randomization test in high dimension setting.
+Our asymptotic results show that even the null distribution is not symmetric, the randomization test is still asymptotically exact. 
+The local asymptotic power is also given.
+
+
+In low dimensional setting, it's well known that randomization test is very slow compared to usual method. 
+Surprisingly, in high dimension setting the randomization test can be implemented as efficiently as asymptotic method.
+
+Our proof method and computation methods can be used to many other quadratic form based test statistics.
+
+\section{CLT}
 \paragraph{CLT for quadratic form of Rademacher varaibles}
 We will study the quadratic form of Rademacher variables.
  Let $\epsilon_1,\ldots,\epsilon_n$ be indepent Rademacher  variables. 
