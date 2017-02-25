@@ -140,6 +140,13 @@ The critical value of the randomization test is defined as the $1-\alpha$ quanti
 If the test function equals to a certain value in $(0,1)$ when $T(X_1,\ldots,X_n)$ is exactly equal to the critical value,  the test is exact.
 Since such extreme case occurs with little probability, in practice the former procedure is often adopted, which only drop minor power.
 
+Equivalently, the randomization test can be implemented by $p$-value. Define 
+\begin{equation*}
+    p(X_1,\ldots, X_n)=
+    \Pr(T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)\geq T( X_1,\ldots,X_n)|X_1,\ldots,X_n).
+\end{equation*}
+The randomization test rejects the null hypothesis if $p(X_1,\ldots, X_n)\leq \alpha$. 
+
 
 
 It's easy to see that the randomization test based on $\|\bar{X}\|^2$ , 
@@ -148,7 +155,7 @@ $\|\bar{X}\|^2-\frac{1}{n}S$ ($S$ is the sample covariance matrix) and $\sum_{j<
 
 Randomization method has the advantages that the test is exact when the null distribution is symmetric. A question is that if the ranodomization test can still work if the symmetry condition breaks down.
 As far as we know, there's no theoretical work concerning the asymptotic property of randomization test in high dimension setting.
-Our asymptotic results show that even the null distribution is not symmetric, the randomization test is still asymptotically exact. 
+Our asymptotic results show that even if the null distribution is not symmetric, the randomization test is still asymptotically exact. 
 The local asymptotic power is also given.
 
 
@@ -159,7 +166,8 @@ Our proof method and computation methods can be used to many other quadratic for
 
 \section{CLT}
 \paragraph{CLT for quadratic form of Rademacher varaibles}
-We will study the quadratic form of Rademacher variables.
+Our proof of the main results is based on a CLT of the quadratic form of Rademacher variables. 
+Such a CLT can be also used to study the asymptotic behavior of many other randomization test.
  Let $\epsilon_1,\ldots,\epsilon_n$ be indepent Rademacher  variables. 
  Consider quadratic form $W_n=\sum_{1\leq j<i\leq n} a_{ij}\epsilon_i \epsilon_j$, where $\{a_{ij}\}$ are nonrandom numbers. Here $\{\epsilon_i\}$ and $\{a_{ij}\}$ may depend on $n$, a parameter we suppress.
  Obviously, $\mathrm{E}(W_n)=0$ and $\mathrm{Var}(W_n)=\sum_{1\leq j<i\leq n} a_{ij}^2$.
@@ -443,19 +451,19 @@ then
 
 As Janssen's paper, let $d$ denote any metric on the set of probability measures $\mathcal{M}_1(\mathbb{R})$ on $\mathbb{R}$ such that convergence in $(\mathcal{M}_1(\mathbb{R}),d)$ is equivalent to weak convergence.
 \begin{theorem}
-     Suppose
+    Assume
     \begin{equation}\label{chenCondition}
         \frac{\lambda_{\max}^2(\Sigma)}{\mathrm{tr}\Sigma^2}\to 0,
     \end{equation}
     and
     \begin{equation}
-        \mu^T\mu=o(\sqrt{\mathrm{tr}\Sigma^2}),
+        \mu^T\mu=o(\sqrt{\mathrm{tr}\Sigma^2}).
     \end{equation}
-    then
+    Then we have
     \begin{equation}
-        d\Big(\mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),
-        N(0,1)\Big)
-        \xrightarrow{P}0.
+            \Pr\Big(\frac{T_2( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
+            =
+            \Phi(-\Phi(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}})+o(1),
     \end{equation}
 \end{theorem}
 \begin{proof}
@@ -468,7 +476,7 @@ As Janssen's paper, let $d$ denote any metric on the set of probability measures
     \begin{equation}
         \mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big)\xrightarrow{\mathcal{L}}N(0,1)
     \end{equation}
-    almost surely.
+    almost surely along $\{n(k)\}$.
     Denote by $\xi_{\alpha}^*$ the $1-\alpha$ quantile of the above conditional distribution, then along $\{n(m)\}$ we have $\xi_{\alpha}^*\to \Phi(1-\alpha)$ almost surely, where $\Phi(\cdot)$ is the CDF of standard normal distribution. Then $\xi^*_{\alpha}\xrightarrow{P}\Phi(1-\alpha)$.
     Now the asymptotic power function can be derived by Slutsky's theorem
     \begin{equation}
