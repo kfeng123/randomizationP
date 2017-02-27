@@ -1,7 +1,3 @@
-% This file was created with JabRef 2.10.
-% Encoding: ISO8859_1
-
-
 @Article{Bai1996Efiect,
   Title                    = {Effect of high dimension: by an example of a two sample problem},
   Author                   = {Bai, Z. and Saranadasa, H.},
@@ -13,7 +9,6 @@
 
   File                     = {Bai1996Efiect.pdf:Bai1996Efiect.pdf:PDF}
 }
-
 @Article{Chen2010A,
   Title                    = {A two-sample test for high-dimensional data with applications to gene-set testing},
   Author                   = {Chen, Song Xi and Qin, Ying Li},
@@ -25,25 +20,6 @@
 
   File                     = {Chen2010A.pdf:Chen2010A.pdf:PDF}
 }
-
-@Article{Fisher,
-  Title                    = {The Design of Experiments.},
-  Author                   = {Fisher, R A},
-  Year                     = {1936}
-}
-
-@Article{Romano1990On,
-  Title                    = {On the Behavior of Randomization Tests Without a Group Invariance Assumption},
-  Author                   = {Romano, Joseph P.},
-  Journal                  = {Journal of the American Statistical Association},
-  Year                     = {1990},
-  Number                   = {411},
-  Pages                    = {686-692},
-  Volume                   = {85},
-
-  File                     = {Romano1990On.pdf:Romano1990On.pdf:PDF}
-}
-
 @Article{Srivastava2009A,
   Title                    = {A test for the mean vector with fewer observations than the dimension under non-normality},
   Author                   = {Srivastava, Muni S.},
@@ -54,5 +30,20 @@
   Volume                   = {100},
 
   File                     = {Srivastava2009A.pdf:Srivastava2009A.pdf:PDF}
+}
+@article{Fisher,
+title={The Design of Experiments.},
+author={Fisher, R A},
+year={1936}}
+@Article{Romano1990On,
+  Title                    = {On the Behavior of Randomization Tests Without a Group Invariance Assumption},
+  Author                   = {Romano, Joseph P.},
+  Journal                  = {Journal of the American Statistical Association},
+  Year                     = {1990},
+  Number                   = {411},
+  Pages                    = {686-692},
+  Volume                   = {85},
+
+  File                     = {Romano1990On.pdf:Romano1990On.pdf:PDF}
 }
 

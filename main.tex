@@ -35,7 +35,7 @@
 %\usepackage{numcompress}\bibliographystyle{model6-num-names}
 
 %% `Elsevier LaTeX' style
-%\bibliographystyle{elsarticle-num}
+\bibliographystyle{elsarticle-num}
 %%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{xeCJK}
 \usepackage{bm}
@@ -106,39 +106,60 @@ This template helps you to create a properly formatted \LaTeX\ manuscript.
 
 \section{Introduction}
 
-Consider i.i.d.\ random sample $X_{1},\ldots,X_{n}\in \mathbb{R}^p$ which has means $\mu={(\mu_1,\ldots,\mu_p)}^T$ and covariance matrix $\Sigma$. We consider testing the following high-dimensional hypothesis:
+Consider i.i.d.\ random sample $X_{1},\ldots,X_{n}\in \mathbb{R}^p$ which has means $\mu={(\mu_1,\ldots,\mu_p)}^T$ and covariance matrix $\Sigma$. The one sample testing problem
 \begin{equation}
-    H_0:\mu=0_p\quad \textrm{versus} \quad H_1:\mu\neq 0_p.
+    H_0:\mu=0_p\quad \textrm{versus} \quad H_1:\mu\neq 0_p
 \end{equation}
+has been extensively studied by many researchers.
+A classical test statistic is Hotelling's $T^2$, 
+    $$
+    T_{1}=n\bar{X}^T S^{-1}\bar{X}
+    $$
+where $\bar{X}$ and $S=(n-1)^{-1}\sum_{i=1}^n (X_i-\bar{X}) (X_i-\bar{X})^T$ are the sample mean vector and sample covariance matrix, respectively.
+However, the high-dimensional case $d>n$ invalidates the Hotelling's test.
+\cite{Bai1996Efiect} is the first paper modifying Hotelling's $T^2$ statistic for high dimensional situations.
+This seminal paper removed $S^{-1}$ from $T_1$ and proposed a test statistic based on
+$$
+T_2=\bar{X}^T\bar{X}.
+$$
+Many subsequent papers relaxed the assymptions and generalized the idea of~\cite{Bai1996Efiect}.
+For example,~\cite{Srivastava2009A} proposed a test based on
+$$
+T_3=\bar{X}^T {[\mathrm{diag}(S)]}^{-1} \bar{X},
+$$
+where $\mathrm{diag}(S)$ is a matrix with diagonal elements equal to that of $S$ and off-diagonal elemnts equal to $0$.
+\cite{Chen2010A} proposed a test based on
+$$
+T_4=\sum_{i\neq j}X_i^T X_j.
+$$
+Feng long proposed a test based on.
 
-We assume, like chen qin and bai, the following multivariate model:
-\begin{equation}
-    X_i=\mu+\Gamma Z_i\quad \textrm{for}\, i=1,\ldots,n,
-\end{equation}
-where $\Gamma$ is a $p\times m$ matrix for some $m\geq p$ such that $\Gamma_i\Gamma_i^T=\Sigma_i$ and ${\{Z_{i}\}}_{i=1}^n$ are $m$-variate i.i.d.\ random vectors satisfying $\mathrm{E}(Z_i)=0$ and $\mathrm{Var}(Z_i)=I_m$, the $m\times m$ identity matrix. Write $Z_i={(z_{i1},\ldots,z_{im})}^T$, we assume $\mathrm{E}(z_{ij}^4)=3+\Delta<\infty$ and
-\begin{equation}
-    \mathrm{E}(z_{il_1}^{\alpha_1}z_{il_2}^{\alpha_2}\cdots z_{il_q}^{\alpha_q})=\mathrm{E}(z_{il_1}^{\alpha_1})\mathrm{E}(z_{il_2}^{\alpha_2})\cdots \mathrm{E}(z_{il_q}^{\alpha_q})
-\end{equation}
-for a positive integer $q$ such that $\sum_{l=1}^q \alpha_l\leq 8$ and $l_1\neq l_2\neq \cdots \neq l_q$.
+Note that these works are mostly can be written as a generalized quadratic form of data, see.
+Their theoretical prove mostly rely on the application of martingale central limit theorem (MCLT) which is suitable for quadratic form.
 
-Consider the test statistic 
-\begin{equation}
-    T(X_1,\ldots,X_n)=\sum_{j<i}X_i^TX_j.
-\end{equation}
+The critical value of existing high dimensional tests are often determined by asymptotical distribution. Hence the test level can not be guaranteed in finite sample case.
 
-Statistics like this are studied in some high dimensional mean test literature. Most of existing papers determined the critical value by asymptotic distribution, which is not exact.
 
-\paragraph{Randomization}
-Suppose $\epsilon_1,\ldots,\epsilon_n$ are i.i.d. Rademacher variables ($\Pr(\epsilon_i=1)=\Pr(\epsilon_i=-1)=1/2$) which are independent of the data.
-Suppose under the null hypothesis is symmetric about $0$, then the conditional distribution
-\begin{equation*}
+
+
+The idea of randomization test dates back to~\cite{Fisher}, which is a tool to determine the critical value for a given test statistic.
+It's strongth is in that the resulting test procedure has exact level under mild condition.
+\cite{Romano1990On} described a general construction of the randomization test.
+In this paper, we focus on a special randomization method for one sample mean testing problem, which we will introduce shortly.
+If randomization method is robust and has good power in high dimension, it will be a better choice compared to asymptotic mehtod.
+As far as we know, there's no existing theoretical work investigating the behavior of randomization test in high dimensional setting.
+
+Suppose the distribution of $X_i$ is symmetric about $0$ under the null hypothesis. $T$ is a certain test statistic.
+Let $\epsilon_1,\ldots,\epsilon_n$ be i.i.d.\ Rademacher variables ($\Pr(\epsilon_i=1)=\Pr(\epsilon_i=-1)=1/2$) which are independent of the data.
+The conditional distribution
+\begin{equation}\label{ranDis}
     \mathcal{L}(T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)|X_1,\ldots,X_n)
-\end{equation*}
+\end{equation}
 is the uniform distribution on $2^n$ values.
 The critical value of the randomization test is defined as the $1-\alpha$ quantile of the above distribution.
  More specifically, the test function equals to $1$ or $0$ if $T(X_1,\ldots, X_n)$ is greater or not greater than the critical value. The resulting test is a level $\alpha$ test.
-If the test function equals to a certain value in $(0,1)$ when $T(X_1,\ldots,X_n)$ is exactly equal to the critical value,  the test is exact.
-Since such extreme case occurs with little probability, in practice the former procedure is often adopted, which only drop minor power.
+ By some refinement of the test function when $T(X_1,\ldots,X_n)$ equals to the critical value, the test is exact, see~\cite{Romano1990On}.
+Since such extreme case occurs with little probability $2^{-n}$, such refinement is often dropped in practice, which losses only a little power.
 
 Equivalently, the randomization test can be implemented by $p$-value. Define 
 \begin{equation*}
@@ -149,22 +170,177 @@ The randomization test rejects the null hypothesis if $p(X_1,\ldots, X_n)\leq \a
 
 
 
-It's easy to see that the randomization test based on $\|\bar{X}\|^2$ , 
-$\|\bar{X}\|^2-\frac{1}{n}S$ ($S$ is the sample covariance matrix) and $\sum_{j<i}X_i^T X_j$ are equivalent. Hence the randomization version of Bai's test and Chen's test are equivalent. There's no need to estimate the variance of the statistic.
+ It's easy to see that the randomization version of Bai's test and Chen's test are both equivelent to the randomization test based on
+\begin{equation}\label{Statistic}
+    T(X_1,\ldots,X_n)=\sum_{j<i}X_i^T X_j,
+\end{equation}
+the test statistic this paper adopts.
+Other quadratic based statistic can be studied by similar method.
 
-
-Randomization method has the advantages that the test is exact when the null distribution is symmetric. A question is that if the ranodomization test can still work if the symmetry condition breaks down.
-As far as we know, there's no theoretical work concerning the asymptotic property of randomization test in high dimension setting.
-Our asymptotic results show that even if the null distribution is not symmetric, the randomization test is still asymptotically exact. 
+Our results show that even if the null distribution is not symmetric, the randomization test is still asymptotically exact. 
 The local asymptotic power is also given.
 
 
-In low dimensional setting, it's well known that randomization test is very slow compared to usual method. 
+
+%Existing works of randomization test mainly focus on single variate case. A recent work of EunYi Chung consider multivariate case.
+
+
+In low dimensional setting, it's well known that randomization test has much higher time complexity than asymptotic method, which  historically  hampered it's use. 
 Surprisingly, in high dimension setting the randomization test can be implemented as efficiently as asymptotic method.
 
-Our proof method and computation methods can be used to many other quadratic form based test statistics.
 
-\section{CLT}
+%There's no need to estimate the variance of the statistic.
+
+Maybe the most used randomization method is the two sample permutation test.
+As~\cite{Romano1990On} pointed out, the asymptotic property of randomization tests depends heavily on the particular problem and, the two sample case is quite distinct from the one sample case.
+The method used in this paper can not deal with permutation test.
+
+\section{Randomization test}
+We assume, like chen qin and bai, the following multivariate model:
+\begin{equation}\label{chenC1}
+    X_i=\mu+\Gamma Z_i\quad \textrm{for}\, i=1,\ldots,n,
+\end{equation}
+where $\Gamma$ is a $p\times m$ matrix for some $m\geq p$ such that $\Gamma_i\Gamma_i^T=\Sigma_i$ and ${\{Z_{i}\}}_{i=1}^n$ are $m$-variate i.i.d.\ random vectors satisfying $\mathrm{E}(Z_i)=0$ and $\mathrm{Var}(Z_i)=I_m$, the $m\times m$ identity matrix. Write $Z_i={(z_{i1},\ldots,z_{im})}^T$, we assume $\mathrm{E}(z_{ij}^4)=3+\Delta<\infty$ and
+\begin{equation}\label{chenC2}
+    \mathrm{E}(z_{il_1}^{\alpha_1}z_{il_2}^{\alpha_2}\cdots z_{il_q}^{\alpha_q})=\mathrm{E}(z_{il_1}^{\alpha_1})\mathrm{E}(z_{il_2}^{\alpha_2})\cdots \mathrm{E}(z_{il_q}^{\alpha_q})
+\end{equation}
+for a positive integer $q$ such that $\sum_{l=1}^q \alpha_l\leq 8$ and $l_1\neq l_2\neq \cdots \neq l_q$.
+
+In the following, $T(X_1,\ldots, X_n)$ will be specialized to~\eqref{Statistic}.
+
+An important assumption in Chen and Qin's paper is
+    $\mathrm{tr}(\Sigma^4)=o\{\mathrm{tr}^2(\Sigma^2)\}$,
+which is equavelent to 
+\begin{equation}\label{chenC3}
+    \frac{\lambda_{\max}(\Sigma)}{\sqrt{\mathrm{tr}\Sigma^2}}\to 0.
+\end{equation}
+Although Chen and Qin's results is for two sample case, their results can be proved similarly for one sample case. We restate their theorem:
+\begin{theorem}
+    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and local alternatives
+    \begin{equation}\label{mu1}
+        \mu^T \Sigma\mu=o(n^{-1}\mathrm{tr}(\Sigma)^2),
+    \end{equation}
+    we have
+    \begin{equation}
+        \frac{T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}\xrightarrow{\mathcal{L}}N(0,1).
+    \end{equation}
+\end{theorem}
+
+We will call the conditional distribution
+\begin{equation*}
+        \mathcal{L}\Big(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big)
+\end{equation*}
+the randomization distribution.
+Let $\xi^*_{\alpha}$ be the $1-\alpha$ quantile of the randomization distribution.
+Then the test function $\phi(X_1,\ldots,X_n)$ equals to $1$ when 
+$$
+\frac{T(X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}> \xi^*_{\alpha}
+$$
+and equals to $0$ otherwise.
+Since $\xi^*_{\alpha}$ relies on data, the rejection region is determined by not only  $T(X_1,\ldots,X_n)$ but also randomization distribution.
+
+To study the asymptotic property of $\xi^*_{\alpha}$, we need to derive the asymptotic behavior of randomization distribution.
+Since the randomization distribution itself is random, we need to define in what sence the convergence is. Let $F$ and $G$ be two distribution function on $\mathbb{R}$ and the Levy metric $\rho$ of $F$ and $G$ is defined as
+\begin{equation*}
+    \rho(F,G)=\inf\{\epsilon:F(x-\epsilon)-\epsilon\leq G(x)\leq F(x+\epsilon)+\epsilon\quad  \textrm{for all}\quad x\}.
+\end{equation*}
+It's well known that $\rho(F_n,F)\to 0$ if and only if  $F_n\xrightarrow{\mathcal{L}}F$.
+
+Our asymptotic results need a condition stronger than~\eqref{mu1}.
+\begin{theorem}\label{shaziCLT}
+    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and local alternatives
+    \begin{equation}\label{mu2}
+        \mu^T\mu=o\big(\sqrt{\mathrm{tr}{(\Sigma)}^2}\big),
+    \end{equation}
+    we have that
+    \begin{equation*}
+        \rho\Big(\mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),N(0,1)\Big)\xrightarrow{P} 0
+    \end{equation*}
+\end{theorem}
+\begin{corollary}
+    Under the condition of Theorem~\ref{shaziCLT}, we have $\xi_{\alpha}^*\xrightarrow{P} \Phi(1-\alpha)$, where $\Phi(\cdot)$ is the CDF of standard normal distribution.
+\end{corollary}
+\begin{remark}
+    The proof of this theorem relies on Proposition~\ref{CLTprop}, a central limit theorem (CLT). 
+\end{remark}
+\begin{remark}
+    Condition~\eqref{mu2} is stronger than~\eqref{mu1}, which suggests the power function of randomization test may be a little bit smaller than non-randomization test.
+\end{remark}
+
+We can derive the asymptotic power of randomization test.
+\begin{theorem}
+    Under the condition of Theorem~\ref{shaziCLT}, we have 
+    \begin{equation*}
+            \Pr\Big(\frac{T_2( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
+            =
+            \Phi(-\Phi(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}})+o(1),
+    \end{equation*}
+\end{theorem}
+
+\begin{remark}
+    The theorem doesn't assume the distribution of $X_i$ is symmetric. Hence randomization test is robust in this mean.
+\end{remark}
+
+\section{Algorithm}
+
+The quantile might not be computationally feasible, since the randomized test statistic is (conditionally) uniformly distributed on $2^n$ different values.
+In practice, randomization test is often realized through an approximation of $p$-value.
+More specifically, first choose a large integer $M$.
+We can sample from conditional distribution of randomized statistic by generate $\epsilon_1,\ldots,\epsilon_n$ and compute $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)$.
+Repeat $M$ times and we obtain $T_i^*$, $i=1,\ldots,M$.
+Denote $\xi_i=\mathbf{1}_{\{T_i^*\geq T_0\}}$.
+Then  $\sum_{i=1}^M \xi_i/M$ is an approximation of the $p$-value 
+$$p(X_1,\ldots,X_n)=\Pr(T_i^*\geq T_0|X_1,\ldots,X_n).$$
+Hence we reject the null if $\sum_{i=1}^M \xi_i/M\leq \alpha$.
+
+Sometimes we can stop and draw a conclusion before sampling $M$ times.
+In fact, we can accept the null once the sum of $\xi_i$ exceeds $M\alpha$ and reject the null once the sum of $1-\xi_i$ reaches $M(1-\alpha)$.
+
+Note that once we have obtained $X_i^T X_j$, the computation of $T_i^*$ has only complexity $O(n^2)$.
+The total complexity is $O(n^2 (p+M))$, which is fast.
+This is different from low dimensional setting where randomization is a lot slower than asymptotic method.
+For example, when $M=p$, time spent by randomization is at most twice of that of asymptotic method.
+
+
+
+%We shall choose $M$ large enough such that 
+%$$\Pr\Big(\Big|\frac{1}{M}\sum_{i=1}^M \xi-p(X_1,\ldots,X_n)\Big|>t|X_1,\ldots,X_n\Big)$$
+%is smaller than $\epsilon$, where $t$ and $\epsilon$ are specified. By Hoeffding's inequality,
+%\begin{equation*}
+    %\Pr\Big(\Big|\frac{1}{M}\sum_{i=1}^M \xi-p(X_1,\ldots,X_n)\Big|>t|X_1,\ldots,X_n\Big)\leq 2e^{-2Mt^2}.
+%\end{equation*}
+%Hence we choose $M=\big[\frac{1}{2t^2}\log(\frac{2}{\epsilon})\big]+1$.
+
+
+
+
+
+
+\begin{algorithm}
+    \caption{Randomization Algorithm}
+\label{theAlgorithm}
+    \begin{algorithmic}
+        \REQUIRE  $\alpha$, $M$
+        \STATE Set $A\gets 0$, $T_0\gets T(X_1,\ldots,X_n)$.
+        \STATE Compute $X_i^T X_j$ for $1\leq j< i\leq n$
+        \FOR{$i=1$ to $M$}
+            \STATE Generate $\epsilon_1,\ldots,\epsilon_n$ and compute $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)=\sum_{j<i} X_i^T X_j\epsilon_i\epsilon_j$.
+            \IF{$T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)>T_0$}
+            \STATE $A\gets A+1$
+            \ENDIF
+            \IF{$A> M\alpha$}
+            \RETURN{Accept}
+            \ENDIF
+            \IF{$i-A\geq M(1-\alpha)$}
+            \RETURN{Reject}
+            \ENDIF
+        \ENDFOR
+    \end{algorithmic}
+\end{algorithm}
+
+
+
+\section{Appendix}
 \paragraph{CLT for quadratic form of Rademacher varaibles}
 Our proof of the main results is based on a CLT of the quadratic form of Rademacher variables. 
 Such a CLT can be also used to study the asymptotic behavior of many other randomization test.
@@ -501,62 +677,6 @@ As Janssen's paper, let $d$ denote any metric on the set of probability measures
 \end{proof}
 
 
-\section{Algorithm}
-
-The quantile might not be computationally feasible, since the randomized test statistic is (conditionally) uniformly distributed on $2^n$ different values.
-In practice, randomization test is often realized through an approximation of $p$-value.
-More specifically, first choose a large integer $M$.
-We can sample from conditional distribution of randomized statistic by generate $\epsilon_1,\ldots,\epsilon_n$ and compute $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)$.
-Repeat $M$ times and we obtain $T_i^*$, $i=1,\ldots,M$.
-Denote $\xi_i=\mathbf{1}_{\{T_i^*\geq T_0\}}$.
-Then  $\sum_{i=1}^M \xi_i/M$ is an approximation of the $p$-value 
-$$p(X_1,\ldots,X_n)=\Pr(T_i^*\geq T_0|X_1,\ldots,X_n).$$
-Hence we reject the null if $\sum_{i=1}^M \xi_i/M\leq \alpha$.
-
-Sometimes we can stop and draw a conclusion before sampling $M$ times.
-In fact, we can accept the null once the sum of $\xi_i$ exceeds $M\alpha$ and reject the null once the sum of $1-\xi_i$ reaches $M(1-\alpha)$.
-
-Note that once we have obtained $X_i^T X_j$, the computation of $T_i^*$ has only complexity $O(n^2)$.
-The total complexity is $O(n^2 (p+M))$, which is fast.
-This is different from low dimensional setting where randomization is a lot slower than asymptotic method.
-For example, when $M=p$, time spent by randomization is at most twice of that of asymptotic method.
-
-
-
-%We shall choose $M$ large enough such that 
-%$$\Pr\Big(\Big|\frac{1}{M}\sum_{i=1}^M \xi-p(X_1,\ldots,X_n)\Big|>t|X_1,\ldots,X_n\Big)$$
-%is smaller than $\epsilon$, where $t$ and $\epsilon$ are specified. By Hoeffding's inequality,
-%\begin{equation*}
-    %\Pr\Big(\Big|\frac{1}{M}\sum_{i=1}^M \xi-p(X_1,\ldots,X_n)\Big|>t|X_1,\ldots,X_n\Big)\leq 2e^{-2Mt^2}.
-%\end{equation*}
-%Hence we choose $M=\big[\frac{1}{2t^2}\log(\frac{2}{\epsilon})\big]+1$.
-
-
-
-
-
-
-\begin{algorithm}
-    \caption{Randomization Algorithm}
-\label{theAlgorithm}
-    \begin{algorithmic}
-        \REQUIRE  $\alpha$, $M$
-        \STATE Set $A\gets 0$, $T_0\gets T(X_1,\ldots,X_n)$.
-        \STATE Compute $X_i^T X_j$ for $1\leq j< i\leq n$
-        \FOR{$i=1$ to $M$}
-            \STATE Generate $\epsilon_1,\ldots,\epsilon_n$ and compute $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)=\sum_{j<i} X_i^T X_j\epsilon_i\epsilon_j$.
-            \IF{$T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)>T_0$}
-            \STATE $A\gets A+1$
-            \ENDIF
-            \IF{$A> M\alpha$}
-            \RETURN{Accept}
-            \ENDIF
-            \IF{$i-A\geq M(1-\alpha)$}
-            \RETURN{Reject}
-            \ENDIF
-        \ENDFOR
-    \end{algorithmic}
-\end{algorithm}
 
 
 \section*{References}

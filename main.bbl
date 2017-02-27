@@ -1,0 +1,32 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Bai1996Efiect}
+Z.~Bai, H.~Saranadasa, Effect of high dimension: by an example of a two sample
+  problem, Statistica Sinica 6~(2) (1996) 311--329.
+
+\bibitem{Srivastava2009A}
+M.~S. Srivastava, A test for the mean vector with fewer observations than the
+  dimension under non-normality, Journal of Multivariate Analysis 100~(3)
+  (2009) 518--532As the access to this document is restricted, you may want to
+  look for a different version under "Related research" (further below) orfor a
+  different version of it.
+
+\bibitem{Chen2010A}
+S.~X. Chen, Y.~L. Qin, A two-sample test for high-dimensional data with
+  applications to gene-set testing, Annals of Statistics 38~(2) (2010)
+  808--835.
+
+\bibitem{Fisher}
+R.~A. Fisher, The design of experiments.
+
+\bibitem{Romano1990On}
+J.~P. Romano, On the behavior of randomization tests without a group invariance
+  assumption, Journal of the American Statistical Association 85~(411) (1990)
+  686--692.
+
+\end{thebibliography}
