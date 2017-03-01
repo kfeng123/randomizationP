@@ -215,7 +215,7 @@ which is equavelent to
     \frac{\lambda_{\max}(\Sigma)}{\sqrt{\mathrm{tr}\Sigma^2}}\to 0.
 \end{equation}
 Although Chen and Qin's results is for two sample case, their results can be proved similarly for one sample case. We restate their theorem:
-\begin{theorem}
+\begin{theorem}\label{theoremChen}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and local alternatives
     \begin{equation}\label{mu1}
         \mu^T \Sigma\mu=o(n^{-1}\mathrm{tr}(\Sigma)^2),
@@ -257,7 +257,7 @@ Our asymptotic results need a condition stronger than~\eqref{mu1}.
         \rho\Big(\mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),N(0,1)\Big)\xrightarrow{P} 0
     \end{equation*}
 \end{theorem}
-\begin{corollary}
+\begin{corollary}\label{corollaryQuan}
     Under the condition of Theorem~\ref{shaziCLT}, we have $\xi_{\alpha}^*\xrightarrow{P} \Phi(1-\alpha)$, where $\Phi(\cdot)$ is the CDF of standard normal distribution.
 \end{corollary}
 \begin{remark}
@@ -268,8 +268,8 @@ Our asymptotic results need a condition stronger than~\eqref{mu1}.
 \end{remark}
 
 We can derive the asymptotic power of randomization test.
-\begin{theorem}
-    Under the condition of Theorem~\ref{shaziCLT}, we have 
+\begin{theorem}\label{theoremPower}
+    Under the condition of Theorem~\ref{shaziCLT} and Theorem~\ref{theoremChen}, we have 
     \begin{equation*}
             \Pr\Big(\frac{T_2( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
             =
@@ -278,28 +278,26 @@ We can derive the asymptotic power of randomization test.
 \end{theorem}
 
 \begin{remark}
-    The theorem doesn't assume the distribution of $X_i$ is symmetric. Hence randomization test is robust in this mean.
+    The theorem doesn't assume the distribution of $X_i$ is symmetric. Hence randomization test is robust in this sense.
 \end{remark}
 
 \section{Algorithm}
 
-The quantile might not be computationally feasible, since the randomized test statistic is (conditionally) uniformly distributed on $2^n$ different values.
+The quantile $\xi^*_\alpha$ might not be computationally feasible, since the randomized test statistic is (conditionally) uniformly distributed on $2^n$ different values.
 In practice, randomization test is often realized through an approximation of $p$-value.
-More specifically, first choose a large integer $M$.
-We can sample from conditional distribution of randomized statistic by generate $\epsilon_1,\ldots,\epsilon_n$ and compute $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)$.
-Repeat $M$ times and we obtain $T_i^*$, $i=1,\ldots,M$.
-Denote $\xi_i=\mathbf{1}_{\{T_i^*\geq T_0\}}$.
-Then  $\sum_{i=1}^M \xi_i/M$ is an approximation of the $p$-value 
+More specifically, we can sample from randomization distribution by generate $\epsilon_1,\ldots,\epsilon_n$ and compute $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)$.
+Repeat $M$ times for a large $M$ and we obtain $T_i^*$, $i=1,\ldots,M$.
+%Denote $\xi_i=\mathbf{1}_{\{T_i^*\geq T_0\}}$.
+Then  $\sum_{i=1}^M \mathbf{1}_{\{T_i^*\geq T_0\}}/M$ is an approximation of the $p$-value 
 $$p(X_1,\ldots,X_n)=\Pr(T_i^*\geq T_0|X_1,\ldots,X_n).$$
-Hence we reject the null if $\sum_{i=1}^M \xi_i/M\leq \alpha$.
+Hence we reject the null if $\sum_{i=1}^M \mathbf{1}_{\{T_i^*\geq T_0\}}/M\leq \alpha$.
 
-Sometimes we can stop and draw a conclusion before sampling $M$ times.
-In fact, we can accept the null once the sum of $\xi_i$ exceeds $M\alpha$ and reject the null once the sum of $1-\xi_i$ reaches $M(1-\alpha)$.
+To be more efficient, we can accept the null once the sum of $\xi_i$ exceeds $M\alpha$ and reject the null once the sum of $1-\xi_i$ reaches $M(1-\alpha)$.
 
 Note that once we have obtained $X_i^T X_j$, the computation of $T_i^*$ has only complexity $O(n^2)$.
-The total complexity is $O(n^2 (p+M))$, which is fast.
-This is different from low dimensional setting where randomization is a lot slower than asymptotic method.
+The total complexity is thus $O(n^2 (p+M))$. Hence randomization test is very efficient in high dimension setting.
 For example, when $M=p$, time spent by randomization is at most twice of that of asymptotic method.
+This is different from low dimension setting where randomization is a lot slower than asymptotic method.
 
 
 
@@ -364,7 +362,7 @@ Such a CLT can be also used to study the asymptotic behavior of many other rando
 
  \begin{proof}
      Define $U_{in} =\epsilon_i \sum_{j=1}^{i-1} a_{ij}\epsilon_j$, $i=2,\ldots,n$, and $\mathcal{F}_{in}=\sigma\{\epsilon_1,\ldots,\epsilon_i\}$, $i=1,\ldots, n$.
-     Now $W_n=\sum_{i=2}^n U_{in}$ and $\{U_{in}\}$ is a martingale difference array with respect to $\{\mathcal{F}_{in}\}$. 
+     Now $W_n=\sum_{i=2}^n U_{in}$, $\{U_{in}\}$ is a martingale difference array with respect to $\{\mathcal{F}_{in}\}$. 
      To prove the proposition, we shall verify two conditions (See David Pollard's book):
      \begin{equation}\label{MCLTcondition1}
          \frac{\sum_{i=2}^n \mathrm{E}(U_{in}^2 |\mathcal{F}_{i-1,n})}{\sum_{1\leq j<i\leq n} a_{ij}^2}\xrightarrow{P} 1,
@@ -426,6 +424,13 @@ Such a CLT can be also used to study the asymptotic behavior of many other rando
  \end{proof}
 
 \section{Asymptotic normality}
+\begin{lemma}\label{lemmaUniformSimple}
+    Suppose $\{\eta_n\}$ is a sequence of $1$-dimensional random variables, weakly converges to $\eta$, a random variable with continuous distribution function.
+    Then we have
+    $$
+    \sup_{x}|\Pr(\eta_n\leq x)-\Pr(\eta\leq x)|\to 0.
+    $$
+\end{lemma}
 
 \begin{lemma}\label{lemmaQ}
     Suppose $A=(a_{ij})$ is an $m\times m$ positive semi-definite matrix, then
@@ -468,7 +473,7 @@ Hence
 \end{lemma}
 
 \begin{lemma}\label{ratioLemma}
-    Suppose condition~\eqref{chenCondition} holds, then
+    Under~\eqref{chenC1},~\eqref{chenC2} and~\eqref{chenC3}, we have
     \begin{equation}
         \frac{\sum_{j<i}{(X_i^T X_j)}^2}{\frac{n(n-1)}{2}\mathrm{tr} (\Sigma+\mu\mu^T)^2}
         \xrightarrow{P}1.
@@ -564,7 +569,7 @@ Similarly, we have
             =&O\Big({\big(\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)}^2\Big)
         \end{aligned}
     \end{equation}
-    The last $2$ equality follows by the fact $\mu^T \Sigma^i \mu\leq \lambda_{\max}^i(\Sigma)\mu^T\mu$ ($i=1,2,\ldots$), the condition~\eqref{chenCondition} and the inequality $ab\leq a^p/p+b^q/p$ for $1/p+1/q=1$ and $p,q>0$.
+    The last $2$ equality follows by the fact $\mu^T \Sigma^i \mu\leq \lambda_{\max}^i(\Sigma)\mu^T\mu$ ($i=1,2,\ldots$), the condition~\eqref{chenC3} and the inequality $ab\leq a^p/p+b^q/p$ for $1/p+1/q=1$ and $p,q>0$.
    
    In~\eqref{eq:1}, there are $n(n-1)/2$, $n(n-1)(n-2)(n-3)/4$ and $n(n-1)(n-2)/6$ terms in each summation. Hence
     \begin{equation}
@@ -578,11 +583,11 @@ Hence $\mathrm{Var}(\sum_{j<i}{(X_i^T X_j)}^2)=o\Big(\big(\mathrm{E}(\sum_{j<i}{
 \end{proof}
 
 \begin{lemma}
-    Suppose~\eqref{chenCondition} holds. Assume
+    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and local alternatives
     \begin{equation} 
         \mu^T \mu=o(\sqrt{\mathrm{tr}\Sigma^2}),
     \end{equation}
-then
+we have
     \begin{equation}\label{lemma2R1}
         \sum_{j<k}{(\sum_{i:i>k}X_i^T X_j X_i^T X_k)}^2
         =o_P\Big(\big(\frac{n(n-1)}{2}\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)^2\Big)
@@ -624,36 +629,29 @@ then
 
 \end{proof}
 
-
-As Janssen's paper, let $d$ denote any metric on the set of probability measures $\mathcal{M}_1(\mathbb{R})$ on $\mathbb{R}$ such that convergence in $(\mathcal{M}_1(\mathbb{R}),d)$ is equivalent to weak convergence.
-\begin{theorem}
-    Assume
-    \begin{equation}\label{chenCondition}
-        \frac{\lambda_{\max}^2(\Sigma)}{\mathrm{tr}\Sigma^2}\to 0,
+\begin{proof}[Proof of Theorem~\ref{shaziCLT}]
+By a standard subsequence argument, we only need to prove 
+    \begin{equation}\label{changchuan}
+        \rho\Big(\mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),N(0,1)\Big)\xrightarrow{a.s.} 0
     \end{equation}
-    and
-    \begin{equation}
-        \mu^T\mu=o(\sqrt{\mathrm{tr}\Sigma^2}).
-    \end{equation}
-    Then we have
-    \begin{equation}
-            \Pr\Big(\frac{T_2( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
-            =
-            \Phi(-\Phi(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}})+o(1),
-    \end{equation}
-\end{theorem}
-\begin{proof}
-    Similar to the proof of Chen's theorem and by Lemma~\ref{ratioLemma}, we have
-    \begin{equation}
-        \frac{T_2(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}}\xrightarrow{\mathcal{L}}N(0,1).
-    \end{equation}
-    For every subsequence of $\{n\}$, there is a further subsequence $\{n(k)\}$ along which~\eqref{lemma2R1},~\eqref{lemma2R2} and~\eqref{lemma2R3} holds almost surely.
+     along a subsequence.
+    But there is a subsequence $\{n(k)\}$ along which~\eqref{lemma2R1},~\eqref{lemma2R2} and~\eqref{lemma2R3} holds almost surely.
     By Proposition~\ref{CLTprop}, we have
     \begin{equation}
         \mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big)\xrightarrow{\mathcal{L}}N(0,1)
     \end{equation}
-    almost surely along $\{n(k)\}$.
-    Denote by $\xi_{\alpha}^*$ the $1-\alpha$ quantile of the above conditional distribution, then along $\{n(m)\}$ we have $\xi_{\alpha}^*\to \Phi(1-\alpha)$ almost surely, where $\Phi(\cdot)$ is the CDF of standard normal distribution. Then $\xi^*_{\alpha}\xrightarrow{P}\Phi(1-\alpha)$.
+    almost surely along $\{n(k)\}$, which means~\eqref{changchuan} holds along $\{n(k)\}$.
+
+\end{proof}
+
+
+
+\begin{proof}[Proof of Theorem~\ref{theoremPower}]
+    Similar to the proof of Chen's theorem and by Lemma~\ref{ratioLemma}, we have
+    \begin{equation}
+        \frac{T_2(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}}\xrightarrow{\mathcal{L}}N(0,1).
+    \end{equation}
+    By Corollary~\ref{corollaryQuan}, we have $\xi_{\alpha}^*\xrightarrow{P} \Phi(1-\alpha)$.
     Now the asymptotic power function can be derived by Slutsky's theorem
     \begin{equation}
         \begin{aligned}
@@ -670,7 +668,7 @@ As Janssen's paper, let $d$ denote any metric on the set of probability measures
             \Phi(-\Phi(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}})+o(1),
         \end{aligned}
     \end{equation}
-    where the last two equality holds because an exersize of durrett.
+    where the last two equality holds by Lemma~\ref{lemmaUniformSimple}.
 
 
 
