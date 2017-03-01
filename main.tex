@@ -214,7 +214,7 @@ which is equavelent to
 \begin{equation}\label{chenC3}
     \frac{\lambda_{\max}(\Sigma)}{\sqrt{\mathrm{tr}\Sigma^2}}\to 0.
 \end{equation}
-Although Chen and Qin's results is for two sample case, their results can be proved similarly for one sample case. We restate their theorem:
+Although Chen and Qin's results is for two sample case, their results can be proved similarly for one sample case. We restate their theorems:
 \begin{theorem}\label{theoremChen}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and local alternatives
     \begin{equation}\label{mu1}
@@ -223,6 +223,16 @@ Although Chen and Qin's results is for two sample case, their results can be pro
     we have
     \begin{equation}
         \frac{T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}\xrightarrow{\mathcal{L}}N(0,1).
+    \end{equation}
+\end{theorem}
+And
+\begin{theorem}\label{theoremChen2}
+    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and     \begin{equation}\label{mu1}
+     n^{-1}\mathrm{tr}(\Sigma)^2   =o(\mu^T \Sigma\mu),
+    \end{equation}
+    we have
+    \begin{equation}
+        \frac{T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T \Sigma\mu}}\xrightarrow{\mathcal{L}}N(0,1).
     \end{equation}
 \end{theorem}
 
@@ -271,15 +281,33 @@ We can derive the asymptotic power of randomization test.
 \begin{theorem}\label{theoremPower}
     Under the condition of Theorem~\ref{shaziCLT} and Theorem~\ref{theoremChen}, we have 
     \begin{equation*}
-            \Pr\Big(\frac{T_2( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
+            \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
             =
             \Phi(-\Phi(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}})+o(1),
     \end{equation*}
 \end{theorem}
-
 \begin{remark}
-    The theorem doesn't assume the distribution of $X_i$ is symmetric. Hence randomization test is robust in this sense.
+    The theorem doesn't assume the distribution of $X_i$ is symmetric under null. Hence randomization test is robust in this sense.
 \end{remark}
+
+\begin{theorem}\label{theoremPower2}
+    Under the condition of Theorem~\ref{shaziCLT} and Theorem~\ref{theoremChen2}, we have 
+    \begin{equation*}
+            \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
+            =
+            \Phi(\frac{\sqrt{n}\mu^T\mu}{2\sqrt{\mu^T \Sigma \mu}})+o(1),
+    \end{equation*}
+\end{theorem}
+\begin{remark}
+Chen's test power is
+    \begin{equation*}
+            \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
+            =
+            \Phi(-\Phi(1-\alpha)+\frac{\sqrt{n}\mu^T\mu}{2\sqrt{\mu^T \Sigma \mu}})+o(1),
+    \end{equation*}
+    Hence our method is a bit more powerful.
+\end{remark}
+
 
 \section{Algorithm}
 
