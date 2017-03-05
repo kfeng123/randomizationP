@@ -21,6 +21,19 @@ S.~X. Chen, Y.~L. Qin, A two-sample test for high-dimensional data with
   applications to gene-set testing, Annals of Statistics 38~(2) (2010)
   808--835.
 
+\bibitem{Wang2015A}
+L.~Wang, B.~Peng, R.~Li, A high-dimensional nonparametric multivariate test for
+  mean vector., Journal of the American Statistical Association 110~(512)
+  (2015) 00--00.
+
+\bibitem{Jong1987A}
+P.~D. Jong, A central limit theorem for generalized quadratic forms,
+  Probability Theory \& Related Fields 75~(2) (1987) 261--277.
+
+\bibitem{efron2007on}
+R.~J. Bradley~Efron, On testing the significance of sets of genes, The Annals
+  of Applied Statistics 1~(1) (2007) 107--129.
+
 \bibitem{Fisher}
 R.~A. Fisher, The design of experiments.
 
@@ -28,5 +41,8 @@ R.~A. Fisher, The design of experiments.
 J.~P. Romano, On the behavior of randomization tests without a group invariance
   assumption, Journal of the American Statistical Association 85~(411) (1990)
   686--692.
+
+\bibitem{pollard1984convergence}
+D.~Pollard, Convergence of stochastic processes, 1984.
 
 \end{thebibliography}

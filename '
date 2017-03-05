@@ -54,7 +54,7 @@
 \theoremstyle{plain}
 \newtheorem{theorem}{\quad\quad Theorem}
 \newtheorem{proposition}{\quad\quad Proposition}
-\newtheorem{corollary}{\quad\quad Corollary}
+\newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}{Lemma}
 \newtheorem{example}{Example}
 \newtheorem{assumption}{\quad\quad Assumption}
@@ -92,6 +92,7 @@
 
 \begin{abstract}
     Testing mean vector is a fundamental problem in statistics.
+    On the one hand.
     Many test procedures for high dimensional mean vector have been proposed in the literature.
 \end{abstract}
 
@@ -108,7 +109,7 @@
 \section{Introduction}
 
 Consider i.i.d.\ random sample $X_{1},\ldots,X_{n}\in \mathbb{R}^p$ which has means $\mu={(\mu_1,\ldots,\mu_p)}^T$ and covariance matrix $\Sigma$. The one sample testing problem
-\begin{equation}\label{ourHy}
+\begin{equation}
     H_0:\mu=0_p\quad \textrm{versus} \quad H_1:\mu\neq 0_p
 \end{equation}
 has been extensively studied by many researchers.
@@ -118,7 +119,7 @@ A classical test statistic is Hotelling's $T^2$,
     $,
 where $\bar{X}$ and $S=(n-1)^{-1}\sum_{i=1}^n (X_i-\bar{X}) (X_i-\bar{X})^T$ are the sample mean vector and sample covariance matrix, respectively.
 However, the high-dimensional case $d>n$ invalidates the Hotelling's test.
-\cite{Bai1996Efiect} is the first paper modifying Hotelling's $T^2$ statistic for testing~\eqref{ourHy} in high dimensional setting.
+\cite{Bai1996Efiect} is the first paper modifying Hotelling's $T^2$ statistic for high dimensional situations.
 This seminal paper removed $S^{-1}$ from $T_1$ and proposed a test statistic based on
 $
 T_2=\bar{X}^T\bar{X}
@@ -132,27 +133,25 @@ where $\mathrm{diag}(S)$ is a matrix with diagonal elements equal to that of $S$
 \cite{Chen2010A} proposed a test based on
 $
 T_4=\sum_{i\neq j}X_i^T X_j
-$.~\cite{Wang2015A} proposed a test based on $T_5=\sum_{i\neq j}Y_i^T Y_j$, where $Y_i$ is defined as $Y_i=X_i/\|X_i\|$ if $X_i\neq 0$; and $Y_i=0$ if $X_i=0$.
+$.
+Feng long proposed a test based on.
 
-Note that the test statistics $T_2$--$T_5$ all can be written as a generalized quadratic form of data, see~\cite{Jong1987A} and their theoretical proves mostly rely on an application of martingale central limit theorem (MCLT).
+Note that these works are mostly can be written as a generalized quadratic form of data, see.
+Their theoretical prove mostly rely on the application of martingale central limit theorem (MCLT) which is suitable for quadratic form.
 
-The critical value of existing high dimensional tests are often determined by asymptotical distribution. 
-We will call it asymptotic method.
-Asymptotic method can guarantee the test level asymptotically.
-However, in many real world problems, e.g., gene testing (see~\cite{efron2007on}), sample size $n$ may be very small.
-Hence the Type I error rates of Asymptotic method may be far away from nominal levels in this case. 
+The critical value of existing high dimensional tests are often determined by asymptotical distribution. Hence the test level can not be guaranteed in finite sample case.
+
+
 
 
 The idea of randomization test dates back to~\cite{Fisher}, which is a tool to determine the critical value for a given test statistic.
 It's strongth is in that the resulting test procedure has exact level under mild condition.
 \cite{Romano1990On} described a general construction of the randomization test.
-In high dimension setting, randomization test is widely used in applied statistics, see~\cite{efron2007on}.
-However, theoretical analysis mainly focus on fixed $p$ case.
-To the best of our knowledge, there's no existing theoretical work investigating the behavior of randomization test in high dimensional setting.
 In this paper, we focus on a special randomization method for one sample mean testing problem, which we will introduce shortly.
-If the randomization method is robust and has good power in high dimension, it may be a better choice compared to asymptotic mehtod.
+If randomization method is robust and has good power in high dimension, it will be a better choice compared to asymptotic mehtod.
+As far as we know, there's no existing theoretical work investigating the behavior of randomization test in high dimensional setting.
 
-Suppose the distribution of $X_i$ is symmetric about $0$ under the null hypothesis. $T$ is certain test statistic for testing~\eqref{ourHy}.
+Suppose the distribution of $X_i$ is symmetric about $0$ under the null hypothesis. $T$ is a certain test statistic.
 Let $\epsilon_1,\ldots,\epsilon_n$ be i.i.d.\ Rademacher variables ($\Pr(\epsilon_i=1)=\Pr(\epsilon_i=-1)=1/2$) which are independent of the data.
 The conditional distribution
 \begin{equation}\label{ranDis}
@@ -160,9 +159,9 @@ The conditional distribution
 \end{equation}
 is the uniform distribution on $2^n$ values.
 The critical value of the randomization test is defined as the $1-\alpha$ quantile of the above distribution.
- More specifically, the test function equals to $1$ or $0$ if $T(X_1,\ldots, X_n)$ is greater or not greater than the critical value. The resulting test is a level $\alpha$ test if the distribution of $X_i$ is symmetric under null.
+ More specifically, the test function equals to $1$ or $0$ if $T(X_1,\ldots, X_n)$ is greater or not greater than the critical value. The resulting test is a level $\alpha$ test.
  By some refinement of the test function when $T(X_1,\ldots,X_n)$ equals to the critical value, the test is exact, see~\cite{Romano1990On}.
-Since such extreme case occurs with little probability $2^{-n}$, the refinement is often dropped in practice, which only losses  a little power.
+Since such extreme case occurs with little probability $2^{-n}$, such refinement is often dropped in practice, which losses only a little power.
 
 Equivalently, the randomization test can be implemented by $p$-value. Define 
 \begin{equation*}
@@ -173,34 +172,33 @@ The randomization test rejects the null hypothesis if $p(X_1,\ldots, X_n)\leq \a
 
 
 
- It's easy to see that the randomization version of~\cite{Bai1996Efiect}'s test and~\cite{Chen2010A}'s test are both equivelent to the randomization test based on
+ It's easy to see that the randomization version of Bai's test and Chen's test are both equivelent to the randomization test based on
 \begin{equation}\label{Statistic}
-    T(X_1,\ldots,X_n)=\sum_{j<i}X_i^T X_j.
+    T(X_1,\ldots,X_n)=\sum_{j<i}X_i^T X_j,
 \end{equation}
-In this paper, we will study this special statistic for illustration.
-From now on, $T(X_1,\ldots,X_n)$ will refer to~\eqref{Statistic}.
+the test statistic this paper adopts.
 Other quadratic based statistic can be studied by similar method.
 
-Our results show that even if the null distribution is not symmetric, the randomization test is still asymptotically exact under mild assumptions. 
-We also give the local asymptotic power.
+Our results show that even if the null distribution is not symmetric, the randomization test is still asymptotically exact. 
+The local asymptotic power is also given.
 
 
 
 %Existing works of randomization test mainly focus on single variate case. A recent work of EunYi Chung consider multivariate case.
 
 
-In fixed $p$ setting, it's well known that randomization test has much higher time complexity than asymptotic method, which  historically  hampered it's use. 
+In low dimensional setting, it's well known that randomization test has much higher time complexity than asymptotic method, which  historically  hampered it's use. 
 Surprisingly, in high dimension setting the randomization test can be implemented as efficiently as asymptotic method.
 
 
 %There's no need to estimate the variance of the statistic.
 
-Maybe the most widely used randomization method is the two sample permutation test.
+Maybe the most used randomization method is the two sample permutation test.
 As~\cite{Romano1990On} pointed out, the asymptotic property of randomization tests depends heavily on the particular problem and, the two sample case is quite distinct from the one sample case.
-The method used in this paper can not be applied to permutation test.
+The method used in this paper can not deal with permutation test.
 
 \section{Randomization test}
-We assume, like~\cite{Chen2010A} and~\cite{Bai1996Efiect}, the following multivariate model:
+We assume, like chen qin and bai, the following multivariate model:
 \begin{equation}\label{chenC1}
     X_i=\mu+\Gamma Z_i\quad \textrm{for}\, i=1,\ldots,n,
 \end{equation}
@@ -212,7 +210,7 @@ for a positive integer $q$ such that $\sum_{l=1}^q \alpha_l\leq 8$ and $l_1\neq 
 
 In the following, $T(X_1,\ldots, X_n)$ will be specialized to~\eqref{Statistic}.
 
-An important assumption in~\cite{Chen2010A} is
+An important assumption in Chen and Qin's paper is
     $\mathrm{tr}(\Sigma^4)=o\{\mathrm{tr}^2(\Sigma^2)\}$,
 which is equavelent to 
 \begin{equation}\label{chenC3}
@@ -222,7 +220,7 @@ Although Chen and Qin's results is for two sample case, their results can be pro
 \begin{theorem}\label{theoremChen}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and local alternatives
     \begin{equation}\label{mu1}
-        \mu^T \Sigma\mu=o(n^{-1}\mathrm{tr}\Sigma^2),
+        \mu^T \Sigma\mu=o(n^{-1}\mathrm{tr}(\Sigma)^2),
     \end{equation}
     we have
     \begin{equation}
@@ -231,7 +229,7 @@ Although Chen and Qin's results is for two sample case, their results can be pro
 \end{theorem}
 And
 \begin{theorem}\label{theoremChen2}
-    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and     \begin{equation}\label{mumu1}
+    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and     \begin{equation}\label{mu1}
      n^{-1}\mathrm{tr}(\Sigma)^2   =o(\mu^T \Sigma\mu),
     \end{equation}
     we have
@@ -246,7 +244,7 @@ We will call the conditional distribution
 \end{equation*}
 the randomization distribution.
 Let $\xi^*_{\alpha}$ be the $1-\alpha$ quantile of the randomization distribution.
-Then the test function $\phi(X_1,\ldots,X_n)$ of randomization test equals to $1$ when 
+Then the test function $\phi(X_1,\ldots,X_n)$ equals to $1$ when 
 $$
 \frac{T(X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}> \xi^*_{\alpha}
 $$
@@ -259,123 +257,80 @@ Since the randomization distribution itself is random, we need to define in what
     \rho(F,G)=\inf\{\epsilon:F(x-\epsilon)-\epsilon\leq G(x)\leq F(x+\epsilon)+\epsilon\quad  \textrm{for all}\quad x\}.
 \end{equation*}
 It's well known that $\rho(F_n,F)\to 0$ if and only if  $F_n\xrightarrow{\mathcal{L}}F$.
-Our first result is:
 
-
-%Our asymptotic results need a condition stronger than~\eqref{mu1}.
+Our asymptotic results need a condition stronger than~\eqref{mu1}.
 \begin{theorem}\label{shaziCLT}
-    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and 
+    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and local alternatives
     \begin{equation}\label{mu2}
-        \mu^T\mu=o\big(\sqrt{\mathrm{tr}{\Sigma}^2}\big),
+        \mu^T\mu=o\big(\sqrt{\mathrm{tr}{(\Sigma)}^2}\big),
     \end{equation}
     we have that
     \begin{equation*}
-        \rho\Big(\mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),N(0,1)\Big)\xrightarrow{P} 0.
+        \rho\Big(\mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),N(0,1)\Big)\xrightarrow{P} 0
     \end{equation*}
 \end{theorem}
-Under Theorem~\ref{shaziCLT}'s conditions, the randomization distribution is asymptotically a normal distribution. 
-It's also interesting to understand the behavior of randomization distribution when condition~\eqref{mu2} is not valid. We have the following asymptotic result:
+\begin{corollary}\label{corollaryQuan}
+    Under the conditions of Theorem~\ref{shaziCLT}, we have $\xi_{\alpha}^*\xrightarrow{P} \Phi(1-\alpha)$, where $\Phi(\cdot)$ is the CDF of standard normal distribution.
+\end{corollary}
+\begin{remark}
+    The proof of this theorem relies on Proposition~\ref{CLTprop}, a central limit theorem (CLT). 
+\end{remark}
+\begin{remark}
+    Condition~\eqref{mu2} is stronger than~\eqref{mu1}, which suggests the power function of randomization test may be a little bit smaller than non-randomization test.
+\end{remark}
 
+We can derive the asymptotic power of randomization test.
+\begin{theorem}\label{theoremPower}
+    Under the conditions of Theorem~\ref{shaziCLT} and Theorem~\ref{theoremChen}, we have 
+    \begin{equation*}
+            \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
+            =
+            \Phi(-\Phi^{-1}(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}})+o(1),
+    \end{equation*}
+\end{theorem}
+\begin{remark}
+    The theorem doesn't assume the distribution of $X_i$ is symmetric under null. Hence randomization test is robust in this sense.
+\end{remark}
+
+When Assumption~\eqref{mu2} is not valid, we have following theorem
 \begin{theorem}\label{farT}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and
     \begin{equation}\label{mu3}
-       \sqrt{\mathrm{tr}{\Sigma}^2} =o\big(\mu^T\mu\big),
+       \sqrt{\mathrm{tr}{(\Sigma)}^2} =o\big(\mu^T\mu\big),
     \end{equation}
     we have
     \begin{equation}
-        \rho\Big(\mathcal{L}\Big(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),\frac{\sqrt{2}}{2}\big(\chi^2_1-1\big)\Big)\xrightarrow{P} 0.
+        \rho\Big(\mathcal{L}\Big(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),\frac{\sqrt{2}}{2}\big(\chi^2_1-1\big)\Big)\xrightarrow{P} 0
     \end{equation}
 \end{theorem}
-
-Once the asymptotic distribution of the randomization distribution is obtained, the asymptotic behaivior of $\xi_{\alpha}^*$ can be derived immediately.
-Let $\Phi(\cdot)$ be the cumulative distribution function (CDF) of standard normal distribution, we have
-\begin{corollary}\label{corollaryQuan}
-    Under the conditions of Theorem~\ref{shaziCLT}, $\xi_{\alpha}^*\xrightarrow{P} \Phi(1-\alpha)$.
-\end{corollary}
-
-\begin{corollary}\label{corollaryQuan2}
+\begin{corollary}
     Under the conditions of Theorem~\ref{farT},
-    $\xi_{\alpha}^*\xrightarrow{P}\frac{\sqrt{2}}{2}(\Phi^{-1}(1-\frac{\alpha}{2})-1)$.
+    $$\xi_{\alpha}^*\xrightarrow{P}\frac{\sqrt{2}}{2}(\Phi^{-1}(1-\frac{\alpha}{2})-1).$$
 \end{corollary}
+\begin{remark}
+    When $\alpha=0.05$, $\Phi^{-1}(1-\alpha)\approx 1.645$ and $\frac{\sqrt{2}}{2}(\Phi^{-1}(1-\frac{\alpha}{2})-1)\approx 0.689$.
+\end{remark}
 
 
-Now we are ready to derive the asymptotic power of randomization test.
-Since the limit property of $T$ is different under~\eqref{mu1} and~\eqref{mumu1}.
-The following two theorems give the power under~\eqref{mu1} and~\eqref{mumu1}, separately.
 
-\begin{theorem}\label{theoremPower}
-    Suppose conditions~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and~\eqref{mu1} holds.
-
-    If~\eqref{mu2} holds,
-    \begin{equation*}
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)
-            =
-            \Phi(-\Phi^{-1}(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}})+o(1).
-    \end{equation*}
-
-    If~\eqref{mu3} holds,
-    \begin{equation*}
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\to 1.
-    \end{equation*}
-\end{theorem}
 
 \begin{theorem}\label{theoremPower2}
-    Under \eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3}~\eqref{mumu1} and either~\eqref{mu2} or~\eqref{mu3},
+    Under the conditions of Theorem~\ref{shaziCLT} and Theorem~\ref{theoremChen2}, we have 
     \begin{equation*}
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)
+            \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
             =
             \Phi(\frac{\sqrt{n}\mu^T\mu}{2\sqrt{\mu^T \Sigma \mu}})+o(1),
     \end{equation*}
 \end{theorem}
 \begin{remark}
-    The theorem doesn't assume that the distribution of $X_i$ is symmetric under null. Hence Theorem~\ref{theoremPower} shows that the level of randomization test is robust agianst asymmetry.
+Chen's test power is
+    \begin{equation*}
+            \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
+            =
+            \Phi(-\Phi^{-1}(1-\alpha)+\frac{\sqrt{n}\mu^T\mu}{2\sqrt{\mu^T \Sigma \mu}})+o(1),
+    \end{equation*}
+    Hence our method is a bit more powerful.
 \end{remark}
-
-%\begin{remark}
-    %When $\alpha=0.05$, $\Phi^{-1}(1-\alpha)\approx 1.645$ and $\frac{\sqrt{2}}{2}(\Phi^{-1}(1-\frac{\alpha}{2})-1)\approx 0.689$.
-%\end{remark}
-
-\begin{remark}
-    Neither~\eqref{mu1} or~\eqref{mu2} implies the other one.
-    For example, suppose $\Sigma=I_p$, then~\eqref{mu1} is equivalent to $\mu^T\mu=o(p/n)$ and~\eqref{mu2} is equivalent to $\mu^T \mu =o(\sqrt{p})$.
-    In this case, if $\sqrt{p}/n\to 0$, then~\eqref{mu1} implies~\eqref{mu2}; conversely, if $\sqrt{p}/n\to \infty$, then~\eqref{mu2} implies~\eqref{mu1}.
-\end{remark}
-
-%\begin{remark}
-%Chen's test power is
-    %\begin{equation*}
-            %\Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
-            %=
-            %\Phi(-\Phi^{-1}(1-\alpha)+\frac{\sqrt{n}\mu^T\mu}{2\sqrt{\mu^T \Sigma \mu}})+o(1),
-    %\end{equation*}
-%\end{remark}
-
-The randomization test rejects the null when 
-$$
-{T(X_1,\ldots, X_n)}>{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \xi^*_{\alpha}.
-$$
-The asymptotic method rejects the null when
-$$
-{T(X_1,\ldots, X_n)}>\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2} \Phi^{-1}(1-\alpha).
-$$
-
-Note that the larger the reject region, the more powerful the test is. Thus we compare 
-$
-{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \xi^*_{\alpha}
-$
-and
-$
-\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\hat{\Sigma}^2} \Phi^{-1}(1-\alpha)
-$. Suppose $\mathrm{tr}\hat{\Sigma}^2$ is a ratio consistent estimator of $\mathrm{tr}\Sigma^2$. By Lemma~\ref{ratioLemma} in appendix,
-\begin{equation*}
-    \frac{{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \xi^*_{\alpha}}
-    {\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\hat{\Sigma}^2} \Phi^{-1}(1-\alpha)}=(1+o_P(1))
-    \frac{{\sqrt{\mathrm{tr}{(\Sigma+\mu\mu^T)}^2}} \xi^*_{\alpha}}
-    {\sqrt{\mathrm{tr}\Sigma^2} \Phi^{-1}(1-\alpha)},
-\end{equation*}
-which tends to $1$ when~\eqref{mu2} holds, and tends to $\infty$ when~\eqref{mu3} holds.
-Hence randomization may loss some power.
-
 
 
 \section{Algorithm}
@@ -437,7 +392,7 @@ This is different from low dimension setting where randomization is a lot slower
 
 \section{Appendix}
 \paragraph{CLT for quadratic form of Rademacher varaibles}
-The proof of the Theorem~\ref{shaziCLT} is based on a CLT of the quadratic form of Rademacher variables. 
+Our proof of the main results is based on a CLT of the quadratic form of Rademacher variables. 
 Such a CLT can be also used to study the asymptotic behavior of many other randomization test.
  Let $\epsilon_1,\ldots,\epsilon_n$ be indepent Rademacher  variables. 
  Consider quadratic form $W_n=\sum_{1\leq j<i\leq n} a_{ij}\epsilon_i \epsilon_j$, where $\{a_{ij}\}$ are nonrandom numbers. Here $\{\epsilon_i\}$ and $\{a_{ij}\}$ may depend on $n$, a parameter we suppress.
@@ -460,7 +415,7 @@ Such a CLT can be also used to study the asymptotic behavior of many other rando
  \begin{proof}
      Define $U_{in} =\epsilon_i \sum_{j=1}^{i-1} a_{ij}\epsilon_j$, $i=2,\ldots,n$, and $\mathcal{F}_{in}=\sigma\{\epsilon_1,\ldots,\epsilon_i\}$, $i=1,\ldots, n$.
      Now $W_n=\sum_{i=2}^n U_{in}$, $\{U_{in}\}$ is a martingale difference array with respect to $\{\mathcal{F}_{in}\}$. 
-     To prove the proposition, we shall verify two conditions (See~\cite{pollard1984convergence}):
+     To prove the proposition, we shall verify two conditions (See David Pollard's book):
      \begin{equation}\label{MCLTcondition1}
          \frac{\sum_{i=2}^n \mathrm{E}(U_{in}^2 |\mathcal{F}_{i-1,n})}{\sum_{1\leq j<i\leq n} a_{ij}^2}\xrightarrow{P} 1,
      \end{equation}
@@ -746,7 +701,7 @@ Hence
 \end{proof}
 
 \begin{lemma}
-    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and 
+    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and local alternatives
     \begin{equation}\label{myLoc}
         \mu^T \mu=o(\sqrt{\mathrm{tr}\Sigma^2}),
     \end{equation}
@@ -811,23 +766,19 @@ By a standard subsequence argument, we only need to prove
 
 
 \begin{proof}[Proof of Theorem~\ref{theoremPower}]
-    Note that
-    \begin{align}
-            &\Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\nonumber\\
-            =&
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^*-\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \Big)
-            \label{powerEq1}
-    \end{align}
-    If~\eqref{mu2} holds, by Lemma~\ref{ratioLemma}, we have
-    $$
-    \frac{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}\xrightarrow{P}1.
-    $$
+    By Theorem~\ref{theoremChen} and Lemma~\ref{ratioLemma}, we have
+    \begin{equation}
+        \frac{T_2(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}}\xrightarrow{\mathcal{L}}N(0,1).
+    \end{equation}
     By Corollary~\ref{corollaryQuan}, we have $\xi_{\alpha}^*\xrightarrow{P} \Phi(1-\alpha)$.
-Thus,
-    \begin{equation*}
+    Now the asymptotic power function can be derived by Slutsky's theorem
+    \begin{equation}
         \begin{aligned}
-            \eqref{powerEq1}=&
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}-
+            &\Pr\Big(\frac{T_2( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
+            =&
+            \Pr\Big(\frac{T_2( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^*-\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \Big)\\
+            =&
+            \Pr\Big(\frac{T_2( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}-
             \frac{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}\xi_{\alpha}^*>
             -\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}} \Big)\\
             =&
@@ -835,47 +786,11 @@ Thus,
             =&
             \Phi(-\Phi(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}})+o(1),
         \end{aligned}
-    \end{equation*}
-    where the last two equality holds by Theorem~\ref{theoremChen}, Slutsky's theorem and Lemma~\ref{lemmaUniformSimple}.
-
-    If~\eqref{mu3} holds, by Lemma~\ref{ratioLemma}, we have
-    $$
-    \frac{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}{\frac{n(n-1)}{2}{(\mu^T\mu)}^2}\xrightarrow{P}1.
-    $$
-    Thus
-            
-    \begin{equation*}
-        \begin{aligned}
-            &\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}        \\
-            =&\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}
-            \frac{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}{\sqrt{\frac{n(n-1)}{2}{(\mu^T \mu)}^2}}        
-            \frac{\sqrt{\frac{n(n-1)}{2}{(\mu^T \mu)}^2}}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}        
-            \xrightarrow{P} 0.
-        \end{aligned}
-    \end{equation*}
-    Since $\xi_{\alpha}^*\xrightarrow{P}\frac{\sqrt{2}}{2}(\Phi^{-1}(1-\frac{\alpha}{2})-1)$ by Corollary~\ref{corollaryQuan2},  we have that $\eqref{powerEq1}\to 1$.
+    \end{equation}
+    where the last two equality holds by Lemma~\ref{lemmaUniformSimple}.
 
 
-\end{proof}
-\begin{proof}[Proof of Theorem~\ref{theoremPower2}]
-    Note that
-    \begin{align}
-            &\Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\nonumber\\
-            =&
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}}>
-            \frac{\sqrt{\sum_{1\leq j<i\leq n}{{(X_i^T X_j)}^2}}}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}}\xi_{\alpha}^*-\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}} \Big).
-            \label{powerEq2}
-    \end{align}
-    If~\eqref{mu2} holds, the theorem follows by Theorem~\ref{theoremChen2} and the fact that if~\eqref{mu2} holds, the coefficient of $\xi_\alpha^*$ in~\eqref{powerEq2} tends to $0$.
 
-    If~\eqref{mu3} holds, the theorem follows by noting that
-    \begin{equation*}
-        \begin{aligned}
-            \eqref{powerEq2}=
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}}>
-            -(1+o_P(1))\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}} \Big).
-        \end{aligned}
-    \end{equation*}
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{farT}]
