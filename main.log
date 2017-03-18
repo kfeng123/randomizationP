@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.6.24)  5 MAR 2017 21:51
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.6.24)  18 MAR 2017 15:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1348,36 +1348,40 @@ zed quadratic
 
 [2] [3] [4] [5] [6] [7]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 415.
+put line 413.
  [8] [9] [10] [11] [12] [13] [14]
-Overfull \hbox (47.12494pt too wide) detected at line 838
+Overfull \hbox (47.12494pt too wide) detected at line 860
 [] []
  []
 
-
-Overfull \hbox (0.37201pt too wide) in paragraph at lines 838--840
+[15]
+Overfull \hbox (0.37201pt too wide) in paragraph at lines 860--862
 \EU1/lmr/m/n/10 where the last two equality holds by Theorem []1[], Slutsky’s t
 heorem and Lemma []1[]. 
  []
 
 
-Overfull \hbox (31.60895pt too wide) in paragraph at lines 868--868
+Overfull \hbox (31.60895pt too wide) in paragraph at lines 890--890
 [] 
  []
 
-[15] [16] (./main.bbl [17])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 934.
+[16] [17] (./main.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 956.
  [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 934.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 956.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 934.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 934.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 934.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 956.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 956.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 956.
  ) 
 Here is how much of TeX's memory you used:
  25398 strings out of 493638
  460464 string characters out of 6146796
- 485955 words of memory out of 5000000
+ 484956 words of memory out of 5000000
  28558 multiletter control sequences out of 15000+600000
  14639 words of font info for 76 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191

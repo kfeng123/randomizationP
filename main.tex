@@ -134,7 +134,7 @@ $
 T_4=\sum_{i\neq j}X_i^T X_j
 $.~\cite{Wang2015A} proposed a test based on $T_5=\sum_{i\neq j}Y_i^T Y_j$, where $Y_i$ is defined as $Y_i=X_i/\|X_i\|$ if $X_i\neq 0$; and $Y_i=0$ if $X_i=0$.
 
-Note that the test statistics $T_2$--$T_5$ all can be written as a generalized quadratic form of data, see~\cite{Jong1987A} and their theoretical proves mostly rely on an application of martingale central limit theorem (MCLT).
+Note that the test statistics $T_2$--$T_5$ all can be written as a generalized quadratic form of data, see~\cite{Jong1987A}, and their theoretical proves mostly rely on an application of martingale central limit theorem (MCLT).
 
 The critical value of existing high dimensional tests are often determined by asymptotical distribution. 
 We will call it asymptotic method.
@@ -144,13 +144,11 @@ Hence the Type I error rates of Asymptotic method may be far away from nominal l
 
 
 The idea of randomization test dates back to~\cite{Fisher}, which is a tool to determine the critical value for a given test statistic.
-It's strongth is in that the resulting test procedure has exact level under mild condition.
 \cite{Romano1990On} described a general construction of the randomization test.
 In high dimension setting, randomization test is widely used in applied statistics, see~\cite{efron2007on}.
-However, theoretical analysis mainly focus on fixed $p$ case.
-To the best of our knowledge, there's no existing theoretical work investigating the behavior of randomization test in high dimensional setting.
-In this paper, we focus on a special randomization method for one sample mean testing problem, which we will introduce shortly.
-If the randomization method is robust and has good power in high dimension, it may be a better choice compared to asymptotic mehtod.
+It's strongth is in that the resulting test procedure has exact level under mild condition.
+Although there are many papers give theoretical analysis for fixed $p$ case,
+to the best of our knowledge, there's no existing theoretical work concerning high dimension setting.
 
 Suppose the distribution of $X_i$ is symmetric about $0$ under the null hypothesis. $T$ is certain test statistic for testing~\eqref{ourHy}.
 Let $\epsilon_1,\ldots,\epsilon_n$ be i.i.d.\ Rademacher variables ($\Pr(\epsilon_i=1)=\Pr(\epsilon_i=-1)=1/2$) which are independent of the data.
@@ -433,7 +431,32 @@ This is different from low dimension setting where randomization is a lot slower
     \end{algorithmic}
 \end{algorithm}
 
+\section{Simulation studies}
+In this section, we report some simulation performance of the randomization test in various setting.
+The competing method is asymptotic method.
 
+Mean structure:
+
+sparse
+
+dense
+
+
+Innovation structure:
+
+moving average model: in model~\eqref{chenC1}, we set $m=p+k$ and ${(\Gamma)}_{ij}=\rho_{j-i}$ for $j=i,\ldots, i+k$ and ${(\Gamma)}_{ij}=0$ otherwise. More precisely,
+\begin{equation}
+    X_{ij}=\sum_{l=0}^k \rho_{l}Z_{i,j+l}
+\end{equation}
+for $i=1,\ldots, n$ and $j=1,\ldots, p$. Here $Z_{ij}$'s are i.i.d.\ random variables with distribution $F$ for $i=1,\ldots, n$ and $j=1,\ldots, p+k$. 
+
+Like~\cite{Chen2010A}, we consider two different $F$. One is $N(0,1)$, and the other is centralized Gamma$(4,1)$ so that it has zero mean. We set $k=5$ and $k=p$.
+
+factor model:
+
+
+Let $c=\sqrt{n(n-1)}\mu^T \mu /\sqrt{2\mathrm{tr}\Sigma^2}$ be the signal to noise ratio.
+We plot $c$ versus power.
 
 \section{Appendix}
 \paragraph{CLT for quadratic form of Rademacher varaibles}
