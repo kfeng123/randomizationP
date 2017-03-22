@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
 \expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
@@ -41,6 +41,17 @@ R.~A. Fisher, The design of experiments.
 J.~P. Romano, On the behavior of randomization tests without a group invariance
   assumption, Journal of the American Statistical Association 85~(411) (1990)
   686--692.
+
+\bibitem{Lehmann}
+J.~P.~R. E.~L.~Lehmann, Testing Statistical Hypotheses, Springer New York,
+  2005.
+\newblock \href {http://dx.doi.org/10.1007/0-387-27605-X}
+  {\path{doi:10.1007/0-387-27605-X}}.
+
+\bibitem{fan2007to}
+J.~Fan, P.~Hall, Q.~Yao, To how many simultaneous hypothesis tests can normal,
+  student's t or bootstrap calibration be applied?, Journal of the American
+  Statistical Association 102~(480) (2007) 1282--1288.
 
 \bibitem{pollard1984convergence}
 D.~Pollard, Convergence of stochastic processes, 1984.

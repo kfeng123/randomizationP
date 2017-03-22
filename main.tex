@@ -71,28 +71,28 @@
 
 \begin{frontmatter}
 
-\title{a Randomization Test for Mean Vector In High Dimension}
+\title{A randomization test for mean vector in high dimension}
 \tnotetext[mytitlenote]{Fully documented templates are available in the elsarticle package on \href{http://www.ctan.org/tex-archive/macros/latex/contrib/elsarticle}{CTAN}.}
 
-%% Group authors per affiliation:
-\author{Elsevier\fnref{myfootnote}}
-\address{Radarweg 29, Amsterdam}
-\fntext[myfootnote]{Since 1880.}
-
-%% or include affiliations in footnotes:
-\author[mymainaddress,mysecondaryaddress]{Elsevier Inc}
-\ead[url]{www.elsevier.com}
-
-\author[mysecondaryaddress]{Global Customer Service\corref{mycorrespondingauthor}}
+    \author[mymainaddress]{Rui Wang}
+    \author[mymainaddress,mysecondaryaddress]{Xingzhong Xu\corref{mycorrespondingauthor}}
 \cortext[mycorrespondingauthor]{Corresponding author}
-\ead{support@elsevier.com}
-
-\address[mymainaddress]{1600 John F Kennedy Boulevard, Philadelphia}
-\address[mysecondaryaddress]{360 Park Avenue South, New York}
-
+\ead{xuxz@bit.edu.cn}
+    \address[mymainaddress]{School of Mathematics and Statistics, Beijing Institute of Technology, Beijing 
+    100081,China}
+    \address[mysecondaryaddress]{Beijing Key Laboratory on MCAACI, Beijing Institute of Technology, Beijing 100081,China}
+    
+    
 \begin{abstract}
-    Testing mean vector is a fundamental problem in statistics.
-    Many test procedures for high dimensional mean vector have been proposed in the literature.
+    The strongth of randomization tests is that the size of the test is exact under certain symmetry assumption for distribution.
+    Researchers have justified the robustness of the randomization tests when symmetry assumption breaks down and showed they have good power performance in fixed $p$ situation.
+    It's a theoretical and practical interest for the behavior of randomization tests in high dimensional setting.
+    In this paper, we study the asymptotic behavior of a randomization test for testing high dimensional means. 
+    The robustness is justified and asymptotic power function is derived.
+    
+     An important issue in high dimensional statistics is the computational efficiency.
+    In classical statistics, randomization tests suffer from computational complexity, which limits their adoption. Surprisingly, in our problem the randomization test can be implemented even faster than asymptotic method.
+    With good theoretical properties and fast algorithm, randomization test can be recommanded in practice.
 \end{abstract}
 
 \begin{keyword}
@@ -163,11 +163,12 @@ The critical value of the randomization test is defined as the $1-\alpha$ quanti
 Since such extreme case occurs with little probability $2^{-n}$, the refinement is often dropped in practice, which only losses  a little power.
 
 Equivalently, the randomization test can be implemented by $p$-value. Define 
-\begin{equation*}
+\begin{equation}\label{firstPvalue}
     p(X_1,\ldots, X_n)=
     \Pr(T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)\geq T( X_1,\ldots,X_n)|X_1,\ldots,X_n).
-\end{equation*}
+\end{equation}
 The randomization test rejects the null hypothesis if $p(X_1,\ldots, X_n)\leq \alpha$. 
+
 
 
 
@@ -378,22 +379,42 @@ Hence randomization may loss some power.
 
 \section{Algorithm}
 
-The quantile $\xi^*_\alpha$ might not be computationally feasible, since the randomized test statistic is (conditionally) uniformly distributed on $2^n$ different values.
-In practice, randomization test is often realized through an approximation of $p$-value.
-More specifically, we can sample from randomization distribution by generate $\epsilon_1,\ldots,\epsilon_n$ and compute $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)$.
-Repeat $M$ times for a large $M$ and we obtain $T_i^*$, $i=1,\ldots,M$.
+Because the randomized test statistic is (conditionally) uniformly distributed on $2^n$ different values, the quantile $\xi^*_\alpha$ is not computationally feasible even when $n$ is moderate.
+In practice, randomization test is often realized through an approximation of $p$-value~\eqref{firstPvalue}.
+More specifically, we sample  $\epsilon_1^*,\ldots,\epsilon_n^*$ and compute $T^*=T(\epsilon_1^* X_1,\ldots,\epsilon_n^* X_n)$.
+Repeat $B$ times for a large $B$ and we obtain $T_i^*$, $i=1,\ldots,B$.
 %Denote $\xi_i=\mathbf{1}_{\{T_i^*\geq T_0\}}$.
-Then  $\sum_{i=1}^M \mathbf{1}_{\{T_i^*\geq T_0\}}/M$ is an approximation of the $p$-value 
-$$p(X_1,\ldots,X_n)=\Pr(T_i^*\geq T_0|X_1,\ldots,X_n).$$
-Hence we reject the null if $\sum_{i=1}^M \mathbf{1}_{\{T_i^*\geq T_0\}}/M\leq \alpha$.
+Let 
+$$\tilde{p}(X_1,\ldots,X_n)=\frac{1}{B+1}\big(1+\sum_{i=1}^B \mathbf{1}_{\{T_i^*\geq T_0\}}\big).$$
+It can be shown 
+$$
+\Pr(\tilde{p}(X_1,\ldots,X_n)\leq u)\leq u\quad \textrm{for all $0\leq u\leq 1$},
+$$
+and as $B\to \infty$, $\tilde{p}(X_1,\ldots,X_n)-p(X_1,\ldots,X_n)\xrightarrow{P}0$ where $p(X_1,\ldots,X_n)$ is defined by~\eqref{firstPvalue} (see~\cite{Lehmann} page $636$).
 
-To be more efficient, we can accept the null once the sum of $\xi_i$ exceeds $M\alpha$ and reject the null once the sum of $1-\xi_i$ reaches $M(1-\alpha)$.
-
-Note that once we have obtained $X_i^T X_j$, the computation of $T_i^*$ has only complexity $O(n^2)$.
-The total complexity is thus $O(n^2 (p+M))$. Hence randomization test is very efficient in high dimension setting.
-For example, when $M=p$, time spent by randomization is at most twice of that of asymptotic method.
+Note that 
+$$
+T^*=T(\epsilon_1^* X_1,\ldots,\epsilon_n^* X_n)
+=\sum_{1\leq j<i \leq n}X_i^T X_j \epsilon_i^* \epsilon_j^*.
+$$
+We need to compute $T^*$ for $B$ times, which is seemingly time consuming.
+Nevertheless,  $X_i^T X_j$ ($1\leq j<i\leq n$) can be computed in advance, which has complexity $O(n^2 p)$ and may be the most time consuming part in large $p$ small $n$ case.
+Once we have obtained $X_i^T X_j$, the computation of $T_i^*$ has only complexity $O(n^2)$.
+The total complexity is thus $O(n^2 p+n^2 B)$.
+The randomization procedure only add minor complexity when $p$ is large.
+The randomization method doesn't need an estimator of variance, which is a must need in asymptotic method. 
+A good variance estimator is complicated in form, see~\cite{Chen2010A}, which add much time complexity to asymptotic method.
+Hence the randomization method is very competitive compared to asymptotic method even in the sense of computation efficiency.
 This is different from low dimension setting where randomization is a lot slower than asymptotic method.
 
+If we only care about the decision (reject or accept) and the $p$-value is not needed, the computation efficiency of randomization method can be further improved.
+In fact, the rejection region is $\tilde{p}(X_1,\ldots, X_n)\leq \alpha$ or
+$$\sum_{i=1}^B (1-\mathbf{1}_{\{T_i^*\geq T_0\}})\geq B-(B+1)\alpha +1.$$
+Note that the left hand side is a sum of non-negative vaues. We can reject the null once $\sum_{i=1}^{B_0} (1-\mathbf{1}_{\{T_i^*\geq T_0\}})\geq B-(B+1)\alpha +1$ for some $B_0$.
+Similarly, the acception region is
+$$\sum_{i=1}^B \mathbf{1}_{\{T_i^*\geq T_0\}}> (B+1)\alpha -1.$$
+we can accept the null once the sum of left hand side exceeds the right hand side.
+The algorithm~\ref{theAlgorithm} summarizes our previous argument.
 
 
 %We shall choose $M$ large enough such that 
@@ -412,51 +433,146 @@ This is different from low dimension setting where randomization is a lot slower
 \begin{algorithm}
     \caption{Randomization Algorithm}
 \label{theAlgorithm}
+    \algsetup{indent=3em}
     \begin{algorithmic}
-        \REQUIRE  $\alpha$, $M$
-        \STATE Set $A\gets 0$, $T_0\gets T(X_1,\ldots,X_n)$.
-        \STATE Compute $X_i^T X_j$ for $1\leq j< i\leq n$
-        \FOR{$i=1$ to $M$}
-            \STATE Generate $\epsilon_1,\ldots,\epsilon_n$ and compute $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)=\sum_{j<i} X_i^T X_j\epsilon_i\epsilon_j$.
-            \IF{$T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)>T_0$}
+        \REQUIRE  $\alpha$, $B$
+        \FOR{$1\leq j< i\leq n$}
+            \STATE $D_{ij}\gets X_i^T X_j$
+        \ENDFOR
+        \STATE $T_0\gets \sum_{1\leq j<i\leq n}D_{ij}$
+        \STATE Set $A\gets 0$.
+        \FOR{$i=1$ to $B$}
+            \STATE Generate $\epsilon_1,\ldots,\epsilon_n$ according to $\Pr(\epsilon_i=1)=\Pr(\epsilon_i=-1)=\frac{1}{2}$.
+            \IF{$\sum_{1\leq j<i \leq n} D_{ij}\epsilon_i \epsilon_j\geq T_0$}
             \STATE $A\gets A+1$
-            \ENDIF
-            \IF{$A> M\alpha$}
-            \RETURN{Accept}
-            \ENDIF
-            \IF{$i-A\geq M(1-\alpha)$}
+                \IF{$A> (B+1)\alpha -1$}
+                    \RETURN{Accept}
+                \ENDIF
+        \ELSE
+            \IF{$i-A\geq B-(B+1)\alpha+1$}
             \RETURN{Reject}
+            \ENDIF
             \ENDIF
         \ENDFOR
     \end{algorithmic}
 \end{algorithm}
 
 \section{Simulation studies}
-In this section, we report some simulation performance of the randomization test in various setting.
-The competing method is asymptotic method.
-
-Mean structure:
-
-sparse
-
-dense
+In this section, we report the simulation performance of the randomization test in various setting.
+We compare randomization method with asymptotic method.
+Asymptotic method needs a ratio consistent estimator of $\mathrm{tr}\Sigma^2$.
+However, a good estimator is often complicated and thus time-consuming. For simplicity, throughout the simulation the asymptotic method is implemented by using true $\mathrm{tr}\Sigma^2$, which will in principle perform better.
+The empirical power and size are computed based on $1000$ simulations.
 
 
-Innovation structure:
+Let $c=\sqrt{n(n-1)}\mu^T \mu /\sqrt{2\mathrm{tr}\Sigma^2}$ be the signal to noise ratio (SNR).
+The theoretic asymptotic power is an increasing function of SNR\@.
+Throughout the simulation, we will scale $\mu$ to reach different level of SNR\@.
+Our simulation consider two mean structure: dense mean and sparse mean.
+In the dense mean setting, each coordinate of $\mu$ is independently generated from $U(2,3)$ and then $\mu$ is scaled to reach a given SNR\@.
+In the sparse mean setting, we randomly select $5\%$ of $\mu$ $p$ coordinates to be non-zero.
+Each non-zero coordinate is again independently generated from $U(2,3)$ and then scaled to reach a given SNR\@.
 
-moving average model: in model~\eqref{chenC1}, we set $m=p+k$ and ${(\Gamma)}_{ij}=\rho_{j-i}$ for $j=i,\ldots, i+k$ and ${(\Gamma)}_{ij}=0$ otherwise. More precisely,
+We consider two innovation structure: the moving average model and the factor model.
+
+We first conduct the moving average model. In model~\eqref{chenC1}, we set $m=p+k$ and ${(\Gamma)}_{ij}=\rho_{j-i}$ for $j=i,\ldots, i+k$ and ${(\Gamma)}_{ij}=0$ otherwise. More precisely,
 \begin{equation}
     X_{ij}=\sum_{l=0}^k \rho_{l}Z_{i,j+l}
 \end{equation}
 for $i=1,\ldots, n$ and $j=1,\ldots, p$. Here $Z_{ij}$'s are i.i.d.\ random variables with distribution $F$ for $i=1,\ldots, n$ and $j=1,\ldots, p+k$. 
+Like~\cite{Chen2010A}, we consider two different $F$.
+One is $N(0,1)$, and the other is $(\textrm{Gamma}(4,1)-4)/2$.
+We set $k=5$ and $k=p$.
+The $\rho_i$'s are generated independently from $U(2,3)$ and kept fixed throughout the simulation.
+Table 1 and Table 2 list the empirical power and size for the moving average model.
+It's not surprising that randomization test can control level well in normal case since it can be proved in theory.
+The results also show that the randomization method can control level well even in Gamma case, which is not symmetric under null.
+It justify the robustness of randomization method.
+On the other hand, asymptotic method has small size when dependence is weak and has inflated size when dependence is strong.
+Randomization method also shares similar power with asymptotic method. 
+%In summary, the simulation results show that the randomization method is robust and loss no power compared with asymptotic method.
 
-Like~\cite{Chen2010A}, we consider two different $F$. One is $N(0,1)$, and the other is centralized Gamma$(4,1)$ so that it has zero mean. We set $k=5$ and $k=p$.
+\begin{table}[ht]
+    \caption{Empirical power and size of moving average model with normal innovation.  $p=600$, $n=100$. TP is the theoretical asymptotic power, RM represents the randomization method, AM represents the asymptotic method.}
+    \centering
+    \begin{tabular}{cccccccccc}
+          \toprule
+          & & \multicolumn{4}{c}{Dense means} &\multicolumn{4}{c}{Sparse means}\\
+          \cmidrule(r){3-6}\cmidrule(r){7-10}
+          & & \multicolumn{2}{c}{$k=3$} & \multicolumn{2}{c}{$k=500$} & \multicolumn{2}{c}{$k=3$}& \multicolumn{2}{c}{$k=500$}\\
+          \cmidrule(r){3-4}  \cmidrule(r){5-6} \cmidrule(r){7-8}  \cmidrule(r){9-10}
+           SNR& TP & RM & AM & RM & AM & RM & AM & RM & AM  \\ 
+            \midrule
+        0.0 & 0.050 & 0.040 & 0.006 & 0.042 & 0.065 & 0.048 & 0.015 & 0.047 & 0.059 \\ 
+        0.5 & 0.126 & 0.190 & 0.069 & 0.125 & 0.169 & 0.146 & 0.063 & 0.081 & 0.111 \\ 
+        1.0 & 0.260 & 0.429 & 0.235 & 0.218 & 0.262 & 0.361 & 0.175 & 0.145 & 0.193 \\ 
+        1.5 & 0.442 & 0.629 & 0.425 & 0.314 & 0.384 & 0.633 & 0.413 & 0.229 & 0.313 \\ 
+        2.0 & 0.639 & 0.795 & 0.632 & 0.399 & 0.458 & 0.817 & 0.652 & 0.415 & 0.524 \\ 
+        2.5 & 0.804 & 0.923 & 0.828 & 0.469 & 0.529 & 0.960 & 0.861 & 0.645 & 0.839 \\ 
+        3.0 & 0.912 & 0.966 & 0.919 & 0.582 & 0.647 & 0.998 & 0.975 & 0.819 & 0.999 \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
 
-factor model:
+\begin{table}[ht]
+    \caption{Empirical power and size of moving average model with Gamma innovation.  $p=600$, $n=100$. TP is the theoretical asymptotic power, RM represents the randomization method, AM represents the asymptotic method.}
+    \centering
+    \begin{tabular}{cccccccccc}
+          \toprule
+          & & \multicolumn{4}{c}{Dense means} &\multicolumn{4}{c}{Sparse means}\\
+          \cmidrule(r){3-6}\cmidrule(r){7-10}
+          & & \multicolumn{2}{c}{$k=3$} & \multicolumn{2}{c}{$k=500$} & \multicolumn{2}{c}{$k=3$}& \multicolumn{2}{c}{$k=500$}\\
+          \cmidrule(r){3-4}  \cmidrule(r){5-6} \cmidrule(r){7-8}  \cmidrule(r){9-10}
+           SNR& TP & RM & AM & RM & AM & RM & AM & RM & AM \\ 
+            \midrule
+        0.0 & 0.050 & 0.050 & 0.016 & 0.043 & 0.060 & 0.033 & 0.005 & 0.050 & 0.069 \\ 
+      0.5 & 0.126 & 0.211 & 0.077 & 0.128 & 0.160 & 0.159 & 0.062 & 0.065 & 0.098 \\ 
+        1.0 & 0.260 & 0.410 & 0.228 & 0.255 & 0.308 & 0.386 & 0.159 & 0.151 & 0.188 \\ 
+      1.5 & 0.442 & 0.609 & 0.418 & 0.318 & 0.375 & 0.643 & 0.410 & 0.231 & 0.321 \\ 
+        2.0 & 0.639 & 0.799 & 0.634 & 0.392 & 0.449 & 0.875 & 0.685 & 0.373 & 0.501 \\ 
+      2.5 & 0.804 & 0.912 & 0.809 & 0.496 & 0.550 & 0.961 & 0.858 & 0.589 & 0.828 \\ 
+        3.0 & 0.912 & 0.963 & 0.908 & 0.543 & 0.596 & 0.985 & 0.967 & 0.843 & 1.000 \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+In the simulation study of~\cite{fan2007to}, data are generated from a factor model to reflect aspects of gene expression data. The model involves three group factor and one common factor among all $p$ variables. 
+ Their data generation mechanism is adopted in our next simulation study.
+We denote by $\{\epsilon_{ij}\}_{1\leq i\leq n, 1\leq j\leq p}$ a sequence of independent $N(0,1)$ and by $\{\chi_{ij}\}_{1\leq i \leq n, 1\leq j \leq 4}$ a sequence of independent random variables with distribution $(\chi_{6}^2-6)/\sqrt{12}$.
+Note that $\chi_{ij}$ has mean $0$, variance $1$ and skewness $\sqrt{12}/3$.
+The data is generated by model
+\begin{equation*}
+    X_{i,j}=\frac{a_{j1}\chi_{i1}+a_{j2}\chi_{i2}+a_{j3}\chi_{i3}+b_{j}\chi_{i4}+\epsilon_{ij}}{{(1+a_{j1}^2+a_{j2}^2+a_{j3}^2+b_j^2)}^{1/2}}
+    \quad
+    \textrm{$i=1,\ldots, n$ and $j=1,\ldots, p$},
+\end{equation*}
+where $a_{jk}=0$ except that $a_{j1}=a_j$ for $j=1,\ldots,\frac{1}{3}p$, $a_{j2}=a_j$ for $\frac{1}{3}p+1,\ldots,\frac{2}{3}p$ and $a_{j3}=a_j$ for $\frac{2}{3}p+1,\ldots,p$.
+As in~\cite{fan2007to}, we consider two configurations of factor loadings. In  case I we set $a_j=0.25$ and $b_j=0.1$ for $j=1,\ldots, p$ and in case II $a_i$ and $b_i$ are generated independently from $U(0,0.4)$ and $U(0,0.2)$.
+Table 3 list the simulation results. Although the distribution is not symmetric, the results show that the level of randomization method is robust while asymptotic method suffers from level inflation.
+
+\begin{table}[ht]
+    \caption{Empirical power and size of factor model innovation.  $p=600$, $n=100$. TP is the theoretical asymptotic power, RM represents the randomization method, AM represents the asymptotic method.}
+    \centering
+    \begin{tabular}{cccccccccc}
+          \toprule
+          & & \multicolumn{4}{c}{Dense means} &\multicolumn{4}{c}{Sparse means}\\
+          \cmidrule(r){3-6}\cmidrule(r){7-10}
+          & & \multicolumn{2}{c}{Case I} & \multicolumn{2}{c}{Case II} & \multicolumn{2}{c}{Case I}& \multicolumn{2}{c}{Case II}\\
+          \cmidrule(r){3-4}  \cmidrule(r){5-6} \cmidrule(r){7-8}  \cmidrule(r){9-10}
+           SNR& TP & RM & AM & RM & AM & RM & AM & RM & AM  \\ 
+            \midrule
+    0.0 & 0.050 & 0.040 & 0.050 & 0.046 & 0.057 & 0.052 & 0.061 & 0.047 & 0.060 \\ 
+      0.5 & 0.126 & 0.141 & 0.166 & 0.136 & 0.154 & 0.104 & 0.126 & 0.105 & 0.129 \\ 
+    1.0 & 0.260 & 0.222 & 0.256 & 0.233 & 0.266 & 0.207 & 0.239 & 0.215 & 0.240 \\ 
+      1.5 & 0.442 & 0.363 & 0.411 & 0.369 & 0.392 & 0.367 & 0.411 & 0.373 & 0.415 \\ 
+    2.0 & 0.639 & 0.460 & 0.501 & 0.470 & 0.509 & 0.517 & 0.581 & 0.532 & 0.589 \\ 
+      2.5 & 0.804 & 0.582 & 0.613 & 0.565 & 0.607 & 0.718 & 0.757 & 0.728 & 0.780 \\ 
+    3.0 & 0.912 & 0.646 & 0.678 & 0.673 & 0.701 & 0.834 & 0.889 & 0.870 & 0.900 \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 
-Let $c=\sqrt{n(n-1)}\mu^T \mu /\sqrt{2\mathrm{tr}\Sigma^2}$ be the signal to noise ratio.
-We plot $c$ versus power.
+\section{Conclusion remark}
 
 \section{Appendix}
 \paragraph{CLT for quadratic form of Rademacher varaibles}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.6.24)  18 MAR 2017 15:31
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.6.24)  22 MAR 2017 18:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1282,7 +1282,16 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 . 
 . Redefining command \Pifont with sig. 'm' on line 70.
 .................................................
+LaTeX Font Info:    Try loading font information for U+msa on input line 88.
 
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 88.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 *************************************************
 * fontspec warning: "script-not-exist"
 * 
@@ -1304,16 +1313,7 @@ File: eu1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 . - 'normal' (m/n) with NFSS spec.: <->"[FandolFang-Regular.otf]/OT:"
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
-LaTeX Font Info:    Try loading font information for U+msa on input line 99.
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 99.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
 *************************************************
 * fontspec warning: "script-not-exist"
 * 
@@ -1346,45 +1346,42 @@ m/n/10 –$\OML/cmm/m/it/10 T[]$ \EU1/lmr/m/n/10 all can be written as a general
 zed quadratic
  []
 
-[2] [3] [4] [5] [6] [7]
+[2] [3] [4] [5] [6] [7] [8]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 413.
- [8] [9] [10] [11] [12] [13] [14]
-Overfull \hbox (47.12494pt too wide) detected at line 860
+put line 434.
+ [9] [10] [11] [12] [13] [14] [15] [16] [17]
+[18]
+Overfull \hbox (47.12494pt too wide) detected at line 977
 [] []
  []
 
-[15]
-Overfull \hbox (0.37201pt too wide) in paragraph at lines 860--862
+[19]
+Overfull \hbox (0.37201pt too wide) in paragraph at lines 977--979
 \EU1/lmr/m/n/10 where the last two equality holds by Theorem []1[], Slutsky’s t
 heorem and Lemma []1[]. 
  []
 
 
-Overfull \hbox (31.60895pt too wide) in paragraph at lines 890--890
+Overfull \hbox (31.60895pt too wide) in paragraph at lines 1007--1007
 [] 
  []
 
-[16] [17] (./main.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 956.
- [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 956.
+[20] [21] (./main.bbl [22])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1073.
+ [23]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1073.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 956.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 956.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 956.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1073.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1073.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1073.
  ) 
 Here is how much of TeX's memory you used:
- 25398 strings out of 493638
- 460464 string characters out of 6146796
- 484956 words of memory out of 5000000
- 28558 multiletter control sequences out of 15000+600000
- 14639 words of font info for 76 fonts, out of 8000000 for 9000
+ 25413 strings out of 493638
+ 460757 string characters out of 6146796
+ 496964 words of memory out of 5000000
+ 28569 multiletter control sequences out of 15000+600000
+ 14655 words of font info for 78 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 45i,17n,78p,10426b,582s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,17n,78p,10426b,690s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (18 pages).
+Output written on main.pdf (23 pages).

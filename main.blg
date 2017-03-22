@@ -5,45 +5,45 @@ The style file: elsarticle-num.bst
 Database file #1: mybibfile.bib
 Warning--empty journal in Fisher
 Warning--empty publisher in pollard1984convergence
-You've used 9 entries,
+You've used 11 entries,
             2937 wiz_defined-function locations,
-            733 strings with 6441 characters,
-and the built_in function-call counts, 3763 in all, are:
-= -- 376
-> -- 48
+            746 strings with 6729 characters,
+and the built_in function-call counts, 4313 in all, are:
+= -- 427
+> -- 62
 < -- 0
-+ -- 22
-- -- 13
-* -- 317
-:= -- 488
-add.period$ -- 9
-call.type$ -- 9
-change.case$ -- 8
++ -- 28
+- -- 17
+* -- 355
+:= -- 559
+add.period$ -- 12
+call.type$ -- 11
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 11
-duplicate$ -- 64
-empty$ -- 440
-format.name$ -- 16
-if$ -- 928
+cite$ -- 13
+duplicate$ -- 79
+empty$ -- 510
+format.name$ -- 21
+if$ -- 1074
 int.to.chr$ -- 0
-int.to.str$ -- 9
-missing$ -- 10
-newline$ -- 35
-num.names$ -- 9
-pop$ -- 48
+int.to.str$ -- 11
+missing$ -- 13
+newline$ -- 42
+num.names$ -- 11
+pop$ -- 63
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 153
+skip$ -- 188
 stack$ -- 0
-substring$ -- 637
-swap$ -- 7
+substring$ -- 668
+swap$ -- 10
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 17
-width$ -- 10
-write$ -- 76
+while$ -- 21
+width$ -- 13
+write$ -- 93
 (There were 2 warnings)
