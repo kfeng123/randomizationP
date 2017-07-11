@@ -20,7 +20,7 @@
 %\bibliographystyle{model1a-num-names}
 
 %% Harvard
-%\bibliographystyle{model2-names.bst}\biboptions{authoryear}
+\bibliographystyle{model2-names.bst}\biboptions{authoryear}
 
 %% Vancouver numbered
 %\usepackage{numcompress}\bibliographystyle{model3-num-names}
@@ -35,9 +35,8 @@
 %\usepackage{numcompress}\bibliographystyle{model6-num-names}
 
 %% `Elsevier LaTeX' style
-\bibliographystyle{elsarticle-num}
+%\bibliographystyle{elsarticle-num}
 %%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{xeCJK}
 \usepackage{bm}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -72,7 +71,7 @@
 \begin{frontmatter}
 
 \title{A randomization test for mean vector in high dimension}
-\tnotetext[mytitlenote]{Fully documented templates are available in the elsarticle package on \href{http://www.ctan.org/tex-archive/macros/latex/contrib/elsarticle}{CTAN}.}
+%\tnotetext[mytitlenote]{Fully documented templates are available in the elsarticle package on \href{http://www.ctan.org/tex-archive/macros/latex/contrib/elsarticle}{CTAN}.}
 
     \author[mymainaddress]{Rui Wang}
     \author[mymainaddress,mysecondaryaddress]{Xingzhong Xu\corref{mycorrespondingauthor}}
@@ -84,25 +83,27 @@
     
     
 \begin{abstract}
-    The strongth of randomization tests is that the size of the test is exact under certain symmetry assumption for distribution.
-    Researchers have justified the robustness of the randomization tests when symmetry assumption breaks down and showed they have good power performance in fixed $p$ situation.
-    It's a theoretical and practical interest for the behavior of randomization tests in high dimensional setting.
-    In this paper, we study the asymptotic behavior of a randomization test for testing high dimensional means. 
-    The robustness is justified and asymptotic power function is derived.
-    
-     An important issue in high dimensional statistics is the computational efficiency.
-    In classical statistics, randomization tests suffer from computational complexity, which limits their adoption. Surprisingly, in our problem the randomization test can be implemented even faster than asymptotic method.
-    With good theoretical properties and fast algorithm, randomization test can be recommanded in practice.
+    The strength of randomization tests is that the size of the test is exact under certain symmetry assumption for distribution.
+    In this paper, we study a randomization test for mean vector in high dimensional setting. 
+    In classical statistics, a major down-side to randomization tests is that they are computational intensive.    
+    Surprisingly, it is not the case in high dimensional setting.
+    We give an implementation of the randomization procedure, the time complexity of which does not rely on data dimension. 
+    The theoretical property of randomization test is another important issue.
+    So far, the asymptotic behaviors of randomization tests have only been studied in fixed dimension case.
+    We investigated the asymptotic behavior of the randomization test in high dimensional setting.
+    It turns out that even if the symmetry assumption is violated, the randomization test has correct level asymptotically.
+    The asymptotic power function is also given.
+    With fast implementation and good theoretical properties, the randomization test can be recommended in practice.
 \end{abstract}
 
 \begin{keyword}
-\texttt{elsarticle.cls}\sep \LaTeX\sep Elsevier \sep template
-\MSC[2010] 00-01\sep  99-00
+Randomization test\sep High dimension\sep Symmetry assumption \sep Asymptotic power function 
+%\MSC[2010] 00-01\sep  99-00
 \end{keyword}
 
 \end{frontmatter}
 
-\linenumbers
+%\linenumbers
 
 
 \section{Introduction}
@@ -659,7 +660,7 @@ Such a CLT can be also used to study the asymptotic behavior of many other rando
      where the last equality holds by assumption. Hence~\eqref{MCLTcondition2} holds.
  \end{proof}
 
-\section{Asymptotic normality}
+\paragraph{Asymptotic normality}
 \begin{lemma}\label{lemmaUniformSimple}
     Suppose $\{\eta_n\}$ is a sequence of $1$-dimensional random variables, weakly converges to $\eta$, a random variable with continuous distribution function.
     Then we have

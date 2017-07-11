@@ -1,59 +1,90 @@
-\begin{thebibliography}{10}
-\expandafter\ifx\csname url\endcsname\relax
-  \def\url#1{\texttt{#1}}\fi
-\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
-\expandafter\ifx\csname href\endcsname\relax
-  \def\href#1#2{#2} \def\path#1{#1}\fi
-
-\bibitem{Bai1996Efiect}
-Z.~Bai, H.~Saranadasa, Effect of high dimension: by an example of a two sample
-  problem, Statistica Sinica 6~(2) (1996) 311--329.
-
-\bibitem{Srivastava2009A}
-M.~S. Srivastava, A test for the mean vector with fewer observations than the
-  dimension under non-normality, Journal of Multivariate Analysis 100~(3)
-  (2009) 518--532As the access to this document is restricted, you may want to
-  look for a different version under "Related research" (further below) orfor a
-  different version of it.
-
-\bibitem{Chen2010A}
-S.~X. Chen, Y.~L. Qin, A two-sample test for high-dimensional data with
-  applications to gene-set testing, Annals of Statistics 38~(2) (2010)
-  808--835.
-
-\bibitem{Wang2015A}
-L.~Wang, B.~Peng, R.~Li, A high-dimensional nonparametric multivariate test for
-  mean vector., Journal of the American Statistical Association 110~(512)
-  (2015) 00--00.
-
-\bibitem{Jong1987A}
-P.~D. Jong, A central limit theorem for generalized quadratic forms,
-  Probability Theory \& Related Fields 75~(2) (1987) 261--277.
-
-\bibitem{efron2007on}
-R.~J. Bradley~Efron, On testing the significance of sets of genes, The Annals
-  of Applied Statistics 1~(1) (2007) 107--129.
-
-\bibitem{Fisher}
-R.~A. Fisher, The design of experiments.
-
-\bibitem{Romano1990On}
-J.~P. Romano, On the behavior of randomization tests without a group invariance
-  assumption, Journal of the American Statistical Association 85~(411) (1990)
-  686--692.
-
-\bibitem{Lehmann}
-J.~P.~R. E.~L.~Lehmann, Testing Statistical Hypotheses, Springer New York,
-  2005.
-\newblock \href {http://dx.doi.org/10.1007/0-387-27605-X}
-  {\path{doi:10.1007/0-387-27605-X}}.
-
-\bibitem{fan2007to}
-J.~Fan, P.~Hall, Q.~Yao, To how many simultaneous hypothesis tests can normal,
-  student's t or bootstrap calibration be applied?, Journal of the American
-  Statistical Association 102~(480) (2007) 1282--1288.
-
-\bibitem{pollard1984convergence}
-D.~Pollard, Convergence of stochastic processes, 1984.
+\begin{thebibliography}{11}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Bai and Saranadasa(1996)}]{Bai1996Efiect}
+\bibinfo{author}{Bai, Z.}, \bibinfo{author}{Saranadasa, H.},
+  \bibinfo{year}{1996}.
+\newblock \bibinfo{title}{Effect of high dimension: by an example of a two
+  sample problem}.
+\newblock \bibinfo{journal}{Statistica Sinica} \bibinfo{volume}{6},
+  \bibinfo{pages}{311--329}.
+%Type = Article
+\bibitem[{Bradley~Efron(2007)}]{efron2007on}
+\bibinfo{author}{Bradley~Efron, R.J.}, \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{On testing the significance of sets of genes}.
+\newblock \bibinfo{journal}{The Annals of Applied Statistics}
+  \bibinfo{volume}{1}, \bibinfo{pages}{107--129}.
+%Type = Article
+\bibitem[{Chen and Qin(2010)}]{Chen2010A}
+\bibinfo{author}{Chen, S.X.}, \bibinfo{author}{Qin, Y.L.},
+  \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{A two-sample test for high-dimensional data with
+  applications to gene-set testing}.
+\newblock \bibinfo{journal}{Annals of Statistics} \bibinfo{volume}{38},
+  \bibinfo{pages}{808--835}.
+%Type = Book
+\bibitem[{E.~L.~Lehmann(2005)}]{Lehmann}
+\bibinfo{author}{E.~L.~Lehmann, J.P.R.}, \bibinfo{year}{2005}.
+\newblock \bibinfo{title}{Testing Statistical Hypotheses}.
+\newblock \bibinfo{publisher}{Springer New York}.
+\newblock \DOIprefix\doi{10.1007/0-387-27605-X}.
+%Type = Article
+\bibitem[{Fan et~al.(2007)Fan, Hall and Yao}]{fan2007to}
+\bibinfo{author}{Fan, J.}, \bibinfo{author}{Hall, P.}, \bibinfo{author}{Yao,
+  Q.}, \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{To how many simultaneous hypothesis tests can normal,
+  student's t or bootstrap calibration be applied?}
+\newblock \bibinfo{journal}{Journal of the American Statistical Association}
+  \bibinfo{volume}{102}, \bibinfo{pages}{1282--1288}.
+%Type = Article
+\bibitem[{Fisher(1936)}]{Fisher}
+\bibinfo{author}{Fisher, R.A.}, \bibinfo{year}{1936}.
+\newblock \bibinfo{title}{The design of experiments.} .
+%Type = Article
+\bibitem[{Jong(1987)}]{Jong1987A}
+\bibinfo{author}{Jong, P.D.}, \bibinfo{year}{1987}.
+\newblock \bibinfo{title}{A central limit theorem for generalized quadratic
+  forms}.
+\newblock \bibinfo{journal}{Probability Theory \& Related Fields}
+  \bibinfo{volume}{75}, \bibinfo{pages}{261--277}.
+%Type = Book
+\bibitem[{Pollard(1984)}]{pollard1984convergence}
+\bibinfo{author}{Pollard, D.}, \bibinfo{year}{1984}.
+\newblock \bibinfo{title}{Convergence of stochastic processes}.
+%Type = Article
+\bibitem[{Romano(1990)}]{Romano1990On}
+\bibinfo{author}{Romano, J.P.}, \bibinfo{year}{1990}.
+\newblock \bibinfo{title}{On the behavior of randomization tests without a
+  group invariance assumption}.
+\newblock \bibinfo{journal}{Journal of the American Statistical Association}
+  \bibinfo{volume}{85}, \bibinfo{pages}{686--692}.
+%Type = Article
+\bibitem[{Srivastava(2009)}]{Srivastava2009A}
+\bibinfo{author}{Srivastava, M.S.}, \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{A test for the mean vector with fewer observations
+  than the dimension under non-normality}.
+\newblock \bibinfo{journal}{Journal of Multivariate Analysis}
+  \bibinfo{volume}{100}, \bibinfo{pages}{518--532As the access to this document
+  is restricted, you may want to look for a different version under "Related
+  research" (further below) orfor a different version of it.}
+%Type = Article
+\bibitem[{Wang et~al.(2015)Wang, Peng and Li}]{Wang2015A}
+\bibinfo{author}{Wang, L.}, \bibinfo{author}{Peng, B.}, \bibinfo{author}{Li,
+  R.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{A high-dimensional nonparametric multivariate test
+  for mean vector.}
+\newblock \bibinfo{journal}{Journal of the American Statistical Association}
+  \bibinfo{volume}{110}, \bibinfo{pages}{00--00}.
 
 \end{thebibliography}

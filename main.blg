@@ -1,49 +1,49 @@
 This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
-The style file: elsarticle-num.bst
+The style file: model2-names.bst.bst
 Database file #1: mybibfile.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty journal in Fisher
-Warning--empty publisher in pollard1984convergence
 You've used 11 entries,
-            2937 wiz_defined-function locations,
-            746 strings with 6729 characters,
-and the built_in function-call counts, 4313 in all, are:
-= -- 427
-> -- 62
-< -- 0
-+ -- 28
-- -- 17
-* -- 355
-:= -- 559
-add.period$ -- 12
+            2990 wiz_defined-function locations,
+            811 strings with 7910 characters,
+and the built_in function-call counts, 7651 in all, are:
+= -- 635
+> -- 158
+< -- 9
++ -- 72
+- -- 51
+* -- 750
+:= -- 1075
+add.period$ -- 32
 call.type$ -- 11
-change.case$ -- 9
-chr.to.int$ -- 0
-cite$ -- 13
-duplicate$ -- 79
-empty$ -- 510
-format.name$ -- 21
-if$ -- 1074
-int.to.chr$ -- 0
-int.to.str$ -- 11
-missing$ -- 13
-newline$ -- 42
-num.names$ -- 11
-pop$ -- 63
+change.case$ -- 70
+chr.to.int$ -- 11
+cite$ -- 12
+duplicate$ -- 496
+empty$ -- 687
+format.name$ -- 74
+if$ -- 1497
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 90
+newline$ -- 69
+num.names$ -- 44
+pop$ -- 184
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 61
 quote$ -- 0
-skip$ -- 188
+skip$ -- 158
 stack$ -- 0
-substring$ -- 668
-swap$ -- 10
+substring$ -- 799
+swap$ -- 303
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 2
-while$ -- 21
-width$ -- 13
-write$ -- 93
-(There were 2 warnings)
+type$ -- 93
+warning$ -- 1
+while$ -- 43
+width$ -- 0
+write$ -- 163
+(There was 1 warning)
