@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.6.24)  12 JUL 2017 22:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.6.24)  12 JUL 2017 22:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -477,7 +477,7 @@ r/m/n/10 (\OML/cmm/m/it/10 ^^O[]X[]; [] ; ^^O[]X[]; [] ; ^^O[]X[]\OT1/cmr/m/n/1
  []
 
 [3]
-Overfull \hbox (1.47253pt too wide) in paragraph at lines 213--220
+Overfull \hbox (1.47253pt too wide) in paragraph at lines 212--219
 []\OT1/cmr/m/n/10 Conditioning on $\OML/cmm/m/it/10 X[]; [] ; X[]$\OT1/cmr/m/n/
 10 , the ran-dom-ized test statis-tic $\OML/cmm/m/it/10 T\OT1/cmr/m/n/10 (\OML/
 cmm/m/it/10 ^^O[]X[]; [] ; ^^O[]X[]\OT1/cmr/m/n/10 )$
@@ -485,58 +485,61 @@ cmm/m/it/10 ^^O[]X[]; [] ; ^^O[]X[]\OT1/cmr/m/n/10 )$
 
 [4] [5]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 283.
+put line 282.
  [6] [7] [8] [9] [10] [11] [12pdfTeX warning (ext4): destination with the same 
 identifier (name{table.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.614 
+l.584 
       ] [13pdfTeX warning (ext4): destination with the same identifier (name{ta
 ble.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.625 M
-       aybe the most widely used randomization method is the two sample perm...
-] [14pdfTeX warning (ext4): destination with the same identifier (name{table.3}
-) has been already used, duplicate ignored
+l.617 
+      ] [14pdfTeX warning (ext4): destination with the same identifier (name{ta
+ble.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.643      \end{equation*}
-                          ] [15] [16] [17] [18] [19] [20] [21]
-Overfull \hbox (47.11502pt too wide) detected at line 1081
+l.637 
+      ] [15] [16] [17] [18] [19] [20] [21]
+Overfull \hbox (47.11502pt too wide) detected at line 1080
 [] []
  []
 
 
-Overfull \hbox (0.38948pt too wide) in paragraph at lines 1081--1083
+Overfull \hbox (0.38948pt too wide) in paragraph at lines 1080--1082
 \OT1/cmr/m/n/10 where the last two equal-ity holds by The-o-rem []1[], Slut-sky
 's the-o-rem and Lemma []1[]. 
  []
 
 
-Overfull \hbox (31.6012pt too wide) in paragraph at lines 1117--1117
+Overfull \hbox (31.6012pt too wide) in paragraph at lines 1116--1116
 [] 
  []
 
 [22] (./main.bbl [23])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1136.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1135.
  [24]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1136.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1135.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1136.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1136.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1135.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1135.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: E9AFC1DB30CFD6B6ABD9765FF1DDAF7F;304.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1136.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1135.
  ) 
 Here is how much of TeX's memory you used:
  7509 strings out of 493029
  104412 string characters out of 6136234
- 210762 words of memory out of 5000000
+ 205762 words of memory out of 5000000
  10802 multiletter control sequences out of 15000+600000
  15416 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -561,7 +564,7 @@ t/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/symbols/msbm10.pfb>
-Output written on main.pdf (24 pages, 305148 bytes).
+Output written on main.pdf (24 pages, 304991 bytes).
 PDF statistics:
  518 PDF objects out of 1000 (max. 8388607)
  457 compressed objects within 5 object streams
