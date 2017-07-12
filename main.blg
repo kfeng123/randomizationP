@@ -5,45 +5,45 @@ The style file: model2-names.bst.bst
 Database file #1: mybibfile.bib
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty journal in Fisher
-You've used 11 entries,
+You've used 14 entries,
             2990 wiz_defined-function locations,
-            811 strings with 7910 characters,
-and the built_in function-call counts, 7651 in all, are:
-= -- 635
-> -- 158
-< -- 9
-+ -- 72
-- -- 51
-* -- 750
-:= -- 1075
-add.period$ -- 32
-call.type$ -- 11
-change.case$ -- 70
-chr.to.int$ -- 11
-cite$ -- 12
-duplicate$ -- 496
-empty$ -- 687
-format.name$ -- 74
-if$ -- 1497
+            837 strings with 8196 characters,
+and the built_in function-call counts, 8012 in all, are:
+= -- 617
+> -- 212
+< -- 12
++ -- 95
+- -- 69
+* -- 785
+:= -- 1170
+add.period$ -- 42
+call.type$ -- 14
+change.case$ -- 91
+chr.to.int$ -- 14
+cite$ -- 15
+duplicate$ -- 641
+empty$ -- 669
+format.name$ -- 107
+if$ -- 1518
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 90
-newline$ -- 69
-num.names$ -- 44
-pop$ -- 184
+missing$ -- 118
+newline$ -- 85
+num.names$ -- 56
+pop$ -- 237
 preamble$ -- 1
-purify$ -- 61
+purify$ -- 79
 quote$ -- 0
-skip$ -- 158
+skip$ -- 197
 stack$ -- 0
-substring$ -- 799
-swap$ -- 303
+substring$ -- 382
+swap$ -- 404
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 93
+type$ -- 117
 warning$ -- 1
-while$ -- 43
+while$ -- 55
 width$ -- 0
-write$ -- 163
+write$ -- 207
 (There was 1 warning)

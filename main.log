@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.17)  11 JUL 2017 22:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.6.24)  12 JUL 2017 22:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -459,73 +459,88 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 104.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (3.52133pt too wide) in paragraph at lines 138--139
-[]\OT1/cmr/m/n/10 Note that the test statis-tics $\OML/cmm/m/it/10 T[]$\OT1/cmr
-/m/n/10 --$\OML/cmm/m/it/10 T[]$ \OT1/cmr/m/n/10 all can be writ-ten as a gen-e
-r-al-ized quadratic
+)
+Overfull \hbox (2.64166pt too wide) in paragraph at lines 111--112
+[]\OT1/cmr/m/n/10 Let $\OML/cmm/m/it/10 X[]; [] ; X[]$ \OT1/cmr/m/n/10 be in-de
+-pen-dent and iden-ti-cally dis-tributed (iid) $\OML/cmm/m/it/10 p$\OT1/cmr/m/n
+/10 -dimensional
  []
 
-[2] [3] [4] [5] [6] [7] [8]
+[1
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Overfull \hbox (30.9748pt too wide) in paragraph at lines 158--162
+\OT1/cmr/m/n/10 the con-di-tional dis-tri-bu-tion of $\OML/cmm/m/it/10 T\OT1/cm
+r/m/n/10 (\OML/cmm/m/it/10 ^^O[]X[]; [] ; ^^O[]X[]; [] ; ^^O[]X[]\OT1/cmr/m/n/1
+0 )$ con-di-tion-ing on $\OML/cmm/m/it/10 X[]; [] ; X[]$\OT1/cmr/m/n/10 .
+ []
+
+[3]
+Overfull \hbox (1.47253pt too wide) in paragraph at lines 213--220
+[]\OT1/cmr/m/n/10 Conditioning on $\OML/cmm/m/it/10 X[]; [] ; X[]$\OT1/cmr/m/n/
+10 , the ran-dom-ized test statis-tic $\OML/cmm/m/it/10 T\OT1/cmr/m/n/10 (\OML/
+cmm/m/it/10 ^^O[]X[]; [] ; ^^O[]X[]\OT1/cmr/m/n/10 )$
+ []
+
+[4] [5]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 435.
- [9] [10] [11] [12pdfTeX warning (ext4): destination with the same identifier (
-name{table.1}) has been already used, duplicate ignored
+put line 283.
+ [6] [7] [8] [9] [10] [11] [12pdfTeX warning (ext4): destination with the same 
+identifier (name{table.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.590      \end{equation}
-                         ] [13pdfTeX warning (ext4): destination with the same 
-identifier (name{table.2}) has been already used, duplicate ignored
+l.614 
+      ] [13pdfTeX warning (ext4): destination with the same identifier (name{ta
+ble.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.622      \end{equation*}
-                          ] [14pdfTeX warning (ext4): destination with the same
- identifier (name{table.3}) has been already used, duplicate ignored
+l.625 M
+       aybe the most widely used randomization method is the two sample perm...
+] [14pdfTeX warning (ext4): destination with the same identifier (name{table.3}
+) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.659      \end{equation*}
-                          ] [15] [16] [17] [18]
-Overfull \hbox (47.11502pt too wide) detected at line 978
+l.643      \end{equation*}
+                          ] [15] [16] [17] [18] [19] [20] [21]
+Overfull \hbox (47.11502pt too wide) detected at line 1081
 [] []
  []
 
-[19]
-Overfull \hbox (0.38948pt too wide) in paragraph at lines 978--980
+
+Overfull \hbox (0.38948pt too wide) in paragraph at lines 1081--1083
 \OT1/cmr/m/n/10 where the last two equal-ity holds by The-o-rem []1[], Slut-sky
 's the-o-rem and Lemma []1[]. 
  []
 
 
-Overfull \hbox (31.6012pt too wide) in paragraph at lines 1008--1008
+Overfull \hbox (31.6012pt too wide) in paragraph at lines 1117--1117
 [] 
  []
 
-[20] [21] (./main.bbl [22])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1074.
- [23]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1074.
+[22] (./main.bbl [23])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1136.
+ [24]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1136.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1074.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1074.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1136.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1136.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 4E86915C16BA93DD40C7A3691B1541E5;292.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1074.
+(rerunfilecheck)             Checksum: E9AFC1DB30CFD6B6ABD9765FF1DDAF7F;304.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1136.
  ) 
 Here is how much of TeX's memory you used:
- 7512 strings out of 493029
- 104319 string characters out of 6136234
- 209460 words of memory out of 5000000
- 10791 multiletter control sequences out of 15000+600000
+ 7509 strings out of 493029
+ 104412 string characters out of 6136234
+ 210762 words of memory out of 5000000
+ 10802 multiletter control sequences out of 15000+600000
  15416 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,17n,34p,361b,672s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,17n,34p,359b,674s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -546,10 +561,10 @@ t/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/symbols/msbm10.pfb>
-Output written on main.pdf (23 pages, 301153 bytes).
+Output written on main.pdf (24 pages, 305148 bytes).
 PDF statistics:
- 513 PDF objects out of 1000 (max. 8388607)
- 453 compressed objects within 5 object streams
- 131 named destinations out of 1000 (max. 500000)
+ 518 PDF objects out of 1000 (max. 8388607)
+ 457 compressed objects within 5 object streams
+ 117 named destinations out of 1000 (max. 500000)
  49 words of extra memory for PDF output out of 10000 (max. 10000000)
 

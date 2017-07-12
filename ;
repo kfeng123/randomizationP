@@ -226,41 +226,28 @@ Moreover,  as $B\to \infty$, we have $\tilde{p}(X_1,\ldots,X_n)\xrightarrow{P}p(
 Here we emphasis that the convergence rate of $\tilde{p}(X_1,\ldots,X_n)$ only relies on $\alpha$.
 Hence the choice of $B$ does not rely on $n$ and $p$.
 
-We next consider the computation issue of the randomization procedure.
+In fixed $p$ case, the randomization procedure is time consuming since we need to compute statistic for $B$ times.
+Nevertheless, the randomization procedure can be very efficient in high dimensional setting.
+The computing of $T(X_1,\ldots,X_n)$ has complexity $O(n^2 p)$.
 Note that 
 $$
 T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)
 =\sum_{1\leq j<i \leq n}X_i^T X_j \epsilon_i \epsilon_j.
 $$
-The computation of $T(X_1,\ldots,X_n)$ has complexity $O(n^2 p)$.
-This itself is not negligible when $n$ and $p$ are large and we can't afford to naively repeat computing it for $B$ times.
-Note that $X_i^T X_j$ ($1\leq j<i\leq n$) can be computed beforehand.
-%For a realization of $\epsilon_1,\ldots,\epsilon_n$,
-%let $\mathcal{I}_1=\{i\,|\, \epsilon_i=1\}$ and $\mathcal{I}_2=\{i\,|\, \epsilon_i=-1\}$.
-%Note that
-%$$
-%\begin{aligned}
-    %&T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)
-    %\frac{1}{2}\sum_{i}\sum_j X_i^T X_j \epsilon_i \epsilon_j-\frac{1}{2}\sum_{i} X_i^T X_i\\
-    %=&\frac{1}{2}\sum_{i\in \mathcal{I}_1}\sum_{j\in \mathcal{I}_1} X_i^T X_j 
-    %-\frac{1}{2}\sum_{i\in \mathcal{I}_1}\sum_{j\in \mathcal{I}_2} X_i^T X_j 
-    %-\frac{1}{2}\sum_{i\in \mathcal{I}_2}\sum_{j\in \mathcal{I}_1} X_i^T X_j 
-    %+\frac{1}{2}\sum_{i\in \mathcal{I}_2}\sum_{j\in \mathcal{I}_2} X_i^T X_j -\frac{1}{2}\sum_{i} X_i^T X_i\\
-%\end{aligned}
-%$$
+Nevertheless,  $X_i^T X_j$ ($1\leq j<i\leq n$) can be computed in advance, which has complexity $O(n^2 p)$ and may be the most time consuming part in large $p$ small $n$ case.
 Once we have obtained $X_i^T X_j$, the computation of $T_i^*$ has only complexity $O(n^2)$.
 The total complexity is thus $O(n^2 p+n^2 B)$.
-When $p$ is large compared with $n$, the randomization procedure only adds minor complexity.
+The randomization procedure only add minor complexity when $p$ is large.
 The randomization method doesn't need an estimator of variance, which is a must need in asymptotic method. 
 A good variance estimator is complicated in form, see~\cite{Chen2010A}, which add much time complexity to asymptotic method.
-Hence the randomization method is very competitive compared to asymptotic method.
-This is different from low dimensional setting where randomization test is a lot slower than asymptotic method.
+Hence the randomization method is very competitive compared to asymptotic method even in the sense of computation efficiency.
+This is different from low dimension setting where randomization is a lot slower than asymptotic method.
 
 If we only care about the decision (reject or accept) and the $p$-value is not needed, the computation efficiency of randomization method can be further improved.
 In fact, the rejection region is $\tilde{p}(X_1,\ldots, X_n)\leq \alpha$ or
-$$\sum_{i=1}^B (1-\mathbf{1}_{\{T_i^*\geq T_0\}})\geq B +1-(B+1)\alpha.$$
-Since the left hand side is a sum of non-negative values, we can reject the null hypothesis once $\sum_{i=1}^{B_0} (1-\mathbf{1}_{\{T_i^*\geq T_0\}})\geq B-(B+1)\alpha +1$ for some $B_0$.
-Similarly, the acceptance region is
+$$\sum_{i=1}^B (1-\mathbf{1}_{\{T_i^*\geq T_0\}})\geq B-(B+1)\alpha +1.$$
+Note that the left hand side is a sum of non-negative vaues. We can reject the null once $\sum_{i=1}^{B_0} (1-\mathbf{1}_{\{T_i^*\geq T_0\}})\geq B-(B+1)\alpha +1$ for some $B_0$.
+Similarly, the acception region is
 $$\sum_{i=1}^B \mathbf{1}_{\{T_i^*\geq T_0\}}> (B+1)\alpha -1.$$
 we can accept the null once the sum of left hand side exceeds the right hand side.
 The algorithm~\ref{theAlgorithm} summarizes our previous argument.
@@ -318,7 +305,7 @@ where $\Gamma$ is a $p\times m$ matrix for some $m\geq p$ such that $\Gamma_i\Ga
     \mathrm{E}(z_{il_1}^{\alpha_1}z_{il_2}^{\alpha_2}\cdots z_{il_q}^{\alpha_q})=\mathrm{E}(z_{il_1}^{\alpha_1})\mathrm{E}(z_{il_2}^{\alpha_2})\cdots \mathrm{E}(z_{il_q}^{\alpha_q})
 \end{equation}
 for a positive integer $q$ such that $\sum_{l=1}^q \alpha_l\leq 8$ and $l_1\neq l_2\neq \cdots \neq l_q$.
-Note that here $X_1$ and $-X_1$ don't need to have the same distribution under null hypothesis.
+Note that here $X_1$ and $-X_1$ don't need to have the same distribution.
 
 %In the following, $T(X_1,\ldots, X_n)$ will be specialized to~\eqref{Statistic}.
 
@@ -335,9 +322,9 @@ Although~\cite{Chen2010A}'s results are for two sample case, their results can b
         \mu^T \Sigma\mu=o(n^{-1}\mathrm{tr}\Sigma^2),
     \end{equation}
     we have
-        $$
+    \begin{equation}
         \frac{T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}\xrightarrow{\mathcal{L}}N(0,1).
-        $$
+    \end{equation}
 \end{theorem}
 And
 \begin{theorem}\label{theoremChen2}
@@ -345,15 +332,15 @@ And
      n^{-1}\mathrm{tr}(\Sigma)^2   =o(\mu^T \Sigma\mu),
     \end{equation}
     we have
-        $$
+    \begin{equation}
         \frac{T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T \Sigma\mu}}\xrightarrow{\mathcal{L}}N(0,1).
-        $$
+    \end{equation}
 \end{theorem}
 
-We shall call the conditional distribution
-        $$
+We will call the conditional distribution
+\begin{equation*}
         \mathcal{L}\Big(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big)
-        $$
+\end{equation*}
 the randomization distribution.
 Let $\xi^*_{\alpha}$ be the $1-\alpha$ quantile of the randomization distribution.
 Then the test function $\phi(X_1,\ldots,X_n)$ equals to $1$ when 
@@ -392,12 +379,12 @@ It's also a theoretical interest to understand the behavior of randomization dis
        \sqrt{\mathrm{tr}{\Sigma}^2} =o\big(\mu^T\mu\big),
     \end{equation}
     we have
-    \begin{equation*}
+    \begin{equation}
         \rho\Big(\mathcal{L}\Big(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),\frac{\sqrt{2}}{2}\big(\chi^2_1-1\big)\Big)\xrightarrow{P} 0.
-    \end{equation*}
+    \end{equation}
 \end{theorem}
 
-Once the limit of the randomization distribution is obtained, the asymptotic behavior of $\xi_{\alpha}^*$ can be derived immediately.
+Once the asymptotic distribution of the randomization distribution is obtained, the asymptotic behavior of $\xi_{\alpha}^*$ can be derived immediately.
 Let $\Phi(\cdot)$ be the cumulative distribution function (CDF) of standard normal distribution, we have
 \begin{corollary}\label{corollaryQuan}
     Under the conditions of Theorem~\ref{shaziCLT}, we have
@@ -490,12 +477,12 @@ Hence randomization may loss some power.
 
 
 
-\section{Simulation Studies}
+\section{Simulation studies}
 In this section, we report the simulation performance of the randomization test in various setting.
 We compare randomization method with asymptotic method.
 Throughout, we set $B=200$.
 Asymptotic method needs a ratio consistent estimator of $\mathrm{tr}\Sigma^2$.
-However, a good estimator is often complicated and thus time consuming. For simplicity, throughout the simulation the asymptotic method is implemented by using true $\mathrm{tr}\Sigma^2$, which will in principle perform better.
+However, a good estimator is often complicated and thus time-consuming. For simplicity, throughout the simulation the asymptotic method is implemented by using true $\mathrm{tr}\Sigma^2$, which will in principle perform better.
 The empirical power and size are computed based on $1000$ simulations.
 
 
@@ -510,9 +497,9 @@ Each non-zero coordinate is again independently generated from $U(2,3)$ and then
 We consider two innovation structure: the moving average model and the factor model.
 
 We first conduct the moving average model. In model~\eqref{chenC1}, we set $m=p+k$ and ${(\Gamma)}_{ij}=\rho_{j-i}$ for $j=i,\ldots, i+k$ and ${(\Gamma)}_{ij}=0$ otherwise. More precisely,
-\begin{equation*}
+\begin{equation}
     X_{ij}=\sum_{l=0}^k \rho_{l}Z_{i,j+l}
-\end{equation*}
+\end{equation}
 for $i=1,\ldots, n$ and $j=1,\ldots, p$. Here $Z_{ij}$'s are i.i.d.\ random variables with distribution $F$ for $i=1,\ldots, n$ and $j=1,\ldots, p+k$. 
 Like~\cite{Chen2010A}, we consider two different $F$.
 One is $N(0,1)$, and the other is $(\textrm{Gamma}(4,1)-4)/2$.
@@ -606,55 +593,38 @@ Table 3 list the simulation results. Although the distribution is not symmetric,
 \end{table}
 
 
-\section{Conclusion Remark}
-In this paper, we considered a randomization test for mean vector in high dimensional setting.
-A fast implementation was provided.
-We also derived some asymptotic properties of the test procedure.
-For illustration, we only considered a special statistic. In fact, the algorithm and the proof method can be applied to other quadratic based statistics.
-
-We showed that even if the symmetric assumption is violated, the randomization test also has correct level asymptotically.
-Hence the test procedure is robust.
-It is interesting to investigate the robustness of randomization test in finite sample case.
-
-In classical statistics, randomization procedure is time consuming.
-Nevertheless, our algorithm shows that the time complexity of randomization procedure is not affected by dimension. 
-The randomization test can be even more efficient than asymptotic method while holding desirable statistic properties.
-Hence we have reason to believe that randomization tests may be generally suitable for high dimensional problems.
-
+\section{Conclusion remark}
 
 Maybe the most widely used randomization method is the two sample permutation test.
 As~\cite{Romano1990On} pointed out, the asymptotic property of randomization tests depends heavily on the particular problem and the two sample case is quite distinct from the one sample case.
 The method used in this paper can not be applied to permutation test.
-We leave it for possible future work.
-
 
 \section{Appendix}
-\paragraph{A CLT for quadratic form of Rademacher variables}
+\paragraph{CLT for quadratic form of Rademacher varaibles}
 The proof of the Theorem~\ref{shaziCLT} is based on a CLT of the quadratic form of Rademacher variables. 
 Such a CLT can be also used to study the asymptotic behavior of many other randomization test.
- Let $\epsilon_1,\ldots,\epsilon_n$ be independent Rademacher  variables. 
+ Let $\epsilon_1,\ldots,\epsilon_n$ be indepent Rademacher  variables. 
  Consider quadratic form $W_n=\sum_{1\leq j<i\leq n} a_{ij}\epsilon_i \epsilon_j$, where $\{a_{ij}\}$ are nonrandom numbers. Here $\{\epsilon_i\}$ and $\{a_{ij}\}$ may depend on $n$, a parameter we suppress.
  Obviously, $\mathrm{E}(W_n)=0$ and $\mathrm{Var}(W_n)=\sum_{1\leq j<i\leq n} a_{ij}^2$.
 
  \begin{proposition}\label{CLTprop}
      A sufficient condition for
-     \begin{equation*}
+     \begin{equation}
          \frac{W_n}{\sqrt{\sum_{1\leq j<i\leq n} a_{ij}^2}}\xrightarrow{\mathcal{L}} N(0,1)
-     \end{equation*}
+     \end{equation}
      is that
-     \begin{equation*}
+     \begin{equation}
          \sum_{j<k}{(\sum_{i:i>k}a_{ij}a_{ik})}^2+
          \sum_{j<i}a_{ij}^4+
          \sum_{j<k<i}a_{ij}^2 a_{ik}^2
          =o\big({(\sum_{j<i} a_{ij}^2)}^2\big).
-     \end{equation*}
+     \end{equation}
  \end{proposition}
 
  \begin{proof}
      Define $U_{in} =\epsilon_i \sum_{j=1}^{i-1} a_{ij}\epsilon_j$, $i=2,\ldots,n$, and $\mathcal{F}_{in}=\sigma\{\epsilon_1,\ldots,\epsilon_i\}$, $i=1,\ldots, n$.
      Now $W_n=\sum_{i=2}^n U_{in}$, $\{U_{in}\}$ is a martingale difference array with respect to $\{\mathcal{F}_{in}\}$. 
-Then MCLT can be used. See, for example,~\cite{pollard1984convergence}, Chapter VIII Theorem 1.
-     To prove the proposition, we shall verify two conditions:
+     To prove the proposition, we shall verify two conditions (See~\cite{pollard1984convergence}):
      \begin{equation}\label{MCLTcondition1}
          \frac{\sum_{i=2}^n \mathrm{E}(U_{in}^2 |\mathcal{F}_{i-1,n})}{\sum_{1\leq j<i\leq n} a_{ij}^2}\xrightarrow{P} 1,
      \end{equation}
@@ -693,7 +663,7 @@ Then MCLT can be used. See, for example,~\cite{pollard1984convergence}, Chapter 
      \begin{equation}\label{temp1}
          \frac{\sum_{i=2}^n \mathrm{E}\big(U_{in}^4\big|\mathcal{F}_{i-1,n}\big)}{{\big(\sum_{1\leq j<i\leq n} a_{ij}^2\big)}^2}\xrightarrow{P} 0.
      \end{equation}
-     Since the relevant random variables are all positive, we only need to prove~\eqref{temp1} converges to $0$ in mean. But
+     Since the relavant random variables are all positive, we only need to prove~\eqref{temp1} converges to $0$ in mean. But
      \begin{equation*}
          \begin{aligned}
          \sum_{i=2}^n \mathrm{E} U_{in}^4
@@ -714,9 +684,7 @@ Then MCLT can be used. See, for example,~\cite{pollard1984convergence}, Chapter 
      where the last equality holds by assumption. Hence~\eqref{MCLTcondition2} holds.
  \end{proof}
 
- The rest of Appendix is devoted to the proof of the theorems in the paper.
-
-
+\paragraph{Asymptotic normality}
 \begin{lemma}\label{lemmaUniformSimple}
     Suppose $\{\eta_n\}$ is a sequence of $1$-dimensional random variables, weakly converges to $\eta$, a random variable with continuous distribution function.
     Then we have
@@ -727,12 +695,12 @@ Then MCLT can be used. See, for example,~\cite{pollard1984convergence}, Chapter 
 
 \begin{lemma}\label{lemmaQ}
     Suppose $A=(a_{ij})$ is an $m\times m$ positive semi-definite matrix. Under~\eqref{chenC2}, we have
-        $$
+    \begin{equation}
         \mathrm{E} {(Z_i^T A Z_i)}^2\asymp {(\mathrm{tr}A)}^2
-        $$
+    \end{equation}
 \begin{proof}
 Notice that
-    $$
+\begin{equation}
     \begin{aligned}
         {(Z_i^T A Z_i)}^2
         =&
@@ -747,9 +715,9 @@ Notice that
         &+
         4(\sum_{k<j}a_{jk}^2z_{ij}^2z_{ik}^2+\sum_{k<j,l<\alpha:\mathrm{card}(\{k,j\}\cap\{l,\alpha\})<2} a_{jk}a_{\alpha l}z_{ij}z_{ik}z_{i\alpha}z_{il})\\
     \end{aligned}
-    $$
+\end{equation}
 Hence
-    $$
+\begin{equation}
     \begin{aligned}
         \mathrm{E}{(Z_i^T A Z_i)}^2
         =&
@@ -760,7 +728,7 @@ Hence
         \sum_{j=1}^n\sum_{k=1}^n a_{jk}^2
         ={(\mathrm{tr}(A))}^2+\mathrm{tr}A^2.
     \end{aligned}
-    $$
+\end{equation}
 
     By Cauchy inequality, $0\leq \mathrm{tr} A^2\leq {(\mathrm{tr}A)}^2$. The conclusion holds.
 
@@ -775,16 +743,16 @@ Hence
     \end{equation}
 \end{lemma}
 \begin{proof}
-    $$
+    \begin{equation}
         \begin{aligned}
             {(X_i^T X_j)}^4=&
             {(Z_i^T \Gamma^T \Gamma Z_j+\mu^T \Gamma Z_i+\mu^T \Gamma Z_j+\mu^T \mu)}^4\\
             \leq &
             64\big((Z_i^T \Gamma^T \Gamma Z_j)^4+(\mu^T \Gamma Z_i)^4+(\mu^T \Gamma Z_j)^4+(\mu^T \mu)^4\big)\\
         \end{aligned}
-    $$
+    \end{equation}
     We deal with the first term by applying Lemma~\ref{lemmaQ} twice.
-        $$
+    \begin{equation}
         \begin{aligned}
             \mathrm{E}(Z_i^T \Gamma^T \Gamma Z_j)^4=&
         \mathrm{E}(Z_i^T \Gamma^T \Gamma Z_j Z_j^T \Gamma^T \Gamma Z_i)^2
@@ -794,9 +762,9 @@ Hence
             \asymp   {(\mathrm{tr}\Sigma^2)}^2,%+\mathrm{tr}\Sigma^4\\
             %\leq &  (\mathrm{tr}\Sigma^2)^2+\lambda_{\max}^2(\Sigma)\mathrm{tr}\Sigma^2,
         \end{aligned}
-    $$
+    \end{equation}
     Similarly, we have
-        $$
+    \begin{equation}
         \begin{aligned}
             &\mathrm{E}(\mu^T \Gamma Z_i)^4=
         \mathrm{E}(Z_i^T \Gamma^T \mu\mu^T \Gamma Z_i)^2
@@ -806,7 +774,7 @@ Hence
             \leq {\big(\mathrm{tr}(\Sigma^2)\big)}^2+{(\mu^T \mu)}^4.
         %\leq \lambda_{\max}^2(\Sigma){(\mu^T\mu)}^2
         \end{aligned}
-    $$
+    \end{equation}
     Thus, the conclusion holds.
 \end{proof}
 
@@ -861,7 +829,7 @@ Note that
     \leq {(\mathrm{tr}(\Sigma^2))}^{i/2}\mu^T\mu.
     $$
     Thus,
-        $$
+    \begin{equation}
         \begin{aligned}
             &\mathrm{E}{(X_i^T X_j)}^2{(X_k^T X_i)}^2\\
             =&
@@ -873,20 +841,20 @@ Note that
             \big)\\
             =& O(1){\Big(\mathrm{tr}{\big(\Sigma+\mu\mu^T\big)}^2\Big)}^2.
         \end{aligned}
-        $$
+    \end{equation}
 \end{proof}
 
 
 \begin{lemma}\label{ratioLemma}
     Under~\eqref{chenC1} and~\eqref{chenC2}, we have
-        $$
+    \begin{equation}
         \frac{\sum_{j<i}{(X_i^T X_j)}^2}{\frac{n(n-1)}{2}\mathrm{tr} (\Sigma+\mu\mu^T)^2}
         \xrightarrow{P}1.
-        $$
+    \end{equation}
 \end{lemma}
 \begin{proof}
     Since
-        $$
+    \begin{equation}
         \begin{aligned}
             \mathrm{E}{(X_i^T X_j)}^2=&
             \mathrm{E}(X_i^T X_j X_j^T X_i)=
@@ -894,11 +862,11 @@ Note that
             =&
             \mathrm{E}\mathrm{tr}((\Sigma+\mu \mu^T) X_i X_i^T)=\mathrm{tr}{(\Sigma+\mu \mu^T)}^2,
         \end{aligned}
-    $$
+    \end{equation}
    we have 
-        $$
+    \begin{equation}
         \mathrm{E}\sum_{j<i}{(X_i^T X_j)}^2=\frac{n(n-1)}{2}\mathrm{tr}{(\Sigma+\mu\mu^T)}^2
-    $$
+    \end{equation}
     So we only need to consider the variance. According to $\mathrm{card}(\{i,j\}\cap\{k,l\})=0,1,2$, we have
     \begin{equation}\label{eq:1}
     \begin{aligned}
@@ -917,13 +885,13 @@ Note that
 
    
     In~\eqref{eq:1}, there are $n(n-1)/2$, $n(n-1)(n-2)(n-3)/4$ and $n(n-1)(n-2)/6$ terms in each summation. By Lemma~\ref{smallLemma1} and Lemma~\ref{smallLemma2}, we have
-    $$
+    \begin{equation}
     \begin{aligned}
         \mathrm{E}{\big(\sum_{j<i}{(X_i^T X_j)}^2\big)}^2
             =&\frac{n(n-1)(n-2)(n-3)}{4}{\big(\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)}^2\\
             &+O(1)(\frac{n(n-1)}{2}+n(n-1)(n-2)){\big(\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)}^2.
     \end{aligned}
-    $$
+    \end{equation}
 Hence 
     $$
     \frac{
@@ -1004,6 +972,76 @@ By a standard subsequence argument, we only need to prove
 
 \end{proof}
 
+
+
+\begin{proof}[Proof of Theorem~\ref{theoremPower}]
+    Note that
+    \begin{align}
+            &\Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\nonumber\\
+            =&
+            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^*-\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \Big)
+            \label{powerEq1}
+    \end{align}
+    If~\eqref{mu2} holds, by Lemma~\ref{ratioLemma}, we have
+    $$
+    \frac{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}\xrightarrow{P}1.
+    $$
+    By Corollary~\ref{corollaryQuan}, we have $\xi_{\alpha}^*\xrightarrow{P} \Phi(1-\alpha)$.
+Thus,
+    \begin{equation*}
+        \begin{aligned}
+            \eqref{powerEq1}=&
+            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}-
+            \frac{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}\xi_{\alpha}^*>
+            -\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}} \Big)\\
+            =&
+            \Pr\Big(N(0,1)-\Phi(1-\alpha)>-\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}}\Big)+o(1)\\
+            =&
+            \Phi(-\Phi(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}})+o(1),
+        \end{aligned}
+    \end{equation*}
+    where the last two equality holds by Theorem~\ref{theoremChen}, Slutsky's theorem and Lemma~\ref{lemmaUniformSimple}.
+
+    If~\eqref{mu3} holds, by Lemma~\ref{ratioLemma}, we have
+    $$
+    \frac{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}{\frac{n(n-1)}{2}{(\mu^T\mu)}^2}\xrightarrow{P}1.
+    $$
+    Thus
+            
+    \begin{equation*}
+        \begin{aligned}
+            &\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}        \\
+            =&\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}
+            \frac{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}{\sqrt{\frac{n(n-1)}{2}{(\mu^T \mu)}^2}}        
+            \frac{\sqrt{\frac{n(n-1)}{2}{(\mu^T \mu)}^2}}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}        
+            \xrightarrow{P} 0.
+        \end{aligned}
+    \end{equation*}
+    Since $\xi_{\alpha}^*\xrightarrow{P}\frac{\sqrt{2}}{2}(\Phi^{-1}(1-\frac{\alpha}{2})-1)$ by Corollary~\ref{corollaryQuan2},  we have that $\eqref{powerEq1}\to 1$.
+
+
+\end{proof}
+\begin{proof}[Proof of Theorem~\ref{theoremPower2}]
+    Note that
+    \begin{align}
+            &\Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\nonumber\\
+            =&
+            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}}>
+            \frac{\sqrt{\sum_{1\leq j<i\leq n}{{(X_i^T X_j)}^2}}}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}}\xi_{\alpha}^*-\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}} \Big).
+            \label{powerEq2}
+    \end{align}
+    If~\eqref{mu2} holds, the theorem follows by Theorem~\ref{theoremChen2} and the fact that if~\eqref{mu2} holds, the coefficient of $\xi_\alpha^*$ in~\eqref{powerEq2} tends to $0$.
+
+    If~\eqref{mu3} holds, the theorem follows by noting that
+    \begin{equation*}
+        \begin{aligned}
+            \eqref{powerEq2}=
+            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}}>
+            -(1+o_P(1))\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}} \Big).
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
 \begin{proof}[Proof of Theorem~\ref{farT}]
     \begin{equation*}
         \begin{aligned}
@@ -1051,82 +1089,6 @@ Next we show that $C_1$, $C_2$ and $C_3$ are negligible under the assumptions of
     $$\mathrm{E}(C_2^2)=\mathrm{E}(C_3^2)=\frac{n(n-1)}{2}\mu^T \Sigma \mu\leq \frac{n(n-1)}{2}\sqrt{\mathrm{tr}\Sigma^2}\mu^T\mu.$$
     Thus~\eqref{Rush} follows by Assumption~\eqref{mu3}. Having~\eqref{rush2} holds, the theorem follows by Slutsky's theorem, Lemma~\ref{ratioLemma} and Assumption~\eqref{mu3}.
 \end{proof}
-
-
-\begin{proof}[Proof of Theorem~\ref{theoremPower}]
-    Note that
-    \begin{align}
-            &\Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\nonumber\\
-            =&
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^*-\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \Big)
-            \label{powerEq1}
-    \end{align}
-    If~\eqref{mu2} holds, by Lemma~\ref{ratioLemma}, we have
-    $$
-    \frac{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}\xrightarrow{P}1.
-    $$
-    By Corollary~\ref{corollaryQuan}, we have $\xi_{\alpha}^*\xrightarrow{P} \Phi(1-\alpha)$.
-Thus,
-    \begin{equation*}
-        \begin{aligned}
-            \eqref{powerEq1}=&
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}-
-            \frac{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}\xi_{\alpha}^*>
-            -\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}} \Big)\\
-            =&
-            \Pr\Big(N(0,1)-\Phi(1-\alpha)>-\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}}\Big)+o(1)\\
-            =&
-            \Phi(-\Phi(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}})+o(1),
-        \end{aligned}
-    \end{equation*}
-    where the last two equality holds by Theorem~\ref{theoremChen}, Slutsky's theorem and Lemma~\ref{lemmaUniformSimple}.
-
-    If~\eqref{mu3} holds, by Lemma~\ref{ratioLemma}, we have
-    $$
-    \frac{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}{\frac{n(n-1)}{2}{(\mu^T\mu)}^2}\xrightarrow{P}1.
-    $$
-    Thus
-            
-    \begin{equation*}
-        \begin{aligned}
-            &\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}        \\
-            =&\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}
-            \frac{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}{\sqrt{\frac{n(n-1)}{2}{(\mu^T \mu)}^2}}        
-            \frac{\sqrt{\frac{n(n-1)}{2}{(\mu^T \mu)}^2}}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}        
-            \xrightarrow{P} 0.
-        \end{aligned}
-    \end{equation*}
-    By Corollary~\ref{corollaryQuan2}, $\xi_{\alpha}^*\xrightarrow{P}\frac{\sqrt{2}}{2}\Big(\big(\Phi^{-1}(1-\frac{\alpha}{2})\big)^2-1\Big)$. And 
-   $$
-    \frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}=
-    \sqrt{\frac{n(n-1)}{2}}\frac{\sqrt{\frac{n(n-1)}{2}(\mu^T\mu)^2}}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}
-    \xrightarrow{P}+\infty.
-    $$ 
-    Then $\eqref{powerEq1}\to 1$.
-
-
-\end{proof}
-\begin{proof}[Proof of Theorem~\ref{theoremPower2}]
-    Note that
-    \begin{align}
-            &\Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\nonumber\\
-            =&
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}}>
-            \frac{\sqrt{\sum_{1\leq j<i\leq n}{{(X_i^T X_j)}^2}}}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}}\xi_{\alpha}^*-\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}} \Big).
-            \label{powerEq2}
-    \end{align}
-    If~\eqref{mu2} holds, the theorem follows by Theorem~\ref{theoremChen2} and the fact that if~\eqref{mu2} holds, the coefficient of $\xi_\alpha^*$ in~\eqref{powerEq2} tends to $0$.
-
-    If~\eqref{mu3} holds, the theorem follows by noting that
-    \begin{equation*}
-        \begin{aligned}
-            \eqref{powerEq2}=
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}}>
-            -(1+o_P(1))\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}} \Big).
-        \end{aligned}
-    \end{equation*}
-\end{proof}
-
 
 
 \section*{References}

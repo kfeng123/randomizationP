@@ -1,3 +1,6 @@
+% Encoding: ISO-8859-1
+
+
 @Article{Bai1996Efiect,
   Title                    = {Effect of high dimension: by an example of a two sample problem},
   Author                   = {Bai, Z. and Saranadasa, H.},
@@ -9,6 +12,7 @@
 
   File                     = {Bai1996Efiect.pdf:Bai1996Efiect.pdf:PDF}
 }
+
 @Article{Chen2010A,
   Title                    = {A two-sample test for high-dimensional data with applications to gene-set testing},
   Author                   = {Chen, Song Xi and Qin, Ying Li},
@@ -20,21 +24,13 @@
 
   File                     = {Chen2010A.pdf:Chen2010A.pdf:PDF}
 }
-@Article{Srivastava2009A,
-  Title                    = {A test for the mean vector with fewer observations than the dimension under non-normality},
-  Author                   = {Srivastava, Muni S.},
-  Journal                  = {Journal of Multivariate Analysis},
-  Year                     = {2009},
-  Number                   = {3},
-  Pages                    = {518-532As the access to this document is restricted, you may want to look for a different version under "Related research" (further below) orfor a different version of it.},
-  Volume                   = {100},
 
-  File                     = {Srivastava2009A.pdf:Srivastava2009A.pdf:PDF}
+@Article{Fisher,
+  Title                    = {The Design of Experiments.},
+  Author                   = {Fisher, R A},
+  Year                     = {1936}
 }
-@article{Fisher,
-title={The Design of Experiments.},
-author={Fisher, R A},
-year={1936}}
+
 @Article{Romano1990On,
   Title                    = {On the Behavior of Randomization Tests Without a Group Invariance Assumption},
   Author                   = {Romano, Joseph P.},
@@ -47,3 +43,118 @@ year={1936}}
   File                     = {Romano1990On.pdf:Romano1990On.pdf:PDF}
 }
 
+@Article{Srivastava2009A,
+  Title                    = {A test for the mean vector with fewer observations than the dimension under non-normality},
+  Author                   = {Srivastava, Muni S.},
+  Journal                  = {Journal of Multivariate Analysis},
+  Year                     = {2009},
+  Number                   = {3},
+  Pages                    = {518-532As the access to this document is restricted, you may want to look for a different version under "Related research" (further below) orfor a different version of it.},
+  Volume                   = {100},
+
+  File                     = {Srivastava2009A.pdf:Srivastava2009A.pdf:PDF}
+}
+
+@Article{Wang2015A,
+  Title                    = {A High-Dimensional Nonparametric Multivariate Test for Mean Vector.},
+  Author                   = {Wang, L. and Peng, B. and Li, R.},
+  Journal                  = {Journal of the American Statistical Association},
+  Year                     = {2015},
+  Number                   = {512},
+  Pages                    = {00-00},
+  Volume                   = {110},
+
+  File                     = {Wang2015A.pdf:Wang2015A.pdf:PDF}
+}
+
+@Article{Jong1987A,
+  Title                    = {A central limit theorem for generalized quadratic forms},
+  Author                   = {Jong, Peter De},
+  Journal                  = {Probability Theory \& Related Fields},
+  Year                     = {1987},
+  Number                   = {2},
+  Pages                    = {261-277},
+  Volume                   = {75},
+
+  File                     = {Jong1987A.pdf:Jong1987A.pdf:PDF}
+}
+@Article{efron2007on,
+  Title                    = {On testing the significance of sets of genes},
+  Author                   = {Bradley Efron,Robert JTibshirani},
+  Journal                  = {The Annals of Applied Statistics},
+  Year                     = {2007},
+  Number                   = {1},
+  Pages                    = {107--129},
+  Volume                   = {1},
+
+  File                     = {efron2007on.pdf:efron2007on.pdf:PDF}
+}
+@article{Chung2013Exact,
+  title={Exact and asymptotically robust permutation tests},
+  author={Chung, Eun Yi and Romano, Joseph P.},
+  journal={Annals of Statistics},
+  volume={41},
+  number={2},
+  pages={484-507},
+  year={2013},
+}
+
+@Book{pollard1984convergence,
+  Title                    = {Convergence of stochastic processes},
+  Author                   = {David Pollard},
+  Journal                  = {Economica},
+  Year                     = {1984},
+
+  File                     = {pollard1984convergence.pdf:pollard1984convergence.pdf:PDF}
+}
+@Book{Lehmann,
+  Title                    = {Testing Statistical Hypotheses},
+  Author                   = {E. L. Lehmann, Joseph P. Romano},
+  Publisher                = {Springer New York},
+  Year                     = {2005},
+
+  Doi                      = {10.1007/0-387-27605-X},
+  File                     = {Lehmann.pdf:Lehmann.pdf:PDF}
+}
+
+@Article{fan2007to,
+  Title                    = {To how many simultaneous hypothesis tests can normal, Student's t or bootstrap calibration be applied?},
+  Author                   = {Fan, Jianqing and Hall, Peter and Yao, Qiwei},
+  Journal                  = {Journal of the American Statistical Association},
+  Year                     = {2007},
+  Number                   = {480},
+  Pages                    = {1282--1288},
+  Volume                   = {102},
+
+  File                     = {fan2007to.pdf:fan2007to.pdf:PDF}
+}
+
+@Book{andersonMultivariate,
+  title     = {An Introduction to Multivariate Statistical Analysis},
+  publisher = {Wiley},
+  year      = {2003},
+  author    = {Anderson, T. W.},
+  address   = {New York},
+  edition   = {3rd edition},
+  groups    = {book},
+  owner     = {kfeng123},
+  timestamp = {2017.07.12},
+}
+
+@Article{Srivastava2008A,
+  author    = {Muni S. Srivastava and Meng Du},
+  title     = {A test for the mean vector with fewer observations than the dimension},
+  journal   = {Journal of Multivariate Analysis},
+  year      = {2008},
+  volume    = {99},
+  number    = {3},
+  pages     = {386--402},
+  month     = {mar},
+  doi       = {10.1016/j.jmva.2006.11.002},
+  keywords  = {rank5},
+  owner     = {kfeng123},
+  publisher = {Elsevier {BV}},
+  timestamp = {2017.07.12},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}

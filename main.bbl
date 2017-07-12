@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{14}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -11,6 +11,13 @@
 \providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
 \providecommand{\bibinfo}[2]{#2}
 \ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Book
+\bibitem[{Anderson(2003)}]{andersonMultivariate}
+\bibinfo{author}{Anderson, T.W.}, \bibinfo{year}{2003}.
+\newblock \bibinfo{title}{An Introduction to Multivariate Statistical
+  Analysis}.
+\newblock \bibinfo{edition}{3rd edition} ed., \bibinfo{publisher}{Wiley},
+  \bibinfo{address}{New York}.
 %Type = Article
 \bibitem[{Bai and Saranadasa(1996)}]{Bai1996Efiect}
 \bibinfo{author}{Bai, Z.}, \bibinfo{author}{Saranadasa, H.},
@@ -33,6 +40,13 @@
   applications to gene-set testing}.
 \newblock \bibinfo{journal}{Annals of Statistics} \bibinfo{volume}{38},
   \bibinfo{pages}{808--835}.
+%Type = Article
+\bibitem[{Chung and Romano(2016)}]{Chung2016Multivariate}
+\bibinfo{author}{Chung, E.Y.}, \bibinfo{author}{Romano, J.P.},
+  \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{Multivariate and multiple permutation tests}.
+\newblock \bibinfo{journal}{Journal of Econometrics} \bibinfo{volume}{193},
+  \bibinfo{pages}{76--91}.
 %Type = Book
 \bibitem[{E.~L.~Lehmann(2005)}]{Lehmann}
 \bibinfo{author}{E.~L.~Lehmann, J.P.R.}, \bibinfo{year}{2005}.
@@ -70,14 +84,14 @@
 \newblock \bibinfo{journal}{Journal of the American Statistical Association}
   \bibinfo{volume}{85}, \bibinfo{pages}{686--692}.
 %Type = Article
-\bibitem[{Srivastava(2009)}]{Srivastava2009A}
-\bibinfo{author}{Srivastava, M.S.}, \bibinfo{year}{2009}.
+\bibitem[{Srivastava and Du(2008)}]{Srivastava2008A}
+\bibinfo{author}{Srivastava, M.S.}, \bibinfo{author}{Du, M.},
+  \bibinfo{year}{2008}.
 \newblock \bibinfo{title}{A test for the mean vector with fewer observations
-  than the dimension under non-normality}.
+  than the dimension}.
 \newblock \bibinfo{journal}{Journal of Multivariate Analysis}
-  \bibinfo{volume}{100}, \bibinfo{pages}{518--532As the access to this document
-  is restricted, you may want to look for a different version under "Related
-  research" (further below) orfor a different version of it.}
+  \bibinfo{volume}{99}, \bibinfo{pages}{386--402}.
+\newblock \DOIprefix\doi{10.1016/j.jmva.2006.11.002}.
 %Type = Article
 \bibitem[{Wang et~al.(2015)Wang, Peng and Li}]{Wang2015A}
 \bibinfo{author}{Wang, L.}, \bibinfo{author}{Peng, B.}, \bibinfo{author}{Li,
@@ -86,5 +100,13 @@
   for mean vector.}
 \newblock \bibinfo{journal}{Journal of the American Statistical Association}
   \bibinfo{volume}{110}, \bibinfo{pages}{00--00}.
+%Type = Article
+\bibitem[{Zhu and Neuhaus(2000)}]{Zhu2000N}
+\bibinfo{author}{Zhu, L.X.}, \bibinfo{author}{Neuhaus, G.},
+  \bibinfo{year}{2000}.
+\newblock \bibinfo{title}{Nonparametric monte carlo tests for multivariate
+  distributions}.
+\newblock \bibinfo{journal}{Biometrika} \bibinfo{volume}{87},
+  \bibinfo{pages}{919--928}.
 
 \end{thebibliography}
