@@ -48,6 +48,11 @@
 \usepackage{algorithmic}
 
 
+\DeclareMathOperator{\mytr}{tr}
+\DeclareMathOperator{\mydiag}{diag}
+\DeclareMathOperator{\myrank}{Rank}
+\DeclareMathOperator{\myE}{E}
+\DeclareMathOperator{\myVar}{Var}
 
 
 \theoremstyle{plain}
@@ -70,7 +75,7 @@
 
 \begin{frontmatter}
 
-\title{A randomization test for mean vector in high dimension}
+\title{A feasible high dimensional randomization test for mean vector}
 %\tnotetext[mytitlenote]{Fully documented templates are available in the elsarticle package on \href{http://www.ctan.org/tex-archive/macros/latex/contrib/elsarticle}{CTAN}.}
 
     \author[mymainaddress]{Rui Wang}
@@ -97,7 +102,7 @@
 \end{abstract}
 
 \begin{keyword}
-Randomization test\sep High dimension\sep Symmetry assumption \sep Asymptotic power function 
+    Asymptotic power function \sep High dimension \sep Randomization test\sep Symmetry assumption 
 %\MSC[2010] 00-01\sep  99-00
 \end{keyword}
 
@@ -108,14 +113,14 @@ Randomization test\sep High dimension\sep Symmetry assumption \sep Asymptotic po
 
 \section{Introduction}
 
-Let $X_{1},\ldots,X_{n}$ be independent and identically distributed (iid) $p$-dimensional random vectors with mean vector $\mu={(\mu_1,\ldots,\mu_p)}^T$ and covariance matrix $\Sigma$. In this paper, we consider a randomization test procedure for testing the hypothesis
+Let $X_{1},\ldots,X_{n}$ be independent and identically distributed (iid) $p$-dimensional random vectors with mean vector $\mu={(\mu_1,\ldots,\mu_p)}^T$ and covariance matrix $\Sigma$. In this paper, we consider a randomization test procedure for testing the hypotheses
 \begin{equation}\label{ourHy}
     H_0:\mu=0_p\quad \textrm{versus} \quad H_1:\mu\neq 0_p.
 \end{equation}
 
 
-%Tests for hypothesis~\eqref{ourHy} has been extensively studied by many researchers.
-A classical test statistic for hypothesis~\eqref{ourHy} is Hotelling's $T^2$, defined as
+%Tests for hypotheses~\eqref{ourHy} has been extensively studied by many researchers.
+A classical test statistic for hypotheses~\eqref{ourHy} is Hotelling's $T^2$, defined as
     $
     n\bar{X}^T S^{-1}\bar{X}
     $,
@@ -144,34 +149,31 @@ In this case, the Type I error rates of asymptotic method may be far away from n
 
 The idea of randomization test dates back to~\cite{Fisher}, which is a tool to determine the critical value for a given test statistic.
 \cite{Romano1990On} described a general construction of the randomization test.
-In high dimension setting, randomization test is widely used in applied statistics. See, for example,~\cite{efron2007on}.
+In high dimension setting, randomization test is widely used in applied statistics. \textcolor{red}{See, for example,~\cite{efron2007on}.}
 It's strength is in that the resulting test procedure has exact level under mild condition.
 There are many papers give theoretical analysis for fixed $p$ case.
 See, for example,~\cite{Romano1990On},~\cite{Zhu2000N} and~\cite{Chung2016Multivariate}.
 
 In this paper, we consider the following randomization method.
-Suppose $T(X_1,\ldots,X_n)$ is certain test statistic for hypothesis~\eqref{ourHy}.
-Let $\epsilon_1,\ldots,\epsilon_n$ be i.i.d.\ Rademacher variables ($\Pr(\epsilon_i=1)=\Pr(\epsilon_i=-1)=1/2$) which are independent of the data.
+Suppose $T(X_1,\ldots,X_n)$ is certain test statistic for hypotheses~\eqref{ourHy}.
+Let $\epsilon_1,\ldots,\epsilon_n$ be iid Rademacher variables ($\Pr(\epsilon_i=1)=\Pr(\epsilon_i=-1)=1/2$) which are independent of the data.
 Denote by
 \begin{equation}\label{ranDis}
     \mathcal{L}\big(T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)|X_1,\ldots,X_n\big)
 \end{equation}
  the conditional distribution of $T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)$ conditioning on $X_1,\ldots,X_n$.
  The null hypothesis is rejected when $T(X_1,\ldots, X_n)$ is greater than the $1-\alpha$ quantile of the conditional distribution~\eqref{ranDis} and is accepted otherwise, where $\alpha$ is the test level and the $1-\alpha$ quantile of a distribution function $F(\cdot)$ is defined as $\inf\{y: F(y)\geq 1-\alpha\}$.
-For illustration, this paper only considers the test statistic
-\begin{equation}\label{Statistic}
-    T(X_1,\ldots,X_n)=\sum_{j<i}X_i^T X_j.
-\end{equation}
-Nevertheless, other quadratic form statistics can also be studied by similar method.
-In fixed $p$ setting, it's well known that randomization test has much higher time complexity than asymptotic method, which  historically  hampered it's use. 
+In fixed $p$ setting, it's well known that randomization test \textcolor{red}{has much higher time complexity than} asymptotic method, which  historically  hampered it's use. 
+\textcolor{red}{In this paper, we consider the randomization test based on~\cite{Bai1996Efiect} and~\cite{Chen2010A}'s statistic for hypotheses~\eqref{ourHy} for illustration.}
+The goal is to tell that randomization is feasible in high dimension while still have the statistic properties and asymptotic power.
 We give a fast implementation of the randomization procedure, the time complexity of which does not depend on $p$.
-When $p$ is large, our method is even more efficient than asymptotic method.
+\textcolor{red}{When $p$ is large, our method can be more efficient than asymptotic method.}
 We investigate the asymptotic behavior of test procedure.
 Our results show that even if the null distribution of $X_1$ is not symmetric, the randomization test is still asymptotically exact under mild assumptions. 
 Hence the test procedure is robust.
 The local asymptotic power function is also given.
 To the best of our knowledge, this is the first work which gives the asymptotic behavior of randomization test in high dimensional setting.
-Our work shows that the randomization test is very suitable for high dimensional testing problem since it is efficient and also has good statistical properties.
+\textcolor{red}{Our work shows that the randomization test is very suitable for high dimensional testing problem since it is \textcolor{red}{efficient} and also has good statistical properties.}
 
 
 %Existing works of randomization test mainly focus on single variate case. A recent work of EunYi Chung consider multivariate case.
@@ -188,51 +190,54 @@ The rest of the paper is organized in the following way. In Section 2, we propos
 
 
 \section{Randomization Test}
+\textcolor{red}{some words}
+Throughout the paper, we consider the randomization test based on statistic
+\begin{equation}\label{Statistic}
+    T(X_1,\ldots,X_n)=\sum_{j<i}X_i^T X_j.
+\end{equation}
+%Nevertheless, other quadratic form statistics can also be studied by similar method.
+More precisely, we consider the test function $\phi(X_1,\ldots,X_n)$ equals to $1$ if $T(X_1,\ldots, X_n)$ is greater than the $1-\alpha$ quantile of the conditional distribution~\eqref{ranDis} and equals to $0$ otherwise.
+ Since $T(X_1,\ldots,X_n)$ equals to half of the~\cite{Chen2010A}'s $U$-statistic $\sum_{i\neq j}X_i^T X_j$, the test procedure $\phi(X_1,\ldots,X_n)$ is equivalent to the randomization version of~\cite{Chen2010A}'s test procedure.
+ Note that~\cite{Bai1996Efiect}'s statistic $\bar{X}^T \bar{X}$ can be written as $n^{-2}\sum_{i=1}^n\sum_{j=1}^n X_i^T X_j$.
+ Since $\sum_{i=1}^n X_i^T X_i$ is invariance under randomization, the test procedure $\phi(X_1,\ldots,X_n)$ is also equivalent to the randomization version of~\cite{Bai1996Efiect}'s test.
 
-Throughout the paper, $T(X_1,\ldots,X_n)$ refers to~\eqref{Statistic}.
-We consider the test function $\phi(X_1,\ldots,X_n)$ which equals to $1$ if $T(X_1,\ldots, X_n)$ is greater than the $1-\alpha$ quantile of the conditional distribution~\eqref{ranDis} and $\phi(X_1,\ldots,X_n)=0$ otherwise.
+Under certain symmetric assumption, the randomization test controls the test level, which is a desirable property.
+ See, for example,~\cite{Lehmann}, Chapter 15.
+In our problem, the Type I error of $\phi(X_1,\ldots,X_n)$ is not larger than $\alpha$ provided $X_1$ and $-X_1$ have the same distribution under null hypothesis.
+ By refined definition of $\phi(X_1,\ldots,X_n)$ on the boundary of rejection region, one can obtain a test procedure with exact level. 
+ %See, for example,~\cite{Romano1990On}.
+Such refinement only have minor effect on the test procedure and won't be considered in this paper.
+
 The test procedure $\phi(X_1,\ldots, X_n)$ can be equivalently implemented by $p$-value. Define 
 \begin{equation}\label{firstPvalue}
     p(X_1,\ldots, X_n)=
     \Pr(T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)\geq T( X_1,\ldots,X_n)|X_1,\ldots,X_n).
 \end{equation}
-Then our test procedure rejects the null hypothesis if $p(X_1,\ldots, X_n)\leq \alpha$. 
+Then the test procedure rejects the null hypothesis if $p(X_1,\ldots, X_n)\leq \alpha$. 
 
- Since $T(X_1,\ldots,X_n)$ equals to half of the~\cite{Chen2010A}'s $U$-statistic $\sum_{i\neq j}X_i^T X_j$, the test procedure $\phi(X_1,\ldots,X_n)$ is equivalent to the randomization version of~\cite{Chen2010A}'s test procedure.
- Note that~\cite{Bai1996Efiect}'s statistic $\bar{X}^T \bar{X}$ can be written as $n^{-2}\sum_{i=1}^n\sum_{j=1}^n X_i^T X_j$ and $\sum_{i=1}^n X_i^T X_i$ is invariance under randomization.
- Hence the test procedure $\phi(X_1,\ldots,X_n)$ is also equivalent to the randomization version of~\cite{Bai1996Efiect}'s test.
-
-Under certain symmetric assumption, the randomization test can control the test level, which is a desirable property.
- See, for example,~\cite{Lehmann}, Chapter 15.
-In our problem, the Type I error of $\phi(X_1,\ldots,X_n)$ is not larger that $\alpha$ provided $X_1$ and $-X_1$ have the same distribution under null hypothesis.
- By refined definition of $\phi(X_1,\ldots,X_n)$ on the boundary of rejection region, one can obtain a test procedure with exact level. 
- %See, for example,~\cite{Romano1990On}.
-Such refinement only have minor effect on the test procedure and won't be considered in this paper.
-
-Conditioning on $X_1,\ldots, X_n$, the randomized test statistic $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)$ is uniformly distributed on $2^n$ values.
-To compute the exact quantile of~\eqref{ranDis}, one need to calculate at least $2^n$ values, which is not feasible even when $n$ is moderate.
+Conditioning on $X_1,\ldots, X_n$, the randomized statistic $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)$ is uniformly distributed on $2^n$ values.
+To compute the exact quantile of~\eqref{ranDis} or the $p$-value~\eqref{firstPvalue}, one needs to calculate at least $2^n$ values, which is not feasible even when $n$ is moderate.
 In practice, randomization test is often realized through an approximation of $p$-value~\eqref{firstPvalue}.
 More specifically, we sample  $\epsilon_1^*,\ldots,\epsilon_n^*$ and compute $T^*=T(\epsilon_1^* X_1,\ldots,\epsilon_n^* X_n)$.
 Repeat $B$ times for a large $B$ and we obtain $T_1^*,\ldots,T_B^*$.
 %Denote $\xi_i=\mathbf{1}_{\{T_i^*\geq T_0\}}$.
-Let 
+Let $T_0=T(X_1,\ldots,X_n)$ be the original statistic and define
 $$\tilde{p}(X_1,\ldots,X_n)=\frac{1}{B+1}\big(1+\sum_{i=1}^B \mathbf{1}_{\{T_i^*\geq T_0\}}\big).$$
-The test is rejected if $\tilde{p}(X_1,\ldots,X_n)\leq \alpha$. This procedure can also control the test level.
+The test is rejected when $\tilde{p}(X_1,\ldots,X_n)\leq \alpha$. This procedure can also control the test level.
 In fact, we have
 $\Pr(\tilde{p}(X_1,\ldots,X_n)\leq u)\leq u$ for all $0\leq u\leq 1$.
 See~\cite{Lehmann}, Page $636$.
 Moreover,  as $B\to \infty$, we have $\tilde{p}(X_1,\ldots,X_n)\xrightarrow{P}p(X_1,\ldots,X_n)$ by law of large numbers.
-Here we emphasis that the convergence rate of $\tilde{p}(X_1,\ldots,X_n)$ only relies on $\alpha$.
-Hence the choice of $B$ does not rely on $n$ and $p$.
+\textcolor{red}{Here we emphasis that the convergence rate of $\tilde{p}(X_1,\ldots,X_n)$ only relies on $\alpha$.
+Hence the choice of $B$ does not rely on $n$ and $p$.}
 
-We next consider the computation issue of the randomization procedure.
-Note that 
+Now we consider the computation of the randomization test procedure.
+The computation of $T_0$ \textcolor{red}{consumes} $O(n^2 p)$.
+To obtain $T_i^*$, $i=1,\ldots,B$, we need to generate $\epsilon_1,\ldots,\epsilon_n$ and compute
 $$
 T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)
 =\sum_{1\leq j<i \leq n}X_i^T X_j \epsilon_i \epsilon_j.
 $$
-The computation of $T(X_1,\ldots,X_n)$ has complexity $O(n^2 p)$.
-This itself is not negligible when $n$ and $p$ are large and we can't afford to naively repeat computing it for $B$ times.
 Note that $X_i^T X_j$ ($1\leq j<i\leq n$) can be computed beforehand.
 %For a realization of $\epsilon_1,\ldots,\epsilon_n$,
 %let $\mathcal{I}_1=\{i\,|\, \epsilon_i=1\}$ and $\mathcal{I}_2=\{i\,|\, \epsilon_i=-1\}$.
@@ -247,22 +252,24 @@ Note that $X_i^T X_j$ ($1\leq j<i\leq n$) can be computed beforehand.
     %+\frac{1}{2}\sum_{i\in \mathcal{I}_2}\sum_{j\in \mathcal{I}_2} X_i^T X_j -\frac{1}{2}\sum_{i} X_i^T X_i\\
 %\end{aligned}
 %$$
-Once we have obtained $X_i^T X_j$, the computation of $T_i^*$ has only complexity $O(n^2)$.
+Once we obtain $X_i^T X_j$, the computation of $T_i^*$ consumes $O(n^2)$.
 The total complexity is thus $O(n^2 p+n^2 B)$.
-When $p$ is large compared with $n$, the randomization procedure only adds minor complexity.
-The randomization method doesn't need an estimator of variance, which is a must need in asymptotic method. 
-A good variance estimator is complicated in form, see~\cite{Chen2010A}, which add much time complexity to asymptotic method.
-Hence the randomization method is very competitive compared to asymptotic method.
+When $p$ is large compared with $n$, the randomization procedure only increases minor complexity.
+The randomization method doesn't need an estimator of variance, which is necessary in asymptotic method. 
+A good variance estimator is complicated, see~\cite{Chen2010A}, and increases \textcolor{red}{much time complexity} to asymptotic method.
+Hence the randomization test method is very competitive compared with asymptotic method.
 This is different from low dimensional setting where randomization test is a lot slower than asymptotic method.
 
-If we only care about the decision (reject or accept) and the $p$-value is not needed, the computation efficiency of randomization method can be further improved.
+If we only care about the decision (reject or accept) and the $p$-value is not needed, the computation efficiency of randomization method can be further \textcolor{red}{improved}.
 In fact, the rejection region is $\tilde{p}(X_1,\ldots, X_n)\leq \alpha$ or
 $$\sum_{i=1}^B (1-\mathbf{1}_{\{T_i^*\geq T_0\}})\geq B +1-(B+1)\alpha.$$
-Since the left hand side is a sum of non-negative values, we can reject the null hypothesis once $\sum_{i=1}^{B_0} (1-\mathbf{1}_{\{T_i^*\geq T_0\}})\geq B-(B+1)\alpha +1$ for some $B_0$.
+Since the left hand side is a sum of non-negative values, we can reject the null hypothesis once $\sum_{i=1}^{B_0} (1-\mathbf{1}_{\{T_i^*\geq T_0\}})\geq B +1-(B+1)\alpha$ for some $B_0$.
 Similarly, the acceptance region is
 $$\sum_{i=1}^B \mathbf{1}_{\{T_i^*\geq T_0\}}> (B+1)\alpha -1.$$
-we can accept the null once the sum of left hand side exceeds the right hand side.
-The algorithm~\ref{theAlgorithm} summarizes our previous argument.
+we can accept the null once
+$\sum_{i=1}^{B_0} \mathbf{1}_{\{T_i^*\geq T_0\}}> (B+1)\alpha -1$ for some $B_0$.
+% the sum of left hand side exceeds the right hand side for some $B_0$.
+The Algorithm~\ref{theAlgorithm} summarizes our previous argument.
 
 
 %We shall choose $M$ large enough such that 
@@ -272,8 +279,6 @@ The algorithm~\ref{theAlgorithm} summarizes our previous argument.
     %\Pr\Big(\Big|\frac{1}{M}\sum_{i=1}^M \xi-p(X_1,\ldots,X_n)\Big|>t|X_1,\ldots,X_n\Big)\leq 2e^{-2Mt^2}.
 %\end{equation*}
 %Hence we choose $M=\big[\frac{1}{2t^2}\log(\frac{2}{\epsilon})\big]+1$.
-
-
 
 
 
@@ -312,7 +317,7 @@ We assume, like~\cite{Chen2010A} and~\cite{Bai1996Efiect}, the following multiva
 \begin{equation}\label{chenC1}
     \textrm{$X_i=\mu+\Gamma Z_i$  for  $i=1,\ldots,n$,}
 \end{equation}
-where $\Gamma$ is a $p\times m$ matrix for some $m\geq p$ such that $\Gamma_i\Gamma_i^T=\Sigma_i$ and $Z_{1},\ldots, Z_n$ are $m$-variate i.i.d.\ random vectors satisfying $\mathrm{E}(Z_i)=0$ and $\mathrm{Var}(Z_i)=I_m$, the $m\times m$ identity matrix. Write $Z_i={(z_{i1},\ldots,z_{im})}^T$, we assume $\mathrm{E}(z_{ij}^4)=3+\Delta<\infty$ and
+where $\Gamma$ is a $p\times m$ matrix for some $m\geq p$ such that $\Gamma\Gamma^T=\Sigma$ and $Z_{1},\ldots, Z_n$ are $m$-variate iid random vectors satisfying $\mathrm{E}(Z_i)=0$ and $\mathrm{Var}(Z_i)=I_m$, the $m\times m$ identity matrix. Write $Z_i={(z_{i1},\ldots,z_{im})}^T$. We assume $\mathrm{E}(z_{ij}^4)=3+\Delta<\infty$ and
 \begin{equation}\label{chenC2}
     \mathrm{E}(z_{il_1}^{\alpha_1}z_{il_2}^{\alpha_2}\cdots z_{il_q}^{\alpha_q})=\mathrm{E}(z_{il_1}^{\alpha_1})\mathrm{E}(z_{il_2}^{\alpha_2})\cdots \mathrm{E}(z_{il_q}^{\alpha_q})
 \end{equation}
@@ -322,8 +327,19 @@ Note that here $X_1$ and $-X_1$ don't need to have the same distribution under n
 %In the following, $T(X_1,\ldots, X_n)$ will be specialized to~\eqref{Statistic}.
 
 An important assumption in~\cite{Chen2010A} is
-    $\mathrm{tr}(\Sigma^4)=o\{\mathrm{tr}^2(\Sigma^2)\}$,
-which is equivalent to 
+    $\mathrm{tr}(\Sigma^4)=o\{\mathrm{tr}^2(\Sigma^2)\}$.
+    From
+    $$
+    \frac{\lambda_1(\Sigma)^4}{(\sum_{i=1}^p \lambda_i(\Sigma)^2)^2}
+    \leq
+    \frac{\sum_{i=1}^p\lambda_i(\Sigma)^4}{(\sum_{i=1}^p \lambda_i(\Sigma)^2)^2}
+    \leq
+    \frac{\lambda_1(\Sigma)^2\sum_{i=1}^p\lambda_i(\Sigma)^2}{(\sum_{i=1}^p \lambda_i(\Sigma)^2)^2}
+    =
+    \frac{\lambda_1(\Sigma)^2}{\sum_{i=1}^p \lambda_i(\Sigma)^2},
+    $$
+    we can see that 
+    $\mathrm{tr}(\Sigma^4)=o\{\mathrm{tr}^2(\Sigma^2)\}$ is equivalent to
 \begin{equation}\label{chenC3}
     \frac{\lambda_{\max}(\Sigma)}{\sqrt{\mathrm{tr}\Sigma^2}}\to 0.
 \end{equation}
@@ -349,6 +365,7 @@ And
         $$
 \end{theorem}
 
+Now we study the asymptotic properties of the randomization test.
 We shall call the conditional distribution
         $$
         \mathcal{L}\Big(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big)
@@ -363,12 +380,12 @@ and equals to $0$ otherwise.
 Since $\xi^*_{\alpha}$ relies on data, the rejection region is determined by not only  $T(X_1,\ldots,X_n)$ but also randomization distribution.
 
 To study the asymptotic property of $\xi^*_{\alpha}$, we need to derive the asymptotic behavior of randomization distribution.
-Since the randomization distribution itself is random, we need to define in what sense the convergence is. Let $F$ and $G$ be two distribution function on $\mathbb{R}$ and the Levy metric $\rho$ of $F$ and $G$ is defined as
+Since the randomization distribution itself is random, we need to define in what sense the convergence is. Let $F$ and $G$ be two distribution functions on $\mathbb{R}$, Levy metric $\rho$ of $F$ and $G$ is defined as
 \begin{equation*}
     \rho(F,G)=\inf\{\epsilon:F(x-\epsilon)-\epsilon\leq G(x)\leq F(x+\epsilon)+\epsilon\quad  \textrm{for all}\quad x\}.
 \end{equation*}
 It's well known that $\rho(F_n,F)\to 0$ if and only if  $F_n\xrightarrow{\mathcal{L}}F$.
-The following theorem shows that the randomization distribution tends to a standard normal distribution.
+The following theorem shows that the randomization distribution tends to a standard normal distribution in high dimensional setting.
 
 
 %Our asymptotic results need a condition stronger than~\eqref{mu1}.
@@ -383,8 +400,7 @@ The following theorem shows that the randomization distribution tends to a stand
     \end{equation*}
 \end{theorem}
 %Under the conditions of Theorem~\ref{shaziCLT}, the randomization distribution is asymptotically a normal distribution. 
-It's also a theoretical interest to understand the behavior of randomization distribution when condition~\eqref{mu2} is not valid. We have the following asymptotic result:
-
+It's also interesting to understand the behavior of randomization distribution when condition~\eqref{mu2} is not valid. We have the following asymptotic result.
 \begin{theorem}\label{farT}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and
     \begin{equation}\label{mu3}
@@ -407,6 +423,8 @@ Let $\Phi(\cdot)$ be the cumulative distribution function (CDF) of standard norm
     Under the conditions of Theorem~\ref{farT},
     $$\xi_{\alpha}^*\xrightarrow{P}\frac{\sqrt{2}}{2}\Big(\big(\Phi^{-1}(1-\tfrac{\alpha}{2})\big)^2-1\Big).$$
 \end{corollary}
+
+\textcolor{red}{Prove these two corollaries.}
 
 
 Now we are ready to derive the asymptotic power of randomization test.
@@ -490,17 +508,26 @@ Hence randomization may loss some power.
 
 
 \section{Simulation Studies}
+\subsection{The first simulation study}
 In this section, we report the simulation performance of the randomization test in various setting.
-We compare randomization method with asymptotic method.
-Throughout, we set $B=200$.
-Asymptotic method needs a ratio consistent estimator of $\mathrm{tr}\Sigma^2$.
-However, a good estimator is often complicated and thus time consuming. For simplicity, throughout the simulation the asymptotic method is implemented by using true $\mathrm{tr}\Sigma^2$, which will in principle perform better.
+We compare the randomization test method with the asymptotic method of~\cite{Chen2010A}.
+According to~\cite{Chen2010A}, the asymptotic method rejects the null hypothesis when
+$$
+\frac{\sum_{i\neq j}X_i^T X_j}{\sqrt{2n(n-1)\widehat{\mytr(\Sigma^2)}}}>\Phi^{-1}(1-\alpha),
+$$
+where
+$$
+ \widehat{\mytr(\Sigma^2)}=\frac{1}{n(n-1)}\mytr\Big(\sum_{i\neq j}(X_i-\bar{X}_{(i,j)})X_i^T (X_j-\bar{X}_{(i,j)})X_j^T\Big).
+$$
+%$$
+ %\widehat{\mytr(\Sigma^2)}=\frac{1}{n(n-1)}\sum_{i\neq j}(\frac{1}{n-1}\|X_i\|^2+\frac{n-1}{n-2}X_i^T X_j-\frac{n}{n-2}X_i^T \bar{X})(\frac{n-1}{n-2}X_i X_j^T +\frac{1}{n-2}\|X_j\|^2-\frac{n}{n-2}X_i^T \bar{X})
+%$$
+
+Throughout, we set $B=1000$.
 The empirical power and size are computed based on $1000$ simulations.
-
-
-Let $c=\sqrt{n(n-1)}\mu^T \mu /\sqrt{2\mathrm{tr}\Sigma^2}$ be the signal to noise ratio (SNR).
+Let $\mathrm{SNR}=\sqrt{n(n-1)}\mu^T \mu /\sqrt{2\mathrm{tr}\Sigma^2}$ be the signal to noise ratio (SNR).
 The theoretic asymptotic power is an increasing function of SNR\@.
-Throughout the simulation, we will scale $\mu$ to reach different level of SNR\@.
+We scale $\mu$ to reach different level of SNR\@.
 Our simulation consider two mean structure: dense mean and sparse mean.
 In the dense mean setting, each coordinate of $\mu$ is independently generated from $U(2,3)$ and then $\mu$ is scaled to reach a given SNR\@.
 In the sparse mean setting, we randomly select $5\%$ of $\mu$ $p$ coordinates to be non-zero.
@@ -512,7 +539,7 @@ We first conduct the moving average model. In model~\eqref{chenC1}, we set $m=p+
 \begin{equation*}
     X_{ij}=\sum_{l=0}^k \rho_{l}Z_{i,j+l}
 \end{equation*}
-for $i=1,\ldots, n$ and $j=1,\ldots, p$. Here $Z_{ij}$'s are i.i.d.\ random variables with distribution $F$ for $i=1,\ldots, n$ and $j=1,\ldots, p+k$. 
+for $i=1,\ldots, n$ and $j=1,\ldots, p$. Here $Z_{ij}$'s are iid random variables with distribution $F$ for $i=1,\ldots, n$ and $j=1,\ldots, p+k$. 
 Like~\cite{Chen2010A}, we consider two different $F$.
 One is $N(0,1)$, and the other is $(\textrm{Gamma}(4,1)-4)/2$.
 We set $k=5$ and $k=p$.
@@ -570,11 +597,11 @@ Randomization method also shares similar power with asymptotic method.
 \end{table}
 In the simulation study of~\cite{fan2007to}, data are generated from a factor model to reflect aspects of gene expression data. The model involves three group factor and one common factor among all $p$ variables. 
  Their data generation mechanism is adopted in our next simulation study.
-We denote by $\{\epsilon_{ij}\}_{1\leq i\leq n, 1\leq j\leq p}$ a sequence of independent $N(0,1)$ and by $\{\chi_{ij}\}_{1\leq i \leq n, 1\leq j \leq 4}$ a sequence of independent random variables with distribution $(\chi_{6}^2-6)/\sqrt{12}$.
+We denote by $\{\xi_{ij}\}_{1\leq i\leq n, 1\leq j\leq p}$ a sequence of independent $N(0,1)$ and by $\{\chi_{ij}\}_{1\leq i \leq n, 1\leq j \leq 4}$ a sequence of independent random variables with distribution $(\chi_{6}^2-6)/\sqrt{12}$.
 Note that $\chi_{ij}$ has mean $0$, variance $1$ and skewness $\sqrt{12}/3$.
 The data is generated by model
 \begin{equation*}
-    X_{i,j}=\frac{a_{j1}\chi_{i1}+a_{j2}\chi_{i2}+a_{j3}\chi_{i3}+b_{j}\chi_{i4}+\epsilon_{ij}}{{(1+a_{j1}^2+a_{j2}^2+a_{j3}^2+b_j^2)}^{1/2}}
+    X_{i,j}=\frac{a_{j1}\chi_{i1}+a_{j2}\chi_{i2}+a_{j3}\chi_{i3}+b_{j}\chi_{i4}+\xi_{ij}}{{(1+a_{j1}^2+a_{j2}^2+a_{j3}^2+b_j^2)}^{1/2}}
     \quad
     \textrm{$i=1,\ldots, n$ and $j=1,\ldots, p$},
 \end{equation*}
@@ -593,13 +620,13 @@ Table 3 list the simulation results. Although the distribution is not symmetric,
           \cmidrule(r){3-4}  \cmidrule(r){5-6} \cmidrule(r){7-8}  \cmidrule(r){9-10}
            SNR& TP & RM & AM & RM & AM & RM & AM & RM & AM  \\ 
             \midrule
-    0.0 & 0.050 & 0.040 & 0.050 & 0.046 & 0.057 & 0.052 & 0.061 & 0.047 & 0.060 \\ 
-      0.5 & 0.126 & 0.141 & 0.166 & 0.136 & 0.154 & 0.104 & 0.126 & 0.105 & 0.129 \\ 
-    1.0 & 0.260 & 0.222 & 0.256 & 0.233 & 0.266 & 0.207 & 0.239 & 0.215 & 0.240 \\ 
-      1.5 & 0.442 & 0.363 & 0.411 & 0.369 & 0.392 & 0.367 & 0.411 & 0.373 & 0.415 \\ 
-    2.0 & 0.639 & 0.460 & 0.501 & 0.470 & 0.509 & 0.517 & 0.581 & 0.532 & 0.589 \\ 
-      2.5 & 0.804 & 0.582 & 0.613 & 0.565 & 0.607 & 0.718 & 0.757 & 0.728 & 0.780 \\ 
-    3.0 & 0.912 & 0.646 & 0.678 & 0.673 & 0.701 & 0.834 & 0.889 & 0.870 & 0.900 \\ 
+        0.0 & 0.050 & 0.0465 & 0.0610 & 0.0455 & 0.0590 & 0.0475 & 0.0625 & 0.0505 & 0.0615 \\ 
+          0.5 & 0.126 & 0.1315 & 0.1555 & 0.1465 & 0.1650 & 0.1200 & 0.1380 & 0.1080 & 0.1320 \\ 
+            1.0 & 0.260 & 0.2420 & 0.2780 & 0.2550 & 0.2780 & 0.1940 & 0.2250 & 0.2075 & 0.2400 \\ 
+              1.5 & 0.442 & 0.3635 & 0.3975 & 0.3555 & 0.3870 & 0.3670 & 0.4110 & 0.3740 & 0.4155 \\ 
+                2.0 & 0.639 & 0.4825 & 0.5165 & 0.4720 & 0.4975 & 0.5340 & 0.5930 & 0.5615 & 0.6015 \\ 
+                  2.5 & 0.804 & 0.5860 & 0.6190 & 0.5825 & 0.6165 & 0.7040 & 0.7610 & 0.7120 & 0.7505 \\ 
+                    3.0 & 0.912 & 0.6730 & 0.7060 & 0.6975 & 0.7210 & 0.8525 & 0.8815 & 0.8680 & 0.8920 \\ 
         \bottomrule
     \end{tabular}
 \end{table}
@@ -613,10 +640,10 @@ For illustration, we only considered a special statistic. In fact, the algorithm
 
 We showed that even if the symmetric assumption is violated, the randomization test also has correct level asymptotically.
 Hence the test procedure is robust.
-It is interesting to investigate the robustness of randomization test in finite sample case.
+%It is interesting to investigate the robustness of randomization test in finite sample case.
 
-In classical statistics, randomization procedure is time consuming.
-Nevertheless, our algorithm shows that the time complexity of randomization procedure is not affected by dimension. 
+In classical statistics, randomization test procedure is time consuming.
+Nevertheless, our algorithm shows that the time complexity of randomization test procedure is not affected by dimension. 
 The randomization test can be even more efficient than asymptotic method while holding desirable statistic properties.
 Hence we have reason to believe that randomization tests may be generally suitable for high dimensional problems.
 

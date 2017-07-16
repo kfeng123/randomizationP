@@ -157,4 +157,32 @@
   timestamp = {2017.07.12},
 }
 
+@Article{Zhu2000N,
+  author    = {Li-Xing Zhu and Georg Neuhaus},
+  title     = {Nonparametric Monte Carlo tests for multivariate distributions},
+  journal   = {Biometrika},
+  year      = {2000},
+  volume    = {87},
+  number    = {4},
+  pages     = {919-928},
+  file      = {Zhu2000N.pdf:Zhu2000N.pdf:PDF},
+  groups    = {randomization test},
+  owner     = {kfeng123},
+  timestamp = {2017.07.12},
+}
+
+@Article{Chung2016Multivariate,
+  author    = {Chung, Eun Yi and Romano, Joseph P.},
+  title     = {Multivariate and multiple permutation tests},
+  journal   = {Journal of Econometrics},
+  year      = {2016},
+  volume    = {193},
+  number    = {1},
+  pages     = {76-91},
+  file      = {Chung2016Multivariate.pdf:Chung2016Multivariate.pdf:PDF},
+  groups    = {randomization test},
+  owner     = {kfeng123},
+  timestamp = {2017.07.12},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

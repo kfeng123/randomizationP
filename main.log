@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.6.24)  12 JUL 2017 22:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.6.24)  16 JUL 2017 21:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -389,20 +389,20 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count142
@@ -432,7 +432,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box36
-Package hyperref Info: Link coloring OFF on input line 69.
+Package hyperref Info: Link coloring OFF on input line 74.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -442,25 +442,25 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count148
 )
-LaTeX Info: Redefining \ref on input line 69.
-LaTeX Info: Redefining \pageref on input line 69.
-LaTeX Info: Redefining \nameref on input line 69.
+LaTeX Info: Redefining \ref on input line 74.
+LaTeX Info: Redefining \pageref on input line 74.
+LaTeX Info: Redefining \nameref on input line 74.
 
 (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 104.
+LaTeX Font Info:    Try loading font information for U+msa on input line 109.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 104.
+LaTeX Font Info:    Try loading font information for U+msb on input line 109.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (2.64166pt too wide) in paragraph at lines 111--112
+Overfull \hbox (2.64166pt too wide) in paragraph at lines 116--117
 []\OT1/cmr/m/n/10 Let $\OML/cmm/m/it/10 X[]; [] ; X[]$ \OT1/cmr/m/n/10 be in-de
 -pen-dent and iden-ti-cally dis-tributed (iid) $\OML/cmm/m/it/10 p$\OT1/cmr/m/n
 /10 -dimensional
@@ -470,80 +470,96 @@ Overfull \hbox (2.64166pt too wide) in paragraph at lines 111--112
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (30.9748pt too wide) in paragraph at lines 158--162
+Overfull \hbox (30.9748pt too wide) in paragraph at lines 163--177
 \OT1/cmr/m/n/10 the con-di-tional dis-tri-bu-tion of $\OML/cmm/m/it/10 T\OT1/cm
 r/m/n/10 (\OML/cmm/m/it/10 ^^O[]X[]; [] ; ^^O[]X[]; [] ; ^^O[]X[]\OT1/cmr/m/n/1
 0 )$ con-di-tion-ing on $\OML/cmm/m/it/10 X[]; [] ; X[]$\OT1/cmr/m/n/10 .
  []
 
 [3]
-Overfull \hbox (1.47253pt too wide) in paragraph at lines 212--219
-[]\OT1/cmr/m/n/10 Conditioning on $\OML/cmm/m/it/10 X[]; [] ; X[]$\OT1/cmr/m/n/
-10 , the ran-dom-ized test statis-tic $\OML/cmm/m/it/10 T\OT1/cmr/m/n/10 (\OML/
-cmm/m/it/10 ^^O[]X[]; [] ; ^^O[]X[]\OT1/cmr/m/n/10 )$
+Overfull \hbox (29.7722pt too wide) in paragraph at lines 197--203
+\OT1/cmr/m/n/10 More pre-cisely, we con-sider the test func-tion $\OML/cmm/m/it
+/10 ^^^\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X[]; [] ; X[]\OT1/cmr/m/n/10 )$ equals
+ to $1$ if $\OML/cmm/m/it/10 T\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X[]; [] ; X[]\O
+T1/cmr/m/n/10 )$
+ []
+
+
+Overfull \hbox (27.53386pt too wide) in paragraph at lines 197--203
+\OT1/cmr/m/n/10 Since $[][] \OML/cmm/m/it/10 X[]X[]$ \OT1/cmr/m/n/10 is in-vari
+-ance un-der ran-dom-iza-tion, the test pro-ce-dure $\OML/cmm/m/it/10 ^^^\OT1/c
+mr/m/n/10 (\OML/cmm/m/it/10 X[]; [] ; X[]\OT1/cmr/m/n/10 )$
  []
 
 [4] [5]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 282.
- [6] [7] [8] [9] [10] [11] [12pdfTeX warning (ext4): destination with the same 
-identifier (name{table.1}) has been already used, duplicate ignored
+put line 287.
+ [6] [7] [8] [9] [10] [11] [12]
+Overfull \hbox (40.41745pt too wide) in paragraph at lines 615--632
+ [][] 
+ []
+
+[13pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.584 
-      ] [13pdfTeX warning (ext4): destination with the same identifier (name{ta
+l.649 
+      ] [14pdfTeX warning (ext4): destination with the same identifier (name{ta
 ble.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.617 
-      ] [14pdfTeX warning (ext4): destination with the same identifier (name{ta
+l.664 
+      ] [15pdfTeX warning (ext4): destination with the same identifier (name{ta
 ble.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.637 
-      ] [15] [16] [17] [18] [19] [20] [21]
-Overfull \hbox (47.11502pt too wide) detected at line 1080
+l.686      \end{equation}
+                         ] [16] [17] [18] [19] [20] [21]
+Overfull \hbox (47.11502pt too wide) detected at line 1107
 [] []
  []
 
 
-Overfull \hbox (0.38948pt too wide) in paragraph at lines 1080--1082
+Overfull \hbox (0.38948pt too wide) in paragraph at lines 1107--1109
 \OT1/cmr/m/n/10 where the last two equal-ity holds by The-o-rem []1[], Slut-sky
 's the-o-rem and Lemma []1[]. 
  []
 
-
-Overfull \hbox (31.6012pt too wide) in paragraph at lines 1116--1116
+[22]
+Overfull \hbox (31.6012pt too wide) in paragraph at lines 1143--1143
 [] 
  []
 
-[22] (./main.bbl [23])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1135.
- [24]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1135.
+(./main.bbl [23] [24])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1162.
+ [25]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1162.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1135.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1135.
-
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E9AFC1DB30CFD6B6ABD9765FF1DDAF7F;304.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1162.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1162.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1135.
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 924ABA8B90B2DFFC2F7ACA8E119DC510;370
+(rerunfilecheck)             After:  45509827D5E8FB0307807396DFE9ECE7;379.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1162.
  ) 
 Here is how much of TeX's memory you used:
- 7509 strings out of 493029
- 104412 string characters out of 6136234
- 205762 words of memory out of 5000000
- 10802 multiletter control sequences out of 15000+600000
+ 7522 strings out of 493029
+ 104502 string characters out of 6136234
+ 209839 words of memory out of 5000000
+ 10813 multiletter control sequences out of 15000+600000
  15416 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,17n,34p,359b,674s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,17n,34p,349b,674s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -564,10 +580,10 @@ t/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/symbols/msbm10.pfb>
-Output written on main.pdf (24 pages, 304991 bytes).
+Output written on main.pdf (25 pages, 307216 bytes).
 PDF statistics:
- 518 PDF objects out of 1000 (max. 8388607)
- 457 compressed objects within 5 object streams
- 117 named destinations out of 1000 (max. 500000)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 535 PDF objects out of 1000 (max. 8388607)
+ 473 compressed objects within 5 object streams
+ 119 named destinations out of 1000 (max. 500000)
+ 57 words of extra memory for PDF output out of 10000 (max. 10000000)
 
