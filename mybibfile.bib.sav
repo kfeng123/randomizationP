@@ -223,4 +223,62 @@
   url       = {http://dx.doi.org/10.1023/A:1025610705286},
 }
 
+@Article{Zhao2016A,
+  author        = {Zhao, Junguang and Xu, Xingzhong},
+  title         = {A generalized likelihood ratio test for normal mean when p is greater than n},
+  journal       = {Computational Statistics \& Data Analysis},
+  year          = {2016},
+  __markedentry = {[kfeng123:1]},
+  file          = {Zhao2016A.pdf:Zhao2016A.pdf:PDF},
+  groups        = {mean test},
+  owner         = {kfeng123},
+  timestamp     = {2017.07.17},
+}
+
+@Article{Srivastava2007Multivariate,
+  author        = {Srivastava, M. S.},
+  title         = {Multivariate Theory for Analyzing High Dimensional Data},
+  journal       = {Journal of the Japan Statistical Society},
+  year          = {2007},
+  volume        = {37},
+  number        = {1},
+  pages         = {53-86},
+  __markedentry = {[kfeng123:5]},
+  file          = {Srivastava2007Multivariate.pdf:Srivastava2007Multivariate.pdf:PDF},
+  groups        = {mean test},
+  owner         = {kfeng123},
+  timestamp     = {2017.07.17},
+}
+
+@Article{Subramanian2005,
+  author    = {A. Subramanian and P. Tamayo and V. K. Mootha and S. Mukherjee and B. L. Ebert and M. A. Gillette and A. Paulovich and S. L. Pomeroy and T. R. Golub and E. S. Lander and J. P. Mesirov},
+  title     = {Gene set enrichment analysis: A knowledge-based approach for interpreting genome-wide expression profiles},
+  journal   = {Proceedings of the National Academy of Sciences},
+  year      = {2005},
+  volume    = {102},
+  number    = {43},
+  pages     = {15545--15550},
+  month     = {sep},
+  doi       = {10.1073/pnas.0506580102},
+  owner     = {kfeng123},
+  publisher = {Proceedings of the National Academy of Sciences},
+  timestamp = {2017.07.18},
+  url       = {https://doi.org/10.1073/pnas.0506580102},
+}
+
+@Article{Ko2016,
+  author    = {Hyoseok Ko and Kipoong Kim and Hokeun Sun},
+  title     = {Multiple Group Testing Procedures for Analysis of High-Dimensional Genomic Data},
+  journal   = {Genomics {\&} Informatics},
+  year      = {2016},
+  volume    = {14},
+  number    = {4},
+  pages     = {187},
+  doi       = {10.5808/gi.2016.14.4.187},
+  owner     = {kfeng123},
+  publisher = {Korea Genome Organization ({KAMJE})},
+  timestamp = {2017.07.18},
+  url       = {https://doi.org/10.5808/gi.2016.14.4.187},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
