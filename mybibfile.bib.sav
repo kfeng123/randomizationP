@@ -1,0 +1,284 @@
+% Encoding: ISO-8859-1
+
+
+@Article{Bai1996Efiect,
+  Title                    = {Effect of high dimension: by an example of a two sample problem},
+  Author                   = {Bai, Z. and Saranadasa, H.},
+  Journal                  = {Statistica Sinica},
+  Year                     = {1996},
+  Number                   = {2},
+  Pages                    = {311-329},
+  Volume                   = {6},
+
+  File                     = {Bai1996Efiect.pdf:Bai1996Efiect.pdf:PDF}
+}
+
+@Article{Chen2010A,
+  Title                    = {A two-sample test for high-dimensional data with applications to gene-set testing},
+  Author                   = {Chen, Song Xi and Qin, Ying Li},
+  Journal                  = {Annals of Statistics},
+  Year                     = {2010},
+  Number                   = {2},
+  Pages                    = {808-835},
+  Volume                   = {38},
+
+  File                     = {Chen2010A.pdf:Chen2010A.pdf:PDF}
+}
+
+@Article{Fisher,
+  Title                    = {The Design of Experiments.},
+  Author                   = {Fisher, R A},
+  Year                     = {1936}
+}
+
+@Article{Romano1990On,
+  Title                    = {On the Behavior of Randomization Tests Without a Group Invariance Assumption},
+  Author                   = {Romano, Joseph P.},
+  Journal                  = {Journal of the American Statistical Association},
+  Year                     = {1990},
+  Number                   = {411},
+  Pages                    = {686-692},
+  Volume                   = {85},
+
+  File                     = {Romano1990On.pdf:Romano1990On.pdf:PDF}
+}
+
+@Article{Srivastava2009A,
+  Title                    = {A test for the mean vector with fewer observations than the dimension under non-normality},
+  Author                   = {Srivastava, Muni S.},
+  Journal                  = {Journal of Multivariate Analysis},
+  Year                     = {2009},
+  Number                   = {3},
+  Pages                    = {518-532As the access to this document is restricted, you may want to look for a different version under "Related research" (further below) orfor a different version of it.},
+  Volume                   = {100},
+
+  File                     = {Srivastava2009A.pdf:Srivastava2009A.pdf:PDF}
+}
+
+@Article{Wang2015A,
+  Title                    = {A High-Dimensional Nonparametric Multivariate Test for Mean Vector.},
+  Author                   = {Wang, L. and Peng, B. and Li, R.},
+  Journal                  = {Journal of the American Statistical Association},
+  Year                     = {2015},
+  Number                   = {512},
+  Pages                    = {00-00},
+  Volume                   = {110},
+
+  File                     = {Wang2015A.pdf:Wang2015A.pdf:PDF}
+}
+
+@Article{Jong1987A,
+  Title                    = {A central limit theorem for generalized quadratic forms},
+  Author                   = {Jong, Peter De},
+  Journal                  = {Probability Theory \& Related Fields},
+  Year                     = {1987},
+  Number                   = {2},
+  Pages                    = {261-277},
+  Volume                   = {75},
+
+  File                     = {Jong1987A.pdf:Jong1987A.pdf:PDF}
+}
+@Article{efron2007on,
+  Title                    = {On testing the significance of sets of genes},
+  Author                   = {Bradley Efron,Robert JTibshirani},
+  Journal                  = {The Annals of Applied Statistics},
+  Year                     = {2007},
+  Number                   = {1},
+  Pages                    = {107--129},
+  Volume                   = {1},
+
+  File                     = {efron2007on.pdf:efron2007on.pdf:PDF}
+}
+@article{Chung2013Exact,
+  title={Exact and asymptotically robust permutation tests},
+  author={Chung, Eun Yi and Romano, Joseph P.},
+  journal={Annals of Statistics},
+  volume={41},
+  number={2},
+  pages={484-507},
+  year={2013},
+}
+
+@Book{pollard1984convergence,
+  Title                    = {Convergence of stochastic processes},
+  Author                   = {David Pollard},
+  Journal                  = {Economica},
+  Year                     = {1984},
+
+  File                     = {pollard1984convergence.pdf:pollard1984convergence.pdf:PDF}
+}
+@Book{Lehmann,
+  Title                    = {Testing Statistical Hypotheses},
+  Author                   = {E. L. Lehmann, Joseph P. Romano},
+  Publisher                = {Springer New York},
+  Year                     = {2005},
+
+  Doi                      = {10.1007/0-387-27605-X},
+  File                     = {Lehmann.pdf:Lehmann.pdf:PDF}
+}
+
+@Article{fan2007to,
+  Title                    = {To how many simultaneous hypothesis tests can normal, Student's t or bootstrap calibration be applied?},
+  Author                   = {Fan, Jianqing and Hall, Peter and Yao, Qiwei},
+  Journal                  = {Journal of the American Statistical Association},
+  Year                     = {2007},
+  Number                   = {480},
+  Pages                    = {1282--1288},
+  Volume                   = {102},
+
+  File                     = {fan2007to.pdf:fan2007to.pdf:PDF}
+}
+
+@Book{andersonMultivariate,
+  title     = {An Introduction to Multivariate Statistical Analysis},
+  publisher = {Wiley},
+  year      = {2003},
+  author    = {Anderson, T. W.},
+  address   = {New York},
+  edition   = {3rd edition},
+  groups    = {book},
+  owner     = {kfeng123},
+  timestamp = {2017.07.12},
+}
+
+@Article{Srivastava2008A,
+  author    = {Muni S. Srivastava and Meng Du},
+  title     = {A test for the mean vector with fewer observations than the dimension},
+  journal   = {Journal of Multivariate Analysis},
+  year      = {2008},
+  volume    = {99},
+  number    = {3},
+  pages     = {386--402},
+  month     = {mar},
+  doi       = {10.1016/j.jmva.2006.11.002},
+  keywords  = {rank5},
+  owner     = {kfeng123},
+  publisher = {Elsevier {BV}},
+  timestamp = {2017.07.12},
+}
+
+@Article{Zhu2000N,
+  author    = {Li-Xing Zhu and Georg Neuhaus},
+  title     = {Nonparametric Monte Carlo tests for multivariate distributions},
+  journal   = {Biometrika},
+  year      = {2000},
+  volume    = {87},
+  number    = {4},
+  pages     = {919-928},
+  file      = {Zhu2000N.pdf:Zhu2000N.pdf:PDF},
+  groups    = {randomization test},
+  owner     = {kfeng123},
+  timestamp = {2017.07.12},
+}
+
+@Article{Chung2016Multivariate,
+  author    = {Chung, Eun Yi and Romano, Joseph P.},
+  title     = {Multivariate and multiple permutation tests},
+  journal   = {Journal of Econometrics},
+  year      = {2016},
+  volume    = {193},
+  number    = {1},
+  pages     = {76-91},
+  file      = {Chung2016Multivariate.pdf:Chung2016Multivariate.pdf:PDF},
+  groups    = {randomization test},
+  owner     = {kfeng123},
+  timestamp = {2017.07.12},
+}
+
+@Article{Pesarin2012,
+  author    = {Pesarin, Fortunato and Salmaso, Luigi},
+  title     = {A review and some new results on permutation testing for multivariate problems},
+  journal   = {Statistics and Computing},
+  year      = {2012},
+  volume    = {22},
+  number    = {2},
+  pages     = {639--646},
+  month     = {Mar},
+  issn      = {1573-1375},
+  day       = {01},
+  doi       = {10.1007/s11222-011-9261-0},
+  file      = {Pesarin2012.pdf:Pesarin2012.pdf:PDF},
+  owner     = {kfeng123},
+  timestamp = {2017.07.16},
+  url       = {http://dx.doi.org/10.1007/s11222-011-9261-0},
+}
+
+@Article{Muralidhar2003,
+  author    = {Muralidhar, Krishnamurty and Sarathy, Rathindra},
+  title     = {A theoretical basis for perturbation methods},
+  journal   = {Statistics and Computing},
+  year      = {2003},
+  volume    = {13},
+  number    = {4},
+  pages     = {329--335},
+  month     = {Oct},
+  issn      = {1573-1375},
+  day       = {01},
+  doi       = {10.1023/A:1025610705286},
+  file      = {Muralidhar2003.pdf:Muralidhar2003.pdf:PDF},
+  groups    = {randomization test},
+  keywords  = {rank5},
+  owner     = {kfeng123},
+  timestamp = {2017.07.16},
+  url       = {http://dx.doi.org/10.1023/A:1025610705286},
+}
+
+@Article{Zhao2016A,
+  author        = {Zhao, Junguang and Xu, Xingzhong},
+  title         = {A generalized likelihood ratio test for normal mean when p is greater than n},
+  journal       = {Computational Statistics \& Data Analysis},
+  year          = {2016},
+  __markedentry = {[kfeng123:1]},
+  file          = {Zhao2016A.pdf:Zhao2016A.pdf:PDF},
+  groups        = {mean test},
+  owner         = {kfeng123},
+  timestamp     = {2017.07.17},
+}
+
+@Article{Srivastava2007Multivariate,
+  author        = {Srivastava, M. S.},
+  title         = {Multivariate Theory for Analyzing High Dimensional Data},
+  journal       = {Journal of the Japan Statistical Society},
+  year          = {2007},
+  volume        = {37},
+  number        = {1},
+  pages         = {53-86},
+  __markedentry = {[kfeng123:5]},
+  file          = {Srivastava2007Multivariate.pdf:Srivastava2007Multivariate.pdf:PDF},
+  groups        = {mean test},
+  owner         = {kfeng123},
+  timestamp     = {2017.07.17},
+}
+
+@Article{Subramanian2005,
+  author    = {A. Subramanian and P. Tamayo and V. K. Mootha and S. Mukherjee and B. L. Ebert and M. A. Gillette and A. Paulovich and S. L. Pomeroy and T. R. Golub and E. S. Lander and J. P. Mesirov},
+  title     = {Gene set enrichment analysis: A knowledge-based approach for interpreting genome-wide expression profiles},
+  journal   = {Proceedings of the National Academy of Sciences},
+  year      = {2005},
+  volume    = {102},
+  number    = {43},
+  pages     = {15545--15550},
+  month     = {sep},
+  doi       = {10.1073/pnas.0506580102},
+  owner     = {kfeng123},
+  publisher = {Proceedings of the National Academy of Sciences},
+  timestamp = {2017.07.18},
+  url       = {https://doi.org/10.1073/pnas.0506580102},
+}
+
+@Article{Ko2016,
+  author    = {Hyoseok Ko and Kipoong Kim and Hokeun Sun},
+  title     = {Multiple Group Testing Procedures for Analysis of High-Dimensional Genomic Data},
+  journal   = {Genomics {\&} Informatics},
+  year      = {2016},
+  volume    = {14},
+  number    = {4},
+  pages     = {187},
+  doi       = {10.5808/gi.2016.14.4.187},
+  owner     = {kfeng123},
+  publisher = {Korea Genome Organization ({KAMJE})},
+  timestamp = {2017.07.18},
+  url       = {https://doi.org/10.5808/gi.2016.14.4.187},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}

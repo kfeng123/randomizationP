@@ -1,0 +1,107 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Anderson(2003)]{andersonMultivariate}
+T.~W. Anderson.
+\newblock \emph{An Introduction to Multivariate Statistical Analysis}.
+\newblock Wiley, New York, 3rd edition edition, 2003.
+
+\bibitem[Bai and Saranadasa(1996)]{Bai1996Efiect}
+Z.~Bai and H.~Saranadasa.
+\newblock Effect of high dimension: by an example of a two sample problem.
+\newblock \emph{Statistica Sinica}, 6\penalty0 (2):\penalty0 311--329, 1996.
+
+\bibitem[Srivastava and Du(2008)]{Srivastava2008A}
+Muni~S. Srivastava and Meng Du.
+\newblock A test for the mean vector with fewer observations than the
+  dimension.
+\newblock \emph{Journal of Multivariate Analysis}, 99\penalty0 (3):\penalty0
+  386--402, mar 2008.
+\newblock \doi{10.1016/j.jmva.2006.11.002}.
+
+\bibitem[Chen and Qin(2010)]{Chen2010A}
+Song~Xi Chen and Ying~Li Qin.
+\newblock A two-sample test for high-dimensional data with applications to
+  gene-set testing.
+\newblock \emph{Annals of Statistics}, 38\penalty0 (2):\penalty0 808--835,
+  2010.
+
+\bibitem[Wang et~al.(2015)Wang, Peng, and Li]{Wang2015A}
+L.~Wang, B.~Peng, and R.~Li.
+\newblock A high-dimensional nonparametric multivariate test for mean vector.
+\newblock \emph{Journal of the American Statistical Association}, 110\penalty0
+  (512):\penalty0 00--00, 2015.
+
+\bibitem[Bradley~Efron(2007)]{efron2007on}
+Robert~JTibshirani Bradley~Efron.
+\newblock On testing the significance of sets of genes.
+\newblock \emph{The Annals of Applied Statistics}, 1\penalty0 (1):\penalty0
+  107--129, 2007.
+
+\bibitem[Fisher(1936)]{Fisher}
+R~A Fisher.
+\newblock The design of experiments.
+\newblock 1936.
+
+\bibitem[Romano(1990)]{Romano1990On}
+Joseph~P. Romano.
+\newblock On the behavior of randomization tests without a group invariance
+  assumption.
+\newblock \emph{Journal of the American Statistical Association}, 85\penalty0
+  (411):\penalty0 686--692, 1990.
+
+\bibitem[Zhu and Neuhaus(2000)]{Zhu2000N}
+Li-Xing Zhu and Georg Neuhaus.
+\newblock Nonparametric monte carlo tests for multivariate distributions.
+\newblock \emph{Biometrika}, 87\penalty0 (4):\penalty0 919--928, 2000.
+
+\bibitem[Chung and Romano(2016)]{Chung2016Multivariate}
+Eun~Yi Chung and Joseph~P. Romano.
+\newblock Multivariate and multiple permutation tests.
+\newblock \emph{Journal of Econometrics}, 193\penalty0 (1):\penalty0 76--91,
+  2016.
+
+\bibitem[Subramanian et~al.(2005)Subramanian, Tamayo, Mootha, Mukherjee, Ebert,
+  Gillette, Paulovich, Pomeroy, Golub, Lander, and Mesirov]{Subramanian2005}
+A.~Subramanian, P.~Tamayo, V.~K. Mootha, S.~Mukherjee, B.~L. Ebert, M.~A.
+  Gillette, A.~Paulovich, S.~L. Pomeroy, T.~R. Golub, E.~S. Lander, and J.~P.
+  Mesirov.
+\newblock Gene set enrichment analysis: A knowledge-based approach for
+  interpreting genome-wide expression profiles.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 102\penalty0
+  (43):\penalty0 15545--15550, sep 2005.
+\newblock \doi{10.1073/pnas.0506580102}.
+\newblock URL \url{https://doi.org/10.1073/pnas.0506580102}.
+
+\bibitem[Ko et~al.(2016)Ko, Kim, and Sun]{Ko2016}
+Hyoseok Ko, Kipoong Kim, and Hokeun Sun.
+\newblock Multiple group testing procedures for analysis of high-dimensional
+  genomic data.
+\newblock \emph{Genomics {\&} Informatics}, 14\penalty0 (4):\penalty0 187,
+  2016.
+\newblock \doi{10.5808/gi.2016.14.4.187}.
+\newblock URL \url{https://doi.org/10.5808/gi.2016.14.4.187}.
+
+\bibitem[E.~L.~Lehmann(2005)]{Lehmann}
+Joseph P.~Romano E.~L.~Lehmann.
+\newblock \emph{Testing Statistical Hypotheses}.
+\newblock Springer New York, 2005.
+\newblock \doi{10.1007/0-387-27605-X}.
+
+\bibitem[Fan et~al.(2007)Fan, Hall, and Yao]{fan2007to}
+Jianqing Fan, Peter Hall, and Qiwei Yao.
+\newblock To how many simultaneous hypothesis tests can normal, student's t or
+  bootstrap calibration be applied?
+\newblock \emph{Journal of the American Statistical Association}, 102\penalty0
+  (480):\penalty0 1282--1288, 2007.
+
+\bibitem[Pollard(1984)]{pollard1984convergence}
+David Pollard.
+\newblock \emph{Convergence of stochastic processes}.
+\newblock 1984.
+
+\end{thebibliography}
