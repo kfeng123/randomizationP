@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.6.24)  20 JUL 2017 20:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.6.24)  22 JUL 2017 21:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main
+**main.tex
 (./main.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
@@ -261,14 +261,6 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/01/03 v1.1b Standard LaTeX Color (DPC)
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
-)
-Package color Info: Driver file: pdftex.def on input line 143.
-)
 (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \heavyrulewidth=\dimen128
@@ -518,275 +510,148 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5.9028> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 324.
 [3] [4]
-Overfull \hbox (4.23335pt too wide) in paragraph at lines 590--593
+Overfull \hbox (4.23335pt too wide) in paragraph at lines 624--626
 \OT1/ptm/m/n/10 also con-duct the sim-u-la-tion of the asymp-totic method of Ch
 en|
  []
 
 
-Overfull \hbox (8.31007pt too wide) in paragraph at lines 612--625
+Overfull \hbox (7.0441pt too wide) in paragraph at lines 629--630
+[]\OT1/ptm/m/n/10 According to Chen and Qin (2010), the asymp-totic method|
+ []
+
+
+Overfull \hbox (8.31007pt too wide) in paragraph at lines 649--662
 \OT1/ptm/m/n/10 in-de-pen-dent ran-dom vari-ables with dis-tri-bu-tion $\OT1/zt
 mcm/m/n/10 (\OML/ztmcm/m/it/10 ^^_[] \OMS/ztmcm/m/n/10 ^^@ \OT1/ztmcm/m/n/10 6)
 \OML/ztmcm/m/it/10 =[]$\OT1/ptm/m/n/10 .|
  []
 
 
-Overfull \hbox (59.3921pt too wide) detected at line 629
+Overfull \hbox (57.34239pt too wide) detected at line 666
 $\OML/ztmcm/m/it/10 X[] \OT1/ztmcm/m/n/10 = [] []\OML/ztmcm/m/it/10 ;$ |
  []
 
-
-Overfull \hbox (4.75351pt too wide) in paragraph at lines 633--640
+[5]
+Overfull \hbox (4.75351pt too wide) in paragraph at lines 670--677
 \OT1/ptm/m/n/10 shown by the plots, the $\OML/ztmcm/m/it/10 p$\OT1/ptm/m/n/10 -
 values of ran-dom-iza-tion test method|
  []
 
 
-LaTeX Warning: File `pValuePlotProposed.png' not found on input line 643.
+LaTeX Warning: File `pValuePlotProposed.png' not found on input line 680.
 
 
-Overfull \hbox (102.56268pt too wide) in paragraph at lines 643--644
+Overfull \hbox (102.56268pt too wide) in paragraph at lines 680--681
  [][] |
  []
 
 
-LaTeX Warning: Reference `shazeCLT' on page 5 undefined on input line 651.
-
-[5]
-
-LaTeX Warning: File `normal3.png' not found on input line 658.
+LaTeX Warning: Reference `shazeCLT' on page 6 undefined on input line 688.
 
 
-LaTeX Warning: File `normal500.png' not found on input line 659.
+LaTeX Warning: File `normal3.png' not found on input line 695.
 
 
-LaTeX Warning: File `gamma3.png' not found on input line 660.
+LaTeX Warning: File `normal500.png' not found on input line 696.
 
 
-LaTeX Warning: File `gamma500.png' not found on input line 661.
+LaTeX Warning: File `gamma3.png' not found on input line 697.
 
 
-LaTeX Warning: File `factor1.png' not found on input line 662.
+LaTeX Warning: File `gamma500.png' not found on input line 698.
 
 
-LaTeX Warning: File `factor2.png' not found on input line 663.
+LaTeX Warning: File `factor1.png' not found on input line 699.
 
 
-LaTeX Warning: Float too large for page by 386.69281pt on input line 665.
+LaTeX Warning: File `factor2.png' not found on input line 700.
 
 
-Overfull \hbox (7.31007pt too wide) in paragraph at lines 670--680
+LaTeX Warning: Float too large for page by 386.69281pt on input line 702.
+
+
+Overfull \hbox (7.31007pt too wide) in paragraph at lines 707--717
 []\OT1/ptm/m/n/10 Now we sim-u-late the em-pir-i-cal power and size. Let $[] \O
 T1/ztmcm/m/n/10 =|
  []
 
+
+Overfull \hbox (103.69316pt too wide) in paragraph at lines 733--750
+ [][] |
+ []
+
+
+Overfull \hbox (103.69316pt too wide) in paragraph at lines 756--773
+ [][] |
+ []
+
+
+Overfull \hbox (103.69316pt too wide) in paragraph at lines 779--796
+ [][] |
+ []
+
 [6]
-Overfull \hbox (103.69316pt too wide) in paragraph at lines 696--713
- [][] |
- []
-
-
-Overfull \hbox (103.69316pt too wide) in paragraph at lines 719--736
- [][] |
- []
-
-
-Overfull \hbox (103.69316pt too wide) in paragraph at lines 742--759
- [][] |
- []
-
-
-Overfull \hbox (4.5823pt too wide) in paragraph at lines 803--807
+Overfull \hbox (4.5823pt too wide) in paragraph at lines 840--844
 []\OT1/ptm/m/n/10 In clas-si-cal statis-tics, ran-dom-iza-tion test pro-ce-dure
  is time|
  []
 
-
-Overfull \hbox (0.805pt too wide) in paragraph at lines 817--822
-\OT1/ptm/m/n/10 ables. Con-sider quadratic form $\OML/ztmcm/m/it/10 W[] \OT1/zt
-mcm/m/n/10 = [][] \OML/ztmcm/m/it/10 a[]^^O[]^^O[]$\OT1/ptm/m/n/10 , where|
- []
-
-[7]
-Overfull \hbox (8.77078pt too wide) in paragraph at lines 838--842
-\OT1/ptm/m/n/10 mar-tin-gale dif-fer-ence ar-ray with re-spect to $\OMS/ztmcm/m
-/n/10 fF[]g$\OT1/ptm/m/n/10 . Then MCLT|
- []
-
-
-Overfull \hbox (50.51111pt too wide) detected at line 860
-$[] []$ |
- []
-
-
-Overfull \hbox (1.53458pt too wide) in paragraph at lines 876--877
- \OT1/ptm/m/it/10 Proof of [] [] \OT1/ptm/m/n/10 By Markov's in-equal-ity, we o
-nly need to prove |
- []
-
-
-Overfull \hbox (32.20511pt too wide) detected at line 897
-$[] []$ |
- []
-
-
-Overfull \hbox (3.55421pt too wide) in paragraph at lines 905--907
-[]\OT1/ptm/m/it/10 Suppose $\OMS/ztmcm/m/n/10 f\OML/ztmcm/m/it/10 ^^Q[]\OMS/ztm
-cm/m/n/10 g$ \OT1/ptm/m/it/10 is a se-quence of $\OT1/ztmcm/m/n/10 1$\OT1/ptm/m
-/it/10 -dimensional ran-|
- []
-
-
-Overfull \hbox (52.5252pt too wide) detected at line 934
-[] []|
- []
-
-
-Overfull \hbox (23.59709pt too wide) detected at line 947
-[] []|
- []
-
-
-Overfull \hbox (22.78671pt too wide) detected at line 969
-[] []|
- []
-
-[8]
-Overfull \hbox (70.32356pt too wide) detected at line 981
-[] []|
- []
-
-
-Overfull \hbox (86.49948pt too wide) detected at line 1019
-$[] []$ |
- []
-
-
-Overfull \hbox (50.50261pt too wide) detected at line 1031
-$[] []$ |
- []
-
-
-Overfull \hbox (89.65869pt too wide) detected at line 1060
-[] []|
- []
-
-
-Overfull \hbox (28.67792pt too wide) in paragraph at lines 1085--1087
-\OT1/ptm/m/n/10 So we only need to con-sider the vari-ance. Ac-cord-ing to $[]\
-OT1/ztmcm/m/n/10 (\OMS/ztmcm/m/n/10 f\OML/ztmcm/m/it/10 i; j\OMS/ztmcm/m/n/10 g
- \|
- []
-
-
-Overfull \hbox (36.32639pt too wide) detected at line 1099
+[7] [8] [9] [10]
+Overfull \hbox (4.22435pt too wide) detected at line 1317
 $[] []$  |
  []
 
 
-Overfull \hbox (2.55675pt too wide) in paragraph at lines 1103--1104
-\OT1/ptm/m/n/10 and $\OML/ztmcm/m/it/10 n\OT1/ztmcm/m/n/10 (\OML/ztmcm/m/it/10 
-n \OMS/ztmcm/m/n/10 ^^@ \OT1/ztmcm/m/n/10 1)(\OML/ztmcm/m/it/10 n \OMS/ztmcm/m/
-n/10 ^^@ \OT1/ztmcm/m/n/10 2)\OML/ztmcm/m/it/10 =\OT1/ztmcm/m/n/10 6$ \OT1/ptm/
-m/n/10 terms in each sum-ma-tion. By Lemma 5[]|
- []
-
-
-Overfull \hbox (56.44307pt too wide) detected at line 1110
-[] []|
- []
-
-
-Overfull \hbox (49.06786pt too wide) detected at line 1124
-[] \OT1/ztmcm/m/n/10 = [] = \OML/ztmcm/m/it/10 O\OT1/ztmcm/m/n/10 ([])\OML/ztmc
-m/m/it/10 :|
- []
-
-
-Overfull \hbox (38.92444pt too wide) detected at line 1152
-$[] []$ |
- []
-
-[9]
-Overfull \hbox (14.70364pt too wide) in paragraph at lines 1170--1173
-\OT1/ptm/m/n/10 where the last line fol-lows by as-sump-tion [] and []. Thus []
-|
- []
-
-
-Overfull \hbox (12.9319pt too wide) detected at line 1180
-$\OML/ztmcm/m/it/10 ^^Z[]\OMS/ztmcm/m/n/10 L[][][]\OML/ztmcm/m/it/10 X[]; [] ; 
-X[][]; N\OT1/ztmcm/m/n/10 (0\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 1)[] [] 0$  
-|
- []
-
-
-Overfull \hbox (3.51361pt too wide) in paragraph at lines 1180--1184
-\OT1/ptm/m/n/10 along a sub-se-quence. But there is a sub-se-quence $\OMS/ztmcm
-/m/n/10 f\OML/ztmcm/m/it/10 n\OT1/ztmcm/m/n/10 (\OML/ztmcm/m/it/10 k\OT1/ztmcm/
-m/n/10 )\OMS/ztmcm/m/n/10 g$ \OT1/ptm/m/n/10 along|
- []
-
-
-Overfull \hbox (13.39536pt too wide) detected at line 1202
-$[] []$ |
- []
-
-
-Overfull \hbox (4.22435pt too wide) detected at line 1221
-$[] []$  |
- []
-
-
-Overfull \hbox (19.21582pt too wide) detected at line 1233
-\OT1/ztmcm/m/n/10 E(\OML/ztmcm/m/it/10 C[]\OT1/ztmcm/m/n/10 ) = EE(\OML/ztmcm/m
-/it/10 C[]\OMS/ztmcm/m/n/10 j\OML/ztmcm/m/it/10 X[]; [] ; X[]\OT1/ztmcm/m/n/10 
-) = [] E[][] = [][]\OML/ztmcm/m/it/10 ^^F[];|
+Overfull \hbox (23.66016pt too wide) detected at line 1329
+[]\OT1/ztmcm/m/n/10 (\OML/ztmcm/m/it/10 C[]\OT1/ztmcm/m/n/10 ) = [] [](\OML/ztm
+cm/m/it/10 C[]\OMS/ztmcm/m/n/10 j\OML/ztmcm/m/it/10 X[]; [] ; X[]\OT1/ztmcm/m/n
+/10 ) = [] [] [][] = [] [] \OML/ztmcm/m/it/10 ^^F[];|
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1240.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1336.
 
 
-Overfull \hbox (2.15416pt too wide) in paragraph at lines 1240--1242
+Overfull \hbox (2.15416pt too wide) in paragraph at lines 1336--1338
 []\OT1/ptm/m/it/10 (\OT1/ptm/b/it/10 Proof of Corol-lar-ies 1[] and 2[]\OT1/ptm
 /m/it/10 ) \OT1/ptm/m/n/10 For ev-ery sub-se-quence,|
  []
 
 
-Overfull \hbox (6.49852pt too wide) detected at line 1244
+Overfull \hbox (6.49852pt too wide) detected at line 1340
 $\OML/ztmcm/m/it/10 ^^Z[]\OMS/ztmcm/m/n/10 L[][][]\OML/ztmcm/m/it/10 X[]; [] ; 
 X[][]; N\OT1/ztmcm/m/n/10 (0\OML/ztmcm/m/it/10 ; \OT1/ztmcm/m/n/10 1)[] \OMS/zt
 mcm/m/n/10 ! \OT1/ztmcm/m/n/10 0$ |
  []
 
 
-Overfull \hbox (22.09578pt too wide) in paragraph at lines 1260--1260
+Overfull \hbox (22.09578pt too wide) in paragraph at lines 1356--1356
 [] |
  []
 
 
-Overfull \hbox (114.79993pt too wide) detected at line 1278
-$[] []$ |
- []
-
-[10]
-Overfull \hbox (57.75601pt too wide) detected at line 1295
+Overfull \hbox (114.79993pt too wide) detected at line 1374
 $[] []$ |
  []
 
 
-Overfull \hbox (20.07617pt too wide) detected at line 1301
+Overfull \hbox (57.75601pt too wide) detected at line 1391
+$[] []$ |
+ []
+
+[11]
+Overfull \hbox (20.07617pt too wide) detected at line 1397
 [] \OT1/ztmcm/m/n/10 = [][] [] +\OMS/ztmcm/m/n/10 1\OML/ztmcm/m/it/10 :|
  []
 
 
-Overfull \hbox (101.04666pt too wide) in paragraph at lines 1314--1314
+Overfull \hbox (101.04666pt too wide) in paragraph at lines 1410--1410
 [] |
  []
 
 
-Overfull \hbox (69.27315pt too wide) detected at line 1324
+Overfull \hbox (69.27315pt too wide) detected at line 1420
 $[] []$ |
  []
 
@@ -811,19 +676,19 @@ Underfull \hbox (badness 4765) in paragraph at lines 81--88
 \OT1/ptm/m/n/8.5 14(4):187, 2016.  doi: 10.5808/gi.2016.14.4.187.  URL
  []
 
-) [11] (./main.aux)
+) [12] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5082 strings out of 493029
- 71601 string characters out of 6136234
- 160103 words of memory out of 5000000
- 8477 multiletter control sequences out of 15000+600000
+ 5037 strings out of 493029
+ 70892 string characters out of 6136234
+ 159175 words of memory out of 5000000
+ 8437 multiletter control sequences out of 15000+600000
  62049 words of font info for 143 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,19n,34p,361b,481s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,19n,34p,365b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} </home/kfeng123/.
 texmf-var/fonts/pk/ljfour/public/ifsym/ifsym10.510pk></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/f
@@ -837,10 +702,10 @@ re/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/u
 tmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (11 pages, 176678 bytes).
+Output written on main.pdf (12 pages, 179994 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
+ 101 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

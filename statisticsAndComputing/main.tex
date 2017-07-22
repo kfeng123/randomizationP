@@ -55,7 +55,6 @@ grestore
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage{color}
 \usepackage{booktabs}
 \usepackage[linesnumbered,ruled]{algorithm2e}
 \usepackage{natbib}
@@ -68,6 +67,7 @@ grestore
 \DeclareMathOperator{\myVar}{Var}
 
 \newcommand{\BP}{\mathbf{P}}
+\newcommand{\Bv}{\mathbf{v}}
 
 
 
@@ -161,7 +161,7 @@ Many subsequent papers generalized the idea of~\citet{Bai1996Efiect} to more gen
 The critical value of existing high dimensional tests are mostly determined by asymptotic distribution. 
 We call it asymptotic method.
  In many real world problems, e.g., gene testing~\citep{efron2007on}, sample size $n$ may be very small.
-In this case, the Type I error rates of asymptotic method may be far away from nominal level. 
+In this case, the Type I error rate of asymptotic method may be far away from nominal level. 
 
 
 The idea of randomization test dates back to~\citet{Fisher}, which is a tool to determine the critical value for a given test statistic.
@@ -372,9 +372,9 @@ We assume, like~\citet{Chen2010A} and~\citet{Bai1996Efiect}, the following multi
 \begin{equation}\label{chenC1}
     \textrm{$X_i=\mu+\Gamma Z_i$  for  $i=1,\ldots,n$,}
 \end{equation}
-where $\Gamma$ is a $p\times m$ matrix for some $m\geq p$ such that $\Gamma\Gamma^T=\Sigma$ and $Z_{1},\ldots, Z_n$ are $m$-variate iid random vectors satisfying $\mathrm{E}(Z_i)=0$ and $\mathrm{Var}(Z_i)=I_m$, the $m\times m$ identity matrix. Write $Z_i={(z_{i1},\ldots,z_{im})}^T$. We assume $\mathrm{E}(z_{ij}^4)=3+\Delta<\infty$ and
+where $\Gamma$ is a $p\times m$ matrix for some $m\geq p$ such that $\Gamma\Gamma^T=\Sigma$ and $Z_{1},\ldots, Z_n$ are $m$-variate iid random vectors satisfying $\myE(Z_i)=0$ and $\mathrm{Var}(Z_i)=I_m$, the $m\times m$ identity matrix. Write $Z_i={(z_{i1},\ldots,z_{im})}^T$. We assume $\myE(z_{ij}^4)=3+\Delta<\infty$ and
 \begin{equation}\label{chenC2}
-    \mathrm{E}(z_{il_1}^{\alpha_1}z_{il_2}^{\alpha_2}\cdots z_{il_q}^{\alpha_q})=\mathrm{E}(z_{il_1}^{\alpha_1})\mathrm{E}(z_{il_2}^{\alpha_2})\cdots \mathrm{E}(z_{il_q}^{\alpha_q})
+    \myE(z_{il_1}^{\alpha_1}z_{il_2}^{\alpha_2}\cdots z_{il_q}^{\alpha_q})=\myE(z_{il_1}^{\alpha_1})\myE(z_{il_2}^{\alpha_2})\cdots \myE(z_{il_q}^{\alpha_q})
 \end{equation}
 for a positive integer $q$ such that $\sum_{l=1}^q \alpha_l\leq 8$ and $l_1\neq l_2\neq \cdots \neq l_q$.
 Note that here $X_1$ and $-X_1$ don't need to have the same distribution under null hypothesis.
@@ -382,7 +382,7 @@ Note that here $X_1$ and $-X_1$ don't need to have the same distribution under n
 %In the following, $T(X_1,\ldots, X_n)$ will be specialized to~\eqref{Statistic}.
 
 A key assumption in~\citet{Chen2010A} is
-    $\mathrm{tr}(\Sigma^4)=o\big(\mathrm{tr}^2(\Sigma^2)\big)$.
+    $\mytr (\Sigma^4)=o\big(\mytr ^2(\Sigma^2)\big)$.
     Let $\lambda_i(\Sigma)$ be the $i$th largest eigenvalue of $\Sigma$.
     From
     $$
@@ -393,25 +393,25 @@ A key assumption in~\citet{Chen2010A} is
     \frac{\lambda_1(\Sigma)^2\sum_{i=1}^p\lambda_i(\Sigma)^2}{(\sum_{i=1}^p \lambda_i(\Sigma)^2)^2},
     $$
     we can see that 
-    $\mathrm{tr}(\Sigma^4)=o\big(\mathrm{tr}^2(\Sigma^2)\big)$ is equivalent to
+    $\mytr (\Sigma^4)=o\big(\mytr ^2(\Sigma^2)\big)$ is equivalent to
 \begin{equation}\label{chenC3}
-    \frac{\lambda_{1}(\Sigma)}{\sqrt{\mathrm{tr}(\Sigma^2)}}\to 0.
+    \frac{\lambda_{1}(\Sigma)}{\sqrt{\mytr (\Sigma^2)}}\to 0.
 \end{equation}
 Although~\citet{Chen2010A}'s results are for two sample case, their results can be proved similarly for one sample case. The following two lemmas restate their theorems.
 \begin{lemma}\label{theoremChen}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and local alternatives
     \begin{equation}\label{mu1}
-        \mu^T \Sigma\mu=o(n^{-1}\mathrm{tr}(\Sigma^2)),
+        \mu^T \Sigma\mu=o(n^{-1}\mytr (\Sigma^2)),
     \end{equation}
     we have
         $$
-        \frac{T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}(\Sigma^2)}}\xrightarrow{\mathcal{L}}N(0,1),
+        \frac{T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mytr (\Sigma^2)}}\xrightarrow{\mathcal{L}}N(0,1),
         $$
         where ``$\xrightarrow{\mathcal{L}}$'' means convergence in law.
 \end{lemma}
 \begin{lemma}\label{theoremChen2}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and     \begin{equation}\label{mumu1}
-     n^{-1}\mathrm{tr}(\Sigma)^2   =o(\mu^T \Sigma\mu),
+     n^{-1}\mytr (\Sigma)^2   =o(\mu^T \Sigma\mu),
     \end{equation}
     we have
         $$
@@ -448,7 +448,7 @@ The following theorem shows that in high dimensional setting, the randomization 
 \begin{theorem}\label{shaziCLT}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and 
     \begin{equation}\label{mu2}
-        \mu^T\mu=o\big(\sqrt{\mathrm{tr}({\Sigma}^2)}\big),
+        \mu^T\mu=o\big(\sqrt{\mytr ({\Sigma}^2)}\big),
     \end{equation}
     we have that
     \begin{equation*}
@@ -470,15 +470,16 @@ In fact, we have the following result.
 \begin{theorem}\label{farT}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and
     \begin{equation}\label{mu3}
-       \sqrt{\mathrm{tr}{\Sigma}^2} =o\big(\mu^T\mu\big),
+       \sqrt{\mytr {\Sigma}^2} =o\big(\mu^T\mu\big),
     \end{equation}
     we have that
     \begin{equation*}
         \begin{aligned}
             &\rho\bigg(\mathcal{L}\bigg(\frac{T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\bigg|X_1,\ldots,X_n\bigg),\frac{\sqrt{2}}{2}\big(\chi^2_1-1\big)\bigg)
-            \\&\xrightarrow{P} 0.
+            \\&\xrightarrow{P} 0,
         \end{aligned}
     \end{equation*}
+            where $\chi^2_1$ is the chi-squared distribution with freedom $1$.
 \end{theorem}
 
 Once the limit of the randomization distribution is obtained, the asymptotic behavior of $\xi_{\alpha}^*$ can be derived immediately.
@@ -505,7 +506,7 @@ The following two theorems give the power under~\eqref{mu1} and~\eqref{mumu1}, r
         \begin{aligned}
             &\Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
             =&
-            \Phi(-\Phi^{-1}(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}(\Sigma^2)}})+o(1).
+            \Phi(-\Phi^{-1}(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mytr (\Sigma^2)}})+o(1).
         \end{aligned}
     \end{equation}
 \item
@@ -543,7 +544,7 @@ The following two theorems give the power under~\eqref{mu1} and~\eqref{mumu1}, r
     %\end{equation*}
 %\end{remark}
 
-Theorem~\ref{theoremPower} implies that the Type I error rate of the randomization test tends to the nominal level.
+Theorem~\ref{theoremPower} implies that under \eqref{chenC1},~\eqref{chenC2} and~\eqref{chenC3}, the Type I error rate of the randomization test tends to the nominal level.
 Note that this result doesn't assume that the distribution of $X_1$ is symmetric under null hypothesis.
 This implies that our test procedure is robust when the symmetry assumption is break down.
 This property is not held by all randomization tests.
@@ -551,44 +552,80 @@ See, for example,~\cite{Romano1990On}.
 
 
 
-The randomization test rejects the null hypothesis if
+%The randomization test rejects the null hypothesis if
+%$$
+%{T(X_1,\ldots, X_n)}>{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \xi^*_{\alpha}.
+%$$
+%The asymptotic method rejects the null hypothesis if
+%$$
+%{T(X_1,\ldots, X_n)}>\sqrt{\frac{n(n-1)}{2}\widehat{\mytr ({\Sigma}^2)}} \Phi^{-1}(1-\alpha),
+%$$
+%where $\widehat{\mytr ({\Sigma}^2)}$ is a ratio consistent estimator of $\mytr (\Sigma^2)$.
+%Note that
+%%To compare the rejection region, we compare 
+%%$
+%%{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \xi^*_{\alpha}
+%%$
+%%and
+%%$
+%%\sqrt{\frac{n(n-1)}{2}\mytr \hat{\Sigma}^2} \Phi^{-1}(1-\alpha)
+%%$.
+%\begin{equation*}
+    %\begin{aligned}
+        %&\frac{{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \xi^*_{\alpha}}
+    %{\sqrt{\frac{n(n-1)}{2}\widehat{\mytr ({\Sigma}^2)}} \Phi^{-1}(1-\alpha)}\\
+        %=&(1+o_P(1))
+    %\frac{{\sqrt{\mytr {(\Sigma+\mu\mu^T)}^2}} \xi^*_{\alpha}}
+    %{\sqrt{\mytr (\Sigma^2)} \Phi^{-1}(1-\alpha)},
+    %\end{aligned}
+%\end{equation*}
+%which tends to $1$ when~\eqref{mu2} holds, and tends to $\infty$ when~\eqref{mu3} holds.
+%Hence randomization may loss some power.
+
+Use the method of~\citet{Chen2010A}, the asymptotic method rejects the null hypothesis when
 $$
-{T(X_1,\ldots, X_n)}>{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \xi^*_{\alpha}.
+\frac{\sum_{i\neq j}X_i^T X_j}{\sqrt{2n(n-1)\widehat{\mytr(\Sigma^2)}}}>\Phi^{-1}(1-\alpha),
 $$
-The asymptotic method rejects the null hypothesis if
+where
 $$
-{T(X_1,\ldots, X_n)}>\sqrt{\frac{n(n-1)}{2}\widehat{\mathrm{tr}({\Sigma}^2)}} \Phi^{-1}(1-\alpha),
+ \widehat{\mytr(\Sigma^2)}=\frac{1}{n(n-1)}\mytr\Big(\sum_{i\neq j}(X_i-\bar{X}_{(i,j)})X_i^T (X_j-\bar{X}_{(i,j)})X_j^T\Big)
 $$
-where $\widehat{\mathrm{tr}({\Sigma}^2)}$ is a ratio consistent estimator of $\mathrm{tr}(\Sigma^2)$.
-Note that
-%To compare the rejection region, we compare 
-%$
-%{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \xi^*_{\alpha}
-%$
-%and
-%$
-%\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\hat{\Sigma}^2} \Phi^{-1}(1-\alpha)
-%$.
+is a ratio consistent estimator of $\mytr(\Sigma^2)$ and $\bar{X}_{(i,j)}$ is the sample mean after excluding $X_i$ and $X_j$.
+Lemma~\ref{theoremChen} implies that the Type I error rate of the asymptotic method  tends to the nominal level under assumptions~\eqref{chenC1},~\eqref{chenC2} and~\eqref{chenC3}.
+However, when these assumptions are not satisfied, Lemma~\ref{theoremChen} may not be valid.
+For example, we consider the model $X_i=u_i\Bv$, $i=1,\ldots,n$, where
+ $u_1,\ldots,u_n$ are iid random variables with $\myE u_1=0$, $\myE u_1^2=1$ and $\Bv\in\mathbb{R}^p$ is a vector.
+In this case, 
 \begin{equation*}
     \begin{aligned}
-        &\frac{{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \xi^*_{\alpha}}
-    {\sqrt{\frac{n(n-1)}{2}\widehat{\mathrm{tr}({\Sigma}^2)}} \Phi^{-1}(1-\alpha)}\\
-        =&(1+o_P(1))
-    \frac{{\sqrt{\mathrm{tr}{(\Sigma+\mu\mu^T)}^2}} \xi^*_{\alpha}}
-    {\sqrt{\mathrm{tr}(\Sigma^2)} \Phi^{-1}(1-\alpha)},
+        T(X_1,\ldots,X_n)&=\Bv^T \Bv\sum_{j<i} u_i u_j
+        =\frac{1}{2}\Bv^T \Bv\big( (\sum_{i=1}^n u_i)^2-\sum_{i=1}^n u_i^2\big).
     \end{aligned}
 \end{equation*}
-which tends to $1$ when~\eqref{mu2} holds, and tends to $\infty$ when~\eqref{mu3} holds.
-Hence randomization may loss some power.
+By law of large number, we have $\sum_{i=1}^n u_i^2/n\xrightarrow{P} 1$. By central limit theorem, we have $\sum_{i=1}^n u_i/\sqrt{n}\xrightarrow{\mathcal{L}}N(0,1)$. Then we have
+$$
+\frac{2T(X_1,\ldots,X_n)}{n\Bv^T \Bv }+1\xrightarrow{\mathcal{L}}\chi^2_1.
+$$
+Since  the asymptotic distribution of $T(X_1,\ldots, X_n)$ is not normal distribution, the asymptotic method does not have the correct level asymptotically.
+For the randomization method, we have
+\begin{equation*}
+    \begin{aligned}
+        T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)&=\Bv^T \Bv\sum_{j<i}  u_i u_j \epsilon_i \epsilon_j\\
+        &=\frac{1}{2}\Bv^T \Bv\big( (\sum_{i=1}^n u_i \epsilon_i )^2-\sum_{i=1}^n u_i^2\big).
+    \end{aligned}
+\end{equation*}
+
 
 
 
 
 \section{Simulation Studies}
 
-\subsection{The first simulation study}
 In this section, we report the simulation performance of the randomization test in various setting.
 For comparison, we also conduct the simulation of the asymptotic method of~\citet{Chen2010A}.
+
+11111111111111111111111111
+
 According to~\citet{Chen2010A}, the asymptotic method rejects the null hypothesis when
 $$
 \frac{\sum_{i\neq j}X_i^T X_j}{\sqrt{2n(n-1)\widehat{\mytr(\Sigma^2)}}}>\Phi^{-1}(1-\alpha),
@@ -623,7 +660,7 @@ We denote by $\{\xi_{ij}\}_{1\leq i\leq n, 1\leq j\leq p}$ a sequence of indepen
 Note that $\chi_{ij}$ has mean $0$, variance $1$ and skewness $\sqrt{12}/3$.
 The data is generated by model
 \begin{equation*}
-    X_{i,j}=\frac{a_{j1}\chi_{i1}+a_{j2}\chi_{i2}+a_{j3}\chi_{i3}+b_{j}\chi_{i4}+\xi_{ij}}{{(1+a_{j1}^2+a_{j2}^2+a_{j3}^2+b_j^2)}^{1/2}}
+    X_{ij}=\frac{a_{j1}\chi_{i1}+a_{j2}\chi_{i2}+a_{j3}\chi_{i3}+b_{j}\chi_{i4}+\xi_{ij}}{{(1+a_{j1}^2+a_{j2}^2+a_{j3}^2+b_j^2)}^{1/2}}
     \quad
     \textrm{$i=1,\ldots, n$ and $j=1,\ldots, p$},
 \end{equation*}
@@ -668,7 +705,7 @@ This implies the accuracy of normal approximation depends on the innovation mode
 
 
 Now we simulate the empirical power and size.
-Let $\mathrm{SNR}=\sqrt{n(n-1)}\mu^T \mu /\sqrt{2\mathrm{tr}\Sigma^2}$ be the signal to noise ratio (SNR).
+Let $\mathrm{SNR}=\sqrt{n(n-1)}\mu^T \mu /\sqrt{2\mytr \Sigma^2}$ be the signal to noise ratio (SNR).
 The theoretic asymptotic power is an increasing function of SNR\@.
 We scale $\mu$ to reach different level of SNR\@.
 Our simulation consider two mean structure: dense mean and sparse mean.
@@ -812,13 +849,13 @@ The method used in this paper can not be applied to permutation test.
 We leave it for possible future work.
 
 
-\section{Appendix}
+\section*{Appendix}
 \paragraph{A CLT for quadratic form of Rademacher variables}
 The proof of the Theorem~\ref{shaziCLT} is based on a CLT of the quadratic form of Rademacher variables. 
 Such a CLT can be also used to study the asymptotic behavior of many other randomization test.
  Let $\epsilon_1,\ldots,\epsilon_n$ be independent Rademacher  variables. 
- Consider quadratic form $W_n=\sum_{1\leq j<i\leq n} a_{ij}\epsilon_i \epsilon_j$, where $\{a_{ij}\}$ are nonrandom numbers. Here $\{\epsilon_i\}$ and $\{a_{ij}\}$ may depend on $n$, a parameter we suppress.
- Obviously, $\mathrm{E}(W_n)=0$ and $\mathrm{Var}(W_n)=\sum_{1\leq j<i\leq n} a_{ij}^2$.
+ Consider the quadratic form $W_n=\sum_{1\leq j<i\leq n} a_{ij}\epsilon_i \epsilon_j$, where $\{a_{ij}\}$ are nonrandom numbers. Here $\{\epsilon_i\}$ and $\{a_{ij}\}$ may depend on $n$, a parameter we suppress.
+ By direct calculation, we have $\myE(W_n)=0$ and $\mathrm{Var}(W_n)=\sum_{1\leq j<i\leq n} a_{ij}^2$.
 
  \begin{proposition}\label{CLTprop}
      A sufficient condition for
@@ -835,61 +872,67 @@ Such a CLT can be also used to study the asymptotic behavior of many other rando
  \end{proposition}
 
  \begin{proof}
-     Define $U_{in} =\epsilon_i \sum_{j=1}^{i-1} a_{ij}\epsilon_j$, $i=2,\ldots,n$, and $\mathcal{F}_{in}=\sigma\{\epsilon_1,\ldots,\epsilon_i\}$, $i=1,\ldots, n$.
-     Now $W_n=\sum_{i=2}^n U_{in}$, $\{U_{in}\}$ is a martingale difference array with respect to $\{\mathcal{F}_{in}\}$. 
-Then MCLT can be used. See, for example,~\citet{pollard1984convergence}, Chapter VIII Theorem 1.
-     To prove the proposition, we shall verify two conditions:
+     Note that we have the decomposition $W_n=\sum_{i=2}^n U_{in}$, where $U_{in} =\epsilon_i \sum_{j=1}^{i-1} a_{ij}\epsilon_j$, $i=2,\ldots,n$.
+    Let $\mathcal{F}_{in}$ be the $\sigma$-field generated by $\epsilon_1,\ldots,\epsilon_i$, $i=1,\ldots, n$.
+     Then it can be seen that $\{U_{in}\}_{i=1}^n$
+       is a martingale difference array with respect to $\{\mathcal{F}_{in}\}_{i=1}^n$. 
+     Hence the martingale central limit theorem can be used. See, for example,~\citet[Theorem 1 of Chapter VIII ]{pollard1984convergence}.
+     By martingale central limit theorem, our conclusion holds if the following two conditions are satisfied:
      \begin{equation}\label{MCLTcondition1}
-         \frac{\sum_{i=2}^n \mathrm{E}(U_{in}^2 |\mathcal{F}_{i-1,n})}{\sum_{1\leq j<i\leq n} a_{ij}^2}\xrightarrow{P} 1,
+         \frac{\sum_{i=2}^n \myE(U_{in}^2 |\mathcal{F}_{i-1,n})}{\sum_{1\leq j<i\leq n} a_{ij}^2}\xrightarrow{P} 1,
      \end{equation}
      and
      \begin{equation}\label{MCLTcondition2}
-         \frac{\sum_{i=2}^n \mathrm{E}\big(U_{in}^2\big\{U_{in}^2>\epsilon \sum_{1\leq j<i\leq n} a_{ij}^2\big\}\big|\mathcal{F}_{i-1,n}\big)}{\sum_{1\leq j<i\leq n} a_{ij}^2}\xrightarrow{P} 0,
+         \frac{\sum_{i=2}^n \myE\big(U_{in}^2\big\{U_{in}^2>\epsilon \sum_{1\leq j<i\leq n} a_{ij}^2\big\}\big|\mathcal{F}_{i-1,n}\big)}{\sum_{1\leq j<i\leq n} a_{ij}^2}\xrightarrow{P} 0,
      \end{equation}
      for every $\epsilon>0$.
 
      \paragraph{Proof of~\eqref{MCLTcondition1}}
-     Since $\mathrm{E}(U_{in}^2 |\mathcal{F}_{i-1,n})={(\sum_{j=1}^{i-1}a_{ij}\epsilon_j)}^2$, we have
+     Since $\myE(U_{in}^2 |\mathcal{F}_{i-1,n})={(\sum_{j=1}^{i-1}a_{ij}\epsilon_j)}^2$, we have that
      \begin{equation*}
          \begin{aligned}
-\sum_{i=2}^n \mathrm{E}(U_{in}^2 |\mathcal{F}_{i-1,n})
-             &=\sum_{i=2}^n \big(\sum_{j=1}^{i-1}a_{ij}\epsilon_j \big)^2
-             =\sum_{i=2}^n \big( \sum_{j=1}^{i-1} a_{ij}^2 +2\sum_{j,k:j<k<i} a_{ij}a_{ik}\epsilon_j \epsilon_k \big)\\
-             &=\sum_{i=2}^n  \sum_{j=1}^{i-1} a_{ij}^2 +2\sum_{j<k<i} a_{ij}a_{ik}\epsilon_j \epsilon_k.
+             &\sum_{i=2}^n \myE(U_{in}^2 |\mathcal{F}_{i-1,n})
+             =\sum_{i=2}^n \big(\sum_{j=1}^{i-1}a_{ij}\epsilon_j \big)^2\\
+             =&\sum_{i=2}^n \big( \sum_{j=1}^{i-1} a_{ij}^2 +2\sum_{j,k:j<k<i} a_{ij}a_{ik}\epsilon_j \epsilon_k \big)\\
+             =&\sum_{i=2}^n  \sum_{j=1}^{i-1} a_{ij}^2 +2\sum_{j<k<i} a_{ij}a_{ik}\epsilon_j \epsilon_k.
          \end{aligned}
      \end{equation*}
-
-     But
+     For the second term, we have that
      \begin{equation*}
          \begin{aligned}
-         \mathrm{E}{(\sum_{j<k<i} a_{ij}a_{ik}\epsilon_j \epsilon_k)}^2
-             &=
-             \mathrm{E}{\big(\sum_{j<k} (\sum_{i:i>k}a_{ij}a_{ik})\epsilon_j \epsilon_k \big)}^2\\
-             &=
+             &\myE{(\sum_{j<k<i} a_{ij}a_{ik}\epsilon_j \epsilon_k)}^2
+             =
+             \myE{\big(\sum_{j<k} (\sum_{i:i>k}a_{ij}a_{ik})\epsilon_j \epsilon_k \big)}^2\\
+             =&
              \sum_{j<k} (\sum_{i:i>k}a_{ij}a_{ik})^2
              =
              o\big({(\sum_{j<i} a_{ij}^2)}^2\big),
          \end{aligned}
      \end{equation*}
-     where the last equality holds by assumption. Hence~\eqref{MCLTcondition1} holds.
+     where the last equality holds by assumption.
+     Then it follows that
+     \begin{equation*}
+         \frac{\sum_{j<k<i} a_{ij}a_{ik}\epsilon_j \epsilon_k}{\sum_{j<i} a_{ij}^2}\xrightarrow{P} 0.
+     \end{equation*}
+     Hence~\eqref{MCLTcondition1} holds.
      \paragraph{Proof of~\eqref{MCLTcondition2}}
-     By Markov's inequality, we only need to prove
+     By Markov inequality, it's sufficient to prove
      \begin{equation}\label{temp1}
-         \frac{\sum_{i=2}^n \mathrm{E}\big(U_{in}^4\big|\mathcal{F}_{i-1,n}\big)}{{\big(\sum_{1\leq j<i\leq n} a_{ij}^2\big)}^2}\xrightarrow{P} 0.
+         \frac{\sum_{i=2}^n \myE\big(U_{in}^4\big|\mathcal{F}_{i-1,n}\big)}{{\big(\sum_{1\leq j<i\leq n} a_{ij}^2\big)}^2}\xrightarrow{P} 0.
      \end{equation}
      Since the relevant random variables are all positive, we only need to prove~\eqref{temp1} converges to $0$ in mean. But
      \begin{equation*}
          \begin{aligned}
-         \sum_{i=2}^n \mathrm{E} U_{in}^4
-             &=
-             \sum_{i=2}^n \mathrm{E} {(\sum_{j:j<i}a_{ij}\epsilon_j)}^4
+             &\sum_{i=2}^n \myE U_{in}^4
              =
-             \sum_{i=2}^n \mathrm{E} {(\sum_{j:j<i}a_{ij}^2+2\sum_{j,k:j<k<i}a_{ij}a_{ik}\epsilon_j \epsilon_k)}^2\\
-             &=
-             \sum_{i=2}^n  \big({(\sum_{j:j<i}a_{ij}^2)}^2+4\mathrm{E}{(\sum_{j,k:j<k<i}a_{ij}a_{ik}\epsilon_j \epsilon_k)}^2 \big)\\
-             &=
+             \sum_{i=2}^n \myE {(\sum_{j:j<i}a_{ij}\epsilon_j)}^4\\
+             =&
+             \sum_{i=2}^n \myE {(\sum_{j:j<i}a_{ij}^2+2\sum_{j,k:j<k<i}a_{ij}a_{ik}\epsilon_j \epsilon_k)}^2\\
+             =&
+             \sum_{i=2}^n  \big({(\sum_{j:j<i}a_{ij}^2)}^2+4\myE{(\sum_{j,k:j<k<i}a_{ij}a_{ik}\epsilon_j \epsilon_k)}^2 \big)\\
+             =&
              \sum_{i=2}^n  (\sum_{j:j<i}a_{ij}^4+6\sum_{j,k:j<k<i}a_{ij}^2 a_{ik}^2)\\
-             &=
+             =&
              \sum_{j<i}a_{ij}^4+6\sum_{j<k<i}a_{ij}^2 a_{ik}^2
              =
              o\big({(\sum_{j<i} a_{ij}^2)}^2\big),
@@ -898,164 +941,188 @@ Then MCLT can be used. See, for example,~\citet{pollard1984convergence}, Chapter
      where the last equality holds by assumption. Hence~\eqref{MCLTcondition2} holds.
  \end{proof}
 
- The rest of Appendix is devoted to the proof of the theorems in the paper.
+The rest of Appendix is devoted to the proof of our main results.
+
 
 
 \begin{lemma}\label{lemmaUniformSimple}
-    Suppose $\{\eta_n\}$ is a sequence of $1$-dimensional random variables, weakly converges to $\eta$, a random variable with continuous distribution function.
+    Suppose $\{\eta_n\}_{n=1}^{\infty}$ is a sequence of random variables, weakly converges to $\eta$, a random variable with continuous distribution function.
     Then we have
     $$
     \sup_{x}|\Pr(\eta_n\leq x)-\Pr(\eta\leq x)|\to 0.
     $$
 \end{lemma}
 
+For two non-negative sequences $\{x_n\}_{n=1}^{\infty}$ and $\{y_n\}_{n=1}^{\infty}$, we write $a_n\asymp b_n$ to denote 
+$$cb_n\leq a_n\leq C b_n$$
+for some absolute constants $c>0$, $C>0$ and all $n=1,2,\ldots$.
 \begin{lemma}\label{lemmaQ}
-    Suppose $A=(a_{ij})$ is an $m\times m$ positive semi-definite matrix. Under~\eqref{chenC2}, we have
+    Under~\eqref{chenC2}, suppose $A=(a_{ij})$ is an $m\times m$ positive semi-definite matrix, we have
         $$
-        \mathrm{E} {(Z_i^T A Z_i)}^2\asymp {(\mathrm{tr}A)}^2
+        \myE {(Z_i^T A Z_i)}^2\asymp {(\mytr A)}^2.
         $$
 \begin{proof}
 Notice that
     $$
     \begin{aligned}
-        {(Z_i^T A Z_i)}^2
-        =&
+        &{(Z_i^T A Z_i)}^2
+        =
         (\sum_{j=1}^m a_{jj}z_{ij}^2+2\sum_{k<j}a_{jk}z_{ij}z_{ik})^2\\
         =&
         (\sum_{j=1}^m a_{jj}z_{ij}^2)^2+
-        4(\sum_{j=1}^m a_{jj}z_{ij}^2)(\sum_{k<j}a_{jk}z_{ij}z_{ik})+
+        4(\sum_{j=1}^m a_{jj}z_{ij}^2)(\sum_{k<j}a_{jk}z_{ij}z_{ik})\\
+        &+
         4(\sum_{k<j}a_{jk}z_{ij}z_{ik})^2\\
         =&
         \sum_{j=1}^m a_{jj}^2z_{ij}^4+2\sum_{k<j}a_{jj}a_{kk}z_{ij}^2 z_{ik}^2+
         4(\sum_{j=1}^m a_{jj}z_{ij}^2)(\sum_{k<j}a_{jk}z_{ij}z_{ik})\\
         &+
-        4(\sum_{k<j}a_{jk}^2z_{ij}^2z_{ik}^2+\sum_{k<j,l<\alpha:\mathrm{card}(\{k,j\}\cap\{l,\alpha\})<2} a_{jk}a_{\alpha l}z_{ij}z_{ik}z_{i\alpha}z_{il})\\
+        4\Big(\sum_{k<j}a_{jk}^2z_{ij}^2z_{ik}^2\\
+        &+\sum_{k<j,l<\alpha:\mathrm{card}(\{k,j\}\cap\{l,\alpha\})<2} a_{jk}a_{\alpha l}z_{ij}z_{ik}z_{i\alpha}z_{il}\Big),
     \end{aligned}
     $$
-Hence
+    where $\mathrm{card}(\cdot)$ is the cardinality of a set.
+    By the assumption~\eqref{chenC2}, we have
     $$
     \begin{aligned}
-        \mathrm{E}{(Z_i^T A Z_i)}^2
+        &\myE{(Z_i^T A Z_i)}^2\\
         =&
-        \sum_{j=1}^n a_{jj}^2 \mathrm{E}z_{ij}^4+2\sum_{k<j}a_{jj}a_{kk}\mathrm{E}(z_{ij}^2 z_{ik}^2)+
-        4\sum_{k<j}a_{jk}^2 \mathrm{E}(z_{ij}^2z_{ik}^2)\\
+        \sum_{j=1}^n a_{jj}^2 \myE z_{ij}^4+2\sum_{k<j}a_{jj}a_{kk}\myE(z_{ij}^2 z_{ik}^2)+
+        4\sum_{k<j}a_{jk}^2 \myE(z_{ij}^2z_{ik}^2)\\
         \asymp &
         \sum_{j=1}^n\sum_{k=1}^n a_{jj}a_{kk}+
         \sum_{j=1}^n\sum_{k=1}^n a_{jk}^2
-        ={(\mathrm{tr}(A))}^2+\mathrm{tr}A^2.
+        ={(\mytr (A))}^2+\mytr ( A^2).
     \end{aligned}
     $$
 
-    By Cauchy inequality, $0\leq \mathrm{tr} A^2\leq {(\mathrm{tr}A)}^2$. The conclusion holds.
+     Then the conclusion holds from inequality
+     $$\mytr ( A^2)\leq \lambda_1 (A) \mytr(A)\leq {(\mytr A)}^2.$$
 
 \end{proof}
 \end{lemma}
 
 \begin{lemma}\label{smallLemma1}
-    Under~\eqref{chenC1},~\eqref{chenC2}, for $i\neq j$ we have
+    Under~\eqref{chenC1} and~\eqref{chenC2}, for $i\neq j$ we have
     \begin{equation}\label{eq:20170220}
-        \mathrm{E}{(X_i^T X_j)}^4=%O\Big({\big(\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)}^2\Big).
-             O(1){\Big(\mathrm{tr}{\big(\Sigma+\mu\mu^T\big)}^2\Big)}^2.
+        \myE{(X_i^T X_j)}^4=%O\Big({\big(\mytr (\Sigma+\mu\mu^T)^2\big)}^2\Big).
+             O(1){\Big(\mytr {\big(\Sigma+\mu\mu^T\big)}^2\Big)}^2.
     \end{equation}
 \end{lemma}
 \begin{proof}
+
+    Under~\eqref{chenC1} and~\eqref{chenC2}, we have
     $$
         \begin{aligned}
-            {(X_i^T X_j)}^4=&
+            &{(X_i^T X_j)}^4=
             {(Z_i^T \Gamma^T \Gamma Z_j+\mu^T \Gamma Z_i+\mu^T \Gamma Z_j+\mu^T \mu)}^4\\
             \leq &
             64\big((Z_i^T \Gamma^T \Gamma Z_j)^4+(\mu^T \Gamma Z_i)^4+(\mu^T \Gamma Z_j)^4+(\mu^T \mu)^4\big)\\
         \end{aligned}
     $$
-    We deal with the first term by applying Lemma~\ref{lemmaQ} twice.
+    We can deal with the first term by applying Lemma~\ref{lemmaQ} twice:
         $$
         \begin{aligned}
-            \mathrm{E}(Z_i^T \Gamma^T \Gamma Z_j)^4=&
-        \mathrm{E}(Z_i^T \Gamma^T \Gamma Z_j Z_j^T \Gamma^T \Gamma Z_i)^2
-            =
-            \mathrm{E}\mathrm{E}\big((Z_i^T \Gamma^T \Gamma Z_j Z_j^T \Gamma^T \Gamma Z_i)^2 | Z_j\big)\\
-            \asymp &  \mathrm{E}{(Z_j^T \Gamma^T \Sigma \Gamma Z_j)}^2
-            \asymp   {(\mathrm{tr}\Sigma^2)}^2,%+\mathrm{tr}\Sigma^4\\
-            %\leq &  (\mathrm{tr}\Sigma^2)^2+\lambda_{1}^2(\Sigma)\mathrm{tr}\Sigma^2,
+            &\myE(Z_i^T \Gamma^T \Gamma Z_j)^4=
+        \myE(Z_i^T \Gamma^T \Gamma Z_j Z_j^T \Gamma^T \Gamma Z_i)^2\\
+            =&
+            \myE\myE\big((Z_i^T \Gamma^T \Gamma Z_j Z_j^T \Gamma^T \Gamma Z_i)^2 | Z_j\big)\\
+            \asymp &  \myE{(Z_j^T \Gamma^T \Sigma \Gamma Z_j)}^2
+            \asymp   {\big(\mytr (\Sigma^2)\big)}^2.%+\mytr \Sigma^4\\
+            %\leq &  (\mytr \Sigma^2)^2+\lambda_{1}^2(\Sigma)\mytr \Sigma^2,
         \end{aligned}
     $$
     Similarly, we have
         $$
         \begin{aligned}
-            &\mathrm{E}(\mu^T \Gamma Z_i)^4=
-        \mathrm{E}(Z_i^T \Gamma^T \mu\mu^T \Gamma Z_i)^2
+            &\myE(\mu^T \Gamma Z_i)^4=
+        \myE(Z_i^T \Gamma^T \mu\mu^T \Gamma Z_i)^2
             \asymp  {(\mu^T \Sigma \mu)}^2\\
             &\leq \lambda_{1}^2(\Sigma){(\mu^T \mu)}^2
-        \leq \mathrm{tr}(\Sigma^2){(\mu^T \mu)}^2
-            \leq {\big(\mathrm{tr}(\Sigma^2)\big)}^2+{(\mu^T \mu)}^4.
+        \leq \mytr (\Sigma^2){(\mu^T \mu)}^2
+            \leq {\big(\mytr (\Sigma^2)\big)}^2+{(\mu^T \mu)}^4.
         %\leq \lambda_{1}^2(\Sigma){(\mu^T\mu)}^2
         \end{aligned}
     $$
-    Thus, the conclusion holds.
+Hence
+$$
+    \myE (X_i^T X_j)^4=O(1)\Big(\big(\mytr(\Sigma^2)\big)^2+(\mu^T \mu)^4\Big).
+    $$
+Then the theorem follows by noting that
+$$
+{\Big(\mytr {\big(\Sigma+\mu\mu^T\big)}^2\Big)}^2
+\asymp
+    \big(\mytr(\Sigma^2)\big)^2+(\mu^T \mu)^4.
+$$
 \end{proof}
 
 
 \begin{lemma}\label{smallLemma2}
     Under~\eqref{chenC1},~\eqref{chenC2}, suppose $i\neq j$, $i\neq k$, $j\neq k$, we have
     \begin{equation}\label{eq:2}
-            \mathrm{E}{(X_i^T X_j)}^2{(X_k^T X_i)}^2=
-             O(1){\Big(\mathrm{tr}{\big(\Sigma+\mu\mu^T\big)}^2\Big)}^2.
+            \myE{(X_i^T X_j)}^2{(X_k^T X_i)}^2=
+             O(1){\Big(\mytr {\big(\Sigma+\mu\mu^T\big)}^2\Big)}^2.
     \end{equation}
 \end{lemma}
 \begin{proof}
 Note that
     \begin{equation*}
         \begin{aligned}
-            &\mathrm{E}{(X_i^T X_j)}^2{(X_k^T X_i)}^2
+            &\myE{(X_i^T X_j)}^2{(X_k^T X_i)}^2
             = 
-            \mathrm{E}\mathrm{E}\big({(X_i^T X_j)}^2{(X_k^T X_i)}^2| X_i\big)
-            =
-            \mathrm{E}{(X_i^T (\Sigma+\mu\mu^T) X_i )}^2\\
+            \myE\myE\big({(X_i^T X_j)}^2{(X_k^T X_i)}^2| X_i\big)\\
             =&
-            \mathrm{E}{\big(Z_i^T \Gamma^T (\Sigma+\mu\mu^T) \Gamma Z_i+ 2\mu^T (\Sigma+\mu\mu^T)\Gamma Z_i +\mu \Sigma \mu +(\mu^T\mu)^2 \big)}^2\\
+            \myE{(X_i^T (\Sigma+\mu\mu^T) X_i )}^2\\
+            =&
+            \myE\Big(Z_i^T \Gamma^T (\Sigma+\mu\mu^T) \Gamma Z_i+ 2\mu^T (\Sigma+\mu\mu^T)\Gamma Z_i \\
+            &+\mu^T \Sigma \mu +(\mu^T\mu)^2 \Big)^2\\
             \leq&
-            4\mathrm{E}(Z_i^T \Gamma^T (\Sigma+\mu\mu^T) \Gamma Z_i)^2+ 16\mathrm{E}(\mu^T (\Sigma+\mu\mu^T)\Gamma Z_i)^2 +4(\mu \Sigma \mu)^2 +4(\mu^T\mu)^4.
+            4\myE(Z_i^T \Gamma^T (\Sigma+\mu\mu^T) \Gamma Z_i)^2+ 16\myE(\mu^T (\Sigma+\mu\mu^T)\Gamma Z_i)^2 \\
+            &+4(\mu \Sigma \mu)^2 +4(\mu^T\mu)^4.
         \end{aligned}
     \end{equation*}
-    By Lemma~\eqref{lemmaQ},
+    By Lemma~\eqref{lemmaQ}, we have
     \begin{equation*}
         \begin{aligned}
-\mathrm{E}(Z_i^T \Gamma^T (\Sigma+\mu\mu^T) \Gamma Z_i)^2
-            &\asymp
-\big(\mathrm{tr}(\Gamma^T (\Sigma+\mu\mu^T)\Gamma)\big)^2\\
-            &=
-\big(\mathrm{tr}\Sigma^2+\mu^T\Sigma \mu\big)^2
-            \leq
-            2{\big(\mathrm{tr}\Sigma^2\big)}^2+2{\big(\mu^T\Sigma \mu\big)}^2.
+            &\myE(Z_i^T \Gamma^T (\Sigma+\mu\mu^T) \Gamma Z_i)^2\\
+            \asymp&
+\big(\mytr (\Gamma^T (\Sigma+\mu\mu^T)\Gamma)\big)^2\\
+            =&
+\big(\mytr \Sigma^2+\mu^T\Sigma \mu\big)^2\\
+            \leq&
+            2{\big(\mytr \Sigma^2\big)}^2+2{\big(\mu^T\Sigma \mu\big)}^2.
         \end{aligned}
     \end{equation*}
-    And
+    On the other hand, we have
     \begin{equation*}
         \begin{aligned}
-            &\mathrm{E}(\mu^T (\Sigma+\mu\mu^T)\Gamma Z_i)^2=
+            &\myE(\mu^T (\Sigma+\mu\mu^T)\Gamma Z_i)^2\\
+            =&
 \mu^T (\Sigma+\mu\mu^T)\Sigma (\Sigma+\mu\mu^T)\mu\\
             =&\mu^T \Sigma^3 \mu+2(\mu^T\mu)(\mu^T\Sigma^2\mu)+{(\mu^T\mu)}^2(\mu^T\Sigma\mu).
         \end{aligned}
     \end{equation*}
-
-    But for $i=1,2,\ldots$, we have
+    For $i=1,2,3$, we have
     $$
     \mu^T \Sigma^i \mu
     \leq \lambda_{1}^i(\Sigma)\mu^T\mu
-    \leq {(\mathrm{tr}(\Sigma^2))}^{i/2}\mu^T\mu.
+    \leq {(\mytr (\Sigma^2))}^{i/2}\mu^T\mu.
     $$
-    Thus,
+        Combining these yields
         $$
         \begin{aligned}
-            &\mathrm{E}{(X_i^T X_j)}^2{(X_k^T X_i)}^2\\
+            &\myE{(X_i^T X_j)}^2{(X_k^T X_i)}^2\\
             =&
-            O(1)\big({(\mathrm{tr}\Sigma^2)}^2+
-            {(\mathrm{tr}\Sigma^2)}^{3/2}{(\mu^T \mu)}+
-            {(\mathrm{tr}\Sigma^2)}{(\mu^T \mu)}^2+
-            {(\mathrm{tr}\Sigma^2)}^{1/2}{(\mu^T \mu)}^3+
+            O(1)\Big({\big(\mytr (\Sigma^2)\big)}^2+
+            {\big(\mytr (\Sigma^2)\big)}^{3/2}\mu^T \mu+
+            {\big(\mytr (\Sigma^2)\big)}{(\mu^T \mu)}^2\\
+            &+
+            {\big(\mytr (\Sigma^2)\big)}^{1/2}{(\mu^T \mu)}^3+
             {(\mu^T \mu)}^4
-            \big)\\
-            =& O(1){\Big(\mathrm{tr}{\big(\Sigma+\mu\mu^T\big)}^2\Big)}^2.
+            \Big)\\
+            =&O(1)
+            \Big(\big(\mytr(\Sigma^2)\big)^2 + (\mu^T \mu)^4 \Big)\\
+            =& O(1){\Big(\mytr {\big(\Sigma+\mu\mu^T\big)}^2\Big)}^2.
         \end{aligned}
         $$
 \end{proof}
@@ -1064,7 +1131,7 @@ Note that
 \begin{lemma}\label{ratioLemma}
     Under~\eqref{chenC1} and~\eqref{chenC2}, we have
         $$
-        \frac{\sum_{j<i}{(X_i^T X_j)}^2}{\frac{n(n-1)}{2}\mathrm{tr} (\Sigma+\mu\mu^T)^2}
+        \frac{\sum_{j<i}{(X_i^T X_j)}^2}{\frac{n(n-1)}{2}\mytr  (\Sigma+\mu\mu^T)^2}
         \xrightarrow{P}1.
         $$
 \end{lemma}
@@ -1072,126 +1139,155 @@ Note that
     Since
         $$
         \begin{aligned}
-            \mathrm{E}{(X_i^T X_j)}^2=&
-            \mathrm{E}(X_i^T X_j X_j^T X_i)=
-            \mathrm{E}(X_i^T (\Sigma+\mu \mu^T) X_i)\\
+            \myE(X_i^T X_j)^2=&
+            \myE(X_i^T X_j X_j^T X_i)=
+            \myE(X_i^T (\Sigma+\mu \mu^T) X_i)\\
             =&
-            \mathrm{E}\mathrm{tr}((\Sigma+\mu \mu^T) X_i X_i^T)=\mathrm{tr}{(\Sigma+\mu \mu^T)}^2,
+            \myE\mytr ((\Sigma+\mu \mu^T) X_i X_i^T)=\mytr {(\Sigma+\mu \mu^T)}^2,
         \end{aligned}
     $$
    we have 
         $$
-        \mathrm{E}\sum_{j<i}{(X_i^T X_j)}^2=\frac{n(n-1)}{2}\mathrm{tr}{(\Sigma+\mu\mu^T)}^2
+        \myE\sum_{j<i}(X_i^T X_j)^2=\frac{n(n-1)}{2}\mytr {(\Sigma+\mu\mu^T)}^2.
     $$
-    So we only need to consider the variance. According to $\mathrm{card}(\{i,j\}\cap\{k,l\})=0,1,2$, we have
-    \begin{equation}\label{eq:1}
+    Next we need to deal with $\myE \big(\sum_{j<i}{(X_i^T X_j)}^2\big)^2$.
+    Write 
+$$
+    \big(\sum_{j<i}{(X_i^T X_j)}^2\big)^2=
+    \big(\sum_{j<i}{(X_i^T X_j)}^2\big)
+    \big(\sum_{k<l}{(X_l^T X_k)}^2\big)
+    $$
+    According to $\mathrm{card}(\{i,j\}\cap\{k,l\})=0,1,2$, we have
+    \begin{equation*}%\label{eq:1}
     \begin{aligned}
-        &{\big(\sum_{j<i}{(X_i^T X_j)}^2\big)}^2
-        =
-        \sum_{j<i}{(X_i^T X_j)}^4+
-        \sum_{j<i,k<l:\{i,j\}\cap \{k,l\}=\phi}{(X_i^T X_j)}^2{(X_k^T X_l)}^2\\
-        &+2\sum_{j<i<k}\big(
+        \big(\sum_{j<i}{(X_i^T X_j)}^2\big)^2
+        &=
+        \sum_{j<i}{(X_i^T X_j)}^4\\
+        & +
+        \sum_{j<i,k<l:\{i,j\}\cap \{k,l\}=\phi}{(X_i^T X_j)}^2{(X_l^T X_k)}^2\\
+        +2\sum_{j<i<k}&\Big(
         {(X_i^T X_j)}^2{(X_k^T X_i)}^2+
-{(X_i^T X_j)}^2{(X_k^T X_j)}^2+
+{(X_i^T X_j)}^2{(X_k^T X_j)}^2\\
+        &+
 {(X_k^T X_j)}^2{(X_k^T X_i)}^2
-        \big).
+        \Big).
     \end{aligned}
-    \end{equation}
-
-
-   
-    In~\eqref{eq:1}, there are $n(n-1)/2$, $n(n-1)(n-2)(n-3)/4$ and $n(n-1)(n-2)/6$ terms in each summation. By Lemma~\ref{smallLemma1} and Lemma~\ref{smallLemma2}, we have
+    \end{equation*}
+    %For the three summations on the right hand side of equation~\eqref{eq:1},
+    There are $n(n-1)/2$, $n(n-1)(n-2)(n-3)/4$ and $n(n-1)(n-2)/6$ terms in each sum, respectively.
+    This, combined with Lemma~\ref{smallLemma1} and Lemma~\ref{smallLemma2}, yields
     $$
     \begin{aligned}
-        \mathrm{E}{\big(\sum_{j<i}{(X_i^T X_j)}^2\big)}^2
-            =&\frac{n(n-1)(n-2)(n-3)}{4}{\big(\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)}^2\\
-            &+O(1)(\frac{n(n-1)}{2}+n(n-1)(n-2)){\big(\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)}^2.
+        &\myE{\big(\sum_{j<i}{(X_i^T X_j)}^2\big)}^2\\
+            =&\frac{n(n-1)(n-2)(n-3)}{4}{\big(\mytr (\Sigma+\mu\mu^T)^2\big)}^2\\
+            &+O(1)(\frac{n(n-1)}{2}+n(n-1)(n-2)){\big(\mytr (\Sigma+\mu\mu^T)^2\big)}^2.
     \end{aligned}
     $$
-Hence 
-    $$
-    \frac{
+Hence we have
+    \begin{equation*}
+    \begin{aligned}
+        &\frac{
         \mathrm{Var}(\sum_{j<i}{(X_i^T X_j)}^2)
-    }{\big(\mathrm{E}\sum_{j<i}{(X_i^T X_j)}^2\big)^2}
-    =
+    }{\big(\myE\sum_{j<i}{(X_i^T X_j)}^2\big)^2}\\
+        =&
     \frac{
-        \mathrm{E}{\big(\sum_{j<i}{(X_i^T X_j)}^2\big)}^2-
-        {\big(\mathrm{E}\sum_{j<i}{(X_i^T X_j)}^2\big)}^2
+        \myE{\big(\sum_{j<i}{(X_i^T X_j)}^2\big)}^2-
+        {\big(\myE\sum_{j<i}{(X_i^T X_j)}^2\big)}^2
     }{
-        {\big(\mathrm{E}\sum_{j<i}{(X_i^T X_j)}^2\big)}^2
+        {\big(\myE\sum_{j<i}{(X_i^T X_j)}^2\big)}^2
     }
     =O(\frac{1}{n}).
+    \end{aligned}
+    \end{equation*}
+    This implies 
+        $$
+        \frac{
+        \sum_{j<i}{(X_i^T X_j)}^2
+    }{\myE\sum_{j<i}{(X_i^T X_j)}^2}\xrightarrow{P}1.
     $$
-    Thus the conclusion holds.
+    The proof is complete.
 \end{proof}
 
 \begin{lemma}
-    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and 
-    \begin{equation}\label{myLoc}
-        \mu^T \mu=o(\sqrt{\mathrm{tr}\Sigma^2}),
-    \end{equation}
+    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and~\eqref{mu2},
+    %\begin{equation}\label{myLoc}
+        %\mu^T \mu=o(\sqrt{\mytr \Sigma^2}),
+    %\end{equation}
 we have
     \begin{equation}\label{lemma2R1}
         \sum_{j<k}{(\sum_{i:i>k}X_i^T X_j X_i^T X_k)}^2
-        =o_P\Big(\big(\frac{n(n-1)}{2}\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)^2\Big).
+        =o_P\Big(\big(\frac{n(n-1)}{2}\mytr (\Sigma+\mu\mu^T)^2\big)^2\Big).
     \end{equation}
     \begin{equation}\label{lemma2R2}
-        \sum_{j<k}{(X_i^T X_j)}^4=o_P\Big(\big(\frac{n(n-1)}{2}\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)^2\Big)
+        \sum_{j<k}{(X_i^T X_j)}^4=o_P\Big(\big(\frac{n(n-1)}{2}\mytr (\Sigma+\mu\mu^T)^2\big)^2\Big)
     \end{equation}
     \begin{equation}\label{lemma2R3}
-        \sum_{j<k<i}{(X_i^T X_j)}^2{(X_i^T X_k)}^2 =o_P\Big(\big(\frac{n(n-1)}{2}\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)^2\Big)
+        \sum_{j<k<i}{(X_i^T X_j)}^2{(X_i^T X_k)}^2 =o_P\Big(\big(\frac{n(n-1)}{2}\mytr (\Sigma+\mu\mu^T)^2\big)^2\Big)
     \end{equation}
 \end{lemma}
 \begin{proof}
+    We have
     \begin{equation*}
     \begin{aligned}
-        &\mathrm{E}\sum_{j<k}{(\sum_{i:i>k}X_i^T X_j X_i^T X_k)}^2\\
+        &\myE\sum_{j<k}{(\sum_{i:i>k}X_i^T X_j X_i^T X_k)}^2\\
         =&
-        \mathrm{E}\sum_{j<k}\Big(\sum_{i:i>k}(X_i^T X_j)^2 (X_i^T X_k)^2+2\sum_{i_1,i_2:i_1>i_2>k}X_{i_1}^T X_j X_{i_1}^T X_k X_{i_2}^T X_j X_{i_2}^T X_k\Big).\\
+        \myE\sum_{j<k}\Big(\sum_{i:i>k}(X_i^T X_j)^2 (X_i^T X_k)^2\\
+        &+2\sum_{i_1,i_2:i_1>i_2>k}X_{i_1}^T X_j X_{i_1}^T X_k X_{i_2}^T X_j X_{i_2}^T X_k\Big)\\
+        =&
+        \myE\sum_{j<k<i}(X_i^T X_j)^2 (X_i^T X_k)^2\\
+        &+2\myE\sum_{j<k<i_2<i_1}X_{i_1}^T X_j X_{i_1}^T X_k X_{i_2}^T X_j X_{i_2}^T X_k.\\
     \end{aligned}
     \end{equation*}
-
     By Lemma~\ref{smallLemma1}, we have
     \begin{equation*}
     \begin{aligned}
-        \mathrm{E}\sum_{j<k<i}(X_i^T X_j)^2 (X_i^T X_k)^2    =O(n^3)\big(\mathrm{tr}(\Sigma+\mu\mu^T)^2\big)^2.
+        \myE\sum_{j<k<i}(X_i^T X_j)^2 (X_i^T X_k)^2    =O(n^3)\big(\mytr (\Sigma+\mu\mu^T)^2\big)^2.
     \end{aligned}
     \end{equation*}
 And
     \begin{equation*}
     \begin{aligned}
-        &\mathrm{E}\sum_{j<k<i_2<i_1}X_{i_1}^T X_j X_{i_1}^T X_k X_{i_2}^T X_j X_{i_2}^T X_k\\
-        =&\frac{n(n-1)(n-2)(n-3)}{6}\mathrm{tr}{(\Sigma+\mu\mu^T)}^4\\
-        \leq& \frac{n(n-1)(n-2)(n-3)}{6}8(\mathrm{tr}{(\Sigma)}^4+(\mu^T \mu)^4)\\
-        \leq& O(n^4)(\lambda_{1}^2(\Sigma)\mathrm{tr}{(\Sigma)}^2+(\mu^T \mu)^4)\\
+        &\myE\sum_{j<k<i_2<i_1}X_{i_1}^T X_j X_{i_1}^T X_k X_{i_2}^T X_j X_{i_2}^T X_k\\
+        =&\frac{n(n-1)(n-2)(n-3)}{6}\mytr {(\Sigma+\mu\mu^T)}^4\\
+        \leq& \frac{n(n-1)(n-2)(n-3)}{6}8(\mytr (\Sigma^4)+(\mu^T \mu)^4)\\
+        \leq& O(n^4)(\lambda_{1}^2(\Sigma)\mytr (\Sigma^2)+(\mu^T \mu)^4)\\
         =&
-        o\Big(n^4{\big(\mathrm{tr}\Sigma^2\big)}^2\Big),
+        o\Big(n^4{\big(\mytr (\Sigma^2)\big)}^2\Big),
     \end{aligned}
     \end{equation*}
-    where the last line follows by assumption~\eqref{chenC3} and~\eqref{myLoc}.
-    Thus~\eqref{lemma2R1} holds.~\eqref{lemma2R2} and~\eqref{lemma2R3} follow by Lemma~\ref{smallLemma1} and Lemma~\ref{smallLemma2}.
+    where the last line follows by assumption~\eqref{chenC3} and~\eqref{mu2}.
+    This proves~\eqref{lemma2R1}. And~\eqref{lemma2R2} and~\eqref{lemma2R3} follow by Lemma~\ref{smallLemma1} and Lemma~\ref{smallLemma2}, respectively.
 
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{shaziCLT}]
+\textbf{Proof of Theorem~\ref{shaziCLT}}
+
+\begin{proof}
 By a standard subsequence argument, we only need to prove 
     \begin{equation}\label{changchuan}
-        \rho\Big(\mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),N(0,1)\Big)\xrightarrow{a.s.} 0
+        \begin{aligned}
+            &\rho\Big(\mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),N(0,1)\Big)\\
+            &\xrightarrow{a.s.} 0
+        \end{aligned}
     \end{equation}
      along a subsequence.
-    But there is a subsequence $\{n(k)\}$ along which~\eqref{lemma2R1},~\eqref{lemma2R2} and~\eqref{lemma2R3} holds almost surely.
+    But there exists a subsequence $\{n(k)\}$ along which~\eqref{lemma2R1},~\eqref{lemma2R2} and~\eqref{lemma2R3} holds almost surely.
     By Proposition~\ref{CLTprop}, we have
     \begin{equation*}
         \mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big)\xrightarrow{\mathcal{L}}N(0,1)
     \end{equation*}
-    almost surely along $\{n(k)\}$, which means~\eqref{changchuan} holds along $\{n(k)\}$.
+    almost surely along $\{n(k)\}$, which means that~\eqref{changchuan} holds along $\{n(k)\}$.
 
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{farT}]
+
+\textbf{Proof of Theorem~\ref{farT}}
+
+\begin{proof}
     \begin{equation*}
         \begin{aligned}
-            \sum_{j<i} X_i^T X_j \epsilon_i\epsilon_j=&
+            &\sum_{j<i} X_i^T X_j \epsilon_i\epsilon_j\\
+            =&
             \sum_{j<i} Z_i^T \Gamma^T \Gamma Z_j \epsilon_i\epsilon_j\\
             &+
             \sum_{j<i} \mu^T \Gamma Z_i \epsilon_i\epsilon_j
@@ -1221,18 +1317,18 @@ Next we show that $C_1$, $C_2$ and $C_3$ are negligible under the assumptions of
     \end{equation}
     by showing that
     $$
-    \mathrm{E}\Big({\Big(\frac{C_i}{\frac{n}{2}\mu^T\mu}\Big)}^2\Big|X_1,\ldots,X_n\Big)\xrightarrow{P} 0,\quad i=1,2,3.
+    \myE\Big({\Big(\frac{C_i}{\frac{n}{2}\mu^T\mu}\Big)}^2\Big|X_1,\ldots,X_n\Big)\xrightarrow{P} 0,\quad i=1,2,3.
     $$
     It in turn suffices to show
 
     \begin{equation}\label{Rush}
-    \mathrm{E}{\Big(\frac{C_i}{\frac{n}{2}\mu^T\mu}\Big)}^2\to 0,
+    \myE{\Big(\frac{C_i}{\frac{n}{2}\mu^T\mu}\Big)}^2\to 0,
     \quad i=1,2,3.
     \end{equation}
     By direct calculation, we have
-    $$\mathrm{E}(C_1^2)=\mathrm{E}\mathrm{E}(C_1^2|X_1,\ldots,X_n)=\sum_{j<i}\mathrm{E}{(Z_i^T \Gamma^T \Gamma Z_j)}^2=\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2,$$
+    $$\myE(C_1^2)=\myE\myE(C_1^2|X_1,\ldots,X_n)=\sum_{j<i}\myE{(Z_i^T \Gamma^T \Gamma Z_j)}^2=\frac{n(n-1)}{2}\mytr \Sigma^2,$$
     and
-    $$\mathrm{E}(C_2^2)=\mathrm{E}(C_3^2)=\frac{n(n-1)}{2}\mu^T \Sigma \mu\leq \frac{n(n-1)}{2}\sqrt{\mathrm{tr}\Sigma^2}\mu^T\mu.$$
+    $$\myE(C_2^2)=\myE(C_3^2)=\frac{n(n-1)}{2}\mu^T \Sigma \mu\leq \frac{n(n-1)}{2}\sqrt{\mytr \Sigma^2}\mu^T\mu.$$
     Thus~\eqref{Rush} follows by Assumption~\eqref{mu3}. Having~\eqref{rush2} holds, the theorem follows by Slutsky's theorem, Lemma~\ref{ratioLemma} and Assumption~\eqref{mu3}.
 \end{proof}
 
@@ -1260,20 +1356,20 @@ Next we show that $C_1$, $C_2$ and $C_3$ are negligible under the assumptions of
     \end{align}
     If~\eqref{mu2} holds, by Lemma~\ref{ratioLemma}, we have
     $$
-    \frac{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}\xrightarrow{P}1.
+    \frac{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}{\frac{n(n-1)}{2}\mytr \Sigma^2}\xrightarrow{P}1.
     $$
     By Corollary~\ref{corollaryQuan}, we have $\xi_{\alpha}^*\xrightarrow{P} \Phi(1-\alpha)$.
 Thus,
     \begin{equation*}
         \begin{aligned}
             \eqref{powerEq1}=&
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}-
-            \frac{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}\xi_{\alpha}^*>
-            -\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}} \Big)\\
+            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mytr \Sigma^2}}-
+            \frac{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}{\sqrt{\frac{n(n-1)}{2}\mytr \Sigma^2}}\xi_{\alpha}^*>
+            -\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mytr \Sigma^2}} \Big)\\
             =&
-            \Pr\Big(N(0,1)-\Phi(1-\alpha)>-\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}}\Big)+o(1)\\
+            \Pr\Big(N(0,1)-\Phi(1-\alpha)>-\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mytr \Sigma^2}}\Big)+o(1)\\
             =&
-            \Phi(-\Phi(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mathrm{tr}\Sigma^2}})+o(1),
+            \Phi(-\Phi(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mytr \Sigma^2}})+o(1),
         \end{aligned}
     \end{equation*}
     where the last two equality holds by Lemma~\ref{theoremChen}, Slutsky's theorem and Lemma~\ref{lemmaUniformSimple}.
@@ -1287,8 +1383,8 @@ Thus,
     \begin{equation*}
         \begin{aligned}
             &\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}        \\
-            =&\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}
-            \frac{\sqrt{\frac{n(n-1)}{2}\mathrm{tr}\Sigma^2}}{\sqrt{\frac{n(n-1)}{2}{(\mu^T \mu)}^2}}        
+            =&\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mytr \Sigma^2}}
+            \frac{\sqrt{\frac{n(n-1)}{2}\mytr \Sigma^2}}{\sqrt{\frac{n(n-1)}{2}{(\mu^T \mu)}^2}}        
             \frac{\sqrt{\frac{n(n-1)}{2}{(\mu^T \mu)}^2}}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}        
             \xrightarrow{P} 0.
         \end{aligned}
