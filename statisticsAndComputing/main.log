@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.6.24)  24 JUL 2017 19:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.6.24)  24 JUL 2017 22:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -584,19 +584,8 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5.10005> not available
 LaTeX Font Info:    Try loading font information for U+ifsym on input line 111.
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/ifsym/uifsym.fd)
-Overfull \hbox (6.1787pt too wide) in paragraph at lines 133--134
-\OT1/ptm/m/n/10 Suppose $\OML/ztmcm/m/it/10 X[]; [] ; X[]$ \OT1/ptm/m/n/10 are 
-in-de-pen-dent and iden-ti-cally dis-tributed|
- []
-
-
-Overfull \hbox (6.70364pt too wide) in paragraph at lines 167--174
-[]\OT1/ptm/m/n/10 The idea of ran-dom-iza-tion test dates back to Fisher (1936)
-,|
- []
-
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+(/usr/share/texlive/texmf-dist/tex/latex/ifsym/uifsym.fd) [1{/var/lib/texmf/fon
+ts/map/pdftex/updmap/pdftex.map}
 
 
 ]
@@ -630,7 +619,7 @@ Package epstopdf Info: Source file: <pValuePlotProposed.eps>
 (epstopdf)                    size: 109255 bytes
 (epstopdf)             Command: <repstopdf --outfile=pValuePlotProposed-eps-con
 verted-to.pdf pValuePlotProposed.eps>
-(epstopdf)             \includegraphics on input line 686.
+(epstopdf)             \includegraphics on input line 687.
 Package epstopdf Info: Output file is already uptodate.
 
 <pValuePlotProposed-eps-converted-to.pdf, id=30, 505.89pt x 505.89pt>
@@ -642,7 +631,7 @@ Package epstopdf Info: Source file: <normal3.eps>
 (epstopdf)                    size: 10910 bytes
 (epstopdf)             Command: <repstopdf --outfile=normal3-eps-converted-to.p
 df normal3.eps>
-(epstopdf)             \includegraphics on input line 701.
+(epstopdf)             \includegraphics on input line 702.
 Package epstopdf Info: Output file is already uptodate.
 
 <normal3-eps-converted-to.pdf, id=31, 289.08pt x 216.81pt>
@@ -654,7 +643,7 @@ Package epstopdf Info: Source file: <normal500.eps>
 (epstopdf)                    size: 11089 bytes
 (epstopdf)             Command: <repstopdf --outfile=normal500-eps-converted-to
 .pdf normal500.eps>
-(epstopdf)             \includegraphics on input line 702.
+(epstopdf)             \includegraphics on input line 703.
 Package epstopdf Info: Output file is already uptodate.
 
 <normal500-eps-converted-to.pdf, id=32, 289.08pt x 216.81pt>
@@ -666,7 +655,7 @@ Package epstopdf Info: Source file: <gamma3.eps>
 (epstopdf)                    size: 10977 bytes
 (epstopdf)             Command: <repstopdf --outfile=gamma3-eps-converted-to.pd
 f gamma3.eps>
-(epstopdf)             \includegraphics on input line 703.
+(epstopdf)             \includegraphics on input line 704.
 Package epstopdf Info: Output file is already uptodate.
 
 <gamma3-eps-converted-to.pdf, id=33, 289.08pt x 216.81pt>
@@ -678,7 +667,7 @@ Package epstopdf Info: Source file: <gamma500.eps>
 (epstopdf)                    size: 11307 bytes
 (epstopdf)             Command: <repstopdf --outfile=gamma500-eps-converted-to.
 pdf gamma500.eps>
-(epstopdf)             \includegraphics on input line 704.
+(epstopdf)             \includegraphics on input line 705.
 Package epstopdf Info: Output file is already uptodate.
 
 <gamma500-eps-converted-to.pdf, id=34, 289.08pt x 216.81pt>
@@ -690,7 +679,7 @@ Package epstopdf Info: Source file: <factor1.eps>
 (epstopdf)                    size: 10709 bytes
 (epstopdf)             Command: <repstopdf --outfile=factor1-eps-converted-to.p
 df factor1.eps>
-(epstopdf)             \includegraphics on input line 705.
+(epstopdf)             \includegraphics on input line 706.
 Package epstopdf Info: Output file is already uptodate.
 
 <factor1-eps-converted-to.pdf, id=35, 289.08pt x 216.81pt>
@@ -702,81 +691,27 @@ Package epstopdf Info: Source file: <factor2.eps>
 (epstopdf)                    size: 10727 bytes
 (epstopdf)             Command: <repstopdf --outfile=factor2-eps-converted-to.p
 df factor2.eps>
-(epstopdf)             \includegraphics on input line 706.
+(epstopdf)             \includegraphics on input line 707.
 Package epstopdf Info: Output file is already uptodate.
 
 <factor2-eps-converted-to.pdf, id=36, 289.08pt x 216.81pt>
-Overfull \hbox (7.31007pt too wide) in paragraph at lines 713--723
+Overfull \hbox (7.31007pt too wide) in paragraph at lines 714--724
 []\OT1/ptm/m/n/10 Now we sim-u-late the em-pir-i-cal power and size. Let $[] \O
 T1/ztmcm/m/n/10 =|
  []
 
 
-Overfull \hbox (1.9532pt too wide) in paragraph at lines 724--734
+Overfull \hbox (1.9532pt too wide) in paragraph at lines 725--735
 \OT1/ptm/m/n/10 while asymp-totic method suf-fers from level in-fla-tion. In su
 m-|
  []
 
 
-Overfull \hbox (14.06317pt too wide) in paragraph at lines 724--734
+Overfull \hbox (14.06317pt too wide) in paragraph at lines 725--735
 \OT1/ptm/m/n/10 method is ro-bust and has sim-i-lar power with asymp-totic meth
 od. |
  []
 
-! Misplaced \noalign.
-<recently read> \noalign 
-                         
-l.817         \bottomrule
-                         
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.818     \end
-              {tabular}
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.818     \end
-              {tabular}
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.818     \end
-              {tabular}
-? 
-! Missing \cr inserted.
-<inserted text> 
-                \cr 
-l.818     \end
-              {tabular}
-? 
-! Missing { inserted.
-<inserted text> 
-                {
-l.818     \end
-              {tabular}
-? 
-! Misplaced \crcr.
-\endtabular ->\crcr 
-                    \egroup \egroup $\egroup 
-l.818     \end{tabular}
-                       
-? 
-! Extra }, or forgotten $.
-\endtabular ->\crcr \egroup 
-                            \egroup $\egroup 
-l.818     \end{tabular}
-                       
-? 
-! Extra }, or forgotten $.
-\endtabular ->\crcr \egroup \egroup 
-                                    $\egroup 
-l.818     \end{tabular}
-                       
-? 
 [6]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -793,19 +728,27 @@ Underfull \vbox (badness 1024) has occurred while \output is active []
 Underfull \vbox (badness 1521) has occurred while \output is active []
 
  [9]
-[10] [11] [12] [13] (./main.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1525.
+Underfull \vbox (badness 5316) has occurred while \output is active []
+
+ [10]
+[11] [12] [13] (./main.bbl
+Underfull \hbox (badness 1194) in paragraph at lines 117--122
+\OT1/ptm/m/n/8.5 New York, New York, 1st edi-tion edi-tion, 1984.  doi: $10 .
+ []
+
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1532.
  [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1525.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1532.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1525.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1525.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1525.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1532.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1532.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1532.
  ) 
 Here is how much of TeX's memory you used:
  8763 strings out of 493029
  128008 string characters out of 6136234
- 252753 words of memory out of 5000000
+ 255748 words of memory out of 5000000
  12132 multiletter control sequences out of 15000+600000
  60420 words of font info for 141 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -823,7 +766,7 @@ re/texlive/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on main.pdf (14 pages, 175892 bytes).
+Output written on main.pdf (14 pages, 177408 bytes).
 PDF statistics:
  111 PDF objects out of 1000 (max. 8388607)
  74 compressed objects within 1 object stream

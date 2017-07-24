@@ -24,46 +24,58 @@ Muni~S. Srivastava and Meng Du.
 \newblock \doi{10.1016/j.jmva.2006.11.002}.
 
 \bibitem[Chen and Qin(2010)]{Chen2010A}
-Song~Xi Chen and Ying~Li Qin.
+Song~Xi Chen and Ying-Li Qin.
 \newblock A two-sample test for high-dimensional data with applications to
   gene-set testing.
-\newblock \emph{Annals of Statistics}, 38\penalty0 (2):\penalty0 808--835,
-  2010.
+\newblock \emph{The Annals of Statistics}, 38\penalty0 (2):\penalty0 808--835,
+  apr 2010.
+\newblock \doi{10.1214/09-aos716}.
+\newblock URL \url{https://doi.org/10.1214/09-aos716}.
 
 \bibitem[Wang et~al.(2015)Wang, Peng, and Li]{Wang2015A}
-L.~Wang, B.~Peng, and R.~Li.
+Lan Wang, Bo~Peng, and Runze Li.
 \newblock A high-dimensional nonparametric multivariate test for mean vector.
 \newblock \emph{Journal of the American Statistical Association}, 110\penalty0
-  (512):\penalty0 00--00, 2015.
+  (512):\penalty0 1658--1669, oct 2015.
+\newblock \doi{10.1080/01621459.2014.988215}.
+\newblock URL \url{https://doi.org/10.1080/01621459.2014.988215}.
 
-\bibitem[Bradley~Efron(2007)]{efron2007on}
-Robert~JTibshirani Bradley~Efron.
+\bibitem[Efron and Tibshirani(2007)]{efron2007on}
+Bradley Efron and Robert Tibshirani.
 \newblock On testing the significance of sets of genes.
 \newblock \emph{The Annals of Applied Statistics}, 1\penalty0 (1):\penalty0
-  107--129, 2007.
+  107--129, jun 2007.
+\newblock \doi{10.1214/07-aoas101}.
+\newblock URL \url{https://doi.org/10.1214/07-aoas101}.
 
-\bibitem[Fisher(1936)]{Fisher}
-R~A Fisher.
-\newblock The design of experiments.
-\newblock 1936.
+\bibitem[Fisher(1935)]{Fisher}
+R.~A. Fisher.
+\newblock \emph{The design of experiments}.
+\newblock Oliver and Boyd, Edinburgh, 1935.
 
 \bibitem[Romano(1990)]{Romano1990On}
 Joseph~P. Romano.
 \newblock On the behavior of randomization tests without a group invariance
   assumption.
 \newblock \emph{Journal of the American Statistical Association}, 85\penalty0
-  (411):\penalty0 686--692, 1990.
+  (411):\penalty0 686--692, sep 1990.
+\newblock \doi{10.1080/01621459.1990.10474928}.
+\newblock URL \url{https://doi.org/10.1080/01621459.1990.10474928}.
 
-\bibitem[Zhu and Neuhaus(2000)]{Zhu2000N}
-Li-Xing Zhu and Georg Neuhaus.
+\bibitem[Zhu(2000)]{Zhu2000N}
+L.-X. Zhu.
 \newblock Nonparametric monte carlo tests for multivariate distributions.
-\newblock \emph{Biometrika}, 87\penalty0 (4):\penalty0 919--928, 2000.
+\newblock \emph{Biometrika}, 87\penalty0 (4):\penalty0 919--928, dec 2000.
+\newblock \doi{10.1093/biomet/87.4.919}.
+\newblock URL \url{https://doi.org/10.1093/biomet/87.4.919}.
 
 \bibitem[Chung and Romano(2016)]{Chung2016Multivariate}
-Eun~Yi Chung and Joseph~P. Romano.
+EunYi Chung and Joseph~P. Romano.
 \newblock Multivariate and multiple permutation tests.
 \newblock \emph{Journal of Econometrics}, 193\penalty0 (1):\penalty0 76--91,
-  2016.
+  jul 2016.
+\newblock \doi{10.1016/j.jeconom.2016.01.003}.
+\newblock URL \url{https://doi.org/10.1016/j.jeconom.2016.01.003}.
 
 \bibitem[Subramanian et~al.(2005)Subramanian, Tamayo, Mootha, Mukherjee, Ebert,
   Gillette, Paulovich, Pomeroy, Golub, Lander, and Mesirov]{Subramanian2005}
@@ -89,19 +101,23 @@ Hyoseok Ko, Kipoong Kim, and Hokeun Sun.
 \bibitem[E.~L.~Lehmann(2005)]{Lehmann}
 Joseph P.~Romano E.~L.~Lehmann.
 \newblock \emph{Testing Statistical Hypotheses}.
-\newblock Springer New York, 2005.
+\newblock Springer New York, 3rd edition edition, 2005.
 \newblock \doi{10.1007/0-387-27605-X}.
 
 \bibitem[Fan et~al.(2007)Fan, Hall, and Yao]{fan2007to}
 Jianqing Fan, Peter Hall, and Qiwei Yao.
-\newblock To how many simultaneous hypothesis tests can normal, student's t or
-  bootstrap calibration be applied?
+\newblock To how many simultaneous hypothesis tests can normal, student's $t$
+  or bootstrap calibration be applied?
 \newblock \emph{Journal of the American Statistical Association}, 102\penalty0
-  (480):\penalty0 1282--1288, 2007.
+  (480):\penalty0 1282--1288, dec 2007.
+\newblock \doi{10.1198/016214507000000969}.
+\newblock URL \url{https://doi.org/10.1198/016214507000000969}.
 
 \bibitem[Pollard(1984)]{pollard1984convergence}
 David Pollard.
-\newblock \emph{Convergence of stochastic processes}.
-\newblock 1984.
+\newblock \emph{Convergence of Stochastic Processes}.
+\newblock Springer New York, New York, 1st edition edition, 1984.
+\newblock \doi{10.1007/978-1-4612-5254-2}.
+\newblock URL \url{https://doi.org/10.1007/978-1-4612-5254-2}.
 
 \end{thebibliography}

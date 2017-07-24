@@ -3,47 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: unsrtnat.bst
 Database file #1: mybibfile.bib
-Warning--empty journal in Fisher
-Warning--empty publisher in pollard1984convergence
 You've used 15 entries,
             2481 wiz_defined-function locations,
-            666 strings with 6930 characters,
-and the built_in function-call counts, 5593 in all, are:
-= -- 474
+            688 strings with 7587 characters,
+and the built_in function-call counts, 5941 in all, are:
+= -- 547
 > -- 249
 < -- 11
 + -- 102
 - -- 72
-* -- 443
-:= -- 898
-add.period$ -- 51
+* -- 502
+:= -- 960
+add.period$ -- 67
 call.type$ -- 15
-change.case$ -- 28
+change.case$ -- 29
 chr.to.int$ -- 15
-cite$ -- 17
-duplicate$ -- 284
-empty$ -- 535
+cite$ -- 15
+duplicate$ -- 285
+empty$ -- 541
 format.name$ -- 97
-if$ -- 1183
+if$ -- 1248
 int.to.chr$ -- 1
 int.to.str$ -- 16
-missing$ -- 18
-newline$ -- 89
+missing$ -- 19
+newline$ -- 105
 num.names$ -- 45
-pop$ -- 117
+pop$ -- 97
 preamble$ -- 1
 purify$ -- 15
 quote$ -- 0
-skip$ -- 162
+skip$ -- 154
 stack$ -- 0
-substring$ -- 271
-swap$ -- 31
+substring$ -- 303
+swap$ -- 39
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 96
-warning$ -- 2
-while$ -- 45
+type$ -- 93
+warning$ -- 0
+while$ -- 50
 width$ -- 0
-write$ -- 210
-(There were 2 warnings)
+write$ -- 248

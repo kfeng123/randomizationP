@@ -120,7 +120,7 @@ grestore
     We investigate the asymptotic behavior of the proposed randomization test in high dimensional setting.
     It turns out that even if the symmetry assumption is violated, the proposed randomization test still has correct level asymptotically.
     The asymptotic power function is also given.
-    Simulation studies are carried out to verify the theoretical results.
+    A simulation study is carried out to verify our theoretical results.
     
 
    \keywords{Asymptotic power function \and High dimension \and Randomization test\and Symmetry assumption}
@@ -130,7 +130,7 @@ grestore
 
 \section{Introduction}
 
-Suppose $X_{1},\ldots,X_{n}$ are independent and identically distributed (iid) $p$-dimensional random vectors with mean vector $\mu={(\mu_1,\ldots,\mu_p)}^T$ and covariance matrix $\Sigma$. In this paper, we consider the randomization test procedure for testing the hypotheses
+Suppose $X_{1},\ldots,X_{n}$ are $p$-variate independent and identically distributed (iid) random vectors with mean vector $\mu$ and covariance matrix $\Sigma$. In this paper, we consider the problem of testing the hypotheses
 \begin{equation}\label{ourHy}
     H_0:\mu=0_p\quad \textrm{versus} \quad H_1:\mu\neq 0_p.
 \end{equation}
@@ -142,7 +142,7 @@ A classical test statistic for hypotheses~\eqref{ourHy} is Hotelling's $T^2$, de
     n\bar{X}^T S^{-1}\bar{X}
     $,
 where $\bar{X}=n^{-1}\sum_{i=1}^n X_i$ and $S=(n-1)^{-1}\sum_{i=1}^n (X_i-\bar{X}) (X_i-\bar{X})^T$ are the sample mean vector and sample covariance matrix, respectively.
-Under normal distribution, Hotelling's $T^2$ is the likelihood ratio test and enjoys desirable properties in fixed $p$ case. See, for example,~\citet{andersonMultivariate}.
+Under normal distribution, Hotelling's $T^2$ is the likelihood ratio test and enjoys desirable properties in fixed $p$ setting. See, for example,~\citet{andersonMultivariate}.
 However, Hotelling's test can not be defined when $p>n-1$ due to the singularity of $S$.
 In a seminal paper,~\citet{Bai1996Efiect} considered two sample testing problem and proposed a statistic by removing $S^{-1}$ from Hotelling's $T^2$ statistic.
 They studied the asymptotic properties of their test statistic when $p/n$ tends to a positive constant.
@@ -163,8 +163,8 @@ We call it asymptotic method.
  In many real world problems, e.g., gene testing~\citep{efron2007on}, sample size $n$ may be very small.
 In this case, the Type I error rate of the asymptotic method may be far away from nominal level. 
 
-
-The idea of randomization test dates back to~\citet{Fisher}, which is a tool to determine the critical value for a given test statistic.
+The randomization test method is a tool to determine the critical value for a given test statistic.
+The idea of randomization tests dates back to~\citet{Fisher}.
 See~\citet{Romano1990On} for a general construction of randomization test.
 Its strength is in that the resulting test procedure has exact level under mild condition.
 There are many papers concerning the theoretical properties of randomization tests for fixed $p$ case.
@@ -181,18 +181,18 @@ Denote by
     $
  the distribution of $T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)$ conditioning on $X_1,\ldots,X_n$.
  The randomization test rejects the null hypothesis when $T(X_1,\ldots, X_n)$ is greater than the $1-\alpha$ quantile of the conditional distribution and accepts the null hypothesis otherwise, where $\alpha$ is the significant level and the $1-\alpha$ quantile of a distribution function $F(\cdot)$ is defined as $\inf\{y: F(y)\geq 1-\alpha\}$.
-In fixed $p$ setting, it's well known that randomization test consumes much more computing time than the asymptotic method, which  historically  hampered it's use. 
-The goal of this paper is to show that randomization is feasible in high dimension while still have the statistic properties and asymptotic power.
+In fixed $p$ setting, it's well known that randomization tests consume much more computing time than the asymptotic method, which  historically  hampered the use of randomization tests. 
+The goal of this paper is to show that in high dimensional setting, randomization tests can be computationally feasible and have desirable statistic properties.
 Inspired by the work of~\citet{Bai1996Efiect} and~\citet{Chen2010A}, we propose a randomization test for hypotheses~\eqref{ourHy}.
-We give a fast implementation of the randomization test, the computational complexity of which is low.
+We give a fast implementation of the proposed randomization test, the computational complexity of which is low.
 When $p$ is large, our method even consumes less computing time  than the asymptotic method.
-We also investigate the asymptotic behavior of test procedure.
+We also investigate the asymptotic behavior of the test procedure.
 Our results show that even if the null distribution of $X_1$ is not symmetric, the randomization test is still asymptotically exact under mild assumptions. 
 Hence the test procedure is robust.
 The local asymptotic power function is also given.
-To the best of our knowledge, this is the first work which gives the asymptotic behavior of randomization test in high dimensional setting.
-Our work shows that the randomization test is very suitable for high dimensional testing problem since it is not only easy to compute but also has good statistical properties.
-
+To the best of our knowledge, this is the first work which gives the asymptotic behavior of randomization tests in high dimensional setting.
+A simulation study is carried out to examine the numerical performance of the proposed randomization test and compare with the asymptotic method.
+The simulation results show that the size of the proposed randomization test is closer to the nominal level than the asymptotic method while the power behaviors of the proposed randomization test and the asymptotci method are similar.
 
 %Existing works of randomization test mainly focus on single variate case. A recent work of EunYi Chung consider multivariate case.
 
@@ -209,7 +209,7 @@ The rest of the paper is organized in the following way. In Section 2, we propos
 
 \section{Test Procedure}
 Consider testing the hypotheses~\eqref{ourHy} in high dimensional setting.
-It is known that Hotelling's $T^2$ can not be defined when $p> n-1$.~\citet{Bai1996Efiect} removed the $S^{-1}$ from Hotelling's $T^2$ statistic and proposed a statistic which has good power behavior in high dimensional setting.
+It is known that Hotelling's $T^2$ can not be defined when $p> n-1$.~\citet{Bai1996Efiect} removed $S^{-1}$ from Hotelling's $T^2$ statistic and proposed a statistic which has good power behavior in high dimensional setting.
 Their idea can also be used for testing hypotheses~\eqref{ourHy} and the statistic becomes $\bar{X}^T \bar{X}$.
 The asymptotic properties of the statistic requires $p/n$ tends to a positive constant.
  ~\citet{Chen2010A} found that the restriction on $p$ and $n$ can be considerably relaxed by removing the diagonal elements in the statistic of~\citet{Bai1996Efiect}.
@@ -340,6 +340,7 @@ The Algorithm~\ref{theAlgorithm} summarizes our computing method.
 
 Paired data.
 Extensions.
+Bibstyle.
 
 
 %\begin{algorithm}
@@ -813,7 +814,13 @@ In summary, the simulation results show that the randomization method is robust 
                 &&2.0 & 0.639 & 0.4825 & 0.5165 & 0.4720 & 0.4975 & 0.5340 & 0.5930 & 0.5615 & 0.6015 \\ 
                   &&2.5 & 0.804 & 0.5860 & 0.6190 & 0.5825 & 0.6165 & 0.7040 & 0.7610 & 0.7120 & 0.7505 \\ 
                     &&3.0 & 0.912 & 0.6730 & 0.7060 & 0.6975 & 0.7210 & 0.8525 & 0.8815 & 0.8680 & 0.8920 \\ 
-        200&1002&
+        200&1002&0.0 & 0.050 & 0.0520 & 0.0670 & 0.0530 & 0.0665 & 0.0485 & 0.0615 & 0.0490 & 0.0615 \\ 
+          &&0.5 & 0.126 & 0.1490 & 0.1895 & 0.1405 & 0.1675 & 0.0905 & 0.1115 & 0.0975 & 0.1230 \\ 
+            &&1.0 & 0.260 & 0.2450 & 0.2780 & 0.2485 & 0.2785 & 0.1835 & 0.2330 & 0.1920 & 0.2305 \\ 
+              &&1.5 & 0.442 & 0.3445 & 0.3915 & 0.3450 & 0.3745 & 0.3170 & 0.3745 & 0.3395 & 0.3935 \\ 
+                &&2.0 & 0.639 & 0.4605 & 0.5035 & 0.4775 & 0.5170 & 0.5080 & 0.5995 & 0.5365 & 0.5925 \\ 
+                  &&2.5 & 0.804 & 0.5355 & 0.5810 & 0.5900 & 0.6320 & 0.7040 & 0.7775 & 0.7345 & 0.7850 \\ 
+                    &&3.0 & 0.912 & 0.6280 & 0.6640 & 0.6660 & 0.6960 & 0.8670 & 0.9115 & 0.8655 & 0.9070 \\ 
         \bottomrule
     \end{tabular}
 \end{table*}
