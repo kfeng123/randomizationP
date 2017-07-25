@@ -12,36 +12,12 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% First comes an example EPS file -- just ignore it and
-% proceed on the \documentclass line
-% your LaTeX will extract the file if required
-\begin{filecontents*}{example.eps}
-%!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 19 19 221 221
-%%CreationDate: Mon Sep 29 1997
-%%Creator: programmed by hand (JK)
-%%EndComments
-gsave
-newpath
-  20 20 moveto
-  20 220 lineto
-  220 220 lineto
-  220 20 lineto
-closepath
-2 setlinewidth
-gsave
-  .4 setgray fill
-grestore
-stroke
-grestore
-\end{filecontents*}
-%
 \RequirePackage{fix-cm}
 %
 %\documentclass{svjour3}                     % onecolumn (standard format)
 %\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
 %\documentclass[smallextended]{svjour3}       % onecolumn (second format)
-\documentclass[twocolumn,draft,natbib]{svjour3}          % twocolumn
+\documentclass[twocolumn,final,natbib]{svjour3}          % twocolumn
 %
 \smartqed  % flush right qed marks, e.g. at end of proof
 %
@@ -229,12 +205,13 @@ We propose a test procedure with test function $\phi(X_1,\ldots,X_n)$ to be equa
  On the other hand,
  note that~\citet{Bai1996Efiect}'s statistic $\bar{X}^T \bar{X}$ can be written as $n^{-2}\sum_{i=1}^n\sum_{j=1}^n X_i^T X_j$.
  Since $\sum_{i=1}^n X_i^T X_i$ is invariance under randomization, the test procedure $\phi(X_1,\ldots,X_n)$ is also the randomization version of~\citet{Bai1996Efiect}'s test.
+ Here we can see that the randomization test automatically removes the unwanted diagonal elements.
 
 
 Under certain symmetric assumption, randomization test is exact test, which is a desirable property.
  See, for example,~\citet[Chapter 15]{Lehmann}.
-In our problem, the Type I error of $\phi(X_1,\ldots,X_n)$ is not larger than $\alpha$ provided $X_1$ and $-X_1$ have the same distribution under null hypothesis.
- By refined definition of $\phi(X_1,\ldots,X_n)$ on the boundary of rejection region, one can obtain a test procedure with exact level. 
+In our problem, the Type I error of $\phi(X_1,\ldots,X_n)$ is not larger than $\alpha$ provided that $X_1$ and $-X_1$ have the same distribution under null hypothesis.
+ By refined definition of $\phi(X_1,\ldots,X_n)$ on the boundary of rejection region, one can obtain a test procedure with exact significant  level. 
  %See, for example,~\cite{Romano1990On}.
 Such refinement only has minor effect on the test procedure and won't be considered in this paper.
 
@@ -254,22 +231,24 @@ More specifically, we sample  $\epsilon_1^*,\ldots,\epsilon_n^*$ and compute the
 Repeat $B$ times for a large $B$ and we obtain $T_1^*,\ldots,T_B^*$.
 %Denote $\xi_i=\mathbf{1}_{\{T_i^*\geq T_0\}}$.
 Let $T_0=T(X_1,\ldots,X_n)$ be the original statistic and define
-$$\tilde{p}(X_1,\ldots,X_n)=\frac{1}{B+1}\big(1+\sum_{i=1}^B \mathbf{1}_{\{T_i^*\geq T_0\}}\big).$$
+\begin{equation*}
+\tilde{p}(X_1,\ldots,X_n)=\frac{1}{B+1}\big(1+\sum_{i=1}^B \mathbf{1}_{\{T_i^*\geq T_0\}}\big).
+\end{equation*}
 The test is rejected when $\tilde{p}(X_1,\ldots,X_n)\leq \alpha$. This procedure can also control the significant level.
 In fact, we have
 $\Pr(\tilde{p}(X_1,\ldots,X_n)\leq u)\leq u$ for all $0\leq u\leq 1$.
 See~\citet[Page $636$]{Lehmann}.
-Moreover, by Bernoulli's law of large numbers, we have $\tilde{p}(X_1,\ldots,X_n)\xrightarrow{P}p(X_1,\ldots,X_n)$  as $B\to \infty$.
+Moreover, by Bernoulli's law of large numbers, $\tilde{p}(X_1,\ldots,X_n)$ tends to $p(X_1,\ldots,X_n)$ in probability  as $B\to \infty$.
 {Here we emphasis that the convergence rate of $\tilde{p}(X_1,\ldots,X_n)$ to $p(X_1,\ldots,X_n)$ only relies on $p(X_1,\ldots,X_n)$.
 Hence the choice of $B$ can be independent of the sample size $n$ and the dimension of data $p$.}
 
 Now we consider the implementation of the randomization test procedure.
 The computation of $T_0$ costs $O(n^2 p)$ operations.
 To obtain $T_i^*$, $i=1,\ldots,B$, we need to generate $\epsilon_1,\ldots,\epsilon_n$ and compute
-$$
+\begin{equation*}
 T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)
 =\sum_{1\leq j<i \leq n}X_i^T X_j \epsilon_i \epsilon_j.
-$$
+\end{equation*}
 Note that $X_i^T X_j$ ($1\leq j<i\leq n$) can be computed beforehand.
 %For a realization of $\epsilon_1,\ldots,\epsilon_n$,
 %let $\mathcal{I}_1=\{i\,|\, \epsilon_i=1\}$ and $\mathcal{I}_2=\{i\,|\, \epsilon_i=-1\}$.
@@ -284,24 +263,28 @@ Note that $X_i^T X_j$ ($1\leq j<i\leq n$) can be computed beforehand.
     %+\frac{1}{2}\sum_{i\in \mathcal{I}_2}\sum_{j\in \mathcal{I}_2} X_i^T X_j -\frac{1}{2}\sum_{i} X_i^T X_i\\
 %\end{aligned}
 %$$
-Once we obtain $X_i^T X_j$, the computation of $T_i^*$ cost $O(n^2)$ operations.
+Once we obtain $X_i^T X_j$, the computation of $T_i^*$ costs $O(n^2)$ operations.
 Thus, the randomization test costs $O(n^2 p+n^2 B)$ operations in total.
-When $p$ is large compared with $n$, the computation of $T_0$ consumes almost the whole computing time and the computing time of the randomization procedure is relatively low.
-The randomization method doesn't need an estimator of variance, which is necessary for the asymptotic method. 
-A good variance estimator is complicated, see~\citet{Chen2010A}, and consumes much computing time.
-Hence the randomization test method is very competitive compared with the asymptotic method.
+When $p$ is large, the computation of $T_0$ consumes almost the whole computing time and the computing time for $T_1^*,\ldots,T_B^*$ is relatively short.
+Our randomization test doesn't need a variance estimator which is a necessary for the asymptotic method. 
+A good variance estimator is complicated and consumes much computing time  \citep{Chen2010A}.
+Hence our randomization test is very competitive compared with the asymptotic method in terms of computational complexity.
 This is different from low dimensional setting where randomization tests consume much more computing time than the asymptotic method.
 
 If we only care about the decision (reject or accept) and the $p$-value is not needed, the computing time of the randomization test can be further reduced.
 In fact, the rejection region $\tilde{p}(X_1,\ldots, X_n)\leq \alpha$ can be written as
-$$\sum_{i=1}^B (1-\mathbf{1}_{\{T_i^*\geq T_0\}})\geq B +1-(B+1)\alpha.$$
+\begin{equation*}
+\sum_{i=1}^B (1-\mathbf{1}_{\{T_i^*\geq T_0\}})\geq B +1-(B+1)\alpha.
+\end{equation*}
 Since the left hand side is a sum of non-negative values, we can reject the null hypothesis once $\sum_{i=1}^{B_0} (1-\mathbf{1}_{\{T_i^*\geq T_0\}})\geq B +1-(B+1)\alpha$ for some $B_0$.
 Similarly, the acceptance region can be written as
-$$\sum_{i=1}^B \mathbf{1}_{\{T_i^*\geq T_0\}}> (B+1)\alpha -1.$$
+\begin{equation*}
+\sum_{i=1}^B \mathbf{1}_{\{T_i^*\geq T_0\}}> (B+1)\alpha -1.
+\end{equation*}
 we can accept the null hypothesis once
 $\sum_{i=1}^{B_0} \mathbf{1}_{\{T_i^*\geq T_0\}}> (B+1)\alpha -1$ for some $B_0$.
 % the sum of left hand side exceeds the right hand side for some $B_0$.
-The Algorithm~\ref{theAlgorithm} summarizes our computing method.
+Algorithm~\ref{theAlgorithm} summarizes our computing method.
 
 
 %We shall choose $M$ large enough such that 
@@ -335,12 +318,6 @@ The Algorithm~\ref{theAlgorithm} summarizes our computing method.
         
     \caption{Randomization Algorithm}\label{theAlgorithm}
 \end{algorithm}
-
-
-
-Paired data.
-Extensions.
-Bibstyle.
 
 
 %\begin{algorithm}
@@ -382,7 +359,7 @@ where $\Gamma$ is a $p\times m$ matrix for some $m\geq p$ such that $\Gamma\Gamm
     \myE(z_{il_1}^{\alpha_1}z_{il_2}^{\alpha_2}\cdots z_{il_q}^{\alpha_q})=\myE(z_{il_1}^{\alpha_1})\myE(z_{il_2}^{\alpha_2})\cdots \myE(z_{il_q}^{\alpha_q})
 \end{equation}
 for a positive integer $q$ such that $\sum_{l=1}^q \alpha_l\leq 8$ and $l_1\neq l_2\neq \cdots \neq l_q$.
-Note that here $X_1$ and $-X_1$ don't need to have the same distribution under null hypothesis.
+Note that we don't assume that $X_1$ and $-X_1$  have the same distribution under null hypothesis.
 
 %In the following, $T(X_1,\ldots, X_n)$ will be specialized to~\eqref{Statistic}.
 
@@ -390,13 +367,13 @@ A key assumption in~\citet{Chen2010A} is
     $\mytr (\Sigma^4)=o\big(\mytr ^2(\Sigma^2)\big)$.
     Let $\lambda_i(\Sigma)$ be the $i$th largest eigenvalue of $\Sigma$.
     From
-    $$
+    \begin{equation*}
     \frac{\lambda_1(\Sigma)^4}{(\sum_{i=1}^p \lambda_i(\Sigma)^2)^2}
     \leq
     \frac{\sum_{i=1}^p\lambda_i(\Sigma)^4}{(\sum_{i=1}^p \lambda_i(\Sigma)^2)^2}
     \leq
     \frac{\lambda_1(\Sigma)^2\sum_{i=1}^p\lambda_i(\Sigma)^2}{(\sum_{i=1}^p \lambda_i(\Sigma)^2)^2},
-    $$
+    \end{equation*}
     we can see that 
     $\mytr (\Sigma^4)=o\big(\mytr ^2(\Sigma^2)\big)$ is equivalent to
 \begin{equation}\label{chenC3}
@@ -409,9 +386,9 @@ Although~\citet{Chen2010A}'s results are for two sample case, their results can 
         \mu^T \Sigma\mu=o(n^{-1}\mytr (\Sigma^2)),
     \end{equation}
     we have
-        $$
+        \begin{equation*}
         \frac{T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mytr (\Sigma^2)}}\xrightarrow{\mathcal{L}}N(0,1),
-        $$
+        \end{equation*}
         where ``$\xrightarrow{\mathcal{L}}$'' means convergence in law.
 \end{lemma}
 \begin{lemma}\label{theoremChen2}
@@ -419,32 +396,32 @@ Although~\citet{Chen2010A}'s results are for two sample case, their results can 
      n^{-1}\mytr (\Sigma)^2   =o(\mu^T \Sigma\mu),
     \end{equation}
     we have
-        $$
+        \begin{equation*}
         \frac{T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T \Sigma\mu}}\xrightarrow{\mathcal{L}}N(0,1).
-        $$
+        \end{equation*}
 \end{lemma}
 
 Now we study the asymptotic properties of the randomization test.
 The conditional distribution
-        $$
+        \begin{equation*}
         \mathcal{L}\bigg(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\bigg|X_1,\ldots,X_n\bigg)
-        $$
+        \end{equation*}
  plays an important role in our analysis, we shall call it randomization distribution.
 Let $\xi^*_{\alpha}$ be the $1-\alpha$ quantile of the randomization distribution.
 Then it can be seen that the test function $\phi(X_1,\ldots,X_n)$ equals to $1$ if
-$$
+\begin{equation*}
 \frac{T(X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}> \xi^*_{\alpha}
-$$
+\end{equation*}
 and equals to $0$ otherwise.
 
 %To study the asymptotic property of $\xi^*_{\alpha}$, we need to derive the asymptotic behavior of the randomization distribution.
 Since the randomization distribution itself is random, to study its asymptotic distribution, we need to define in what sense the convergence is. Let $F$ and $G$ be two distribution functions on $\mathbb{R}$, Levy metric $\rho$ of $F$ and $G$ is defined as
-    $$
+    \begin{equation*}
     \begin{aligned}
         &\rho(F,G)\\
         =&\inf\{\epsilon:F(x-\epsilon)-\epsilon\leq G(x)\leq F(x+\epsilon)+\epsilon  \textrm{ for all } x\}.
     \end{aligned}
-    $$
+    \end{equation*}
 It's well known that $\rho(F_n,F)\to 0$ if and only if  $F_n\xrightarrow{\mathcal{L}}F$.
 The following theorem shows that in high dimensional setting, the randomization distribution tends to a standard normal distribution.
 
@@ -464,11 +441,13 @@ The following theorem shows that in high dimensional setting, the randomization 
 %Under the conditions of Theorem~\ref{shaziCLT}, the randomization distribution is asymptotically a normal distribution. 
 
 It can be proved that 
-$$\frac{\sum_{j<i}(X_i^T X_j)^2}{\frac{n(n-1)}{2}\mytr (\Sigma^2)}\xrightarrow{P}1.$$
+\begin{equation*}
+\frac{\sum_{j<i}(X_i^T X_j)^2}{\frac{n(n-1)}{2}\mytr (\Sigma^2)}\xrightarrow{P}1.
+\end{equation*}
 By Lemma~\ref{theoremChen},  under null hypothesis, we have that
-$$
+\begin{equation*}
 \frac{T(X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\xrightarrow{\mathcal{L}}N(0,1).
-$$
+\end{equation*}
 Compare this with Theorem~\ref{shaziCLT}, we can see that if $\mu^T \mu=o(\sqrt{\mytr (\Sigma^2)})$,  the randomization distribution mimics the actual null distribution.
 However, the behavior of randomization distribution is different when condition~\eqref{mu2} is not valid.
 In fact, we have the following result.
@@ -491,15 +470,19 @@ Once the limit of the randomization distribution is obtained, the asymptotic beh
 Let $\Phi(\cdot)$ be the cumulative distribution function (CDF) of standard normal distribution, we have
 \begin{corollary}\label{corollaryQuan}
     Under the conditions of Theorem~\ref{shaziCLT}, we have
-    $$\xi_{\alpha}^*\xrightarrow{P} \Phi^{-1}(1-\alpha).$$
+    \begin{equation*}
+    \xi_{\alpha}^*\xrightarrow{P} \Phi^{-1}(1-\alpha).
+    \end{equation*}
 \end{corollary}
 
 \begin{corollary}\label{corollaryQuan2}
     Under the conditions of Theorem~\ref{farT},
-    $$\xi_{\alpha}^*\xrightarrow{P}\frac{\sqrt{2}}{2}\Big(\big(\Phi^{-1}(1-\tfrac{\alpha}{2})\big)^2-1\Big).$$
+    \begin{equation*}
+    \xi_{\alpha}^*\xrightarrow{P}\frac{\sqrt{2}}{2}\Big(\big(\Phi^{-1}(1-\tfrac{\alpha}{2})\big)^2-1\Big).
+    \end{equation*}
 \end{corollary}
 
-Now we are ready to derive the asymptotic power of randomization test.
+Now we are ready to derive the asymptotic power of the randomization test.
 The following two theorems give the power under~\eqref{mu1} and~\eqref{mumu1}, respectively.
 
 \begin{theorem}\label{theoremPower}
@@ -588,15 +571,15 @@ See, for example,~\cite{Romano1990On}.
 %Hence randomization may loss some power.
 
 Use the method of~\citet{Chen2010A}, the asymptotic method rejects the null hypothesis when
-$$
+\begin{equation*}
 \frac{\sum_{i\neq j}X_i^T X_j}{\sqrt{2n(n-1)\widehat{\mytr(\Sigma^2)}}}>\Phi^{-1}(1-\alpha),
-$$
+\end{equation*}
 where
-$$
+ \begin{equation*}
  \widehat{\mytr(\Sigma^2)}=\frac{1}{n(n-1)}\mytr\Big(\sum_{i\neq j}(X_i-\bar{X}_{(i,j)})X_i^T (X_j-\bar{X}_{(i,j)})X_j^T\Big)
-$$
+ \end{equation*}
 is a ratio consistent estimator of $\mytr(\Sigma^2)$ and $\bar{X}_{(i,j)}$ is the sample mean after excluding $X_i$ and $X_j$.
-Lemma~\ref{theoremChen} implies that the Type I error rate of the asymptotic method  tends to the nominal level under assumptions~\eqref{chenC1},~\eqref{chenC2} and~\eqref{chenC3}.
+Lemma~\ref{theoremChen} implies that the Type I error rate of the asymptotic method  tends to the nominal level under~\eqref{chenC1},~\eqref{chenC2} and~\eqref{chenC3}.
 However, when these assumptions are not satisfied, Lemma~\ref{theoremChen} may not be valid.
 For example, we consider the model 
 \begin{equation}\label{factorCondition1}
@@ -616,9 +599,9 @@ In this case,
     \end{aligned}
 \end{equation*}
 By the law of large numbers, we have $\sum_{i=1}^n u_i^2/n\xrightarrow{P} 1$. By central limit theorem, we have $\sum_{i=1}^n u_i/\sqrt{n}\xrightarrow{\mathcal{L}}N(0,1)$. Then we have
-$$
+\begin{equation*}
 \frac{2T(X_1,\ldots,X_n)}{n\Bv^T \Bv }+1\xrightarrow{\mathcal{L}}\chi^2_1.
-$$
+\end{equation*}
 Since  the asymptotic distribution of $T(X_1,\ldots, X_n)$ is not normal distribution, the asymptotic method does not have the correct level even asymptotically.
 On the other hand, we have the following proposition.
 \begin{proposition}\label{prop:factor}
@@ -630,7 +613,7 @@ On the other hand, we have the following proposition.
 \end{equation*}
 \end{proposition}
 The Proposition~\ref{prop:factor} implies that the randomization test has correct level asymptotically.
-Hence our test procedure has wider application range than asymptotic method.
+Hence our test procedure has wider application range than the asymptotic method.
 
 
 
@@ -646,25 +629,24 @@ For comparison purposes, we also carried out simulations for the asymptotic meth
  %\widehat{\mytr(\Sigma^2)}=\frac{1}{n(n-1)}\sum_{i\neq j}(\frac{1}{n-1}\|X_i\|^2+\frac{n-1}{n-2}X_i^T X_j-\frac{n}{n-2}X_i^T \bar{X})(\frac{n-1}{n-2}X_i X_j^T +\frac{1}{n-2}\|X_j\|^2-\frac{n}{n-2}X_i^T \bar{X})
 %$$
 the $p$-value of which is
-$$
+\begin{equation*}
 p_{CQ}(X_1,\ldots,X_n)=1-\Phi\left(\frac{\sum_{i\neq j}X_i^T X_j}{\sqrt{2n(n-1)\widehat{\mytr(\Sigma^2)}}}\right).
-$$
+\end{equation*}
 
 We consider two innovation structures: the moving average model and the factor model.
 The moving average model has the following structure:
-\begin{equation*}
-    X_{ij}=\sum_{l=0}^k \rho_{l}Z_{i,j+l}
-\end{equation*}
-for $i=1,\ldots, n$ and $j=1,\ldots, p$, where $Z_{ij}$'s are iid random variables with distribution $F$ for $i=1,\ldots, n$ and $j=1,\ldots, p+k$. 
+    \begin{equation*}
+    X_{ij}=\sum_{l=0}^k \rho_{l}Z_{i,j+l},
+    \end{equation*}
+$i=1,\ldots, n$, $j=1,\ldots, p$, where $Z_{ij}$'s are iid random variables with distribution $F$ for $i=1,\ldots, n$ and $j=1,\ldots, p+k$. 
 Like~\citet{Chen2010A}, we consider two different $F$.
 One is $N(0,1)$, and the other is $(\textrm{Gamma}(4,1)-4)/2$.
 We also consider different $k$.
-The $\rho_i$'s are generated independently from $U(2,3)$ and kept fixed throughout the simulation.
+The $\rho_i$'s are generated independently from $U(2,3)$ and are kept fixed throughout the simulation.
 The second model we consider is the factor model in~\citet{fan2007to}.
-In the simulation study of~\citet{fan2007to}, data are generated from a factor model to reflect aspects of gene expression data.
+In the simulation study of~\citet{fan2007to}, the factor model is used to reflect aspects of gene expression data.
 The model involves three group factor and one common factor among all $p$ variables. 
- Their data generation mechanism shall be adopted in our next simulation study.
-We denote by $\{\xi_{ij}\}_{1\leq i\leq n, 1\leq j\leq p}$ a sequence of independent $N(0,1)$ and by $\{\chi_{ij}\}_{1\leq i \leq n, 1\leq j \leq 4}$ a sequence of independent random variables with distribution $(\chi_{6}^2-6)/\sqrt{12}$.
+We denote by $\{\xi_{ij}\}_{1\leq i\leq n, 1\leq j\leq p}$ a sequence of independent $N(0,1)$ random variables and by $\{\chi_{ij}\}_{1\leq i \leq n, 1\leq j \leq 4}$ a sequence of independent random variables with distribution $(\chi_{6}^2-6)/\sqrt{12}$.
 Note that $\chi_{ij}$ has mean $0$, variance $1$ and skewness $\sqrt{12}/3$.
 The data is generated by model
 \begin{equation*}
@@ -675,69 +657,74 @@ where $a_{jk}=0$ except that $a_{j1}=a_j$ for $j=1,\ldots,\frac{1}{3}p$, $a_{j2}
 As in~\citet{fan2007to}, we consider two configurations of factor loadings. In  case I we set $a_j=0.25$ and $b_j=0.1$ for $j=1,\ldots, p$. In case II, $a_i$ and $b_i$ are generated independently from $U(0,0.4)$ and $U(0,0.2)$.
 
 To control the significant level, the null distribution of a $p$-value should be close to $U(0,1)$, the uniform distribution on $(0,1)$.
-We simulate the $p$-value $\tilde{p}(X_1,\ldots,X_n)$ ($B=1000$) and $p_{CQ}(X_1,\ldots,X_n)$ for $2000$ times and Figure~\ref{figure:ECDF} plots the empirical distribution function (ECDF) of $p$-values.
-As shown by the plots, the $p$-values of the randomization test method is uniform in all cases.
-As for asymptotic method, the uniformity of $p$-values depends on model.
-It performs well for moving average model with $k=3$.
-In factor model, the lack of uniformity is obvious.
-The distribution of $p$-values is far away from uniform distribution for moving average model with $k=500$.
+We simulate the $p$-values $\tilde{p}(X_1,\ldots,X_n)$ ($B=1000$) and $p_{CQ}(X_1,\ldots,X_n)$ for $2000$ times and Figure~\ref{figure:ECDF} plots the empirical distribution function (ECDF) of $p$-values.
+As shown by the plots, the $p$-values of the randomization test method are uniform distributed in all cases.
+For asymptotic method, the uniformity of $p$-values depends on model.
+Under the moving average model, the empirical distribution of $p_{CQ}$ is close to uniform distribution for $k=3$ but is far away from uniform distribution for $k=500$.
+In factor model, the empirical distribution of $p_{CQ}$ slightly deviates from uniform distribution.
 
 \begin{figure*}[htbp]
     \centering
-    \includegraphics[ width=174mm]{pValuePlotProposed}
+    \includegraphics[ width=174mm]{Fig1}
     \caption{The ECDF of $p$-values for the asymptotic method (AM) and the randomization method (RM).  $p=600$, $n=100$.}\label{figure:ECDF}
 \end{figure*}
 
-In Theorem~\ref{shaziCLT}, we proved that the randomization distribution tends to a standard normal distribution under certain conditions.
+In Theorem~\ref{shaziCLT}, we showed that the randomization distribution tends to a standard normal distribution under certain conditions.
 In Figure~\ref{figure:histogram}, we plot the histograms of the randomization distribution under null hypothesis.
 For comparison, we also plot the standard normal density.
 From the plots, we can see that the randomization distribution is very similar to the standard normal distribution in factor model and moving average model with $k=3$.
 This verifies the Theorem~\ref{shaziCLT}.
 However, under moving average model with $k=500$, the randomization distribution is far from standard normal distribution.
+In fact, in this case, $\lambda_1(\Sigma)/\sqrt{\mytr(\Sigma^2)}$ is not negligible and~\eqref{chenC3} is not satisfied.
 This implies the accuracy of normal approximation depends on the innovation model.
 
 
 \begin{figure*}[htbp]
     \centering
-    \includegraphics[width=84mm]{normal3}
-    \includegraphics[width=84mm]{normal500}\\
-    \includegraphics[width=84mm]{gamma3}
-    \includegraphics[width=84mm]{gamma500}\\
-    \includegraphics[width=84mm]{factor1}
-    \includegraphics[width=84mm]{factor2}\\
+    \includegraphics[width=84mm]{Fig2}
+    \includegraphics[width=84mm]{Fig3}\\
+    \includegraphics[width=84mm]{Fig4}
+    \includegraphics[width=84mm]{Fig5}\\
+    \includegraphics[width=84mm]{Fig6}
+    \includegraphics[width=84mm]{Fig7}\\
     \caption{The histograms of the randomization distribution. $p=600$, $n=100$.}\label{figure:histogram}
 \end{figure*}
 
 
 
 
-Now we simulate the empirical power and size.
-Let $\mathrm{SNR}=\sqrt{n(n-1)}\mu^T \mu /\sqrt{2\mytr \Sigma^2}$ be the signal to noise ratio (SNR).
+Now we simulate the empirical power and size of the randomization test and the asymptotic method.
+Let 
+\begin{equation*}
+    \mathrm{SNR}=\frac{\sqrt{n(n-1)}\mu^T \mu}{\sqrt{2\mytr \Sigma^2}}
+\end{equation*}
+be the signal to noise ratio (SNR).
 The theoretic asymptotic power is an increasing function of SNR\@.
-We scale $\mu$ to reach different level of SNR\@.
-Our simulation consider two mean structure: dense mean and sparse mean.
-In the dense mean setting, each coordinate of $\mu$ is independently generated from $U(2,3)$ and then $\mu$ is scaled to reach a given SNR\@.
+We scale $\mu$ to reach different levels of SNR\@.
+Our simulations consider two mean structure: dense mean and sparse mean.
+In the dense mean setting,  we independently generate each coordinate of $\mu$ from $U(2,3)$ and then scale $\mu$ to reach a given SNR\@.
 In the sparse mean setting, we randomly select $5\%$ of $\mu$'s $p$ coordinates to be non-zero.
 Each non-zero coordinate is again independently generated from $U(2,3)$ and then scaled to reach a given SNR\@.
 We set $B=1000$ for the randomization test method.
 The empirical power and size are computed based on $2000$ simulations.
+The nominal level $\alpha$ is set to be $0.05$.
 
 Table~\ref{table1} and Table~\ref{table2} list the empirical power and size for the moving average model.
-It's not surprising that the randomization test can control level well in normal case.
-The results also show that the randomization method can control level well even in Gamma case, which is not symmetric under null.
+It's not surprising that the randomization test can  control the Type I error rate well in normal case.
+The results also show that the randomization method can control the Type I error rate well in gamma case even if gamma distribution is not symmetric under null.
 It justifies the robustness of the randomization method.
-On the other hand, asymptotic method has small size when the correlations between variables are weak and has inflated size when the correlations are strong.
+On the other hand, the asymptotic method has small size when the correlations between variables are weak and has inflated size when the correlations are strong.
 The empirical power of the randomization method is similar to the asymptotic method.
 They are both similar to theoretical asymptotic power~\eqref{oPower} when $k$ is small and are both lower than theoretical asymptotic power when $k$ is large.
 Table~\ref{table3} lists the empirical power and size under factor model.
-Although the distribution is not symmetric, the results show that the level of the randomization method is close to $0.05$ while asymptotic method suffers from level inflation.
+Although the distribution is not symmetric, the results show that the level of the randomization method is close to nominal level while the asymptotic method suffers from level inflation.
 In summary, the simulation results show that the randomization method is robust and has similar power with asymptotic method.
 
 \begin{table*}[ht]
-    \caption{Empirical power and size of moving average model with normal innovation.  $p=600$, $n=100$, $\alpha=0.05$. TP is the theoretical asymptotic power, RM represents the randomization method, AM represents the asymptotic method.}
+    \caption{Empirical power and size of moving average model with normal innovation. TP represents the theoretical asymptotic power, RM represents the randomization method, AM represents the asymptotic method.}
 \label{table1}
     \centering
-    \begin{tabular}{cccccccccccc}
+    \begin{tabular}{cclccccccccc}
           \toprule
           &&& & \multicolumn{4}{c}{Dense means} &\multicolumn{4}{c}{Sparse means}\\
           \cmidrule(r){5-8}\cmidrule(r){9-12}
@@ -745,7 +732,7 @@ In summary, the simulation results show that the randomization method is robust 
           \cmidrule(r){5-6}  \cmidrule(r){7-8} \cmidrule(r){9-10}  \cmidrule(r){11-12}
            $n$&$p$&SNR& TP & RM & AM & RM & AM & RM & AM & RM & AM  \\ 
             \midrule
-        100&600&0.0 & 0.050 & 0.0445 & 0.0515 & 0.0530 & 0.0745 & 0.0500 & 0.0585 & 0.0515 & 0.0715 \\ 
+        100&600&0.0 (size) & 0.050 & 0.0445 & 0.0515 & 0.0530 & 0.0745 & 0.0500 & 0.0585 & 0.0515 & 0.0715 \\ 
           &&0.5 & 0.126 & 0.1815 & 0.1940 & 0.1330 & 0.1685 & 0.1735 & 0.1875 & 0.0780 & 0.1130 \\ 
             &&1.0 & 0.260 & 0.4075 & 0.4295 & 0.2250 & 0.2785 & 0.4060 & 0.4325 & 0.1505 & 0.2065 \\ 
               &&1.5 & 0.442 & 0.6295 & 0.6535 & 0.3435 & 0.3920 & 0.6520 & 0.6755 & 0.2480 & 0.3355 \\ 
@@ -753,7 +740,8 @@ In summary, the simulation results show that the randomization method is robust 
                   &&2.5 & 0.804 & 0.9165 & 0.9215 & 0.4775 & 0.5425 & 0.9655 & 0.9695 & 0.6355 & 0.8155 \\ 
                     &&3.0 & 0.912 & 0.9640 & 0.9695 & 0.5445 & 0.6090 & 0.9910 & 0.9935 & 0.8720 & 0.9730 \\ 
 % new simulations
-        200&1000&0.0 & 0.050 & 0.0505 & 0.0550 & 0.0505 & 0.0695 & 0.0520 & 0.0575 & 0.0510 & 0.0700 \\ 
+        \midrule
+        200&1000&0.0 (size) & 0.050 & 0.0505 & 0.0550 & 0.0505 & 0.0695 & 0.0520 & 0.0575 & 0.0510 & 0.0700 \\ 
           &&0.5 & 0.126 & 0.1885 & 0.2025 & 0.1410 & 0.1680 & 0.1745 & 0.1865 & 0.0855 & 0.1165 \\ 
             &&1.0 & 0.260 & 0.3875 & 0.4050 & 0.2090 & 0.2620 & 0.4010 & 0.4160 & 0.1485 & 0.2075 \\ 
               &&1.5 & 0.442 & 0.6425 & 0.6600 & 0.3180 & 0.3715 & 0.6725 & 0.6895 & 0.2355 & 0.3290 \\ 
@@ -765,10 +753,10 @@ In summary, the simulation results show that the randomization method is robust 
 \end{table*}
 
 \begin{table*}[ht]
-    \caption{Empirical power and size of moving average model with Gamma innovation.  $p=600$, $n=100$, $\alpha=0.05$. TP is the theoretical asymptotic power, RM represents the randomization method, AM represents the asymptotic method.}
+    \caption{Empirical power and size of moving average model with Gamma innovation.   TP is the theoretical asymptotic power, RM represents the randomization method, AM represents the asymptotic method.}
 \label{table2}
     \centering
-    \begin{tabular}{cccccccccccc}
+    \begin{tabular}{cclccccccccc}
           \toprule
           &&& & \multicolumn{4}{c}{Dense means} &\multicolumn{4}{c}{Sparse means}\\
           \cmidrule(r){5-8}\cmidrule(r){9-12}
@@ -776,7 +764,7 @@ In summary, the simulation results show that the randomization method is robust 
           \cmidrule(r){5-6}  \cmidrule(r){7-8} \cmidrule(r){9-10}  \cmidrule(r){11-12}
            $n$&$p$&SNR& TP & RM & AM & RM & AM & RM & AM & RM & AM \\ 
             \midrule
-        100&600&0.0 & 0.050 & 0.0450 & 0.0550 & 0.0475 & 0.0660 & 0.0405 & 0.0465 & 0.0505 & 0.0765 \\ 
+        100&600&0.0 (size) & 0.050 & 0.0450 & 0.0550 & 0.0475 & 0.0660 & 0.0405 & 0.0465 & 0.0505 & 0.0765 \\ 
           &&0.5 & 0.126 & 0.1815 & 0.1975 & 0.1365 & 0.1750 & 0.1765 & 0.1870 & 0.0985 & 0.1345 \\ 
             &&1.0 & 0.260 & 0.3825 & 0.4050 & 0.2375 & 0.2765 & 0.4130 & 0.4335 & 0.1550 & 0.2070 \\ 
               &&1.5 & 0.442 & 0.6210 & 0.6465 & 0.2975 & 0.3490 & 0.6580 & 0.6745 & 0.2225 & 0.3135 \\ 
@@ -784,7 +772,8 @@ In summary, the simulation results show that the randomization method is robust 
                   &&2.5 & 0.804 & 0.9115 & 0.9260 & 0.4900 & 0.5465 & 0.9635 & 0.9665 & 0.6280 & 0.8200 \\ 
                     &&3.0 & 0.912 & 0.9710 & 0.9765 & 0.5505 & 0.6085 & 0.9940 & 0.9945 & 0.8600 & 0.9740 \\ 
 % new simulation
-                   200 & 1000 &0.0 & 0.050 & 0.0520 & 0.0555 & 0.0495 & 0.0715 & 0.0505 & 0.0555 & 0.0455 & 0.0690 \\ 
+        \midrule
+                   200 & 1000 &0.0 (size) & 0.050 & 0.0520 & 0.0555 & 0.0495 & 0.0715 & 0.0505 & 0.0555 & 0.0455 & 0.0690 \\ 
                       &&0.5 & 0.126 & 0.1740 & 0.1880 & 0.1355 & 0.1725 & 0.1725 & 0.1840 & 0.0780 & 0.1170 \\ 
                         &&1.0 & 0.260 & 0.3890 & 0.4045 & 0.2175 & 0.2595 & 0.4220 & 0.4415 & 0.1475 & 0.1950 \\ 
                           &&1.5 & 0.442 & 0.6470 & 0.6630 & 0.3240 & 0.3820 & 0.6605 & 0.6855 & 0.2550 & 0.3375 \\ 
@@ -796,10 +785,10 @@ In summary, the simulation results show that the randomization method is robust 
 \end{table*}
 
 \begin{table*}[ht]
-    \caption{Empirical power and size of factor model innovation.  $p=600$, $n=100$, $\alpha=0.05$. TP is the theoretical asymptotic power, RM represents the randomization method, AM represents the asymptotic method.}
+    \caption{Empirical power and size of factor model innovation.  TP is the theoretical asymptotic power, RM represents the randomization method, AM represents the asymptotic method.}
 \label{table3}
     \centering
-    \begin{tabular}{cccccccccccc}
+    \begin{tabular}{cclccccccccc}
           \toprule
           &&& & \multicolumn{4}{c}{Dense means} &\multicolumn{4}{c}{Sparse means}\\
           \cmidrule(r){5-8}\cmidrule(r){9-12}
@@ -807,14 +796,15 @@ In summary, the simulation results show that the randomization method is robust 
           \cmidrule(r){5-6}  \cmidrule(r){7-8} \cmidrule(r){9-10}  \cmidrule(r){11-12}
            $n$&$p$&SNR& TP & RM & AM & RM & AM & RM & AM & RM & AM  \\ 
             \midrule
-        100&600&0.0 & 0.050 & 0.0465 & 0.0610 & 0.0455 & 0.0590 & 0.0475 & 0.0625 & 0.0505 & 0.0615 \\ 
+        100&600&0.0 (size) & 0.050 & 0.0465 & 0.0610 & 0.0455 & 0.0590 & 0.0475 & 0.0625 & 0.0505 & 0.0615 \\ 
           &&0.5 & 0.126 & 0.1315 & 0.1555 & 0.1465 & 0.1650 & 0.1200 & 0.1380 & 0.1080 & 0.1320 \\ 
             &&1.0 & 0.260 & 0.2420 & 0.2780 & 0.2550 & 0.2780 & 0.1940 & 0.2250 & 0.2075 & 0.2400 \\ 
               &&1.5 & 0.442 & 0.3635 & 0.3975 & 0.3555 & 0.3870 & 0.3670 & 0.4110 & 0.3740 & 0.4155 \\ 
                 &&2.0 & 0.639 & 0.4825 & 0.5165 & 0.4720 & 0.4975 & 0.5340 & 0.5930 & 0.5615 & 0.6015 \\ 
                   &&2.5 & 0.804 & 0.5860 & 0.6190 & 0.5825 & 0.6165 & 0.7040 & 0.7610 & 0.7120 & 0.7505 \\ 
                     &&3.0 & 0.912 & 0.6730 & 0.7060 & 0.6975 & 0.7210 & 0.8525 & 0.8815 & 0.8680 & 0.8920 \\ 
-        200&1002&0.0 & 0.050 & 0.0520 & 0.0670 & 0.0530 & 0.0665 & 0.0485 & 0.0615 & 0.0490 & 0.0615 \\ 
+        \midrule
+        200&1002&0.0 (size) & 0.050 & 0.0520 & 0.0670 & 0.0530 & 0.0665 & 0.0485 & 0.0615 & 0.0490 & 0.0615 \\ 
           &&0.5 & 0.126 & 0.1490 & 0.1895 & 0.1405 & 0.1675 & 0.0905 & 0.1115 & 0.0975 & 0.1230 \\ 
             &&1.0 & 0.260 & 0.2450 & 0.2780 & 0.2485 & 0.2785 & 0.1835 & 0.2330 & 0.1920 & 0.2305 \\ 
               &&1.5 & 0.442 & 0.3445 & 0.3915 & 0.3450 & 0.3745 & 0.3170 & 0.3745 & 0.3395 & 0.3935 \\ 
@@ -861,10 +851,9 @@ In summary, the simulation results show that the randomization method is robust 
 In this paper, we considered a randomization test for mean vector in high dimensional setting.
 A fast implementation was provided.
 We also derived some asymptotic properties of the test procedure.
- In fact, the algorithm and the proof method can also be applied to other quadratic based statistics.
-
 We showed that even if the symmetric assumption is violated, the randomization test also has correct level asymptotically.
 Hence the test procedure is robust.
+ In fact, the algorithm and the proof method can also be applied to other quadratic based statistics.
 %It is interesting to investigate the robustness of randomization test in finite sample case.
 
 In classical statistics, randomization test procedures are time consuming.
@@ -872,10 +861,12 @@ Nevertheless, the computational complexity of our randomization test procedure i
 Hence we have reason to believe that randomization tests may be generally suitable for high dimensional problems.
 
 
-Maybe the most widely used randomization method is the two sample permutation test.
-As~\citet{Romano1990On} pointed out, the asymptotic property of randomization tests depends heavily on the particular problem and the two sample case is quite distinct from the one sample case.
-The method used in this paper can not be applied to permutation test.
-We leave this problem for further work.
+
+Our randomization test can be immediately generalized to the two sample problem for paired data~\citep{Konietschke2014}.
+However, maybe the most widely used randomization test for two sample problem is the permutation test.
+As pointed by~\citet{Romano1990On}, the asymptotic property of randomization tests depends heavily on the particular problem and the randomization method.
+The proof method used in this paper can not be applied to two sample permutation test.
+ It is interesting to understand the behavior of permutation tests in high dimensional setting. We leave it for further work.
 
 
 \section*{Appendix}
@@ -971,28 +962,27 @@ Such a CLT can be also used to study the asymptotic behavior of many other rando
  \end{proof}
 
 The rest of Appendix is devoted to the proof of our main results.
-
-
-
 \begin{lemma}\label{lemmaUniformSimple}
     Suppose $\{\eta_n\}_{n=1}^{\infty}$ is a sequence of random variables, weakly converges to $\eta$, a random variable with continuous distribution function.
     Then we have
-    $$
+    \begin{equation*}
     \sup_{x}|\Pr(\eta_n\leq x)-\Pr(\eta\leq x)|\to 0.
-    $$
+    \end{equation*}
 \end{lemma}
 
 For two non-negative sequences $\{x_n\}_{n=1}^{\infty}$ and $\{y_n\}_{n=1}^{\infty}$, we write $a_n\asymp b_n$ to denote 
-$$cb_n\leq a_n\leq C b_n$$
+\begin{equation*}
+cb_n\leq a_n\leq C b_n
+\end{equation*}
 for some absolute constants $c>0$, $C>0$ and all $n=1,2,\ldots$.
 \begin{lemma}\label{lemmaQ}
     Under~\eqref{chenC2}, suppose $A=(a_{ij})$ is an $m\times m$ positive semi-definite matrix, we have
-        $$
+        \begin{equation*}
         \myE {(Z_i^T A Z_i)}^2\asymp {(\mytr A)}^2.
-        $$
+        \end{equation*}
 \begin{proof}
 Notice that
-    $$
+    \begin{equation*}
     \begin{aligned}
         &{(Z_i^T A Z_i)}^2
         =
@@ -1009,10 +999,10 @@ Notice that
         4\Big(\sum_{k<j}a_{jk}^2z_{ij}^2z_{ik}^2\\
         &+\sum_{k<j,l<\alpha:\mathrm{card}(\{k,j\}\cap\{l,\alpha\})<2} a_{jk}a_{\alpha l}z_{ij}z_{ik}z_{i\alpha}z_{il}\Big),
     \end{aligned}
-    $$
+    \end{equation*}
     where $\mathrm{card}(\cdot)$ is the cardinality of a set.
     By the assumption~\eqref{chenC2}, we have
-    $$
+    \begin{equation*}
     \begin{aligned}
         &\myE{(Z_i^T A Z_i)}^2\\
         =&
@@ -1023,10 +1013,12 @@ Notice that
         \sum_{j=1}^n\sum_{k=1}^n a_{jk}^2
         ={(\mytr (A))}^2+\mytr ( A^2).
     \end{aligned}
-    $$
+    \end{equation*}
 
      Then the conclusion holds from inequality
-     $$\mytr ( A^2)\leq \lambda_1 (A) \mytr(A)\leq {(\mytr A)}^2.$$
+     \begin{equation*}
+     \mytr ( A^2)\leq \lambda_1 (A) \mytr(A)\leq {(\mytr A)}^2.
+     \end{equation*}
 
 \end{proof}
 \end{lemma}
@@ -1041,16 +1033,16 @@ Notice that
 \begin{proof}
 
     Under~\eqref{chenC1} and~\eqref{chenC2}, we have
-    $$
+        \begin{equation*}
         \begin{aligned}
             &{(X_i^T X_j)}^4=
             {(Z_i^T \Gamma^T \Gamma Z_j+\mu^T \Gamma Z_i+\mu^T \Gamma Z_j+\mu^T \mu)}^4\\
             \leq &
             64\big((Z_i^T \Gamma^T \Gamma Z_j)^4+(\mu^T \Gamma Z_i)^4+(\mu^T \Gamma Z_j)^4+(\mu^T \mu)^4\big)\\
         \end{aligned}
-    $$
+        \end{equation*}
     We can deal with the first term by applying Lemma~\ref{lemmaQ} twice:
-        $$
+        \begin{equation*}
         \begin{aligned}
             &\myE(Z_i^T \Gamma^T \Gamma Z_j)^4=
         \myE(Z_i^T \Gamma^T \Gamma Z_j Z_j^T \Gamma^T \Gamma Z_i)^2\\
@@ -1060,9 +1052,9 @@ Notice that
             \asymp   {\big(\mytr (\Sigma^2)\big)}^2.%+\mytr \Sigma^4\\
             %\leq &  (\mytr \Sigma^2)^2+\lambda_{1}^2(\Sigma)\mytr \Sigma^2,
         \end{aligned}
-    $$
+        \end{equation*}
     Similarly, we have
-        $$
+        \begin{equation*}
         \begin{aligned}
             &\myE(\mu^T \Gamma Z_i)^4=
         \myE(Z_i^T \Gamma^T \mu\mu^T \Gamma Z_i)^2
@@ -1072,17 +1064,17 @@ Notice that
             \leq {\big(\mytr (\Sigma^2)\big)}^2+{(\mu^T \mu)}^4.
         %\leq \lambda_{1}^2(\Sigma){(\mu^T\mu)}^2
         \end{aligned}
-    $$
+        \end{equation*}
 Hence
-$$
+    \begin{equation*}
     \myE (X_i^T X_j)^4=O(1)\Big(\big(\mytr(\Sigma^2)\big)^2+(\mu^T \mu)^4\Big).
-    $$
+    \end{equation*}
 Then the theorem follows by noting that
-$$
+    \begin{equation*}
 {\Big(\mytr {\big(\Sigma+\mu\mu^T\big)}^2\Big)}^2
 \asymp
     \big(\mytr(\Sigma^2)\big)^2+(\mu^T \mu)^4.
-$$
+    \end{equation*}
 \end{proof}
 
 
@@ -1132,13 +1124,13 @@ Note that
         \end{aligned}
     \end{equation*}
     For $i=1,2,3$, we have
-    $$
+    \begin{equation*}
     \mu^T \Sigma^i \mu
     \leq \lambda_{1}^i(\Sigma)\mu^T\mu
     \leq {(\mytr (\Sigma^2))}^{i/2}\mu^T\mu.
-    $$
+    \end{equation*}
         Combining these yields
-        $$
+        \begin{equation*}
         \begin{aligned}
             &\myE{(X_i^T X_j)}^2{(X_k^T X_i)}^2\\
             =&
@@ -1153,20 +1145,20 @@ Note that
             \Big(\big(\mytr(\Sigma^2)\big)^2 + (\mu^T \mu)^4 \Big)\\
             =& O(1){\Big(\mytr {\big(\Sigma+\mu\mu^T\big)}^2\Big)}^2.
         \end{aligned}
-        $$
+        \end{equation*}
 \end{proof}
 
 
 \begin{lemma}\label{ratioLemma}
     Under~\eqref{chenC1} and~\eqref{chenC2}, we have
-        $$
+        \begin{equation*}
         \frac{\sum_{j<i}{(X_i^T X_j)}^2}{\frac{n(n-1)}{2}\mytr  (\Sigma+\mu\mu^T)^2}
         \xrightarrow{P}1.
-        $$
+        \end{equation*}
 \end{lemma}
 \begin{proof}
     Since
-        $$
+        \begin{equation*}
         \begin{aligned}
             \myE(X_i^T X_j)^2=&
             \myE(X_i^T X_j X_j^T X_i)=
@@ -1174,18 +1166,18 @@ Note that
             =&
             \myE\mytr ((\Sigma+\mu \mu^T) X_i X_i^T)=\mytr {(\Sigma+\mu \mu^T)}^2,
         \end{aligned}
-    $$
+        \end{equation*}
    we have 
-        $$
+        \begin{equation*}
         \myE\sum_{j<i}(X_i^T X_j)^2=\frac{n(n-1)}{2}\mytr {(\Sigma+\mu\mu^T)}^2.
-    $$
+        \end{equation*}
     Next we need to deal with $\myE \big(\sum_{j<i}{(X_i^T X_j)}^2\big)^2$.
     Write 
-$$
+    \begin{equation*}
     \big(\sum_{j<i}{(X_i^T X_j)}^2\big)^2=
     \big(\sum_{j<i}{(X_i^T X_j)}^2\big)
     \big(\sum_{k<l}{(X_l^T X_k)}^2\big)
-    $$
+    \end{equation*}
     According to $\mathrm{card}(\{i,j\}\cap\{k,l\})=0,1,2$, we have
     \begin{equation*}%\label{eq:1}
     \begin{aligned}
@@ -1205,13 +1197,13 @@ $$
     %For the three summations on the right hand side of equation~\eqref{eq:1},
     There are $n(n-1)/2$, $n(n-1)(n-2)(n-3)/4$ and $n(n-1)(n-2)/6$ terms in each sum, respectively.
     This, combined with Lemma~\ref{smallLemma1} and Lemma~\ref{smallLemma2}, yields
-    $$
+    \begin{equation*}
     \begin{aligned}
         &\myE{\big(\sum_{j<i}{(X_i^T X_j)}^2\big)}^2\\
             =&\frac{n(n-1)(n-2)(n-3)}{4}{\big(\mytr (\Sigma+\mu\mu^T)^2\big)}^2\\
             &+O(1)(\frac{n(n-1)}{2}+n(n-1)(n-2)){\big(\mytr (\Sigma+\mu\mu^T)^2\big)}^2.
     \end{aligned}
-    $$
+    \end{equation*}
 Hence we have
     \begin{equation*}
     \begin{aligned}
@@ -1229,11 +1221,11 @@ Hence we have
     \end{aligned}
     \end{equation*}
     This implies 
-        $$
+        \begin{equation*}
         \frac{
         \sum_{j<i}{(X_i^T X_j)}^2
     }{\myE\sum_{j<i}{(X_i^T X_j)}^2}\xrightarrow{P}1.
-    $$
+        \end{equation*}
     The proof is complete.
 \end{proof}
 
@@ -1351,12 +1343,14 @@ Now we show that
     \end{aligned}
 \end{equation*}
     and
-    $$\myE(C_2^2)=\myE(C_3^2)=\frac{n(n-1)}{2}\mu^T \Sigma \mu\leq \frac{n(n-1)}{2}\sqrt{\mytr \Sigma^2}\mu^T\mu.$$
+    \begin{equation*}
+    \myE(C_2^2)=\myE(C_3^2)=\frac{n(n-1)}{2}\mu^T \Sigma \mu\leq \frac{n(n-1)}{2}\sqrt{\mytr \Sigma^2}\mu^T\mu.
+    \end{equation*}
     Thus~\eqref{Rush} follows by the assumption~\eqref{mu3}. By Markov's inequality, we have
     %By a standard subsequence argument and Slutsky's theorem,  the conclusion holds provided
-    $$
+    \begin{equation*}
     \myE\Big({\Big(\frac{C_i}{\frac{n}{2}\mu^T\mu}\Big)}^2\Big|X_1,\ldots,X_n\Big)\xrightarrow{P} 0,\quad i=1,2,3.
-    $$
+    \end{equation*}
     This, combined with~\eqref{Rush2} and a standard subsequence argument, yields
     \begin{equation}\label{Rush3}
         \begin{aligned}
@@ -1440,10 +1434,10 @@ Thus,
         \end{aligned}
     \end{equation*}
     As a result,
-    $$
+    \begin{equation*}
         \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)
     \to 1.
-    $$
+    \end{equation*}
 
 
 \end{proof}
@@ -1508,25 +1502,103 @@ The theorem then follows by Slutsky's theorem.
 
 
 
-% BibTeX users please use one of
-%\bibliographystyle{spbasic}      % basic style, author-year citations
-%\bibliographystyle{spmpsci}      % mathematics and physical sciences
-%\bibliographystyle{spphys}       % APS-like style for physics
-\bibliographystyle{unsrtnat}
-\bibliography{mybibfile}
-
-%\begin{figure*}
-  %\includegraphics[width=0.5\textwidth]{example.eps}
-%\caption{Please write your figure caption here}
-%\label{fig:2}       % Give a unique label
-%\end{figure*}
 
 
-%\begin{acknowledgements}
-%If you'd like to thank anyone, place your comments here
-%and remove the percent signs.
-%\end{acknowledgements}
+%\bibliographystyle{spcustom}
+%\bibliography{mybibfile}
 
+\begin{thebibliography}{16}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+
+\bibitem[{Anderson(2003)}]{andersonMultivariate}
+Anderson, T.W.: An Introduction to Multivariate Statistical Analysis.
+\newblock Wiley, New York, 3rd ed. (2003)
+
+\bibitem[{Bai and Saranadasa(1996)}]{Bai1996Efiect}
+Bai, Z., Saranadasa, H.: Effect of high dimension: by an example of a two
+  sample problem.
+\newblock Statistica Sinica \textbf{6}(2), 311--329 (1996)
+
+\bibitem[{Chen and Qin(2010)}]{Chen2010A}
+Chen, S.X., Qin, Y.L.: A two-sample test for high-dimensional data with
+  applications to gene-set testing.
+\newblock The Annals of Statistics \textbf{38}(2), 808--835 (2010)
+
+\bibitem[{Chung and Romano(2016)}]{Chung2016Multivariate}
+Chung, E., Romano, J.P.: Multivariate and multiple permutation tests.
+\newblock Journal of Econometrics \textbf{193}(1), 76--91 (2016)
+
+\bibitem[{Efron and Tibshirani(2007)}]{efron2007on}
+Efron, B., Tibshirani, R.: On testing the significance of sets of genes.
+\newblock The Annals of Applied Statistics \textbf{1}(1), 107--129 (2007)
+
+\bibitem[{Fan et~al.(2007)Fan, Hall and Yao}]{fan2007to}
+Fan, J., Hall, P., Yao, Q.: To how many simultaneous hypothesis tests can
+  normal, student's $t$ or bootstrap calibration be applied?
+\newblock Journal of the American Statistical Association \textbf{102}(480),
+  1282--1288 (2007)
+
+\bibitem[{Fisher(1935)}]{Fisher}
+Fisher, R.A.: The design of experiments.
+\newblock Oliver and Boyd, Edinburgh (1935)
+
+\bibitem[{Ko et~al.(2016)Ko, Kim and Sun}]{Ko2016}
+Ko, H., Kim, K., Sun, H.: Multiple group testing procedures for analysis of
+  high-dimensional genomic data.
+\newblock Genomics {\&} Informatics \textbf{14}(4), 187 (2016)
+
+\bibitem[{Konietschke and Pauly(2014)}]{Konietschke2014}
+Konietschke, F., Pauly, M.: Bootstrapping and permuting paired t-test type
+  statistics.
+\newblock Statistics and Computing \textbf{24}(3), 283--296 (2014)
+
+\bibitem[{Lehmann and Romano(2005)}]{Lehmann}
+Lehmann, E.L., Romano, J.P.: Testing Statistical Hypotheses.
+\newblock Springer New York, 3rd ed. (2005)
+
+\bibitem[{Pollard(1984)}]{pollard1984convergence}
+Pollard, D.: Convergence of Stochastic Processes.
+\newblock Springer New York, New York, 1st ed. (1984)
+
+\bibitem[{Romano(1990)}]{Romano1990On}
+Romano, J.P.: On the behavior of randomization tests without a group invariance
+  assumption.
+\newblock Journal of the American Statistical Association \textbf{85}(411),
+  686--692 (1990)
+
+\bibitem[{Srivastava and Du(2008)}]{Srivastava2008A}
+Srivastava, M.S., Du, M.: A test for the mean vector with fewer observations
+  than the dimension.
+\newblock Journal of Multivariate Analysis \textbf{99}(3), 386--402 (2008)
+
+\bibitem[{Subramanian et~al.(2005)Subramanian, Tamayo, Mootha, Mukherjee,
+  Ebert, Gillette, Paulovich, Pomeroy, Golub, Lander and
+  Mesirov}]{Subramanian2005}
+Subramanian, A., Tamayo, P., Mootha, V.K., Mukherjee, S., Ebert, B.L.,
+  Gillette, M.A., Paulovich, A., Pomeroy, S.L., Golub, T.R., Lander, E.S.,
+  Mesirov, J.P.: Gene set enrichment analysis: A knowledge-based approach for
+  interpreting genome-wide expression profiles.
+\newblock Proceedings of the National Academy of Sciences \textbf{102}(43),
+  15545--15550 (2005)
+
+\bibitem[{Wang et~al.(2015)Wang, Peng and Li}]{Wang2015A}
+Wang, L., Peng, B., Li, R.: A high-dimensional nonparametric multivariate test
+  for mean vector.
+\newblock Journal of the American Statistical Association \textbf{110}(512),
+  1658--1669 (2015)
+
+\bibitem[{Zhu(2000)}]{Zhu2000N}
+Zhu, L.X.: Nonparametric monte carlo tests for multivariate distributions.
+\newblock Biometrika \textbf{87}(4), 919--928 (2000)
+
+\end{thebibliography}
 
 
 \end{document}
