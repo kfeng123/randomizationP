@@ -1,35 +1,20 @@
-%%%%%%%%%%%%%%%%%%%%%%% file template.tex %%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% This is a general template file for the LaTeX package SVJour3
-% for Springer journals.          Springer Heidelberg 2010/09/16
 %
-% Copy it to a new file with a new name and use it as the basis
-% for your article. Delete % signs as needed.
 %
-% This template includes a few options for different layouts and
-% content for various journals. Please consult a previous issue of
-% your journal as needed.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-\RequirePackage{fix-cm}
-%
-%\documentclass{svjour3}                     % onecolumn (standard format)
-%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
-%\documentclass[smallextended]{svjour3}       % onecolumn (second format)
-\documentclass[smallcondensed,final,natbib]{svjour3}          % twocolumn
-%
-\smartqed  % flush right qed marks, e.g. at end of proof
-%
-\usepackage{graphicx}
-%
-\usepackage{mathptmx}      % use Times fonts if available on your TeX system
-\usepackage[misc]{ifsym}   % \Letter symbol
+\documentclass[review]{elsarticle}
 
 \usepackage{lineno,hyperref}
+
+\journal{Journal of statistical planning and inference}
+
+
+\usepackage{graphicx}
+%
+\usepackage[misc]{ifsym}   % \Letter symbol
 \usepackage{bm}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage[linesnumbered,ruled]{algorithm2e}
@@ -45,45 +30,33 @@
 \newcommand{\BP}{\mathbf{P}}
 \newcommand{\Bv}{\mathbf{v}}
 
+\theoremstyle{plain}
+\newtheorem{theorem}{\quad\quad Theorem}
+\newtheorem{proposition}{\quad\quad Proposition}
+\newtheorem{corollary}{\quad\quad Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{assumption}{\quad\quad Assumption}
+\newtheorem{condition}{Condition}
 
+\theoremstyle{definition}
+\newtheorem{remark}{\quad\quad Remark}
+\theoremstyle{remark}
 
-%
-% Insert the name of "your journal" with
- \journalname{Stat Comput}
-%
 \begin{document}
 
-\title{A feasible high dimensional randomization test for the mean vector\thanks{This work was supported by the National Natural Science Foundation of China under Grant No. 11471035, 11471030.
-}
-}
-%\subtitle{Do you have a subtitle?\\ If so, write it here}
-
-\titlerunning{high dimensional randomization test}        % if too long for running head
-
-\author{Rui Wang         \and
-        Xingzhong Xu  %etc.
-}
-
-%\authorrunning{Short form of author list} % if too long for running head
-
-\institute{Rui Wang\and Xingzhong Xu  \at
-              School of Mathematics and Statistics, Beijing Institute of Technology, Beijing 
-    100081,China \\
-              %Fax: +123-45-678910\\
-%             \emph{Present address:} of F. Author  %  if needed
-           \and
-            Xingzhong Xu (\Letter) 
-    \at
-    Beijing Key Laboratory on MCAACI, Beijing Institute of Technology, Beijing 100081,China\\
-    \email{xuxz@bit.edu.cn}\\
-              Tel.: +86-13681402299
-}
-
-\date{Received: date / Accepted: date}
-% The correct dates will be entered by the editor
 
 
-\maketitle
+
+\begin{frontmatter}
+\title{A feasible high dimensional randomization test for the mean vector}
+
+\author[mymainaddress]{Rui Wang}
+\author[mymainaddress,mysecondaryaddress]{Xingzhong Xu\corref{mycorrespondingauthor}}
+\cortext[mycorrespondingauthor]{Corresponding author}
+\ead{xuxz@bit.edu.cn}
+\address[mymainaddress]{School of Mathematics and Statistics, Beijing Institute of Technology, Beijing 100081,China}
+\address[mysecondaryaddress]{Beijing Key Laboratory on MCAACI, Beijing Institute of Technology, Beijing 100081,China}
 
 \begin{abstract}
     The strength of randomization tests is that they are exact tests under certain symmetry assumption for distributions.
@@ -99,10 +72,12 @@
     A simulation study is carried out to verify our theoretical results.
     
 
-   \keywords{Asymptotic power function \and High dimension \and Randomization test\and Symmetry assumption}
-% \PACS{PACS code1 \and PACS code2 \and more}
-% \subclass{MSC code1 \and MSC code2 \and more}
 \end{abstract}
+
+\begin{keyword}
+   Asymptotic power function \sep High dimension \sep Randomization test\sep Symmetry assumption
+\end{keyword}
+\end{frontmatter}
 
 \section{Introduction}
 
@@ -869,6 +844,10 @@ The proof method used in this paper can not be applied to two sample permutation
  It is interesting to understand the behavior of permutation tests in high dimensional setting. We leave it for further work.
 
 
+\section*{Acknowledgments}
+{This work was supported by the National Natural Science Foundation of China under Grant No. 11471035, 11471030.
+}
+
 \section*{Appendix}
 \paragraph{A CLT for quadratic form of Rademacher variables}
 The proof of the Theorem~\ref{shaziCLT} is based on a CLT of the quadratic form of Rademacher variables. 
@@ -1504,101 +1483,9 @@ The theorem then follows by Slutsky's theorem.
 
 
 
-%\bibliographystyle{spcustom}
-%\bibliography{mybibfile}
+\bibliographystyle{model2-names.bst}\biboptions{authoryear}
+\bibliography{mybibfile}
 
-\begin{thebibliography}{16}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\providecommand{\urlprefix}{URL }
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
-  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
-  \urlstyle{rm}\Url}\fi
-\providecommand{\selectlanguage}[1]{\relax}
-
-\bibitem[{Anderson(2003)}]{andersonMultivariate}
-Anderson, T.W.: An Introduction to Multivariate Statistical Analysis.
-\newblock Wiley, New York, 3rd ed. (2003)
-
-\bibitem[{Bai and Saranadasa(1996)}]{Bai1996Efiect}
-Bai, Z., Saranadasa, H.: Effect of high dimension: by an example of a two
-  sample problem.
-\newblock Statistica Sinica \textbf{6}(2), 311--329 (1996)
-
-\bibitem[{Chen and Qin(2010)}]{Chen2010A}
-Chen, S.X., Qin, Y.L.: A two-sample test for high-dimensional data with
-  applications to gene-set testing.
-\newblock The Annals of Statistics \textbf{38}(2), 808--835 (2010)
-
-\bibitem[{Chung and Romano(2016)}]{Chung2016Multivariate}
-Chung, E., Romano, J.P.: Multivariate and multiple permutation tests.
-\newblock Journal of Econometrics \textbf{193}(1), 76--91 (2016)
-
-\bibitem[{Efron and Tibshirani(2007)}]{efron2007on}
-Efron, B., Tibshirani, R.: On testing the significance of sets of genes.
-\newblock The Annals of Applied Statistics \textbf{1}(1), 107--129 (2007)
-
-\bibitem[{Fan et~al.(2007)Fan, Hall and Yao}]{fan2007to}
-Fan, J., Hall, P., Yao, Q.: To how many simultaneous hypothesis tests can
-  normal, student's $t$ or bootstrap calibration be applied?
-\newblock Journal of the American Statistical Association \textbf{102}(480),
-  1282--1288 (2007)
-
-\bibitem[{Fisher(1935)}]{Fisher}
-Fisher, R.A.: The design of experiments.
-\newblock Oliver and Boyd, Edinburgh (1935)
-
-\bibitem[{Ko et~al.(2016)Ko, Kim and Sun}]{Ko2016}
-Ko, H., Kim, K., Sun, H.: Multiple group testing procedures for analysis of
-  high-dimensional genomic data.
-\newblock Genomics {\&} Informatics \textbf{14}(4), 187 (2016)
-
-\bibitem[{Konietschke and Pauly(2014)}]{Konietschke2014}
-Konietschke, F., Pauly, M.: Bootstrapping and permuting paired t-test type
-  statistics.
-\newblock Statistics and Computing \textbf{24}(3), 283--296 (2014)
-
-\bibitem[{Lehmann and Romano(2005)}]{Lehmann}
-Lehmann, E.L., Romano, J.P.: Testing Statistical Hypotheses.
-\newblock Springer New York, 3rd ed. (2005)
-
-\bibitem[{Pollard(1984)}]{pollard1984convergence}
-Pollard, D.: Convergence of Stochastic Processes.
-\newblock Springer New York, New York, 1st ed. (1984)
-
-\bibitem[{Romano(1990)}]{Romano1990On}
-Romano, J.P.: On the behavior of randomization tests without a group invariance
-  assumption.
-\newblock Journal of the American Statistical Association \textbf{85}(411),
-  686--692 (1990)
-
-\bibitem[{Srivastava and Du(2008)}]{Srivastava2008A}
-Srivastava, M.S., Du, M.: A test for the mean vector with fewer observations
-  than the dimension.
-\newblock Journal of Multivariate Analysis \textbf{99}(3), 386--402 (2008)
-
-\bibitem[{Subramanian et~al.(2005)Subramanian, Tamayo, Mootha, Mukherjee,
-  Ebert, Gillette, Paulovich, Pomeroy, Golub, Lander and
-  Mesirov}]{Subramanian2005}
-Subramanian, A., Tamayo, P., Mootha, V.K., Mukherjee, S., Ebert, B.L.,
-  Gillette, M.A., Paulovich, A., Pomeroy, S.L., Golub, T.R., Lander, E.S.,
-  Mesirov, J.P.: Gene set enrichment analysis: A knowledge-based approach for
-  interpreting genome-wide expression profiles.
-\newblock Proceedings of the National Academy of Sciences \textbf{102}(43),
-  15545--15550 (2005)
-
-\bibitem[{Wang et~al.(2015)Wang, Peng and Li}]{Wang2015A}
-Wang, L., Peng, B., Li, R.: A high-dimensional nonparametric multivariate test
-  for mean vector.
-\newblock Journal of the American Statistical Association \textbf{110}(512),
-  1658--1669 (2015)
-
-\bibitem[{Zhu(2000)}]{Zhu2000N}
-Zhu, L.X.: Nonparametric monte carlo tests for multivariate distributions.
-\newblock Biometrika \textbf{87}(4), 919--928 (2000)
-
-\end{thebibliography}
 
 
 \end{document}
