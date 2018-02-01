@@ -109,7 +109,7 @@ Many subsequent papers generalized the idea of~\citet{Bai1996Efiect} to more gen
 %~\cite{Wang2015A} proposed a test based on  $\sum_{i\neq j}\|X_i\|^{-1}\|X_j\|^{-1}X_i^T X_j$.
 %~\cite{Zhao2016A} proposed a test based on $\bar{X}^T (I_p-\BP_S)\bar{X}$, where $\BP_S$ is the orthogonal projection matrix on the column space of $S$.
 %All these high dimensional statistics can be written as generalized quadratic forms of data, see~\cite{Jong1987A}. And the asymptotic properties of these statistics are mostly derived by martingale central limit theorem (MCLT).
-The critical value of existing high dimensional tests are mostly determined by asymptotic distribution. 
+The critical values of existing high dimensional tests are mostly determined by asymptotic distribution. 
 We call it asymptotic method.
  In many real world problems, e.g., gene testing~\citep{efron2007on}, sample size $n$ may be very small.
 In this case, the Type I error rate of the asymptotic method may be far away from nominal level. 
@@ -587,6 +587,75 @@ On the other hand, we have the following proposition.
 \end{proposition}
 The Proposition~\ref{prop:factor} implies that the randomization test has correct level asymptotically.
 Hence our test procedure has wider application range than the asymptotic method.
+\subsection{Spiked covariance model}
+In many applications, the variables are affected by several common factors.
+In this case, the covariance matrix $\Sigma$ has a few significantly large eigenvalues and the condition~\eqref{chenC3} can be violated.
+See, for example, xxx.
+We would like to investegate the asymptotic behavior of the randomization test in this case.
+Suppose that there is a fixed integer $r>0$ and positive constants $\kappa_1,\ldots,\kappa_r$ such that
+\begin{equation}\label{spikedC}
+    \frac{\lambda_{i}(\Sigma)}{\sqrt{\mytr(\Sigma^2)}}\to \kappa_i \text{ for } i=1,\ldots, r
+    \quad
+    \text{and}
+    \quad
+    \frac{\lambda_{i}(\Sigma)}{\sqrt{\mytr(\Sigma^2)}}\to 0 \text{ for }\,\, i> r.
+\end{equation}
+The following proposition gives the asymptotic distribution of $T(X_1,\ldots,X_n)$ Under~\eqref{spikedC}.
+\begin{proposition}\label{prop:spiked1}
+    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{spikedC},
+    we have
+\end{proposition}
+\begin{proof}[\textbf{Proof of Proposition~\ref{prop:spiked1}}]
+    Note that
+    $$
+    \begin{aligned}
+        &T(X_1,\ldots,X_n)=\sum_{j<i} X_i^T X_j
+        = \frac{1}{2}\Big(\big\|\sum_{i=1}^n X_i \big\|^2-\sum_{i=1}^n \| X_i \|^2\Big)\\
+        =&
+        \frac{1}{2}\Big(\big\|n\mu+\Gamma\sum_{i=1}^n Z_i \big\|^2-\sum_{i=1}^n \| \mu+\Gamma Z_i \|^2\Big)\\
+        =&
+        \frac{1}{2}\Big(\big\|\Gamma\sum_{i=1}^n Z_i \big\|^2-\sum_{i=1}^n \| \Gamma Z_i \|^2\Big)+(n-1)\mu^T \Gamma \sum_{i=1}^n Z_i+\frac{n(n-1)}{2}\|\mu\|^2.\\
+    \end{aligned}
+    $$
+
+
+
+    Denote by $\Gamma= U_{\Gamma}D_{\Gamma}V_{\Gamma}^T$ the singular value decomposition of $\Gamma$, where $U_{\Gamma}$ is a $p\times p$ orthogonal matrix, $V_{\Gamma}$ is a $m\times p$ column orthogonal matrix and $D_{\Gamma}=\mydiag(\sqrt{\lambda_1(\Sigma)},\ldots,\sqrt{\lambda_p(\Sigma)})$.
+    Write $U_{\Gamma}=(U_{\Gamma,1},U_{\Gamma,2})$ where $U_{\Gamma,1}$ and $U_{\Gamma,2}$ are the first $r$ columns and last $p-r$ columns of $U_{\Gamma}$.
+    Similarly, write $V_{\Gamma}=(V_{\Gamma,1},V_{\Gamma,2})$ where $V_{\Gamma,1}$ and $V_{\Gamma,2}$ are the first $r$ columns and last $p-r$ columns of $V_{\Gamma}$.
+    Let $D_{\Gamma,1}=\mydiag(\sqrt{\lambda_1(\Sigma)},\ldots,\sqrt{\lambda_r(\Sigma)})$ and $D_{\Gamma,2}=\mydiag(\sqrt{\lambda_{r+1}(\Sigma)},\ldots,\sqrt{\lambda_p(\Sigma)})$.
+    Then $\Gamma = U_{\Gamma,1}D_{\Gamma,1}V_{\Gamma,1}^T+U_{\Gamma,2}D_{\Gamma,2}V_{\Gamma,2}^T$.
+
+
+    Let $Y_i=V_{\Gamma,1}^T Z_i$, $i=1,\ldots,n$.
+    Then $Y_i$ is an $r$ dimensional random vector with $\myE Y_i=0$, $\myVar (Y_i)=I_{r\times r}$.
+    By some algebra, it can be shown that $Y_{i,j}$, the $j$th  element of $Y_i$, satisfies
+    $$
+    \myE Y_{i,j}^4\leq 5+\Delta, \quad
+j=1,\ldots,r.
+    $$
+    Hence for any $\xi\in\mathbb{R}^r$ with, we have $\myE (\xi^T Y_i)=0$, $\myVar (\xi^T Y_i)=\|\xi\|^2$ and
+    $$
+    \myE (\xi^T Y_{i})^4 
+    \leq \|\xi\|^4\myE \|Y_{i}\|^4 \leq (5+\Delta)r^2 \|\xi\|^4.
+    $$
+    It follows that
+    $$
+    \frac{
+        \sum_{i=1}^n \myE (\xi^T Y_{i})^4 
+    }{
+        \big(\sum_{i=1}^n \myE (\xi^T Y_{i})^2 \big)^2
+    }
+    \leq
+    \frac{(5+\Delta)r^2 }{n}\to 0.
+    $$
+    Thus, by Lyapunov central limit theorem, we have
+    $$
+    n^{-1/2}\sum_{i=1}^n Y_i\xrightarrow{\mathcal{L}} N(0,I_{r\times r}).
+    $$
+
+\end{proof}
+
 
 
 
@@ -1479,6 +1548,7 @@ The theorem then follows by Slutsky's theorem.
 
 
 \bibliographystyle{model2-names.bst}\biboptions{authoryear}
+\section*{References}
 \bibliography{mybibfile}
 
 

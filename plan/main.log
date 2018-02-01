@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.6.24)  2 AUG 2017 20:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.4)  1 FEB 2018 22:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -507,238 +507,236 @@ Overfull \hbox (26.98866pt too wide) detected at line 472
 [] []
  []
 
-[10] [11] [12]
+[10] [11] [12] [13] [14]
 Package epstopdf Info: Source file: <Fig1.eps>
-(epstopdf)                    date: 2017-07-23 16:38:05
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 332262 bytes
 (epstopdf)             Output file: <Fig1-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-29 19:06:16
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 109255 bytes
 (epstopdf)             Command: <repstopdf --outfile=Fig1-eps-converted-to.pdf 
 Fig1.eps>
-(epstopdf)             \includegraphics on input line 641.
+(epstopdf)             \includegraphics on input line 710.
 Package epstopdf Info: Output file is already uptodate.
- <Fig1-eps-converted-to.pdf, id=306, 505.89pt x 505.89pt>
+
+<Fig1-eps-converted-to.pdf, id=329, 505.89pt x 505.89pt>
 File: Fig1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Fig1-eps-converted-to.pdf>
-Package pdftex.def Info: Fig1-eps-converted-to.pdf used on input line 641.
+Package pdftex.def Info: Fig1-eps-converted-to.pdf used on input line 710.
 (pdftex.def)             Requested size: 345.0pt x 345.00414pt.
- [13] [14 <./Fig1-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Fig2.eps>
-(epstopdf)                    date: 2017-07-23 18:06:07
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 6008 bytes
 (epstopdf)             Output file: <Fig2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-29 19:06:16
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 10910 bytes
 (epstopdf)             Command: <repstopdf --outfile=Fig2-eps-converted-to.pdf 
 Fig2.eps>
-(epstopdf)             \includegraphics on input line 657.
+(epstopdf)             \includegraphics on input line 726.
 Package epstopdf Info: Output file is already uptodate.
 
-<Fig2-eps-converted-to.pdf, id=331, 289.08pt x 216.81pt>
+<Fig2-eps-converted-to.pdf, id=334, 289.08pt x 216.81pt>
 File: Fig2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Fig2-eps-converted-to.pdf>
-Package pdftex.def Info: Fig2-eps-converted-to.pdf used on input line 657.
+Package pdftex.def Info: Fig2-eps-converted-to.pdf used on input line 726.
 (pdftex.def)             Requested size: 165.59853pt x 124.1983pt.
 Package epstopdf Info: Source file: <Fig3.eps>
-(epstopdf)                    date: 2017-07-23 18:06:08
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 5994 bytes
 (epstopdf)             Output file: <Fig3-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-29 19:06:16
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 11089 bytes
 (epstopdf)             Command: <repstopdf --outfile=Fig3-eps-converted-to.pdf 
 Fig3.eps>
-(epstopdf)             \includegraphics on input line 658.
+(epstopdf)             \includegraphics on input line 727.
 Package epstopdf Info: Output file is already uptodate.
 
-<Fig3-eps-converted-to.pdf, id=332, 289.08pt x 216.81pt>
+<Fig3-eps-converted-to.pdf, id=335, 289.08pt x 216.81pt>
 File: Fig3-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Fig3-eps-converted-to.pdf>
-Package pdftex.def Info: Fig3-eps-converted-to.pdf used on input line 658.
+Package pdftex.def Info: Fig3-eps-converted-to.pdf used on input line 727.
 (pdftex.def)             Requested size: 165.59853pt x 124.1983pt.
 Package epstopdf Info: Source file: <Fig4.eps>
-(epstopdf)                    date: 2017-07-23 18:06:09
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 6008 bytes
 (epstopdf)             Output file: <Fig4-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-29 19:06:17
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 10977 bytes
 (epstopdf)             Command: <repstopdf --outfile=Fig4-eps-converted-to.pdf 
 Fig4.eps>
-(epstopdf)             \includegraphics on input line 659.
+(epstopdf)             \includegraphics on input line 728.
 Package epstopdf Info: Output file is already uptodate.
 
-<Fig4-eps-converted-to.pdf, id=333, 289.08pt x 216.81pt>
+<Fig4-eps-converted-to.pdf, id=336, 289.08pt x 216.81pt>
 File: Fig4-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Fig4-eps-converted-to.pdf>
-Package pdftex.def Info: Fig4-eps-converted-to.pdf used on input line 659.
+Package pdftex.def Info: Fig4-eps-converted-to.pdf used on input line 728.
 (pdftex.def)             Requested size: 165.59853pt x 124.1983pt.
 Package epstopdf Info: Source file: <Fig5.eps>
-(epstopdf)                    date: 2017-07-23 18:06:10
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 6053 bytes
 (epstopdf)             Output file: <Fig5-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-29 19:06:17
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 11307 bytes
 (epstopdf)             Command: <repstopdf --outfile=Fig5-eps-converted-to.pdf 
 Fig5.eps>
-(epstopdf)             \includegraphics on input line 660.
+(epstopdf)             \includegraphics on input line 729.
 Package epstopdf Info: Output file is already uptodate.
 
-<Fig5-eps-converted-to.pdf, id=334, 289.08pt x 216.81pt>
+<Fig5-eps-converted-to.pdf, id=337, 289.08pt x 216.81pt>
 File: Fig5-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Fig5-eps-converted-to.pdf>
-Package pdftex.def Info: Fig5-eps-converted-to.pdf used on input line 660.
+Package pdftex.def Info: Fig5-eps-converted-to.pdf used on input line 729.
 (pdftex.def)             Requested size: 165.59853pt x 124.1983pt.
 Package epstopdf Info: Source file: <Fig6.eps>
-(epstopdf)                    date: 2017-07-23 18:06:10
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 5943 bytes
 (epstopdf)             Output file: <Fig6-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-29 19:06:17
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 10709 bytes
 (epstopdf)             Command: <repstopdf --outfile=Fig6-eps-converted-to.pdf 
 Fig6.eps>
-(epstopdf)             \includegraphics on input line 661.
+(epstopdf)             \includegraphics on input line 730.
 Package epstopdf Info: Output file is already uptodate.
 
-<Fig6-eps-converted-to.pdf, id=335, 289.08pt x 216.81pt>
+<Fig6-eps-converted-to.pdf, id=338, 289.08pt x 216.81pt>
 File: Fig6-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Fig6-eps-converted-to.pdf>
-Package pdftex.def Info: Fig6-eps-converted-to.pdf used on input line 661.
+Package pdftex.def Info: Fig6-eps-converted-to.pdf used on input line 730.
 (pdftex.def)             Requested size: 165.59853pt x 124.1983pt.
 Package epstopdf Info: Source file: <Fig7.eps>
-(epstopdf)                    date: 2017-07-23 18:06:11
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 5942 bytes
 (epstopdf)             Output file: <Fig7-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-29 19:06:17
+(epstopdf)                    date: 2018-01-31 19:28:46
 (epstopdf)                    size: 10727 bytes
 (epstopdf)             Command: <repstopdf --outfile=Fig7-eps-converted-to.pdf 
 Fig7.eps>
-(epstopdf)             \includegraphics on input line 662.
+(epstopdf)             \includegraphics on input line 731.
 Package epstopdf Info: Output file is already uptodate.
 
-<Fig7-eps-converted-to.pdf, id=336, 289.08pt x 216.81pt>
+<Fig7-eps-converted-to.pdf, id=339, 289.08pt x 216.81pt>
 File: Fig7-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Fig7-eps-converted-to.pdf>
-Package pdftex.def Info: Fig7-eps-converted-to.pdf used on input line 662.
+Package pdftex.def Info: Fig7-eps-converted-to.pdf used on input line 731.
 (pdftex.def)             Requested size: 165.59853pt x 124.1983pt.
- [15] [16 <./Fig2-eps-converted-to.pdf> <./Fig3-eps-converted-to.pdf> <./Fig4-e
-ps-converted-to.pdf> <./Fig5-eps-converted-to.pdf> <./Fig6-eps-converted-to.pdf
-> <./Fig7-eps-converted-to.pdf>]
-Overfull \hbox (118.50093pt too wide) in paragraph at lines 700--726
+ [15] [16 <./Fig1-eps-converted-to.pdf>]
+[17 <./Fig2-eps-converted-to.pdf> <./Fig3-eps-converted-to.pdf> <./Fig4-eps-con
+verted-to.pdf> <./Fig5-eps-converted-to.pdf> <./Fig6-eps-converted-to.pdf> <./F
+ig7-eps-converted-to.pdf>]
+Overfull \hbox (118.50093pt too wide) in paragraph at lines 769--795
  [][] 
  []
 
 
-Overfull \hbox (118.50093pt too wide) in paragraph at lines 732--758
+Overfull \hbox (118.50093pt too wide) in paragraph at lines 801--827
  [][] 
  []
 
 
-Overfull \hbox (118.50093pt too wide) in paragraph at lines 764--789
+Overfull \hbox (118.50093pt too wide) in paragraph at lines 833--858
  [][] 
  []
 
-[17] [18] [19] [20]
-Overfull \hbox (23.86432pt too wide) detected at line 908
+[18] [19] [20] [21]
+Overfull \hbox (23.86432pt too wide) detected at line 977
 [] []
  []
 
-
-Overfull \hbox (6.17679pt too wide) detected at line 937
+[22]
+Overfull \hbox (6.17679pt too wide) detected at line 1006
 [] []
  []
 
-[21] [22] [23]
-Overfull \hbox (38.28047pt too wide) detected at line 1125
-[] []
- []
-
-
-Overfull \hbox (60.98824pt too wide) detected at line 1173
-[] []
- []
-
-[24]
-Overfull \hbox (5.53282pt too wide) detected at line 1199
+[23] [24]
+Overfull \hbox (38.28047pt too wide) detected at line 1194
 [] []
  []
 
 [25]
-Overfull \hbox (6.01186pt too wide) detected at line 1255
+Overfull \hbox (60.98824pt too wide) detected at line 1242
 [] []
  []
 
 
-Overfull \hbox (5.2645pt too wide) in paragraph at lines 1270--1274
+Overfull \hbox (5.53282pt too wide) detected at line 1268
+[] []
+ []
+
+[26]
+Overfull \hbox (6.01186pt too wide) detected at line 1324
+[] []
+ []
+
+
+Overfull \hbox (5.2645pt too wide) in paragraph at lines 1339--1343
 \OT1/cmr/m/n/10 along a sub-se-quence. But there ex-ists a sub-se-quence $\OMS/
 cmsy/m/n/10 f\OML/cmm/m/it/10 n\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 k\OT1/cmr/m/n/
 10 )\OMS/cmsy/m/n/10 g$ \OT1/cmr/m/n/10 along which [], []
  []
 
-[26] [27]
-Overfull \hbox (26.55948pt too wide) detected at line 1385
+[27] [28]
+Overfull \hbox (26.55948pt too wide) detected at line 1454
 [] []
  []
 
-[28]
-Overfull \hbox (34.37903pt too wide) in paragraph at lines 1430--1430
+[29]
+Overfull \hbox (34.37903pt too wide) in paragraph at lines 1499--1499
 [] 
  []
 
-[29] (./main.bbl [30])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1486.
- [31]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1486.
+[30] [31] (./main.bbl [32])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1556.
+ [33]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1556.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1486.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1486.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1556.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1556.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B870DCB2B7DE819E0C05BBCBC3C15832;257.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1486.
+(rerunfilecheck)             Checksum: DF14DD6D73BB7A460CAF3D998469899C;329.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1556.
  ) 
 Here is how much of TeX's memory you used:
- 8476 strings out of 493029
- 119978 string characters out of 6136234
- 242776 words of memory out of 5000000
- 11736 multiletter control sequences out of 15000+600000
- 15248 words of font info for 56 fonts, out of 8000000 for 9000
+ 8487 strings out of 493029
+ 120105 string characters out of 6136235
+ 244865 words of memory out of 5000000
+ 11740 multiletter control sequences out of 15000+600000
+ 15607 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,17n,34p,361b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/symbols/msbm10.pfb>
-Output written on main.pdf (31 pages, 473201 bytes).
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sy
+mbols/msbm10.pfb>
+Output written on main.pdf (33 pages, 489914 bytes).
 PDF statistics:
- 676 PDF objects out of 1000 (max. 8388607)
- 589 compressed objects within 6 object streams
- 130 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 703 PDF objects out of 1000 (max. 8388607)
+ 612 compressed objects within 7 object streams
+ 136 named destinations out of 1000 (max. 500000)
+ 84 words of extra memory for PDF output out of 10000 (max. 10000000)
 
