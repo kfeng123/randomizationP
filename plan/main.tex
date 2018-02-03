@@ -604,6 +604,11 @@ The following proposition gives the asymptotic distribution of $T(X_1,\ldots,X_n
 \begin{proposition}\label{prop:spiked1}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{spikedC},
     we have
+    $$
+    \frac{2T(X_1,\ldots,X_n)-n(n-1)\|\mu\|^2}{n\sqrt{\mytr(\Sigma^2)}}
+    \xrightarrow{w}\sum_{i=1}^r \kappa_i (\xi_i^2-1),
+    $$
+    where $\xi_1,\ldots \xi_r$ are iid standard normal random variables.
 \end{proposition}
 \begin{proof}[\textbf{Proof of Proposition~\ref{prop:spiked1}}]
     Note that
@@ -617,41 +622,65 @@ The following proposition gives the asymptotic distribution of $T(X_1,\ldots,X_n
         \frac{1}{2}\Big(\big\|\Gamma\sum_{i=1}^n Z_i \big\|^2-\sum_{i=1}^n \| \Gamma Z_i \|^2\Big)+(n-1)\mu^T \Gamma \sum_{i=1}^n Z_i+\frac{n(n-1)}{2}\|\mu\|^2.\\
     \end{aligned}
     $$
+    Then
+    \begin{equation}\label{eq:deco}
+    \frac{2T(X_1,\ldots,X_n)-n(n-1)\|\mu\|^2}{n\sqrt{\mytr(\Sigma^2)}}
+    =\frac{\big\|\Gamma\sum_{i=1}^n Z_i \big\|^2-\sum_{i=1}^n \| \Gamma Z_i \|^2}{n\sqrt{\mytr(\Sigma^2)}}
+    +
+    \frac{2(n-1) \mu^T \Gamma \sum_{i=1}^n Z_i}{n\sqrt{\mytr(\Sigma^2)}}.
+    \end{equation}
+    Since
+    $$
+    \myE \Big[\frac{2(n-1) \mu^T \Gamma \sum_{i=1}^n Z_i}{n\sqrt{\mytr(\Sigma^2)}}\Big]^2=\frac{4(n-1)^2 \mu^T \Sigma \mu}{n \mytr(\Sigma^2)}\to 0,
+    $$
+    we only need to consider the first term of~\eqref{eq:deco}.
 
 
 
     Denote by $\Gamma= U_{\Gamma}D_{\Gamma}V_{\Gamma}^T$ the singular value decomposition of $\Gamma$, where $U_{\Gamma}$ is a $p\times p$ orthogonal matrix, $V_{\Gamma}$ is a $m\times p$ column orthogonal matrix and $D_{\Gamma}=\mydiag(\sqrt{\lambda_1(\Sigma)},\ldots,\sqrt{\lambda_p(\Sigma)})$.
-    Write $U_{\Gamma}=(U_{\Gamma,1},U_{\Gamma,2})$ where $U_{\Gamma,1}$ and $U_{\Gamma,2}$ are the first $r$ columns and last $p-r$ columns of $U_{\Gamma}$.
-    Similarly, write $V_{\Gamma}=(V_{\Gamma,1},V_{\Gamma,2})$ where $V_{\Gamma,1}$ and $V_{\Gamma,2}$ are the first $r$ columns and last $p-r$ columns of $V_{\Gamma}$.
-    Let $D_{\Gamma,1}=\mydiag(\sqrt{\lambda_1(\Sigma)},\ldots,\sqrt{\lambda_r(\Sigma)})$ and $D_{\Gamma,2}=\mydiag(\sqrt{\lambda_{r+1}(\Sigma)},\ldots,\sqrt{\lambda_p(\Sigma)})$.
-    Then $\Gamma = U_{\Gamma,1}D_{\Gamma,1}V_{\Gamma,1}^T+U_{\Gamma,2}D_{\Gamma,2}V_{\Gamma,2}^T$.
-
-
     Let $Y_i=V_{\Gamma,1}^T Z_i$, $i=1,\ldots,n$.
-    Then $Y_i$ is an $r$ dimensional random vector with $\myE Y_i=0$, $\myVar (Y_i)=I_{r\times r}$.
-    By some algebra, it can be shown that $Y_{i,j}$, the $j$th  element of $Y_i$, satisfies
+    Then
+$$
+    \big\|\Gamma \sum_{i=1}^n Z_i\big\|^2
+    =
+    \big\|D_\Gamma \sum_{i=1}^n Y_i\big\|^2
+    =
+    \big\|D_{\Gamma,1} \sum_{i=1}^n Y_{i,1}\big\|^2
+    +
+    \big\|D_{\Gamma,2} \sum_{i=1}^n Y_{i,2}\big\|^2,
+$$
+    where $D_{\Gamma,1}=\mydiag(\sqrt{\lambda_1(\Sigma)},\ldots,\sqrt{\lambda_r(\Sigma)})$, $D_{\Gamma,2}=\mydiag(\sqrt{\lambda_{r+1}(\Sigma)},\ldots,\sqrt{\lambda_p(\Sigma)})$ and $Y_{i,1}$, $Y_{i,2}$ are the first $r$ and last $p-r$ elements of $Y_i$ respectively.
+    %Write $U_{\Gamma}=(U_{\Gamma,1},U_{\Gamma,2})$ where $U_{\Gamma,1}$ and $U_{\Gamma,2}$ are the first $r$ columns and last $p-r$ columns of $U_{\Gamma}$.
+    %Write $V_{\Gamma}=(V_{\Gamma,1},V_{\Gamma,2})$ where $V_{\Gamma,1}$ and $V_{\Gamma,2}$ are the first $r$ columns and last $p-r$ columns of $V_{\Gamma}$.
+    %Then $\Gamma = U_{\Gamma,1}D_{\Gamma,1}V_{\Gamma,1}^T+U_{\Gamma,2}D_{\Gamma,2}V_{\Gamma,2}^T$.
+
+
+    By some algebra, it can be seen that $\myE Y_i=0$, $\myVar (Y_i)=I_{r\times r}$ and
     $$
     \myE Y_{i,j}^4\leq 5+\Delta, \quad
-j=1,\ldots,r.
+j=1,\ldots,p,
     $$
-    Hence for any $\xi\in\mathbb{R}^r$ with, we have $\myE (\xi^T Y_i)=0$, $\myVar (\xi^T Y_i)=\|\xi\|^2$ and
+  where $Y_{i,j}$ is the $j$th  element of $Y_i$.
+    Hence for any $t\in\mathbb{R}^r$ with, we have $\myE (t^T Y_{i,1})=0$, $\myVar (t^T Y_{i,1})=\|t\|^2$ and
     $$
-    \myE (\xi^T Y_{i})^4 
-    \leq \|\xi\|^4\myE \|Y_{i}\|^4 \leq (5+\Delta)r^2 \|\xi\|^4.
+    \myE (t^T Y_{i,1})^4 
+    \leq \|t\|^4\myE \|Y_{i,1}\|^4 \leq (5+\Delta)r^2 \|t\|^4.
     $$
-    It follows that
+    Consequently,
     $$
     \frac{
-        \sum_{i=1}^n \myE (\xi^T Y_{i})^4 
+        \sum_{i=1}^n \myE (t^T Y_{i,1})^4 
     }{
-        \big(\sum_{i=1}^n \myE (\xi^T Y_{i})^2 \big)^2
+        \big(\sum_{i=1}^n \myE (t^T Y_{i,1})^2 \big)^2
     }
     \leq
     \frac{(5+\Delta)r^2 }{n}\to 0.
     $$
-    Thus, by Lyapunov central limit theorem, we have
+    Thus, by Lyapunov central limit theorem, we have $n^{-1/2} \sum_{i=1}^n t^T Y_i\xrightarrow{\mathcal{L}} N(0,\|t\|^2)$. Since $t$ is arbitrary, we have $n^{-1/2}\sum_{i=1}^n Y_i\xrightarrow{\mathcal{L}} N(0,I_{r})$.
+    Then it follows from Slutsky's theorem that
     $$
-    n^{-1/2}\sum_{i=1}^n Y_i\xrightarrow{\mathcal{L}} N(0,I_{r\times r}).
+    \frac{1}{n\sqrt{\mytr(\Sigma^2)}}\big\| D_{\Gamma,1}\sum_{i=1}^n Y_{i,1}\big\|^2
+    \xrightarrow{w} \sum_{i=1}^r \kappa_i \xi_i^2.
     $$
 
 \end{proof}
