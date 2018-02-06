@@ -4,44 +4,44 @@ The top-level auxiliary file: main.aux
 The style file: model2-names.bst.bst
 Database file #1: mybibfile.bib
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 16 entries,
+You've used 17 entries,
             2990 wiz_defined-function locations,
-            856 strings with 8874 characters,
-and the built_in function-call counts, 10200 in all, are:
-= -- 779
-> -- 344
+            865 strings with 9074 characters,
+and the built_in function-call counts, 10930 in all, are:
+= -- 843
+> -- 370
 < -- 12
-+ -- 143
-- -- 117
-* -- 1088
-:= -- 1472
-add.period$ -- 48
-call.type$ -- 16
-change.case$ -- 118
-chr.to.int$ -- 16
-cite$ -- 16
-duplicate$ -- 776
-empty$ -- 800
-format.name$ -- 169
-if$ -- 1904
++ -- 153
+- -- 126
+* -- 1176
+:= -- 1578
+add.period$ -- 52
+call.type$ -- 17
+change.case$ -- 126
+chr.to.int$ -- 17
+cite$ -- 17
+duplicate$ -- 828
+empty$ -- 851
+format.name$ -- 181
+if$ -- 2044
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 153
-newline$ -- 95
-num.names$ -- 64
-pop$ -- 286
+missing$ -- 163
+newline$ -- 101
+num.names$ -- 68
+pop$ -- 298
 preamble$ -- 1
-purify$ -- 103
+purify$ -- 110
 quote$ -- 0
-skip$ -- 213
+skip$ -- 227
 stack$ -- 0
-substring$ -- 484
-swap$ -- 542
+substring$ -- 516
+swap$ -- 583
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 132
+type$ -- 141
 warning$ -- 0
-while$ -- 70
+while$ -- 74
 width$ -- 0
-write$ -- 237
+write$ -- 255
