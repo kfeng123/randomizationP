@@ -126,12 +126,13 @@ However, little is known about the theoretical properties of the randomization t
 In this paper, we consider the following randomization method.
 Suppose $T(X_1,\ldots,X_n)$ is certain test statistic for hypotheses~\eqref{ourHy}.
 Let $\epsilon_1,\ldots,\epsilon_n$ be iid Rademacher variables ($\Pr(\epsilon_i=1)=\Pr(\epsilon_i=-1)=1/2$) which are independent of data.
-Denote by
-    $
-    \mathcal{L}\big(T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)|X_1,\ldots,X_n\big)
-    $
- the distribution of $T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)$ conditioning on $X_1,\ldots,X_n$.
- The randomization test rejects the null hypothesis when $T(X_1,\ldots, X_n)$ is greater than the $1-\alpha$ quantile of the conditional distribution and accepts the null hypothesis otherwise, where $\alpha$ is the significant level and the $1-\alpha$ quantile of a distribution function $F(\cdot)$ is defined as $\inf\{y: F(y)\geq 1-\alpha\}$.
+%Denote by
+    %$
+    %\mathcal{L}\big(T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)|X_1,\ldots,X_n\big)
+    %$
+ %the distribution of $T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)$ conditioning on $X_1,\ldots,X_n$.
+ The randomization test rejects the null hypothesis when $T(X_1,\ldots, X_n)$ is greater than the $1-\alpha$ quantile of the conditional distribution of $T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)$ with respect to $X_1,\ldots,X_n$,
+ and accepts the null hypothesis otherwise, where $\alpha$ is the significant level and the $1-\alpha$ quantile of a distribution function $F(\cdot)$ is defined as $\inf\{y: F(y)\geq 1-\alpha\}$.
 In fixed $p$ setting, it's well known that randomization tests consume much more computing time than the asymptotic method, which  historically  hampered the use of randomization tests. 
 The goal of this paper is to show that in high dimensional setting, randomization tests can be computationally feasible and have desirable statistic properties.
 Inspired by the work of~\citet{Bai1996Efiect} and~\citet{Chen2010A}, we propose a randomization test for hypotheses~\eqref{ourHy}.
@@ -143,7 +144,7 @@ Hence the test procedure is robust.
 The local asymptotic power function is also given.
 To the best of our knowledge, this is the first work which gives the asymptotic behavior of randomization tests in high dimensional setting.
 A simulation study is carried out to examine the numerical performance of the proposed randomization test and compare with the asymptotic method.
-The simulation results show that the size of the proposed randomization test is closer to the nominal level than the asymptotic method while the power behaviors of the proposed randomization test and the asymptotci method are similar.
+The simulation results show that the size of the proposed randomization test is closer to the nominal level than the asymptotic method while the power behaviors of the proposed randomization test and the asymptotic method are similar.
 
 %Existing works of randomization test mainly focus on single variate case. A recent work of EunYi Chung consider multivariate case.
 
@@ -169,21 +170,22 @@ The asymptotic properties of the statistic requires $p/n$ tends to a positive co
 \begin{equation}\label{Statistic}
     T(X_1,\ldots,X_n)=\sum_{j<i}X_i^T X_j.
 \end{equation}
-Let $\epsilon_1,\ldots,\epsilon_n$ be iid Rademacher variables which are independent of data. Denote by
+Let $\epsilon_1,\ldots,\epsilon_n$ be iid Rademacher variables which are independent of data.
+Denote by
 \begin{equation}\label{ranDis}
     \mathcal{L}\big(T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)|X_1,\ldots,X_n\big)
 \end{equation}
 the distribution of $T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)$ conditioning on $X_1,\ldots,X_n$.
 %Nevertheless, other quadratic form statistics can also be studied by similar method.
 We propose a test procedure with test function $\phi(X_1,\ldots,X_n)$ to be equal to $1$ if $T(X_1,\ldots, X_n)$ is greater than the $1-\alpha$ quantile of the conditional distribution~\eqref{ranDis} and equal to $0$ otherwise.
- Since $T(X_1,\ldots,X_n)$ equals to half of the~\citet{Chen2010A}'s statistic $\sum_{i\neq j}X_i^T X_j$, the test procedure $\phi(X_1,\ldots,X_n)$ is the randomization version of~\citet{Chen2010A}'s test procedure.
+ Since $T(X_1,\ldots,X_n)$ equals to half of~\citet{Chen2010A}'s statistic $\sum_{i\neq j}X_i^T X_j$, the test procedure $\phi(X_1,\ldots,X_n)$ is the randomization version of~\citet{Chen2010A}'s test procedure.
  On the other hand,
  note that~\citet{Bai1996Efiect}'s statistic $\bar{X}^T \bar{X}$ can be written as $n^{-2}\sum_{i=1}^n\sum_{j=1}^n X_i^T X_j$.
  Since $\sum_{i=1}^n X_i^T X_i$ is invariance under randomization, the test procedure $\phi(X_1,\ldots,X_n)$ is also the randomization version of~\citet{Bai1996Efiect}'s test.
  Here we can see that the randomization test automatically removes the unwanted diagonal elements.
 
 
-Under certain symmetric assumption, randomization test is exact test, which is a desirable property.
+Under certain symmetric assumption, randomization tests are exact tests, which is a desirable property.
  See, for example,~\citet[Chapter 15]{Lehmann}.
 In our problem, the Type I error of $\phi(X_1,\ldots,X_n)$ is not larger than $\alpha$ provided that $X_1$ and $-X_1$ have the same distribution under null hypothesis.
  By refined definition of $\phi(X_1,\ldots,X_n)$ on the boundary of rejection region, one can obtain a test procedure with exact significant  level. 
@@ -195,7 +197,7 @@ The test procedure $\phi(X_1,\ldots, X_n)$ can be equivalently implemented by $p
         p(X_1,\ldots, X_n)
         =\Pr(T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)\geq T( X_1,\ldots,X_n)|X_1,\ldots,X_n).
 \end{equation}
-Then the test procedure rejects the null hypothesis when $p(X_1,\ldots, X_n)\leq \alpha$. 
+Then our test procedure rejects the null hypothesis when $p(X_1,\ldots, X_n)\leq \alpha$. 
 
  The randomized statistic $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)$ is uniformly distributed on $2^n$ values conditioning on $X_1,\ldots, X_n$.
 To compute the exact quantile of~\eqref{ranDis} or the $p$-value~\eqref{firstPvalue}, one needs to calculate at least $2^n$ values, which is not feasible even when $n$ is moderate.
@@ -207,11 +209,12 @@ Let $T_0=T(X_1,\ldots,X_n)$ be the original statistic and define
 \begin{equation*}
 \tilde{p}(X_1,\ldots,X_n)=\frac{1}{B+1}\big(1+\sum_{i=1}^B \mathbf{1}_{\{T_i^*\geq T_0\}}\big).
 \end{equation*}
-The test is rejected when $\tilde{p}(X_1,\ldots,X_n)\leq \alpha$. This procedure can also control the significant level.
+The null hypothesis is rejected when $\tilde{p}(X_1,\ldots,X_n)\leq \alpha$.
+Although $\tilde{p}(X_1,\ldots, X_n)$ is an approximation of $p(X_1,\ldots, X_n)$, the resulting test procedure can still control the significant level.
 In fact, we have
-$\Pr(\tilde{p}(X_1,\ldots,X_n)\leq u)\leq u$ for all $0\leq u\leq 1$.
+$\Pr(\tilde{p}(X_1,\ldots,X_n)\leq u)\leq u$ for all $0\leq u\leq 1$ and all positive integer $B$.
 See~\citet[Page $636$]{Lehmann}.
-Moreover, by Bernoulli's law of large numbers, $\tilde{p}(X_1,\ldots,X_n)$ tends to $p(X_1,\ldots,X_n)$ in probability  as $B\to \infty$.
+By Bernoulli's law of large numbers, $\tilde{p}(X_1,\ldots,X_n)$ tends to $p(X_1,\ldots,X_n)$ in probability  as $B\to \infty$.
 {Here we emphasis that the convergence rate of $\tilde{p}(X_1,\ldots,X_n)$ to $p(X_1,\ldots,X_n)$ only relies on $p(X_1,\ldots,X_n)$.
 Hence the choice of $B$ can be independent of the sample size $n$ and the dimension of data $p$.}
 
@@ -238,11 +241,17 @@ Note that $X_i^T X_j$ ($1\leq j<i\leq n$) can be computed beforehand.
 %$$
 Once we obtain $X_i^T X_j$, the computation of $T_i^*$ costs $O(n^2)$ operations.
 Thus, the randomization test costs $O(n^2 p+n^2 B)$ operations in total.
-When $p$ is large, the computation of $T_0$ consumes almost the whole computing time and the computing time for $T_1^*,\ldots,T_B^*$ is relatively short.
-Our randomization test doesn't need a variance estimator which is a necessary for the asymptotic method. 
-A good variance estimator is complicated and consumes much computing time  \citep{Chen2010A}.
-Hence our randomization test is very competitive compared with the asymptotic method in terms of computational complexity.
-This is different from low dimensional setting where randomization tests consume much more computing time than the asymptotic method.
+As mentioned earlier, the choice of $B$ can be independent of $n$ and $p$.
+Hence when $p$ is large, the computational complexity of the entire procedure is $O(n^2 p)$.
+The randomization test doesn't need a variance estimator which is a necessary for the asymptotic method. 
+\cite{Bai1996Efiect} used the following estimator for $\mytr(\Sigma^2)$:
+$$
+\frac{(n-1)^2}{(n+1)(n-2)}\big(\mytr(S_n^2)-\frac{1}{n-1}(\mytr S_n)^2\big).
+$$
+Even with a good implementation, the computation of this estimator still costs $O(np\min(n,p))$ operations.
+\citet{Chen2010A} used a more complicated estimator of $\mytr(\Sigma^2)$.
+Consequently, if $p$ is large compared with $n$, the randomization test is very competitive compared with the asymptotic method in terms of computational complexity.
+This is different from the low dimensional setting where randomization tests usually consume much more computing time than the asymptotic methods.
 
 If we only care about the decision (reject or accept) and the $p$-value is not needed, the computing time of the randomization test can be further reduced.
 In fact, the rejection region $\tilde{p}(X_1,\ldots, X_n)\leq \alpha$ can be written as
@@ -322,7 +331,11 @@ Algorithm~\ref{theAlgorithm} summarizes our computing method.
 %
 
 \section{Asymptotic properties}
-In this section, we investigate the asymptotic properties of the test procedure $\phi(X_1,\ldots,X_n)$.
+%test procedure $\phi(X_1,\ldots,X_n)$
+As we have noted, the randomization test is exact provided that $X_1$ and $-X_1$ have the same distribution under null hypothesis.
+However, under this condition, all variables are symmetric about $0$, which is unrealistic for many applications.
+In this section, we investigate the asymptotic properties of the test procedure $\phi(X_1,\ldots,X_n)$ without symmetric assumption.
+
 We assume, like~\citet{Chen2010A} and~\citet{Bai1996Efiect}, the following multivariate model:
 \begin{equation}\label{chenC1}
     \textrm{$X_i=\mu+\Gamma Z_i$  for  $i=1,\ldots,n$,}
@@ -332,26 +345,27 @@ where $\Gamma$ is a $p\times m$ matrix for some $m\geq p$ such that $\Gamma\Gamm
     \myE(z_{il_1}^{\alpha_1}z_{il_2}^{\alpha_2}\cdots z_{il_q}^{\alpha_q})=\myE(z_{il_1}^{\alpha_1})\myE(z_{il_2}^{\alpha_2})\cdots \myE(z_{il_q}^{\alpha_q})
 \end{equation}
 for a positive integer $q$ such that $\sum_{l=1}^q \alpha_l\leq 8$ and $l_1\neq l_2\neq \cdots \neq l_q$.
-Note that we don't assume that $X_1$ and $-X_1$  have the same distribution under null hypothesis.
 
 %In the following, $T(X_1,\ldots, X_n)$ will be specialized to~\eqref{Statistic}.
 
-A key assumption in~\citet{Chen2010A} is
-    $\mytr (\Sigma^4)=o\big(\mytr ^2(\Sigma^2)\big)$.
     Let $\lambda_i(\Sigma)$ be the $i$th largest eigenvalue of $\Sigma$.
-    From
+In~\citet{Bai1996Efiect},
+a key assumption for the eigenvalues of $\Sigma$ is
+\begin{equation}\label{chenC3}
+    \frac{\lambda_{1}(\Sigma)}{\sqrt{\mytr (\Sigma^2)}}\to 0.
+\end{equation}
+Correspondingly, \citet{Chen2010A} imposed the condition $\mytr (\Sigma^4)=o\big(\mytr ^2(\Sigma^2)\big)$.
+    From the inequality
     \begin{equation*}
     \frac{\lambda_1(\Sigma)^4}{(\sum_{i=1}^p \lambda_i(\Sigma)^2)^2}
     \leq
     \frac{\sum_{i=1}^p\lambda_i(\Sigma)^4}{(\sum_{i=1}^p \lambda_i(\Sigma)^2)^2}
     \leq
-    \frac{\lambda_1(\Sigma)^2\sum_{i=1}^p\lambda_i(\Sigma)^2}{(\sum_{i=1}^p \lambda_i(\Sigma)^2)^2},
+    \frac{\lambda_1(\Sigma)^2\sum_{i=1}^p\lambda_i(\Sigma)^2}{(\sum_{i=1}^p \lambda_i(\Sigma)^2)^2}
     \end{equation*}
-    we can see that 
-    $\mytr (\Sigma^4)=o\big(\mytr ^2(\Sigma^2)\big)$ is equivalent to
-\begin{equation}\label{chenC3}
-    \frac{\lambda_{1}(\Sigma)}{\sqrt{\mytr (\Sigma^2)}}\to 0.
-\end{equation}
+    we can see that these two conditions are equivalent.
+The condition~\eqref{chenC3} is reasonable if xxxx. However, .
+
 Although~\citet{Chen2010A}'s results are for two sample case, their results can be proved similarly for one sample case. The following two lemmas restate their theorems.
 \begin{lemma}\label{theoremChen}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and local alternatives
@@ -1425,39 +1439,94 @@ where the last inequality follows from (i) of Lemma~\ref{lemma:zhong1}.
     Then~\eqref{lemma2Rn} follows from~\eqref{aoye1} and~\eqref{aoye2}.
     
     Next we porve~\eqref{lemma2R1}.
-
-
     We have
     \begin{equation*}
     \begin{aligned}
-        &\myE\sum_{j<k}{(\sum_{i:i>k}X_i^T X_j X_i^T X_k)}^2\\
+        &\myE\sum_{j<k}\big(\sum_{i:i>k} a_{ij} a_{ik}\big)^2
+        =
+        \myE\sum_{j<k}\Big(\sum_{i:i>k}a_{ij}^2 a_{ik}^2
+        +2\sum_{i_1,i_2:i_1>i_2>k} a_{i_1 j} a_{i_1 k} a_{i_2 j} a_{i_2 k}\Big)\\
         =&
-        \myE\sum_{j<k}\Big(\sum_{i:i>k}(X_i^T X_j)^2 (X_i^T X_k)^2
-        +2\sum_{i_1,i_2:i_1>i_2>k}X_{i_1}^T X_j X_{i_1}^T X_k X_{i_2}^T X_j X_{i_2}^T X_k\Big)\\
-        =&
-        \myE\sum_{j<k<i}(X_i^T X_j)^2 (X_i^T X_k)^2
-        +2\myE\sum_{j<k<i_2<i_1}X_{i_1}^T X_j X_{i_1}^T X_k X_{i_2}^T X_j X_{i_2}^T X_k.\\
+        \myE\sum_{j<k<i}a_{ij}^2 a_{ik}^2
+        +2\myE\sum_{j<k<i_2<i_1}a_{i_1 j} a_{i_1 k} a_{i_2 j} a_{i_2 k}.\\
     \end{aligned}
     \end{equation*}
-    By Lemma~\ref{smallLemma1}, we have
+    By (ii) of Lemma~\ref{lemma:zhong1}, we have
     \begin{equation*}
     \begin{aligned}
-        \myE\sum_{j<k<i}(X_i^T X_j)^2 (X_i^T X_k)^2    =O(n^3)\big(\mytr (\Sigma+\mu\mu^T)^2\big)^2.
+        \myE\sum_{j<k<i}a_{ij}^2 a_{ik}^2 \leq
+        \frac{n(n-1)(n-2)}{6}
+        \myE a_{12}^4\leq c^4\frac{2(3+\Delta)^2(n-2)\mytr^2(\Lambda_2^2)}{3n(n-1)\mytr^2(\Sigma^2)}=o(1).
     \end{aligned}
     \end{equation*}
-And
+    By direct calculation, the second term equals
     \begin{equation*}
     \begin{aligned}
-        &\myE\sum_{j<k<i_2<i_1}X_{i_1}^T X_j X_{i_1}^T X_k X_{i_2}^T X_j X_{i_2}^T X_k
-        =\frac{n(n-1)(n-2)(n-3)}{6}\mytr {(\Sigma+\mu\mu^T)}^4\\
-        \leq& \frac{n(n-1)(n-2)(n-3)}{6}8(\mytr (\Sigma^4)+(\mu^T \mu)^4)
-        \leq O(n^4)(\lambda_{1}^2(\Sigma)\mytr (\Sigma^2)+(\mu^T \mu)^4)\\
-        =&
-        o\Big(n^4{\big(\mytr (\Sigma^2)\big)}^2\Big),
+        &\myE\sum_{j<k<i_2<i_1}a_{i_1 j} a_{i_1 k} a_{i_2 j} a_{i_2 k}
+        =\frac{c^4(n-2)(n-3) \mytr(\Lambda_2^4)}{6n(n-1)\mytr^2(\Sigma^2)}
+        \leq
+        \frac{c^4\lambda_{r+1}^2(\Sigma)}{6\mytr(\Sigma^2)}
+        =o(1).
     \end{aligned}
     \end{equation*}
-    where the last line follows by assumption~\eqref{chenC3} and~\eqref{mu2}.
-    This proves~\eqref{lemma2R1}. And~\eqref{lemma2R2} and~\eqref{lemma2R3} follow by Lemma~\ref{smallLemma1} and Lemma~\ref{smallLemma2}, respectively.
+    This proves~\eqref{lemma2R1}. 
+
+It follows from (ii) of Lemma~\ref{lemma:zhong1} that
+$$
+\myE\sum_{j<i} a_{ij}^4=\frac{n(n-1)}{2} \myE a_{12}^4
+\leq c^4\frac{2(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n(n-1)\mytr^2(\Sigma^2)}=o(1).
+$$
+Hence~\eqref{lemma2R2} holds.
+And~\eqref{lemma2R3} follows similarly.
+
+Now we prove~\eqref{lemma2R4}.
+Note that
+$$
+\begin{aligned}
+    &\sum_{j=1}^n \big(\sum_{i:i>j} a_{ij}b_i\big)^2
+=
+\sum_{j=1}^n \big(\sum_{i:i>j} a_{ij}^2 b_i^2+ 2 \sum_{i,k: i>k>j} a_{i j}a_{k j} b_{i}b_{k}\big)
+\\
+    =&
+    \sum_{j<i} a_{ij}^2 b_i^2+ 2\sum_{j<k<i}  a_{i j}a_{k j} b_{i}b_{k}.
+\\
+\end{aligned}
+$$
+We have
+$$
+\begin{aligned}
+    &\myE a_{21}^2 b_2^2
+    =
+    \myE \myE [a_{21}^2 b_2^2|Z_2]
+    =c^2 \big(\frac{n^2(n-1)}{2}\mytr(\Sigma^2)\big)^{-1} \myE [Z_2^T Q_2 \Lambda_2^2 Q_2^T Z_2 Z_2^T Q_1 t t^T Q_1^T Z_2]\\
+    \leq&
+    c^2 \big(\frac{n^2(n-1)}{2}\mytr(\Sigma^2)\big)^{-1} 
+    \big(\myE (Z_2^T Q_2 \Lambda_2^2 Q_2^T Z_2)^2\big)^{1/2} \big(\myE(Z_2^T Q_1 t t^T Q_1^T Z_2)^2\big)^{1/2}\\
+    \leq&
+    (3+\Delta) c^2  \|t\|^2 \frac{2}{n^2(n-1)} 
+    \frac{\mytr (\Lambda_2^2)}{\mytr(\Sigma^2)}.
+\end{aligned}
+$$
+On the other hand, $
+    \myE [a_{31} a_{21} b_3 b_2]
+    =
+    \myE \big[a_{21}b_2\myE [a_{31}  b_3 |Z_1,Z_2]\big]=0$.
+    Thus,
+
+$$
+\begin{aligned}
+    \myE\Big(\sum_{j<i} a_{ij}^2 b_i^2+ 2\sum_{j<k<i}  a_{i j}a_{k j} b_{i}b_{k}\Big)\leq
+     \frac{(3+\Delta) c^2  \|t\|^2}{n} 
+    \frac{\mytr (\Lambda_2^2)}{\mytr(\Sigma^2)}=o(1).
+\end{aligned}
+$$
+Finally,~\eqref{lemma2R5} follows from
+$$
+        \myE\big(\sum_{i=1}^n b_i^4\big)=n \myE (b_1^4)
+=\frac{1}{n} \myE (Z_1^T Q_1 t t^T Q_1^T Z_1)^2
+\leq \frac{(3+\Delta)\|t\|^4}{n}=o(1).
+$$
+
 
 \end{proof}
 
