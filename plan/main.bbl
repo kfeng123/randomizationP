@@ -1,4 +1,4 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{18}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -72,6 +72,17 @@
 \bibinfo{author}{Fisher, R.A.}, \bibinfo{year}{1935}.
 \newblock \bibinfo{title}{The design of experiments}.
 \newblock \bibinfo{publisher}{Oliver and Boyd}, \bibinfo{address}{Edinburgh}.
+%Type = Article
+\bibitem[{Katayama et~al.(2013)Katayama, Kano and Srivastava}]{KATAYAMA2013410}
+\bibinfo{author}{Katayama, S.}, \bibinfo{author}{Kano, Y.},
+  \bibinfo{author}{Srivastava, M.S.}, \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{Asymptotic distributions of some test criteria for
+  the mean vector with fewer observations than the dimension}.
+\newblock \bibinfo{journal}{Journal of Multivariate Analysis}
+  \bibinfo{volume}{116}, \bibinfo{pages}{410 -- 421}.
+\newblock \URLprefix
+  \url{http://www.sciencedirect.com/science/article/pii/S0047259X13000092},
+  \DOIprefix\doi{https://doi.org/10.1016/j.jmva.2013.01.008}.
 %Type = Article
 \bibitem[{Ko et~al.(2016)Ko, Kim and Sun}]{Ko2016}
 \bibinfo{author}{Ko, H.}, \bibinfo{author}{Kim, K.}, \bibinfo{author}{Sun, H.},

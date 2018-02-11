@@ -1,7 +1,7 @@
 %
 %
 %
-\documentclass[review]{elsarticle}
+\documentclass[3p]{elsarticle}
 
 \usepackage{lineno,hyperref}
 
@@ -364,29 +364,39 @@ Correspondingly, \citet{Chen2010A} imposed the condition $\mytr (\Sigma^4)=o\big
     \frac{\lambda_1(\Sigma)^2\sum_{i=1}^p\lambda_i(\Sigma)^2}{(\sum_{i=1}^p \lambda_i(\Sigma)^2)^2}
     \end{equation*}
     we can see that these two conditions are equivalent.
-The condition~\eqref{chenC3} is reasonable if xxxx. However, .
+%However, the condition~\eqref{chenC3} is not always reasonable.
+%For example,~\cite{MA2015162} showed that~\eqref{chenC3} can be violated when data follow a low dimensional latent factor structure.
+As pointed out by~\cite{KATAYAMA2013410}, however, the condition~\eqref{chenC3} excludes a typical situation where the population covariance matrix has spiked eigenvalues.
+To include such important cases, we consider a condition that is weaker than~\eqref{chenC3}.
 
-Although~\citet{Chen2010A}'s results are for two sample case, their results can be proved similarly for one sample case. The following two lemmas restate their theorems.
-\begin{lemma}\label{theoremChen}
-    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and local alternatives
-    \begin{equation}\label{mu1}
-        \mu^T \Sigma\mu=o(n^{-1}\mytr (\Sigma^2)),
-    \end{equation}
+Suppose that there is a fixed integer $r\geq 0$ and positive constants $\kappa_1,\ldots,\kappa_r$ such that
+\begin{equation}\label{spikedC}
+    \frac{\lambda_{i}(\Sigma)}{\sqrt{\mytr(\Sigma^2)}}\to \kappa_i \text{ for } i=1,\ldots, r
+    \quad
+    \text{and}
+    \quad
+    \frac{\lambda_{i}(\Sigma)}{\sqrt{\mytr(\Sigma^2)}}\to 0 \text{ for }\,\, i> r.
+\end{equation}
+The following proposition gives the asymptotic distribution of $T(X_1,\ldots,X_n)$ Under~\eqref{chenC1},~\eqref{chenC2} and~\eqref{spikedC}.
+\begin{theorem}\label{prop:spiked1}
+    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{spikedC},
     we have
-        \begin{equation*}
-        \frac{T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mytr (\Sigma^2)}}\xrightarrow{\mathcal{L}}N(0,1),
-        \end{equation*}
-        where ``$\xrightarrow{\mathcal{L}}$'' means convergence in law.
-\end{lemma}
-\begin{lemma}\label{theoremChen2}
-    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and     \begin{equation}\label{mumu1}
-     n^{-1}\mytr (\Sigma)^2   =o(\mu^T \Sigma\mu),
-    \end{equation}
-    we have
-        \begin{equation*}
-        \frac{T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T \Sigma\mu}}\xrightarrow{\mathcal{L}}N(0,1).
-        \end{equation*}
-\end{lemma}
+    $$
+    \frac{T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\|\mu\|^2}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
+    \xrightarrow{w}\sum_{i=1}^r \kappa_i (\xi_i^2-1),
+    $$
+    where $\xi_1,\ldots \xi_r$ are iid standard normal random variables.
+\end{theorem}
+
+\begin{remark}
+    Compared with the results of~\cite{KATAYAMA2013410}, Theorem~\ref{prop:spiked1} doesn't need the normal assumption.
+\end{remark}
+
+
+
+
+
+
 
 Now we study the asymptotic properties of the randomization test.
 The conditional distribution
@@ -567,91 +577,6 @@ where
  \end{equation*}
 is a ratio consistent estimator of $\mytr(\Sigma^2)$ and $\bar{X}_{(i,j)}$ is the sample mean after excluding $X_i$ and $X_j$.
 Lemma~\ref{theoremChen} implies that the Type I error rate of the asymptotic method  tends to the nominal level under~\eqref{chenC1},~\eqref{chenC2} and~\eqref{chenC3}.
-However, when these assumptions are not satisfied, Lemma~\ref{theoremChen} may not be valid.
-For example, we consider the model 
-\begin{equation}\label{factorCondition1}
-X_i=u_i\Bv, i=1,\ldots,n,
-\end{equation}
-where
- $u_1,\ldots,u_n$ are iid random variables with 
- \begin{equation}\label{factorCondition2}
- \myE u_1=0, \quad\myE u_1^2=1
- \end{equation}
- and $\Bv\in\mathbb{R}^p$ is a vector.
-In this case, 
-\begin{equation*}
-    \begin{aligned}
-        T(X_1,\ldots,X_n)&=\Bv^T \Bv\sum_{j<i} u_i u_j
-        =\frac{1}{2}\Bv^T \Bv\big( (\sum_{i=1}^n u_i)^2-\sum_{i=1}^n u_i^2\big).
-    \end{aligned}
-\end{equation*}
-By the law of large numbers, we have $\sum_{i=1}^n u_i^2/n\xrightarrow{P} 1$. By central limit theorem, we have $\sum_{i=1}^n u_i/\sqrt{n}\xrightarrow{\mathcal{L}}N(0,1)$. Then we have
-\begin{equation*}
-\frac{2T(X_1,\ldots,X_n)}{n\Bv^T \Bv }+1\xrightarrow{\mathcal{L}}\chi^2_1.
-\end{equation*}
-Since  the asymptotic distribution of $T(X_1,\ldots, X_n)$ is not normal distribution, the asymptotic method does not have the correct level even asymptotically.
-On the other hand, we have the following proposition.
-\begin{proposition}\label{prop:factor}
-    Under~\eqref{factorCondition1} and~\eqref{factorCondition2}, we have
-\begin{equation*}
-    \begin{aligned}
-        \rho\bigg(\mathcal{L}\Big(\frac{2T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)}{n\Bv^T \Bv}+1\Big|X_1,\ldots,X_n\Big),\chi^2_1\bigg)\xrightarrow{P}0.
-    \end{aligned}
-\end{equation*}
-\end{proposition}
-The Proposition~\ref{prop:factor} implies that the randomization test has correct level asymptotically.
-Hence our test procedure has wider application range than the asymptotic method.
-\subsection{Spiked covariance model}
-In many applications, the variables are affected by several common factors.
-In this case, the covariance matrix $\Sigma$ has a few significantly large eigenvalues and the condition~\eqref{chenC3} can be violated.
-See, for example, xxx.
-We would like to investegate the asymptotic behavior of the randomization test in this case.
-Suppose that there is a fixed integer $r>0$ and positive constants $\kappa_1,\ldots,\kappa_r$ such that
-\begin{equation}\label{spikedC}
-    \frac{\lambda_{i}(\Sigma)}{\sqrt{\mytr(\Sigma^2)}}\to \kappa_i \text{ for } i=1,\ldots, r
-    \quad
-    \text{and}
-    \quad
-    \frac{\lambda_{i}(\Sigma)}{\sqrt{\mytr(\Sigma^2)}}\to 0 \text{ for }\,\, i> r.
-\end{equation}
-The following proposition gives the asymptotic distribution of $T(X_1,\ldots,X_n)$ Under~\eqref{spikedC}.
-\begin{proposition}\label{prop:spiked1}
-    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{spikedC},
-    we have
-    $$
-    \frac{T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\|\mu\|^2}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
-    \xrightarrow{w}\sum_{i=1}^r \kappa_i (\xi_i^2-1),
-    $$
-    where $\xi_1,\ldots \xi_r$ are iid standard normal random variables.
-\end{proposition}
-\begin{proof}[\textbf{Proof of Proposition~\ref{prop:spiked1}}]
-    Note that
-    $$
-    \begin{aligned}
-        &T(X_1,\ldots,X_n)=\sum_{j<i}  (\Gamma Z_i+\mu)^T (\Gamma Z_j+\mu)
-        \\
-        =&
-\sum_{j<i} Z_i^T \Gamma^T \Gamma Z_j
-        +(n-1)\mu^T \Gamma \sum_{i=1}^n Z_i+\frac{n(n-1)}{2}\|\mu\|^2.\\
-    \end{aligned}
-    $$
-    We have
-    \begin{equation}\label{eq:deco}
-        {T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\|\mu\|^2}
-    ={
-\sum_{j<i} Z_i^T \Gamma^T \Gamma Z_j
-}
-    +
-        {(n-1) \mu^T \Gamma \sum_{i=1}^n Z_i}.
-    \end{equation}
-    Since
-    $$
-    \myE \Big[\frac{2(n-1) \mu^T \Gamma \sum_{i=1}^n Z_i}{n\sqrt{\mytr(\Sigma^2)}}\Big]^2=\frac{4(n-1)^2 \mu^T \Sigma \mu}{n \mytr(\Sigma^2)}\to 0,
-    $$
-    we only need to consider the first term of~\eqref{eq:deco}.
-
-
-\end{proof}
 
 \begin{proposition}\label{prop:spiked2}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{spikedC},
@@ -922,6 +847,34 @@ O\Big(\frac{\lambda_{r+1}^2(\Sigma)\mytr(\Lambda_2^2)}{\mytr^2(\Sigma^2)}\Big)
 \end{proof}
 
 
+\begin{proof}[\textbf{Proof of Theorem~\ref{prop:spiked1}}]
+    Note that
+    $$
+    \begin{aligned}
+        &T(X_1,\ldots,X_n)=\sum_{j<i}  (\Gamma Z_i+\mu)^T (\Gamma Z_j+\mu)
+        \\
+        =&
+\sum_{j<i} Z_i^T \Gamma^T \Gamma Z_j
+        +(n-1)\mu^T \Gamma \sum_{i=1}^n Z_i+\frac{n(n-1)}{2}\|\mu\|^2.\\
+    \end{aligned}
+    $$
+    We have
+    \begin{equation}\label{eq:deco}
+        {T(X_1,\ldots,X_n)-\frac{n(n-1)}{2}\|\mu\|^2}
+    ={
+\sum_{j<i} Z_i^T \Gamma^T \Gamma Z_j
+}
+    +
+        {(n-1) \mu^T \Gamma \sum_{i=1}^n Z_i}.
+    \end{equation}
+    Since
+    $$
+    \myE \Big[\frac{2(n-1) \mu^T \Gamma \sum_{i=1}^n Z_i}{n\sqrt{\mytr(\Sigma^2)}}\Big]^2=\frac{4(n-1)^2 \mu^T \Sigma \mu}{n \mytr(\Sigma^2)}\to 0,
+    $$
+    we only need to consider the first term of~\eqref{eq:deco}.
+
+
+\end{proof}
 
 
 \section{Simulation Studies}
