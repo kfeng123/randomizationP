@@ -871,10 +871,10 @@ We state in this section some technical results that are used in the proofs of t
     \begin{enumerate}[(i)]
         \item
             for any $m\times m$ positive semidefinite matrix $B$,
-            \begin{equation}\label{zhong1}
+            \begin{equation*}\label{zhong1}
             \myE(Z_1^T B Z_1)^2\leq (3+\Delta) \mytr^2(B),\quad
             \myVar(Z_1^T B Z_1)\leq (2+\Delta) \mytr(B^2);
-            \end{equation}
+            \end{equation*}
         %\item
             %for any $m\times m$ symmetric matrices $B_1$ and $B_2$,
             %\begin{equation}\label{zhong1}
@@ -883,9 +883,9 @@ We state in this section some technical results that are used in the proofs of t
             %\end{equation}
         \item
             for any $m\times m$ positive semidefinite matrix $B$,
-            \begin{equation}\label{zhong2}
-                \myE (Z_1^T B Z_2)^4\leq (3+\Delta)^2\mytr^2 (B^2);
-            \end{equation}
+            \begin{equation*}\label{zhong2}
+                \myE (Z_1^T B Z_2)^4\leq (3+\Delta)^2\mytr^2 (B^2).
+            \end{equation*}
     \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -1267,7 +1267,7 @@ By direct calculation, we have
              =
              \sum_{k<j} (\sum_{i:i>j}a_{ij}a_{ik})^2
              =
-             o\big((\sum_{j<i} a_{ij}^2)^2 +\sum_{i=1}^n b_i^2\big)
+             o\big((\sum_{j<i} a_{ij}^2 +\sum_{i=1}^n b_i^2)^2\big)
          \end{aligned}
      \end{equation*}
      and
@@ -1276,7 +1276,7 @@ By direct calculation, we have
      =
      \sum_{j=1}^n (\sum_{i:i>j} a_{ij}b_i)^2 
              =
-             o\big((\sum_{j<i} a_{ij}^2)^2 +\sum_{i=1}^n b_i^2\big)
+             o\big((\sum_{j<i} a_{ij}^2 +\sum_{i=1}^n b_i^2)^2\big)
      $$
      Hence~\eqref{MCLTcondition1} holds.
      \paragraph{Proof of~\eqref{MCLTcondition2}}
@@ -1319,7 +1319,7 @@ By direct calculation, we have
       This completes the proof.
  \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{proposition:jxz}
     Suppose~\eqref{chenC2} and~\eqref{spikedC} holds.
     %Let
 %$$
@@ -1335,108 +1335,93 @@ By direct calculation, we have
         +\sum_{j<i}Y_{ij}^4
         +\sum_{k<j<i}Y_{ij}^2 Y_{ik}^2
         +\sum_{j=1}^n \big(\sum_{i:i>j} Y_{ij}t^T Y_i^*\big)^2
-        +\sum_{i=1}^n (t^T Y_i^*)^4 = o_P(1),
+        +\sum_{i=1}^n (t^T Y_i^*)^4 \xrightarrow{P}0,
         \\
         &c^2 \sum_{j<i}Y_{ij}^2+\sum_{i=1}^n (t^T Y_i^*)^2=c^2(1-\sum_{i=1}^r \kappa_i^2)+\|t\|^2+o_P(1).\label{lemma2Rn}
     \end{align}
 \end{proposition}
 \begin{proof}
 To prove~\eqref{lemma2R1}, we only need to show that the left hand side of~\eqref{lemma2R1} converges to $0$ in mean.
-    We have
+    For the first three terms of~\eqref{lemma2R1}, we have
     \begin{equation*}
     \begin{aligned}
-        &\myE\sum_{j<k}\big(\sum_{i:i>k} Y_{ij} Y_{ik}\big)^2
-        =
-        \myE\sum_{j<k}\Big(\sum_{i:i>k} Y_{ij}^2 Y_{ik}^2
-        +2\sum_{i_1,i_2:i_1>i_2>k} Y_{i_1 j} Y_{i_1 k} Y_{i_2 j} Y_{i_2 k}\Big)\\
+        &\myE\sum_{k<j}\big(\sum_{i:i>j} Y_{ij} Y_{ik}\big)^2
+        +\myE\sum_{j<i}Y_{ij}^4
+        +\myE\sum_{k<j<i}Y_{ij}^2 Y_{ik}^2
+        \\
         =&
-        \myE\sum_{j<k<i}Y_{ij}^2 Y_{ik}^2
-        +2\myE\sum_{j<k<i_2<i_1}Y_{i_1 j} Y_{i_1 k} Y_{i_2 j} Y_{i_2 k}.\\
+        \myE\sum_{k<j}\Big(\sum_{i:i>j} Y_{ij}^2 Y_{ik}^2
+        +2\sum_{i_1,i_2:i_1>i_2>j} Y_{i_1 j} Y_{i_1 k} Y_{i_2 j} Y_{i_2 k}\Big)
+        +\myE\sum_{j<i}Y_{ij}^4
+        +\myE\sum_{k<j<i}Y_{ij}^2 Y_{ik}^2
+        \\
+        =&
+        2\myE\sum_{k<j<i_2<i_1}Y_{i_1 j} Y_{i_1 k} Y_{i_2 j} Y_{i_2 k}
+        +2\myE\sum_{k<j<i}Y_{ij}^2 Y_{ik}^2
+        +\myE\sum_{j<i}Y_{ij}^4
+        \\
+        =&
+        \frac{(n-2)(n-3) \mytr(\Lambda_2^4)}{3n(n-1)\mytr^2(\Sigma^2)}
+        +\frac{n(n-1)(n-2)}{3}\myE (Y_{31}^2 Y_{32}^2)
+        +\frac{n(n-1)}{2}\myE Y_{21}^4
+        \\
+        \leq &
+        \frac{(n-2)(n-3) \mytr(\Lambda_2^4)}{3n(n-1)\mytr^2(\Sigma^2)}
+        +\Big(\frac{n(n-1)(n-2)}{3} +\frac{n(n-1)}{2}\Big)\myE Y_{21}^4
+        \\
+        \leq &
+        \frac{(n-2)(n-3) \lambda_{r+1}(\Sigma)\mytr(\Lambda_2^2)}{3n(n-1)\mytr^2(\Sigma^2)}
+        +\Big(\frac{n(n-1)(n-2)}{3} +\frac{n(n-1)}{2}\Big)
+\frac{4(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}
+        \to  0,
     \end{aligned}
     \end{equation*}
-    By (ii) of Lemma~\ref{lemma:zhong1}, we have
-    \begin{equation*}
-    \begin{aligned}
-        \myE\sum_{j<k<i}a_{ij}^2 a_{ik}^2 \leq
-        \frac{n(n-1)(n-2)}{6}
-        \myE a_{12}^4\leq c^4\frac{2(3+\Delta)^2(n-2)\mytr^2(\Lambda_2^2)}{3n(n-1)\mytr^2(\Sigma^2)}=o(1).
-    \end{aligned}
-    \end{equation*}
-    By direct calculation, the second term equals
-    \begin{equation*}
-    \begin{aligned}
-        &\myE\sum_{j<k<i_2<i_1}a_{i_1 j} a_{i_1 k} a_{i_2 j} a_{i_2 k}
-        =\frac{c^4(n-2)(n-3) \mytr(\Lambda_2^4)}{6n(n-1)\mytr^2(\Sigma^2)}
-        \leq
-        \frac{c^4\lambda_{r+1}^2(\Sigma)}{6\mytr(\Sigma^2)}
-        =o(1).
-    \end{aligned}
-    \end{equation*}
-    This proves~\eqref{lemma2R1}. 
-
-It follows from (ii) of Lemma~\ref{lemma:zhong1} that
-$$
-\myE\sum_{j<i} a_{ij}^4=\frac{n(n-1)}{2} \myE a_{12}^4
-\leq c^4\frac{2(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n(n-1)\mytr^2(\Sigma^2)}=o(1).
-$$
-Hence~\eqref{lemma2R2} holds.
-And~\eqref{lemma2R3} follows similarly.
-
-Now we prove~\eqref{lemma2R4}.
-Note that
+    where the last inequality follows from (ii) of Lemma~\ref{lemma:zhong1}.
+    As for the fourth term of~\eqref{lemma2R1}, we have
 $$
 \begin{aligned}
-    &\sum_{j=1}^n \big(\sum_{i:i>j} a_{ij}b_i\big)^2
+    &\myE\sum_{j=1}^n \big(\sum_{i:i>j} Y_{ij} t^T Y_i^*\big)^2
 =
-\sum_{j=1}^n \big(\sum_{i:i>j} a_{ij}^2 b_i^2+ 2 \sum_{i,k: i>k>j} a_{i j}a_{k j} b_{i}b_{k}\big)
-\\
-    =&
-    \sum_{j<i} a_{ij}^2 b_i^2+ 2\sum_{j<k<i}  a_{i j}a_{k j} b_{i}b_{k}.
-\\
-\end{aligned}
-$$
-We have
-$$
-\begin{aligned}
-    &\myE a_{21}^2 b_2^2
+    \myE\sum_{j<i} Y_{ij}^2 (t^T Y_i^{*})^2
     =
-    \myE \myE [a_{21}^2 b_2^2|Z_2]
-    =c^2 \big(\frac{n^2(n-1)}{2}\mytr(\Sigma^2)\big)^{-1} \myE [Z_2^T Q_2 \Lambda_2^2 Q_2^T Z_2 Z_2^T Q_1 t t^T Q_1^T Z_2]\\
+    \frac{n(n-1)}{2} \myE Y_{21}^2 (t^T Y_2^{*})^2
+    \\
+    =&
+    \frac{n(n-1)}{2}  
+    \myE \myE\big(Y_{21}^2 (t^T Y_2^{*})^2\big| Z_2\big)
+    =\big(n\mytr(\Sigma^2)\big)^{-1} \myE \big( Z_2^T Q_2 \Lambda_2^2 Q_2^T Z_2 Z_2^T Q_1 t t^T Q_1^T Z_2\big) \\
     \leq&
-    c^2 \big(\frac{n^2(n-1)}{2}\mytr(\Sigma^2)\big)^{-1} 
+    \big( n \mytr(\Sigma^2)\big)^{-1} 
     \big(\myE (Z_2^T Q_2 \Lambda_2^2 Q_2^T Z_2)^2\big)^{1/2} \big(\myE(Z_2^T Q_1 t t^T Q_1^T Z_2)^2\big)^{1/2}\\
     \leq&
-    (3+\Delta) c^2  \|t\|^2 \frac{2}{n^2(n-1)} 
-    \frac{\mytr (\Lambda_2^2)}{\mytr(\Sigma^2)}.
+     \frac{(3+\Delta) \|t\|^2}{n} 
+    \frac{\mytr (\Lambda_2^2)}{\mytr(\Sigma^2)}\to 0,
 \end{aligned}
 $$
-On the other hand, $
-    \myE [a_{31} a_{21} b_3 b_2]
-    =
-    \myE \big[a_{21}b_2\myE [a_{31}  b_3 |Z_1,Z_2]\big]=0$.
-    Thus,
-
+    where the last inequality follows from (i) of Lemma~\ref{lemma:zhong1}. 
+    The last term of~\eqref{lemma2R1} satifies 
 $$
-\begin{aligned}
-    \myE\Big(\sum_{j<i} a_{ij}^2 b_i^2+ 2\sum_{j<k<i}  a_{i j}a_{k j} b_{i}b_{k}\Big)\leq
-     \frac{(3+\Delta) c^2  \|t\|^2}{n} 
-    \frac{\mytr (\Lambda_2^2)}{\mytr(\Sigma^2)}=o(1).
-\end{aligned}
-$$
-Finally,~\eqref{lemma2R5} follows from
-$$
-        \myE\big(\sum_{i=1}^n b_i^4\big)=n \myE (b_1^4)
+        \myE\sum_{i=1}^n (t^T Y_i^*)^4=n \myE (t^T Y_i^*)^4
 =\frac{1}{n} \myE (Z_1^T Q_1 t t^T Q_1^T Z_1)^2
-\leq \frac{(3+\Delta)\|t\|^4}{n}=o(1).
+\leq \frac{(3+\Delta)\|t\|^4}{n}\to 0.
 $$
+This completes the proof of~\eqref{lemma2R1}.
 
 
 
-    First we deal with~\eqref{lemma2Rn}. For the first term of ~\eqref{lemma2Rn}, we have
+To prove~\eqref{lemma2Rn}, we show that
+\begin{align}
+    \sum_{j<i} Y_{ij}^2&= (1-\sum_{i=1}^r \kappa_i^2)+o_P(1),
+    \label{eq:lemma2:1}
+    \\
+    \sum_{i=1}^n (t^T Y_i^*)^2&=\|t\|^2 +o_P(1).
+    \label{eq:lemma2:2}
+\end{align}
+To prove~\eqref{eq:lemma2:1}, note that
 $$
     \myE \big(\sum_{j<i} Y_{ij}^2\big)= \frac{\mytr(\Lambda_2^2)}{\mytr(\Sigma^2)}=(1-\sum_{i=1}^r \kappa_i^2)+o(1).
 $$
-    We need to show $\myVar\big(\sum_{j<i} Y_{ij}^2)=o(1)$. 
+    Hence we only need to show $\myVar\big(\sum_{j<i} Y_{ij}^2)=o(1)$. 
     Write $\big(\sum_{j<i}Y_{ij}^2\big)^2=
         \big(\sum_{j<i}Y_{ij}^2\big)
         \big(\sum_{l<k}Y_{kl}^2\big)$.
@@ -1459,45 +1444,38 @@ $$
     %For the three summations on the right hand side of equation~\eqref{eq:1},
     There are  $n(n-1)(n-2)(n-3)/4$, $n(n-1)(n-2)/6$ and $n(n-1)/2$ terms in each sum, respectively.
     For distinct $i,j,k,l$, 
-    $$\myE a_{ij}^2 a_{kl}^2=(\myE a_{12}^2)^2=c^4\frac{4\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}.$$
-    Otherwise, by (ii) of Lemma~\ref{lemma:zhong1},
-    $$\myE a_{ij}^2 a_{kl}^2\leq \myE a_{12}^4\leq c^4\frac{4(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}.$$
-    It follows that
+    $$\myE Y_{ij}^2 Y_{kl}^2=(\myE Y_{12}^2)^2=\frac{4\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}.$$
+    Otherwise, if $\text{card}(\{i,j\},\{k,l\})\geq 1$, by (ii) of Lemma~\ref{lemma:zhong1},
+    $$\myE Y_{ij}^2 Y_{kl}^2\leq \myE Y_{12}^4\leq \frac{4(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}.$$
+    Thus,
     \begin{equation*}
     \begin{aligned}
-        \myE\big(\sum_{j<i}a_{ij}^2\big)^2
-            =& c^4\frac{(n-2)(n-3)}{n(n-1)}\frac{\mytr^2 (\Lambda_2^2)}{\mytr^2(\Sigma^2)}
+        \myE\big(\sum_{j<i}Y_{ij}^2\big)^2
+            =& \frac{(n-2)(n-3)}{n(n-1)}\frac{\mytr^2 (\Lambda_2^2)}{\mytr^2(\Sigma^2)}
             +
-            O(1)\big(n(n-1)(n-2)+\frac{n(n-1)}{2}\big)c^4\frac{4(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}\\
-            =& c^4 (1-\sum_{i=1}^r \kappa_i^2)^2+o(1).
+            O(1)\big(n(n-1)(n-2)+\frac{n(n-1)}{2}\big)\frac{4(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}\\
+            =& (1-\sum_{i=1}^r \kappa_i^2)^2+o(1).
     \end{aligned}
     \end{equation*}
-    Hence
+    It follows that
     $
-    \myVar\big(\sum_{j<i}a_{ij}^2\big)=
-    \myE\big(\sum_{j<i}a_{ij}^2\big)^2-
-    \big(\myE\sum_{j<i}a_{ij}^2\big)^2=o(1).
-    $
-    Thus,
-    \begin{equation}\label{aoye1}
-\sum_{j<i}a_{ij}^2=\myE\big(\sum_{j<i}a_{ij}^2\big)+o_P(1)=c^2(1-\sum_{i=1}^r \kappa_i^2)+o_P(1).
-    \end{equation}
-Note that
+    \myVar\big(\sum_{j<i}Y_{ij}^2\big)=
+    \myE\big(\sum_{j<i}Y_{ij}^2\big)^2-
+    \big(\myE\sum_{j<i}Y_{ij}^2\big)^2=o(1)
+    $, which completes the proof of~\eqref{eq:lemma2:1}.
+
+
+    Finally, \eqref{eq:lemma2:2} follows from
 $
 \myE \big(\sum_{i=1}^n b_i^2\big)=\|t\|^2
 $
 and
 $$
 \myVar \big(\sum_{i=1}^n b_i^2 \big)=\frac{1}{n}\myVar (Z_1^T Q_1 t t^T Q_1^T Z_1)
-\leq \frac{1}{n}(2+\Delta)\|t\|^4,
+\leq \frac{1}{n}(2+\Delta)\|t\|^4\to 0,
 $$
 where the last inequality follows from (i) of Lemma~\ref{lemma:zhong1}.
-    Hence
-    \begin{equation}\label{aoye2}
-\sum_{i=1}^n b_i^2=\|t\|^2+o_P(1).
-    \end{equation}
-    Then~\eqref{lemma2Rn} follows from~\eqref{aoye1} and~\eqref{aoye2}.
-    
+This completes the proof.
 
 
 \end{proof}
@@ -1505,54 +1483,119 @@ where the last inequality follows from (i) of Lemma~\ref{lemma:zhong1}.
 
 
 
-\begin{proof}[\textbf{Proof of Theorem~\ref{shaziCLT}}]
-By a standard subsequence argument, we only need to prove 
-    \begin{equation}\label{changchuan}
-        \begin{aligned}
-            &\rho\Big(\mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),N(0,1)\Big)
-            \xrightarrow{a.s.} 0
-        \end{aligned}
-    \end{equation}
-     along a subsequence.
-    But there exists a subsequence $\{n(k)\}$ along which~\eqref{lemma2R1},~\eqref{lemma2R2} and~\eqref{lemma2R3} holds almost surely.
-    By Proposition~\ref{CLTprop}, we have
-    \begin{equation*}
-        \mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big)\xrightarrow{\mathcal{L}}N(0,1)
-    \end{equation*}
-    almost surely along $\{n(k)\}$, which means that~\eqref{changchuan} holds along $\{n(k)\}$.
-
-\end{proof}
 \begin{proposition}
+    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{spikedC},
+    we have
     $$
-    \sum_{j<i} Z_i^T \Gamma^T \Gamma Z_j \epsilon_i\epsilon_j
+        \rho\Big(
+        \mathcal{L}\Big(
+    \frac{\sum_{j<i} Z_i^T \Gamma^T \Gamma Z_j \epsilon_i \epsilon_j}
+    {\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
+        \Big|Z_1,\ldots,Z_n\Big)
+        ,
+        \mathcal{L}\big(\frac{\sqrt{2}}{2}\sum_{i=1}^r \kappa_i (\xi_i^2-1) + (1-\sum_{i=1}^r \kappa_i^2)^{1/2}\xi_{r+1}\big)
+        \Big)
+        \xrightarrow{P}0,
     $$
+    where $\xi_1,\ldots,\xi_{r+1}$ are iid standard normal random variables.
 \end{proposition}
 \begin{proof}
-    We would like to prove
+    Note that
     $$
-    \rho\Big(\mathcal{L}\Big(\begin{pmatrix}n^{-1/2}Q_1^T \sum_{i=1}^n Z_i \epsilon_i\\\big(\frac{n(n-1)}{2}\mytr(\Sigma^2)\big)^{-1/2}\sum_{j<i}Z_i^T Q_2\Lambda_2 Q_2^T Z_j \epsilon_i \epsilon_j \end{pmatrix}\Big|Z_1,\ldots,Z_n\Big), N_{r+1}\big(0_{r+1},\mydiag(I_r,1-\sum_{i=1}^r \kappa_i^2)\big)\Big)
+    \begin{aligned}
+        &
+    \frac{\sum_{j<i} Z_i^T \Gamma^T \Gamma Z_j \epsilon_i \epsilon_j}
+    {\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
+        =
+        \frac{\sum_{j<i}Z_i^T Q_1 \Lambda_1 Q_1^T Z_j \epsilon_i \epsilon_j}
+    {\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
+        +
+        \frac{\sum_{j<i}Z_i^T Q_2 \Lambda_2 Q_2^T Z_j \epsilon_i \epsilon_j}
+    {\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
+    \\
+        =&
+        \big(2\frac{n-1}{n}\mytr(\Sigma^2)\big)^{-1/2}(\sum_{i=1}^n  Y_i^* \epsilon_i)^T \Lambda_1 \sum_{i=1}^n  Y_i^* \epsilon_i
+        +
+        \sum_{j<i} Y_{ij} \epsilon_i \epsilon_j
+        -
+        \big(2\frac{n-1}{n}\mytr(\Sigma^2)\big)^{-1/2}
+        \sum_{i=1}^n Y_i^{*T}\Lambda_1 Y_i^*
+        .
+    \end{aligned}
+    $$
+    Now we prove that
+    \begin{equation}\label{xz:toProve}
+    \rho\Big(\mathcal{L}\big(
+    \big( (\sum_{i=1}^n Y_i^* \epsilon_i)^T ,
+    \sum_{j<i} Y_{ij} \epsilon_i \epsilon_j \big)^T
+    \big|Z_1,\ldots,Z_n\big), N_{r+1}\big(0_{r+1},\mydiag(I_r,1-\sum_{i=1}^r \kappa_i^2)\big)\Big)
         \xrightarrow{P}0.
-    $$
+    \end{equation}
     It suffices to show that for every nonzero constants $t\in\mathbb{R}^r$ and $c\in\mathbb{R}$,
     \begin{equation*}
         \begin{aligned}
-            \rho\Big(&\mathcal{L}\Big(n^{-1/2} t^T Q_1^T \sum_{i=1}^n Z_i \epsilon_i+c\big(\frac{n(n-1)}{2} \mytr(\Sigma^2)\big)^{-1/2}\sum_{j<i}Z_i^T Q_2 \Lambda_2 Q_2^T Z_j \epsilon_i \epsilon_j\Big| Z_1,\ldots,Z_n\Big)
+            \rho\Big(\mathcal{L}\big( \sum_{i=1}^n t^T Y_i^* \epsilon_i+c\sum_{j<i} Y_{ij} \epsilon_i \epsilon_j \big| Z_1,\ldots,Z_n\big)
             ,
-            \\
-            &
             N\big(0,\|t\|^2+c^2(1-\sum_{i=1}^r \kappa_i^2)\big)\Big)\xrightarrow{P} 0.
         \end{aligned}
     \end{equation*}
-To prove this, we would like to apply Proposition~\ref{CLTprop}.
+We apply Proposition~\ref{CLTprop} to prove this.
 Let
-$$
-    a_{ij}=c\big(\frac{n(n-1)}{2} \mytr(\Sigma^2)\big)^{-1/2}Z_i^T Q_2 \Lambda_2 Q_2^T Z_j,
+$
+    a_{ij}=cY_{ij},
     \quad
-    b_i=n^{-1/2} t^T Q_1^T Z_i.
-$$
-    We prove~\eqref{complC} holds in probability.
+    b_i=t^T Y_i^*
+$.
+    For every subsequence of $\{n\}$, Proposition~\ref{proposition:jxz} implies that there is a further subsequence along which
+    \begin{equation}\label{small:jxz}
+    \sum_{j<i} a_{ij}^2+\sum_{i=1}^n b_i^2\xrightarrow{a.s.} \|t\|^2+c^2(1-\sum_{i=1}^r \kappa_i^2)
+    \end{equation}
+    and~\eqref{complC} holds almost surely.
+    Then it follows from Proposition~\ref{CLTprop},~\eqref{small:jxz} and Slutsky theorem that
+    \begin{equation*}
+        \begin{aligned}
+            \rho\Big(\mathcal{L}\Big( \frac{\sum_{i=1}^n t^T Y_i^* \epsilon_i+c\sum_{j<i} Y_{ij} \epsilon_i \epsilon_j}{\sqrt{\|t\|^2+c^2(1-\sum_{i=1}^r \kappa_i^r)}} \Big| Z_1,\ldots,Z_n\Big)
+            ,
+            N (0,1)\Big)\xrightarrow{a.s.} 0
+        \end{aligned}
+    \end{equation*}
+    along this further subsequence.
+    That is to say,
+    \begin{equation*}
+        \begin{aligned}
+            \rho\Big(\mathcal{L}\Big( \frac{\sum_{i=1}^n t^T Y_i^* \epsilon_i+c\sum_{j<i} Y_{ij} \epsilon_i \epsilon_j}{\sqrt{\|t\|^2+c^2(1-\sum_{i=1}^r \kappa_i^r)}} \Big| Z_1,\ldots,Z_n\Big)
+            ,
+            N (0,1)\Big)\xrightarrow{P} 0.
+        \end{aligned}
+    \end{equation*}
+    Hence~\eqref{xz:toProve} holds.
+    Slutsky theorem implies that
+    \begin{equation}\label{xz:haveP}
+    \begin{aligned}
+        \rho\Big(&
+        \mathcal{L}\big(
+        \big(2\frac{n-1}{n}\mytr(\Sigma^2)\big)^{-1/2}(\sum_{i=1}^n  Y_i^* \epsilon_i)^T \Lambda_1 \sum_{i=1}^n  Y_i^* \epsilon_i
+        +
+        \sum_{j<i} Y_{ij} \epsilon_i \epsilon_j
+        |Z_1,\ldots,Z_n\big)
+        ,\\
+        &\mathcal{L}\big(\frac{\sqrt{2}}{2}\sum_{i=1}^r \kappa_i \xi_i^2 + (1-\sum_{i=1}^r \kappa_i^2)^{1/2}\xi_{r+1}\big)\Big)
+        \xrightarrow{P}0.
+    \end{aligned}
+    \end{equation}
+    We have shown in the proof of Proposition~\ref{prop:spiked2} that
+        \begin{equation}\label{xz:haveP2}
+        \big(2\frac{n-1}{n}\mytr(\Sigma^2)\big)^{-1/2}
+        \sum_{i=1}^n Y_i^{*T}\Lambda_1 Y_i^*
+      \xrightarrow{P}\frac{\sqrt{2}}{2}\sum_{i=1}^r \kappa_i.
+        \end{equation}
+        Then the conclusion follows from~\eqref{xz:haveP2},~\eqref{xz:haveP} and Slutsky theorem.
+        
 
 \end{proof}
+
+
+
 
 
 \textbf{Proof of Theorem~\ref{farT}}
