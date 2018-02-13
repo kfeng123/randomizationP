@@ -911,189 +911,6 @@ We state in this section some technical results that are used in the proofs of t
 
 
 
-\begin{lemma}
-    Suppose~\eqref{chenC2} and~\eqref{spikedC} holds.
-    %Let
-%$$
-    %a_{ij}=c\big(\frac{n(n-1)}{2} \mytr(\Sigma^2)\big)^{-1/2}Z_i^T Q_2 \Lambda_2 Q_2^T Z_j,
-    %\quad
-    %b_i=n^{-1/2} t^T Q_1^T Z_i.
-%$$
-    For nonzero constants $c\in\mathbb{R}$ and $t\in\mathbb{R}^r$,
-    we have
-    \begin{align}
-        c^2 \sum_{j<i}Y_{ij}^2+\sum_{i=1}^n (t^T Y_i^*)^2&=c^2(1-\sum_{i=1}^r \kappa_i^2)+\|t\|^2+o_P(1),\label{lemma2Rn}\\
-        \sum_{j<k}(\sum_{i:i>k}a_{ij} a_{ik})^2
-        &=o_P(1),
-    \label{lemma2R1}\\
-        \sum_{j<i}a_{ij}^4&=o_P(1),
-    \label{lemma2R2}\\
-        \sum_{j<k<i}a_{ij}^2 a_{ik}^2 &=o_P(1),
-    \label{lemma2R3}\\
-        \sum_{j=1}^n \big(\sum_{i:i>j} a_{ij}b_i\big)^2 &=o_P(1),
-    \label{lemma2R4}\\
-        \sum_{i=1}^n b_i^4 &= o_P(1).
-    \label{lemma2R5}
-    \end{align}
-\end{lemma}
-\begin{proof}
-    First we deal with~\eqref{lemma2Rn}. Note that
-$$
-    \myE \big(\sum_{j<i} Y_{ij}^2\big)= \frac{\mytr(\Lambda_2^2)}{\mytr(\Sigma^2)}=(1-\sum_{i=1}^r \kappa_i^2)+o(1).
-$$
-    To calculate the variance of $\sum_{j<i} Y_{ij}^2$, we consider $\myE \big(\sum_{j<i}Y_{ij}^2\big)^2$.
-    Write $\big(\sum_{j<i}a_{ij}^2\big)^2=
-        \big(\sum_{j<i}a_{ij}^2\big)
-        \big(\sum_{l<k}a_{kl}^2\big)$.
-    Collect terms according to $\mathrm{card}(\{i,j\}\cap\{k,l\})=0,1,2$, we have
-    \begin{equation*}%\label{eq:1}
-    \begin{aligned}
-        \big(\sum_{j<i}a_{ij}^2\big)^2
-        =&
-        \sum_{j<i,l<k:\{i,j\}\cap \{k,l\}=\phi}a_{ij}^2 a_{kl}^2
-        +2\sum_{j<i<k}\Big(
-        a_{ij}^2 a_{ki}^2+
-        a_{ij}^2 a_{kj}^2
-        +
-        a_{kj}^2 a_{ki}^2
-        \Big)
-         +
-        \sum_{j<i}a_{ij}^4.
-    \end{aligned}
-    \end{equation*}
-    %For the three summations on the right hand side of equation~\eqref{eq:1},
-    There are  $n(n-1)(n-2)(n-3)/4$, $n(n-1)(n-2)/6$ and $n(n-1)/2$ terms in each sum, respectively.
-    For distinct $i,j,k,l$, 
-    $$\myE a_{ij}^2 a_{kl}^2=(\myE a_{12}^2)^2=c^4\frac{4\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}.$$
-    Otherwise, by (ii) of Lemma~\ref{lemma:zhong1},
-    $$\myE a_{ij}^2 a_{kl}^2\leq \myE a_{12}^4\leq c^4\frac{4(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}.$$
-    It follows that
-    \begin{equation*}
-    \begin{aligned}
-        \myE\big(\sum_{j<i}a_{ij}^2\big)^2
-            =& c^4\frac{(n-2)(n-3)}{n(n-1)}\frac{\mytr^2 (\Lambda_2^2)}{\mytr^2(\Sigma^2)}
-            +
-            O(1)\big(n(n-1)(n-2)+\frac{n(n-1)}{2}\big)c^4\frac{4(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}\\
-            =& c^4 (1-\sum_{i=1}^r \kappa_i^2)^2+o(1).
-    \end{aligned}
-    \end{equation*}
-    Hence
-    $
-    \myVar\big(\sum_{j<i}a_{ij}^2\big)=
-    \myE\big(\sum_{j<i}a_{ij}^2\big)^2-
-    \big(\myE\sum_{j<i}a_{ij}^2\big)^2=o(1).
-    $
-    Thus,
-    \begin{equation}\label{aoye1}
-\sum_{j<i}a_{ij}^2=\myE\big(\sum_{j<i}a_{ij}^2\big)+o_P(1)=c^2(1-\sum_{i=1}^r \kappa_i^2)+o_P(1).
-    \end{equation}
-Note that
-$
-\myE \big(\sum_{i=1}^n b_i^2\big)=\|t\|^2
-$
-and
-$$
-\myVar \big(\sum_{i=1}^n b_i^2 \big)=\frac{1}{n}\myVar (Z_1^T Q_1 t t^T Q_1^T Z_1)
-\leq \frac{1}{n}(2+\Delta)\|t\|^4,
-$$
-where the last inequality follows from (i) of Lemma~\ref{lemma:zhong1}.
-    Hence
-    \begin{equation}\label{aoye2}
-\sum_{i=1}^n b_i^2=\|t\|^2+o_P(1).
-    \end{equation}
-    Then~\eqref{lemma2Rn} follows from~\eqref{aoye1} and~\eqref{aoye2}.
-    
-    Next we porve~\eqref{lemma2R1}.
-    We have
-    \begin{equation*}
-    \begin{aligned}
-        &\myE\sum_{j<k}\big(\sum_{i:i>k} a_{ij} a_{ik}\big)^2
-        =
-        \myE\sum_{j<k}\Big(\sum_{i:i>k}a_{ij}^2 a_{ik}^2
-        +2\sum_{i_1,i_2:i_1>i_2>k} a_{i_1 j} a_{i_1 k} a_{i_2 j} a_{i_2 k}\Big)\\
-        =&
-        \myE\sum_{j<k<i}a_{ij}^2 a_{ik}^2
-        +2\myE\sum_{j<k<i_2<i_1}a_{i_1 j} a_{i_1 k} a_{i_2 j} a_{i_2 k}.\\
-    \end{aligned}
-    \end{equation*}
-    By (ii) of Lemma~\ref{lemma:zhong1}, we have
-    \begin{equation*}
-    \begin{aligned}
-        \myE\sum_{j<k<i}a_{ij}^2 a_{ik}^2 \leq
-        \frac{n(n-1)(n-2)}{6}
-        \myE a_{12}^4\leq c^4\frac{2(3+\Delta)^2(n-2)\mytr^2(\Lambda_2^2)}{3n(n-1)\mytr^2(\Sigma^2)}=o(1).
-    \end{aligned}
-    \end{equation*}
-    By direct calculation, the second term equals
-    \begin{equation*}
-    \begin{aligned}
-        &\myE\sum_{j<k<i_2<i_1}a_{i_1 j} a_{i_1 k} a_{i_2 j} a_{i_2 k}
-        =\frac{c^4(n-2)(n-3) \mytr(\Lambda_2^4)}{6n(n-1)\mytr^2(\Sigma^2)}
-        \leq
-        \frac{c^4\lambda_{r+1}^2(\Sigma)}{6\mytr(\Sigma^2)}
-        =o(1).
-    \end{aligned}
-    \end{equation*}
-    This proves~\eqref{lemma2R1}. 
-
-It follows from (ii) of Lemma~\ref{lemma:zhong1} that
-$$
-\myE\sum_{j<i} a_{ij}^4=\frac{n(n-1)}{2} \myE a_{12}^4
-\leq c^4\frac{2(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n(n-1)\mytr^2(\Sigma^2)}=o(1).
-$$
-Hence~\eqref{lemma2R2} holds.
-And~\eqref{lemma2R3} follows similarly.
-
-Now we prove~\eqref{lemma2R4}.
-Note that
-$$
-\begin{aligned}
-    &\sum_{j=1}^n \big(\sum_{i:i>j} a_{ij}b_i\big)^2
-=
-\sum_{j=1}^n \big(\sum_{i:i>j} a_{ij}^2 b_i^2+ 2 \sum_{i,k: i>k>j} a_{i j}a_{k j} b_{i}b_{k}\big)
-\\
-    =&
-    \sum_{j<i} a_{ij}^2 b_i^2+ 2\sum_{j<k<i}  a_{i j}a_{k j} b_{i}b_{k}.
-\\
-\end{aligned}
-$$
-We have
-$$
-\begin{aligned}
-    &\myE a_{21}^2 b_2^2
-    =
-    \myE \myE [a_{21}^2 b_2^2|Z_2]
-    =c^2 \big(\frac{n^2(n-1)}{2}\mytr(\Sigma^2)\big)^{-1} \myE [Z_2^T Q_2 \Lambda_2^2 Q_2^T Z_2 Z_2^T Q_1 t t^T Q_1^T Z_2]\\
-    \leq&
-    c^2 \big(\frac{n^2(n-1)}{2}\mytr(\Sigma^2)\big)^{-1} 
-    \big(\myE (Z_2^T Q_2 \Lambda_2^2 Q_2^T Z_2)^2\big)^{1/2} \big(\myE(Z_2^T Q_1 t t^T Q_1^T Z_2)^2\big)^{1/2}\\
-    \leq&
-    (3+\Delta) c^2  \|t\|^2 \frac{2}{n^2(n-1)} 
-    \frac{\mytr (\Lambda_2^2)}{\mytr(\Sigma^2)}.
-\end{aligned}
-$$
-On the other hand, $
-    \myE [a_{31} a_{21} b_3 b_2]
-    =
-    \myE \big[a_{21}b_2\myE [a_{31}  b_3 |Z_1,Z_2]\big]=0$.
-    Thus,
-
-$$
-\begin{aligned}
-    \myE\Big(\sum_{j<i} a_{ij}^2 b_i^2+ 2\sum_{j<k<i}  a_{i j}a_{k j} b_{i}b_{k}\Big)\leq
-     \frac{(3+\Delta) c^2  \|t\|^2}{n} 
-    \frac{\mytr (\Lambda_2^2)}{\mytr(\Sigma^2)}=o(1).
-\end{aligned}
-$$
-Finally,~\eqref{lemma2R5} follows from
-$$
-        \myE\big(\sum_{i=1}^n b_i^4\big)=n \myE (b_1^4)
-=\frac{1}{n} \myE (Z_1^T Q_1 t t^T Q_1^T Z_1)^2
-\leq \frac{(3+\Delta)\|t\|^4}{n}=o(1).
-$$
-
-
-\end{proof}
 
 
 
@@ -1408,9 +1225,9 @@ Such a CLT can be also used to study the asymptotic behavior of many other rando
      \end{equation*}
      is that
      \begin{equation}\label{complC}
-         \sum_{j<k}{(\sum_{i:i>k}a_{ij}a_{ik})}^2+
+         \sum_{k<j}{(\sum_{i:i>j}a_{ij}a_{ik})}^2+
          \sum_{j<i}a_{ij}^4+
-         \sum_{j<k<i}a_{ij}^2 a_{ik}^2
+         \sum_{k<j<i}a_{ij}^2 a_{ik}^2
          +
      \sum_{j=1}^n (\sum_{i:i>j} a_{ij}b_i)^2 
          +
@@ -1420,10 +1237,10 @@ Such a CLT can be also used to study the asymptotic behavior of many other rando
  \end{proposition}
 
  \begin{proof}
-     Note that we have the decomposition $W_n=\sum_{i=1}^n U_{in}$, where $U_{in} =\epsilon_i (\sum_{j=1}^{i-1} a_{ij}\epsilon_j+b_i )$, $i=1,\ldots,n$.
+     Note that we have the decomposition $W_n=\sum_{i=1}^n U_{in}$, where $U_{in} =\epsilon_i (\sum_{j:j<i} a_{ij}\epsilon_j+b_i )$, $i=1,\ldots,n$.
     Let $\mathcal{F}_{in}$ be the $\sigma$-field generated by $\epsilon_1,\ldots,\epsilon_i$, $i=1,\ldots, n$.
      Then $\{U_{in}\}_{i=1}^n$ is a martingale difference array with respect to $\{\mathcal{F}_{in}\}_{i=1}^n$. 
-     By martingale central limit theorem~\citep[Theorem 1 of Chapter VIII ]{pollard1984convergence}, our conclusion holds if the following two conditions are satisfied:
+     By the martingale central limit theorem~\citep[Theorem 1 of Chapter VIII ]{pollard1984convergence}, the conclusion holds if the following two conditions are satisfied:
      \begin{equation}\label{MCLTcondition1}
          \frac{\sum_{i=2}^n \myE(U_{in}^2 |\mathcal{F}_{i-1,n})}{\sum_{j<i} a_{ij}^2+\sum_{i=1}^n b_i^2}\xrightarrow{P} 1,
      \end{equation}
@@ -1438,17 +1255,17 @@ By direct calculation, we have
      \begin{equation*}
          \begin{aligned}
              &\sum_{i=1}^n \myE(U_{in}^2 |\mathcal{F}_{i-1,n})
-             =\sum_{i=1}^n \big(\sum_{j=1}^{i-1}a_{ij}\epsilon_j +b_i \big)^2\\
+             =\sum_{i=1}^n \big(\sum_{j:j<i}a_{ij}\epsilon_j +b_i \big)^2\\
              %=&\sum_{i=1}^n \big( \sum_{j=1}^{i-1} a_{ij}^2 +2\sum_{j,k:j<k<i} a_{ij}a_{ik}\epsilon_j \epsilon_k + 2b_i\sum_{j=1}^{i-1}a_{ij}\epsilon_j + b_i^2\big)\\
-             =&\sum_{j<i} a_{ij}^2+\sum_{i=1}^n b_i^2 +2\sum_{j<k} \sum_{i:i>k}(a_{ij}a_{ik})\epsilon_j \epsilon_k+2\sum_{j=1}^n (\sum_{i:i>j} a_{ij}b_i) \epsilon_j.
+             =&\sum_{j<i} a_{ij}^2+\sum_{i=1}^n b_i^2 +2\sum_{k<j} \sum_{i:i>j}(a_{ij}a_{ik})\epsilon_j \epsilon_k+2\sum_{j=1}^n (\sum_{i:i>j} a_{ij}b_i) \epsilon_j.
          \end{aligned}
      \end{equation*}
      By assumption, we have
      \begin{equation*}
          \begin{aligned}
-             \myE{\big(\sum_{j<k} (\sum_{i:i>k}a_{ij}a_{ik})\epsilon_j \epsilon_k \big)}^2
+             \myE{\big(\sum_{k<j} (\sum_{i:i>j}a_{ij}a_{ik})\epsilon_j \epsilon_k \big)}^2
              =
-             \sum_{j<k} (\sum_{i:i>k}a_{ij}a_{ik})^2
+             \sum_{k<j} (\sum_{i:i>j}a_{ij}a_{ik})^2
              =
              o\big((\sum_{j<i} a_{ij}^2)^2 +\sum_{i=1}^n b_i^2\big)
          \end{aligned}
@@ -1487,20 +1304,203 @@ By direct calculation, we have
      \begin{equation*}
          \begin{aligned}
              &\sum_{i=1}^n \myE (\sum_{j:j<i}a_{ij}\epsilon_j)^4=
-             \sum_{i=1}^n \myE \big(\sum_{j:j<i}a_{ij}^2+2\sum_{j,k:j<k<i}a_{ij}a_{ik}\epsilon_j \epsilon_k \big)^2\\
+             \sum_{i=1}^n \myE \big(\sum_{j:j<i}a_{ij}^2+2\sum_{j,k:k<j<i}a_{ij}a_{ik}\epsilon_j \epsilon_k \big)^2\\
              =&
-             \sum_{i=2}^n  \big({(\sum_{j:j<i}a_{ij}^2)}^2+4\myE{(\sum_{j,k:j<k<i}a_{ij}a_{ik}\epsilon_j \epsilon_k)}^2 \big)
+             \sum_{i=1}^n  \big((\sum_{j:j<i}a_{ij}^2)^2+4\myE(\sum_{j,k:k<j<i}a_{ij}a_{ik}\epsilon_j \epsilon_k)^2 \big)
              =
-             \sum_{i=2}^n  (\sum_{j:j<i}a_{ij}^4+6\sum_{j,k:j<k<i}a_{ij}^2 a_{ik}^2)\\
+             \sum_{i=1}^n  (\sum_{j:j<i}a_{ij}^4+6\sum_{j,k:k<j<i}a_{ij}^2 a_{ik}^2)\\
              =&
-             \sum_{j<i}a_{ij}^4+6\sum_{j<k<i}a_{ij}^2 a_{ik}^2
+             \sum_{j<i}a_{ij}^4+6\sum_{k<j<i}a_{ij}^2 a_{ik}^2
              =
              o\Big(\big(\sum_{j<i} a_{ij}^2 +\sum_{i=1}^n b_i^2\big)^2\Big).
          \end{aligned}
      \end{equation*}
       Hence~\eqref{MCLTcondition2} holds.
+      This completes the proof.
  \end{proof}
 
+\begin{proposition}
+    Suppose~\eqref{chenC2} and~\eqref{spikedC} holds.
+    %Let
+%$$
+    %a_{ij}=c\big(\frac{n(n-1)}{2} \mytr(\Sigma^2)\big)^{-1/2}Z_i^T Q_2 \Lambda_2 Q_2^T Z_j,
+    %\quad
+    %b_i=n^{-1/2} t^T Q_1^T Z_i.
+%$$
+    For nonzero constants $c\in\mathbb{R}$ and $t\in\mathbb{R}^r$,
+    we have
+    \begin{align}
+    \label{lemma2R1}
+        &\sum_{k<j}(\sum_{i:i>j}Y_{ij} Y_{ik})^2
+        +\sum_{j<i}Y_{ij}^4
+        +\sum_{k<j<i}Y_{ij}^2 Y_{ik}^2
+        +\sum_{j=1}^n \big(\sum_{i:i>j} Y_{ij}t^T Y_i^*\big)^2
+        +\sum_{i=1}^n (t^T Y_i^*)^4 = o_P(1),
+        \\
+        &c^2 \sum_{j<i}Y_{ij}^2+\sum_{i=1}^n (t^T Y_i^*)^2=c^2(1-\sum_{i=1}^r \kappa_i^2)+\|t\|^2+o_P(1).\label{lemma2Rn}
+    \end{align}
+\end{proposition}
+\begin{proof}
+To prove~\eqref{lemma2R1}, we only need to show that the left hand side of~\eqref{lemma2R1} converges to $0$ in mean.
+    We have
+    \begin{equation*}
+    \begin{aligned}
+        &\myE\sum_{j<k}\big(\sum_{i:i>k} Y_{ij} Y_{ik}\big)^2
+        =
+        \myE\sum_{j<k}\Big(\sum_{i:i>k} Y_{ij}^2 Y_{ik}^2
+        +2\sum_{i_1,i_2:i_1>i_2>k} Y_{i_1 j} Y_{i_1 k} Y_{i_2 j} Y_{i_2 k}\Big)\\
+        =&
+        \myE\sum_{j<k<i}Y_{ij}^2 Y_{ik}^2
+        +2\myE\sum_{j<k<i_2<i_1}Y_{i_1 j} Y_{i_1 k} Y_{i_2 j} Y_{i_2 k}.\\
+    \end{aligned}
+    \end{equation*}
+    By (ii) of Lemma~\ref{lemma:zhong1}, we have
+    \begin{equation*}
+    \begin{aligned}
+        \myE\sum_{j<k<i}a_{ij}^2 a_{ik}^2 \leq
+        \frac{n(n-1)(n-2)}{6}
+        \myE a_{12}^4\leq c^4\frac{2(3+\Delta)^2(n-2)\mytr^2(\Lambda_2^2)}{3n(n-1)\mytr^2(\Sigma^2)}=o(1).
+    \end{aligned}
+    \end{equation*}
+    By direct calculation, the second term equals
+    \begin{equation*}
+    \begin{aligned}
+        &\myE\sum_{j<k<i_2<i_1}a_{i_1 j} a_{i_1 k} a_{i_2 j} a_{i_2 k}
+        =\frac{c^4(n-2)(n-3) \mytr(\Lambda_2^4)}{6n(n-1)\mytr^2(\Sigma^2)}
+        \leq
+        \frac{c^4\lambda_{r+1}^2(\Sigma)}{6\mytr(\Sigma^2)}
+        =o(1).
+    \end{aligned}
+    \end{equation*}
+    This proves~\eqref{lemma2R1}. 
+
+It follows from (ii) of Lemma~\ref{lemma:zhong1} that
+$$
+\myE\sum_{j<i} a_{ij}^4=\frac{n(n-1)}{2} \myE a_{12}^4
+\leq c^4\frac{2(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n(n-1)\mytr^2(\Sigma^2)}=o(1).
+$$
+Hence~\eqref{lemma2R2} holds.
+And~\eqref{lemma2R3} follows similarly.
+
+Now we prove~\eqref{lemma2R4}.
+Note that
+$$
+\begin{aligned}
+    &\sum_{j=1}^n \big(\sum_{i:i>j} a_{ij}b_i\big)^2
+=
+\sum_{j=1}^n \big(\sum_{i:i>j} a_{ij}^2 b_i^2+ 2 \sum_{i,k: i>k>j} a_{i j}a_{k j} b_{i}b_{k}\big)
+\\
+    =&
+    \sum_{j<i} a_{ij}^2 b_i^2+ 2\sum_{j<k<i}  a_{i j}a_{k j} b_{i}b_{k}.
+\\
+\end{aligned}
+$$
+We have
+$$
+\begin{aligned}
+    &\myE a_{21}^2 b_2^2
+    =
+    \myE \myE [a_{21}^2 b_2^2|Z_2]
+    =c^2 \big(\frac{n^2(n-1)}{2}\mytr(\Sigma^2)\big)^{-1} \myE [Z_2^T Q_2 \Lambda_2^2 Q_2^T Z_2 Z_2^T Q_1 t t^T Q_1^T Z_2]\\
+    \leq&
+    c^2 \big(\frac{n^2(n-1)}{2}\mytr(\Sigma^2)\big)^{-1} 
+    \big(\myE (Z_2^T Q_2 \Lambda_2^2 Q_2^T Z_2)^2\big)^{1/2} \big(\myE(Z_2^T Q_1 t t^T Q_1^T Z_2)^2\big)^{1/2}\\
+    \leq&
+    (3+\Delta) c^2  \|t\|^2 \frac{2}{n^2(n-1)} 
+    \frac{\mytr (\Lambda_2^2)}{\mytr(\Sigma^2)}.
+\end{aligned}
+$$
+On the other hand, $
+    \myE [a_{31} a_{21} b_3 b_2]
+    =
+    \myE \big[a_{21}b_2\myE [a_{31}  b_3 |Z_1,Z_2]\big]=0$.
+    Thus,
+
+$$
+\begin{aligned}
+    \myE\Big(\sum_{j<i} a_{ij}^2 b_i^2+ 2\sum_{j<k<i}  a_{i j}a_{k j} b_{i}b_{k}\Big)\leq
+     \frac{(3+\Delta) c^2  \|t\|^2}{n} 
+    \frac{\mytr (\Lambda_2^2)}{\mytr(\Sigma^2)}=o(1).
+\end{aligned}
+$$
+Finally,~\eqref{lemma2R5} follows from
+$$
+        \myE\big(\sum_{i=1}^n b_i^4\big)=n \myE (b_1^4)
+=\frac{1}{n} \myE (Z_1^T Q_1 t t^T Q_1^T Z_1)^2
+\leq \frac{(3+\Delta)\|t\|^4}{n}=o(1).
+$$
+
+
+
+    First we deal with~\eqref{lemma2Rn}. For the first term of ~\eqref{lemma2Rn}, we have
+$$
+    \myE \big(\sum_{j<i} Y_{ij}^2\big)= \frac{\mytr(\Lambda_2^2)}{\mytr(\Sigma^2)}=(1-\sum_{i=1}^r \kappa_i^2)+o(1).
+$$
+    We need to show $\myVar\big(\sum_{j<i} Y_{ij}^2)=o(1)$. 
+    Write $\big(\sum_{j<i}Y_{ij}^2\big)^2=
+        \big(\sum_{j<i}Y_{ij}^2\big)
+        \big(\sum_{l<k}Y_{kl}^2\big)$.
+    Collect terms according to $\mathrm{card}(\{i,j\}\cap\{k,l\})=0,1,2$, we have
+    \begin{equation*}%\label{eq:1}
+    \begin{aligned}
+        \big(\sum_{j<i}Y_{ij}^2\big)^2
+        =&
+        \sum_{j<i,l<k:\{i,j\}\cap \{k,l\}=\phi}Y_{ij}^2 Y_{kl}^2
+        +2\sum_{j<i<k}\Big(
+        Y_{ij}^2 Y_{ki}^2+
+        Y_{ij}^2 Y_{kj}^2
+        +
+        Y_{kj}^2 Y_{ki}^2
+        \Big)
+         +
+        \sum_{j<i}Y_{ij}^4.
+    \end{aligned}
+    \end{equation*}
+    %For the three summations on the right hand side of equation~\eqref{eq:1},
+    There are  $n(n-1)(n-2)(n-3)/4$, $n(n-1)(n-2)/6$ and $n(n-1)/2$ terms in each sum, respectively.
+    For distinct $i,j,k,l$, 
+    $$\myE a_{ij}^2 a_{kl}^2=(\myE a_{12}^2)^2=c^4\frac{4\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}.$$
+    Otherwise, by (ii) of Lemma~\ref{lemma:zhong1},
+    $$\myE a_{ij}^2 a_{kl}^2\leq \myE a_{12}^4\leq c^4\frac{4(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}.$$
+    It follows that
+    \begin{equation*}
+    \begin{aligned}
+        \myE\big(\sum_{j<i}a_{ij}^2\big)^2
+            =& c^4\frac{(n-2)(n-3)}{n(n-1)}\frac{\mytr^2 (\Lambda_2^2)}{\mytr^2(\Sigma^2)}
+            +
+            O(1)\big(n(n-1)(n-2)+\frac{n(n-1)}{2}\big)c^4\frac{4(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}\\
+            =& c^4 (1-\sum_{i=1}^r \kappa_i^2)^2+o(1).
+    \end{aligned}
+    \end{equation*}
+    Hence
+    $
+    \myVar\big(\sum_{j<i}a_{ij}^2\big)=
+    \myE\big(\sum_{j<i}a_{ij}^2\big)^2-
+    \big(\myE\sum_{j<i}a_{ij}^2\big)^2=o(1).
+    $
+    Thus,
+    \begin{equation}\label{aoye1}
+\sum_{j<i}a_{ij}^2=\myE\big(\sum_{j<i}a_{ij}^2\big)+o_P(1)=c^2(1-\sum_{i=1}^r \kappa_i^2)+o_P(1).
+    \end{equation}
+Note that
+$
+\myE \big(\sum_{i=1}^n b_i^2\big)=\|t\|^2
+$
+and
+$$
+\myVar \big(\sum_{i=1}^n b_i^2 \big)=\frac{1}{n}\myVar (Z_1^T Q_1 t t^T Q_1^T Z_1)
+\leq \frac{1}{n}(2+\Delta)\|t\|^4,
+$$
+where the last inequality follows from (i) of Lemma~\ref{lemma:zhong1}.
+    Hence
+    \begin{equation}\label{aoye2}
+\sum_{i=1}^n b_i^2=\|t\|^2+o_P(1).
+    \end{equation}
+    Then~\eqref{lemma2Rn} follows from~\eqref{aoye1} and~\eqref{aoye2}.
+    
+
+
+\end{proof}
 
 
 
