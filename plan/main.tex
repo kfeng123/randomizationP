@@ -2,6 +2,7 @@
 %
 %
 \documentclass[3p]{elsarticle}
+\linespread{1.5}
 
 \usepackage{lineno,hyperref}
 
@@ -171,17 +172,53 @@ The asymptotic properties of the statistic requires $p/n$ tends to a positive co
 \begin{equation}\label{Statistic}
     T(X_1,\ldots,X_n)=\sum_{j<i}X_i^T X_j.
 \end{equation}
+~\citet{Bai1996Efiect} and~\citet{Chen2010A} used asymptotic method to determine the critical value of $T(X_1,\ldots,X_n)$.
+However, as will be shown in Section 3, the asymptotic method is not valid in some cases.
+
+A popular method to determine the critical value is bootstrap.
+A basic bootstrap critical value for $T(X_1,\ldots,X_n)$ is defined as the $1-\alpha$ quantile of the conditional distribution
+ \begin{equation}\label{bootstrapD}
+ \mathcal{L}(T(X_1^*,\ldots,X_n^*)|X_1,\ldots,X_n),
+ \end{equation}
+        where $X_1^*,\ldots,X_n^*$ are iid samples drawn from $\{X_1-\bar{X},\ldots,X_n-\bar{X}\}$ without replacement.
+        If the bootstrap method works well, the bootstrap distribution~\eqref{bootstrapD} should mimic the distribution of $T(X_1,\ldots,X_n)$.
+Then one may expect the first two moments of~\eqref{bootstrapD} and $T(X_1,\ldots,X_n)$ are close.
+        Under the null hypothesis,
+        $$
+ \myE T(X_1,\ldots,X_n)=0,
+ \quad
+ \myVar(T(X_1,\ldots,X_n))=\frac{n(n-1)}{2} \mytr(\Sigma^2).
+        $$
+Also, it's straightforward to show that
+$$
+ \myE(T(X_1^*,\ldots,X_n^*)|X_1,\ldots,X_n)=0,
+ \quad
+ \myVar(T(X_1^*,\ldots,X_n^*)|X_1,\ldots,X_n)=\frac{n(n-1)}{2}\big(\frac{n-1}{n}\big)^2 \mytr(S^2).
+$$
+As pointed out by~\cite{Bai1996Efiect}, however, $\big((n-1)/{n}\big)^2 \mytr(S^2)$ is not even a ratio consistent estimator of $\mytr(\Sigma^2)$.
+Thus, the bootstrap procedure may not be a good choice for our problem.
+
 Let $\epsilon_1,\ldots,\epsilon_n$ be iid Rademacher variables which are independent of data.
 Denote by
 \begin{equation}\label{ranDis}
     \mathcal{L}\big(T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)|X_1,\ldots,X_n\big)
 \end{equation}
-the distribution of $T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)$ conditioning on $X_1,\ldots,X_n$.
+the distribution of $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)$ conditioning on $X_1,\ldots,X_n$.
 %Nevertheless, other quadratic form statistics can also be studied by similar method.
-We propose a test procedure with test function $\phi(X_1,\ldots,X_n)$ to be equal to $1$ if $T(X_1,\ldots, X_n)$ is greater than the $1-\alpha$ quantile of the conditional distribution~\eqref{ranDis} and equal to $0$ otherwise.
+We consider the test $\phi(X_1,\ldots,X_n)$ which equals to $1$ if $T(X_1,\ldots, X_n)$ is greater than the $1-\alpha$ quantile of the conditional distribution~\eqref{ranDis} and equals to $0$ otherwise.
+It can be seen that
+$$
+ \myE(T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)|X_1,\ldots,X_n)=0,
+ \quad
+ \myVar(T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)|X_1,\ldots,X_n)=\sum_{j<i} (X_i^T X_j)^2.
+$$
+Under the null hypothesis, $\sum_{j<i} (X_i^T X_j)^2$ is a good estimator of $\myVar(T(X_1,\ldots,X_n))$.
+In fact, it can be shown that it is unbiased and ratio consistent.
+Hence the randomization test $\phi(X_1,\ldots,X_n)$ may be a good choice for our problem.
+
+
  Since $T(X_1,\ldots,X_n)$ equals to half of~\citet{Chen2010A}'s statistic $\sum_{i\neq j}X_i^T X_j$, the test procedure $\phi(X_1,\ldots,X_n)$ is the randomization version of~\citet{Chen2010A}'s test procedure.
- On the other hand,
- note that~\citet{Bai1996Efiect}'s statistic $\bar{X}^T \bar{X}$ can be written as $n^{-2}\sum_{i=1}^n\sum_{j=1}^n X_i^T X_j$.
+ On the other hand, note that~\citet{Bai1996Efiect}'s statistic $\bar{X}^T \bar{X}$ can be written as $n^{-2}\sum_{i=1}^n\sum_{j=1}^n X_i^T X_j$.
  Since $\sum_{i=1}^n X_i^T X_i$ is invariance under randomization, the test procedure $\phi(X_1,\ldots,X_n)$ is also the randomization version of~\citet{Bai1996Efiect}'s test.
  Here we can see that the randomization test automatically removes the unwanted diagonal elements.
 
@@ -404,131 +441,81 @@ $$
 \end{remark}
 
     If $r=0$, Theorem~\ref{prop:spiked1} implies that $T(X_1,\ldots, X_n)$ is asymptotically normal distributed under the null hypothesis. This is a known result~\citep[Theorem 1]{Chen2010A}.
-    On the other hand, if $r>0$, i.e. $\Sigma$ has a few spiked eigenvalues, $T(X_1,\ldots,X_n)$ is not asymptotically normal distributed.
-    In this case, the asymptotic methods of~\cite{Bai1996Efiect} and~\cite{Chen2010A} are not directly applicable.
+    However, if $r>0$, i.e. $\Sigma$ has a few spiked eigenvalues, $T(X_1,\ldots,X_n)$ is not asymptotically normal distributed.
+
 
 
 Now we study the asymptotic properties of the randomization test.
 The conditional distribution
-        \begin{equation*}
-        \mathcal{L}\bigg(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\bigg|X_1,\ldots,X_n\bigg)
-        \end{equation*}
- plays an important role in our analysis, we shall call it randomization distribution.
-Let $z_{\alpha}$ be the $1-\alpha$ quantile of the randomization distribution.
-Then it can be seen that the test function $\phi(X_1,\ldots,X_n)$ equals to $1$ if
-\begin{equation*}
-\frac{T(X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}> \xi^*_{\alpha}
-\end{equation*}
+        \begin{equation}\label{randomizationD}
+            \mathcal{L}\bigg(\frac{T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}\bigg|X_1,\ldots,X_n\bigg)
+        \end{equation}
+ plays an important role in our analysis.
+Let $q_{\alpha}^*$ be the $1-\alpha$ quantile of the distribution~\eqref{randomizationD}.
+Then the test function $\phi(X_1,\ldots,X_n)$ equals to $1$ if
+\begin{equation}\label{rejectRe}
+\frac{T(X_1,\ldots, X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}> q^*_{\alpha}
+\end{equation}
 and equals to $0$ otherwise.
-
-%To study the asymptotic property of $\xi^*_{\alpha}$, we need to derive the asymptotic behavior of the randomization distribution.
-Since the randomization distribution itself is random, to study its asymptotic distribution, we need to define in what sense the convergence is. Let $F$ and $G$ be two distribution functions on $\mathbb{R}$, Levy metric $\rho$ of $F$ and $G$ is defined as
+The asymptotic behavior of the left hand side of~\eqref{rejectRe} is given by Theorem~\ref{prop:spiked1}.
+To obtain the asymptotic property of $q^*_{\alpha}$, we need to investigate the asymptotic behavior of the distribution~\eqref{randomizationD}.
+Note that the distribution~\eqref{randomizationD} itself is random.  To study its asymptotic behavior, we need to define in what sense the convergence is. Let $F$ and $G$ be two distribution functions on $\mathbb{R}$, Levy metric $\rho$ of $F$ and $G$ is defined as
     \begin{equation*}
     \begin{aligned}
         \rho(F,G)
         =\inf\{\epsilon:F(x-\epsilon)-\epsilon\leq G(x)\leq F(x+\epsilon)+\epsilon  \textrm{ for all } x\}.
     \end{aligned}
     \end{equation*}
-It's well known that $\rho(F_n,F)\to 0$ if and only if  $F_n\xrightarrow{\mathcal{L}}F$.
-The following theorem shows that in high dimensional setting, the randomization distribution tends to a standard normal distribution.
+It is well known that $\rho(F_n,F)\to 0$ if and only if  $F_n\xrightarrow{\mathcal{L}}F$.
+Denote by $F^*(\cdot)$ the distribution function of
+            $$
+            \frac{\sqrt{2}}{2}\sum_{i=1}^r \kappa_i (\xi_i^2-1)+(1-\sum_{i=1}^r \kappa_i^2)^{1/2} \xi_{r+1},
+            $$
+             where $\xi_1,\ldots \xi_{r+1}$ are iid standard normal random variables.
 
 
-%Our asymptotic results need a condition stronger than~\eqref{mu1}.
-\begin{theorem}\label{shaziCLT}
-    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and 
-    \begin{equation}\label{mu2}
-        \mu^T\mu=o\big(\sqrt{\mytr ({\Sigma}^2)}\big),
-    \end{equation}
-    we have that
-    \begin{equation*}
-            \rho\bigg(\mathcal{L}\bigg(\frac{T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\bigg|X_1,\ldots,X_n\bigg),N(0,1)\bigg)
-            \xrightarrow{P} 0.
-    \end{equation*}
-\end{theorem}
-%Under the conditions of Theorem~\ref{shaziCLT}, the randomization distribution is asymptotically a normal distribution. 
 
-It can be proved that 
-\begin{equation*}
-\frac{\sum_{j<i}(X_i^T X_j)^2}{\frac{n(n-1)}{2}\mytr (\Sigma^2)}\xrightarrow{P}1.
-\end{equation*}
-By Lemma~\ref{theoremChen},  under null hypothesis, we have that
-\begin{equation*}
-\frac{T(X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\xrightarrow{\mathcal{L}}N(0,1).
-\end{equation*}
-Compare this with Theorem~\ref{shaziCLT}, we can see that if $\mu^T \mu=o(\sqrt{\mytr (\Sigma^2)})$,  the randomization distribution mimics the actual null distribution.
-However, the behavior of randomization distribution is different when condition~\eqref{mu2} is not valid.
-In fact, we have the following result.
-\begin{theorem}\label{farT}
-    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and
-    \begin{equation}\label{mu3}
-       \sqrt{\mytr {\Sigma}^2} =o\big(\mu^T\mu\big),
-    \end{equation}
-    we have that
-    \begin{equation*}
-        \begin{aligned}
-            \rho\bigg(\mathcal{L}\bigg(\frac{T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\bigg|X_1,\ldots,X_n\bigg),\frac{\sqrt{2}}{2}\big(\chi^2_1-1\big)\bigg)
-            \xrightarrow{P} 0,
-        \end{aligned}
-    \end{equation*}
-            where $\chi^2_1$ is the chi-squared distribution with freedom $1$.
-\end{theorem}
-
-Once the limit of the randomization distribution is obtained, the asymptotic behavior of $\xi_{\alpha}^*$ can be derived immediately.
-Let $\Phi(\cdot)$ be the cumulative distribution function (CDF) of standard normal distribution, we have
-\begin{corollary}\label{corollaryQuan}
-    Under the conditions of Theorem~\ref{shaziCLT}, we have
-    \begin{equation*}
-    \xi_{\alpha}^*\xrightarrow{P} \Phi^{-1}(1-\alpha).
-    \end{equation*}
-\end{corollary}
-
-\begin{corollary}\label{corollaryQuan2}
-    Under the conditions of Theorem~\ref{farT},
-    \begin{equation*}
-    \xi_{\alpha}^*\xrightarrow{P}\frac{\sqrt{2}}{2}\Big(\big(\Phi^{-1}(1-\tfrac{\alpha}{2})\big)^2-1\Big).
-    \end{equation*}
-\end{corollary}
-
-Now we are ready to derive the asymptotic power of the randomization test.
-The following two theorems give the power under~\eqref{mu1} and~\eqref{mumu1}, respectively.
-
-\begin{theorem}\label{theoremPower}
-    Suppose conditions~\eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3} and~\eqref{mu1} holds. Then
-    \begin{enumerate}
+\begin{theorem}\label{ourTheorem}
+    Under~\eqref{chenC1},~\eqref{chenC2} and~\eqref{spikedC},
+    we have
+    \begin{enumerate}[(i)]
         \item
-    If~\eqref{mu2} holds,
-    \begin{equation}\label{oPower}
-        \begin{aligned}
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)
-            =
-            \Phi(-\Phi^{-1}(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mytr (\Sigma^2)}})+o(1).
-        \end{aligned}
-    \end{equation}
+            if $(\mu^T \mu)^2=o\big(\mytr(\Sigma^2)\big)$, then
+            $
+            q_{\alpha}^*\xrightarrow{P}F^{*-1}(1-\alpha)
+            $;
 \item
-    If~\eqref{mu3} holds,
-    \begin{equation*}
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\to 1.
-    \end{equation*}
+    If $\mytr(\Sigma^2)=o\big((\mu^T \mu)^2\big)$, $q_{\alpha}^*$ converges in probability to the $1-\alpha$ quantile of  $(\chi^2_1-1)/\sqrt{2}$, the centralized chi-squared distribution with degree of freedom $1$.
     \end{enumerate}
 \end{theorem}
 
-\begin{theorem}\label{theoremPower2}
-    Under \eqref{chenC1},~\eqref{chenC2},~\eqref{chenC3}~\eqref{mumu1} and either~\eqref{mu2} or~\eqref{mu3},
-    \begin{equation*}
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)
-            =
+The asymptotic power function of the randomization test can be derived using Theorem~\ref{prop:spiked1} and Theorem~\ref{ourTheorem}.
+
+\begin{theorem}\label{theoremPower}
+    Under \eqref{chenC1},~\eqref{chenC2} and~\eqref{spikedC}, then
+    \begin{enumerate}[(i)]
+        \item
+if $\mu^T \Sigma \mu= o(n^{-1}\mytr(\Sigma^2)$,
+    \begin{equation}\label{oPower}
+        \begin{aligned}
+            \myE \phi(X_1,\ldots,X_n)=
+            F^*\Big(-F^{*-1}(1-\alpha)+\sqrt{\frac{n(n-1)}{2}}\frac{\mu^T\mu}{\sqrt{\mytr (\Sigma^2)}}\Big)+o(1).
+        \end{aligned}
+    \end{equation}
+\item
+    If $n^{-1}\mytr(\Sigma^2)=o(\mu^T \Sigma \mu )$,
+            \begin{equation}\label{oPower2}
+            \myE \phi(X_1,\ldots,X_n)=
             \Phi(\frac{\sqrt{n}\mu^T\mu}{2\sqrt{\mu^T \Sigma \mu}})+o(1).
-    \end{equation*}
+    \end{equation}
+
+    \end{enumerate}
 \end{theorem}
+
 %\begin{remark}
     %When $\alpha=0.05$, $\Phi^{-1}(1-\alpha)\approx 1.645$ and $\frac{\sqrt{2}}{2}(\Phi^{-1}(1-\frac{\alpha}{2})-1)\approx 0.689$.
 %\end{remark}
 
-\begin{remark}
-    Neither~\eqref{mu1} or~\eqref{mu2} implies the other one.
-    For example, suppose $\Sigma=I_p$, then~\eqref{mu1} is equivalent to $\mu^T\mu=o(p/n)$ and~\eqref{mu2} is equivalent to $\mu^T \mu =o(\sqrt{p})$.
-    In this case, if $\sqrt{p}/n\to 0$, then~\eqref{mu1} implies~\eqref{mu2}; conversely, if $\sqrt{p}/n\to \infty$, then~\eqref{mu2} implies~\eqref{mu1}.
-\end{remark}
 
 %\begin{remark}
 %Chen's test power is
@@ -539,7 +526,7 @@ The following two theorems give the power under~\eqref{mu1} and~\eqref{mumu1}, r
     %\end{equation*}
 %\end{remark}
 
-Theorem~\ref{theoremPower} implies that under \eqref{chenC1},~\eqref{chenC2} and~\eqref{chenC3}, the Type I error rate of the randomization test tends to the nominal level.
+From (i) of Theorem~\ref{theoremPower} we can see that under \eqref{chenC1},~\eqref{chenC2} and~\eqref{spikedC}, the Type I error rate of the randomization test tends to the nominal level.
 Note that this result doesn't assume that the distribution of $X_1$ is symmetric under null hypothesis.
 This implies that our test procedure is robust when the symmetry assumption is break down.
 This property is not held by all randomization tests.
@@ -577,16 +564,18 @@ See, for example,~\cite{Romano1990On}.
 %which tends to $1$ when~\eqref{mu2} holds, and tends to $\infty$ when~\eqref{mu3} holds.
 %Hence randomization may loss some power.
 
-Use the method of~\citet{Chen2010A}, the asymptotic method rejects the null hypothesis when
+The asymptotic method of~\citet{Chen2010A} rejects the null hypothesis when
 \begin{equation*}
 \frac{\sum_{i\neq j}X_i^T X_j}{\sqrt{2n(n-1)\widehat{\mytr(\Sigma^2)}}}>\Phi^{-1}(1-\alpha),
 \end{equation*}
-where
+where $\Phi(\cdot)$ is the distribution function of the standard normal distribution,
  \begin{equation*}
  \widehat{\mytr(\Sigma^2)}=\frac{1}{n(n-1)}\mytr\Big(\sum_{i\neq j}(X_i-\bar{X}_{(i,j)})X_i^T (X_j-\bar{X}_{(i,j)})X_j^T\Big)
  \end{equation*}
 is a ratio consistent estimator of $\mytr(\Sigma^2)$ and $\bar{X}_{(i,j)}$ is the sample mean after excluding $X_i$ and $X_j$.
-Lemma~\ref{theoremChen} implies that the Type I error rate of the asymptotic method  tends to the nominal level under~\eqref{chenC1},~\eqref{chenC2} and~\eqref{chenC3}.
+Since the critical value is determined by normal distribution, (i) of Theorem~\ref{prop:spiked1} implies the asymptotic method can not be applied if $\Sigma$ has a few spiked eigenvalues.
+Therefore, compared with the asymptotic meothod, the randomization method has a wider application scope.
+
 
 \section{Simulation Studies}
 
@@ -922,7 +911,7 @@ We state in this section some technical results that are used in the proofs of t
     we have
     $$
     \frac{\sum_{j<i} Z_i^T \Gamma^T \Gamma Z_j }
-    {\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)\big)}}
+    {\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
     \xrightarrow{w}\frac{\sqrt{2}}{2}\sum_{i=1}^r \kappa_i (\xi_i^2-1)+(1-\sum_{i=1}^r \kappa_i^2)^{1/2} \xi_{r+1},
     $$
     where $\xi_1,\ldots \xi_{r+1}$ are iid standard normal random variables.
@@ -1188,7 +1177,7 @@ We state in this section some technical results that are used in the proofs of t
         {(n-1) \sum_{i=1}^n \mu^T \Gamma Z_i}.
         %{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}.
     \end{equation}
-    By CLT,
+    By central limit theorem,
         \begin{equation}\label{eq:aqiu}
         \frac{ \sum_{i=1}^n \mu^T \Gamma Z_i}
         {\sqrt{n\mu^T \Sigma \mu}}
@@ -1207,11 +1196,11 @@ We state in this section some technical results that are used in the proofs of t
 
 
 
-\section{Proof of Theorem xxx}
+\section{Proof of Theorem~\ref{ourTheorem}}
 
-\paragraph{A CLT for quadratic form of Rademacher variables}
-The proof of the Theorem~\ref{shaziCLT} is based on a CLT of the quadratic form of Rademacher variables. 
-Such a CLT can be also used to study the asymptotic behavior of many other randomization test.
+\paragraph{A central limit theorem for quadratic form of Rademacher variables}
+The proof of the Theorem~\ref{shaziCLT} is based on a central limit theorem of the quadratic form of Rademacher variables. 
+Such a central limit theorem can be also used to study the asymptotic behavior of many other randomization test.
  Let $\epsilon_1,\ldots,\epsilon_n$ be independent Rademacher  variables. 
  Consider the quadratic form $W_n=\sum_{1\leq j<i\leq n} a_{ij}\epsilon_i \epsilon_j+\sum_{i=1}^n b_i \epsilon_i$, where $\{a_{ij}\}_{1\leq j <i \leq n}$ and $\{b_i\}_{1\leq i\leq n}$ are nonrandom numbers.
  Here $\{\epsilon_i\}$, $\{a_{ij}\}$ and $\{b_{i}\}$ may depend on $n$, a parameter we suppress.
@@ -1483,7 +1472,7 @@ This completes the proof.
 
 
 
-\begin{proposition}
+\begin{proposition}\label{nomuProp}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{spikedC},
     we have
     $$
@@ -1598,12 +1587,11 @@ $.
 
 
 
-\textbf{Proof of Theorem~\ref{farT}}
-
-\begin{proof}
+\textbf{Proof of Theorem~\ref{ourTheorem}. }
+Note that
     \begin{equation*}
         \begin{aligned}
-            &\sum_{j<i} X_i^T X_j \epsilon_i\epsilon_j\\
+            \sum_{j<i} X_i^T X_j \epsilon_i\epsilon_j
             =&
             \sum_{j<i} Z_i^T \Gamma^T \Gamma Z_j \epsilon_i\epsilon_j
             +
@@ -1613,152 +1601,142 @@ $.
             \overset{def}{=}&C_1+C_2+C_3+C_4.
         \end{aligned}
     \end{equation*}
-Term $C_4$ plays a major role. Note that
+    The asymptotic behavior of $C_1$ is given by Proposition~\ref{nomuProp}.
+    Note that $C_4$ is independent of $X_1,\ldots,X_n$.
+    By central limit theorem and Slutsky theorem,
     \begin{equation*}
         \begin{aligned}
-            C_4=\frac{n}{2}\mu^T \mu\Big({\Big(\frac{1}{\sqrt{n}}\sum_{i=1}^n \epsilon_i\Big)}^2-1\Big),
+            \frac{C_4}
+            {\sqrt{\frac{n(n-1)}{2}(\mu^T\mu)^2}}
+            =\frac{\sqrt{2}}{2}\sqrt{\frac{n}{n-1}}\Big(\big(\frac{1}{\sqrt{n}}\sum_{i=1}^n \epsilon_i\big)^2-1\Big)\xrightarrow{\mathcal{L}}\frac{\sqrt{2}}{2}(\chi^2_1-1).
         \end{aligned}
     \end{equation*}
-    which does not depend on $X_1,\ldots,X_n$.
-By central limit theorem, we have
-    \begin{equation}\label{Rush2}
-        \begin{aligned}
-            \rho\Big(\mathcal{L}\Big(\frac{C_4}{\frac{n}{2}\mu^T \mu}\Big| X_1,\ldots,X_n\Big),\chi^2_1-1\Big)\xrightarrow{a.s.} 0.
-        \end{aligned}
-    \end{equation}
-Now we show that
-    \begin{equation}\label{Rush}
-    \myE{\Big(\frac{C_i}{\frac{n}{2}\mu^T\mu}\Big)}^2\to 0,
-    \quad i=1,2,3.
-    \end{equation}
-    By direct calculation, we have
+
+    Suppose $(\mu^T \mu)^2=o(\mytr(\Sigma^2))$. It can be seen that 
+    $$
+        \frac{C_4}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
+        \xrightarrow{P} 0,\quad i=2,3.
+    $$
+    The cross terms satisfy
     \begin{equation*}
-    \begin{aligned}
-    \myE(C_1^2)=\myE\myE(C_1^2|X_1,\ldots,X_n)
-    =\sum_{j<i}\myE{(Z_i^T \Gamma^T \Gamma Z_j)}^2=\frac{n(n-1)}{2}\mytr \Sigma^2,
-    \end{aligned}
-\end{equation*}
-    and
-    \begin{equation*}
-    \myE(C_2^2)=\myE(C_3^2)=\frac{n(n-1)}{2}\mu^T \Sigma \mu\leq \frac{n(n-1)}{2}\sqrt{\mytr \Sigma^2}\mu^T\mu.
+    \myE(C_2^2)=\myE(C_3^2)=\frac{n(n-1)}{2}\mu^T \Sigma \mu
+        \leq \frac{n(n-1)}{2}\sqrt{\mytr (\Sigma^2)}\mu^T\mu
+        = o\Big(\frac{n(n-1)}{2}\mytr (\Sigma^2)\Big).
     \end{equation*}
-    Thus~\eqref{Rush} follows by the assumption~\eqref{mu3}. By Markov's inequality, we have
+    By Markov's inequality, we have
     %By a standard subsequence argument and Slutsky's theorem,  the conclusion holds provided
     \begin{equation*}
-    \myE\Big({\Big(\frac{C_i}{\frac{n}{2}\mu^T\mu}\Big)}^2\Big|X_1,\ldots,X_n\Big)\xrightarrow{P} 0,\quad i=1,2,3.
+        \myE\Big(\Big(\frac{C_i}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
+        \Big)^2\Big|X_1,\ldots,X_n\Big)\xrightarrow{P} 0,\quad i=2,3.
     \end{equation*}
-    This, combined with~\eqref{Rush2} and a standard subsequence argument, yields
-    \begin{equation}\label{Rush3}
-        \begin{aligned}
-            &\rho\Big(\mathcal{L}\Big(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\frac{n}{2}\mu^T \mu}\Big| X_1,\ldots,X_n\Big),\chi^2_1-1\Big)
-            \xrightarrow{P} 0
-        \end{aligned}
-    \end{equation}
-    Then the theorem follows by~\eqref{Rush3},  Lemma~\ref{ratioLemma}, the assumption~\eqref{mu3} and Slutsky's theorem.
-\end{proof}
+    Then a standard subsequence argument yields
+    $$
+            \rho\Big(\mathcal{L}\Big(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_n X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}\Big| X_1,\ldots,X_n\Big)
+            ,
+            \mathcal{L}\big(\frac{\sqrt{2}}{2}\sum_{i=1}^r \kappa_i (\xi_i^2-1)+(1-\sum_{i=1}^r \kappa_i^2)^{1/2} \xi_{r+1}\big)
+            \Big)\xrightarrow{P}0.
+    $$
+And (i) of Theorem~\ref{ourTheorem} follows.
 
-\textbf{\textbf{Proof of Corollaries~\ref{corollaryQuan} and~\ref{corollaryQuan2}}}
 
-\begin{proof}
-    For every subsequence, there is a further subsequence along which
-    \begin{equation*}
-        \rho\Big(\mathcal{L}\Big(\frac{T_2(\epsilon_1 X_1,\ldots, \epsilon_i X_i,\ldots,\epsilon_n X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}\Big|X_1,\ldots,X_n\Big),N(0,1)\Big)
-    \end{equation*}
-    tends to $0$ almost surely.
-    By the property of convergence in law, $\xi^*_\alpha\to \Phi^{-1}(1-\alpha)$ almost surely along this subsequence.
-    That is, For every subsequence, there is a further subsequence along which $\xi^*_\alpha\to \Phi^{-1}(1-\alpha)$ almost surely.
-    This is equivalent to $\xi_{\alpha}^*  \xrightarrow{P}\Phi^{-1}(1-\alpha)$.
-    The proof of Corollary~\ref{corollaryQuan2} is similar.
 
-\end{proof}
-
-\textbf{Proof of Theorem~\ref{theoremPower}}
-
-\begin{proof} 
-    Note that
-    \begin{align}
-        \Pr\Big(&\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\nonumber\\
-            =
-            \Pr\bigg(&\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^*\nonumber
-            -\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}} \bigg).\nonumber
-    \end{align}
-    If~\eqref{mu2} holds, by Lemma~\ref{ratioLemma}, we have
-    \begin{equation*}
-    \frac{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}{\frac{n(n-1)}{2}\mytr \Sigma^2}\xrightarrow{P}1.
-    \end{equation*}
-    By Corollary~\ref{corollaryQuan}, we have $\xi_{\alpha}^*\xrightarrow{P} \Phi(1-\alpha)$.
-Thus,
-    \begin{equation*}
-        \begin{aligned}
-            &\Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)\\
-            =&
-            \Pr\Big(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mytr \Sigma^2}}
-            -
-            \frac{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}{\sqrt{\frac{n(n-1)}{2}\mytr \Sigma^2}}\xi_{\alpha}^*>
-            -\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mytr \Sigma^2}} \Big)\\
-            =&
-            \Pr\Big(N(0,1)-\Phi(1-\alpha)>-\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mytr \Sigma^2}}\Big)+o(1)\\
-            =&
-            \Phi(-\Phi(1-\alpha)+\frac{\sqrt{n(n-1)}\mu^T\mu}{\sqrt{2\mytr \Sigma^2}})+o(1),
-        \end{aligned}
-    \end{equation*}
-    where the last two equality holds by Lemma~\ref{theoremChen}, Slutsky's theorem and Lemma~\ref{lemmaUniformSimple}.
-
-    If~\eqref{mu3} holds, by Lemma~\ref{ratioLemma}, we have
-    \begin{equation*}
-    \frac{\sum_{1\leq j< i\leq n}(X_i^T X_j)^2}{\frac{n(n-1)}{2}{(\mu^T\mu)}^2}\xrightarrow{P}1.
-    \end{equation*}
-    Thus
-    \begin{equation*}
-        \begin{aligned}
-            &\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}        \\
-            =&\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mytr \Sigma^2}}
-            \frac{\sqrt{\frac{n(n-1)}{2}\mytr \Sigma^2}}{\sqrt{\frac{n(n-1)}{2}{(\mu^T \mu)}^2}}        
-            \frac{\sqrt{\frac{n(n-1)}{2}{(\mu^T \mu)}^2}}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}        
+    If $\mytr(\Sigma^2)=o\big((\mu^T \mu)^2\big)$, it can be similarly shown that $C_4$ is the dominating term and 
+    $$
+                \rho\Big(\mathcal{L}\Big(\frac{T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)}{\sqrt{\frac{n(n-1)}{2}(\mu^T \mu)^2}}\Big| X_1,\ldots,X_n\Big),\frac{\sqrt{2}}{2}(\chi^2_1-1)\Big)
             \xrightarrow{P} 0.
-        \end{aligned}
-    \end{equation*}
-    By Corollary~\ref{corollaryQuan2}, $\xi_{\alpha}^*\xrightarrow{P}\frac{\sqrt{2}}{2}\Big(\big(\Phi^{-1}(1-\frac{\alpha}{2})\big)^2-1\Big)$. And 
-    \begin{equation*}
-        \begin{aligned}
-            &\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}
-            =
-    \sqrt{\frac{n(n-1)}{2}}\frac{\sqrt{\frac{n(n-1)}{2}(\mu^T\mu)^2}}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}
-    \xrightarrow{P}+\infty.
-        \end{aligned}
-    \end{equation*}
-    As a result,
-    \begin{equation*}
-        \Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \Big)
-    \to 1.
-    \end{equation*}
+    $$
+    This proves (ii) of Theorem~\ref{ourTheorem}.
 
 
-\end{proof}
 
 
-\textbf{Proof of Theorem~\ref{theoremPower2}}
-\begin{proof}
+\section{Proof of Theorem~\ref{theoremPower}}
+By a standard subsequence argument, we can without loss of generality and assume
+$$
+\frac{(\mu^T \mu)^2}{\mytr(\Sigma^2)}\to c\in [0,+\infty].
+$$
+
+
+First we prove~\eqref{oPower}.
     Note that
     \begin{align}
-            &\Pr\bigg(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \bigg)\nonumber\\
+        &\myE \phi(X_1,\ldots, X_n)=\Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}>q_{\alpha}^* \Big)\notag
+        \\
             =&
-            \Pr\bigg(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}}>
-            \frac{\sqrt{\sum_{1\leq j<i\leq n}{{(X_i^T X_j)}^2}}}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}}\xi_{\alpha}^*-\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}} \bigg).
-            \label{powerEq2}
+            \Pr\bigg(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}+F^{*-1}(1-\alpha)-q_{\alpha}^*>
+F^{*-1}(1-\alpha)
+            -\sqrt{\frac{n(n-1)}{2}}\frac{\mu^T\mu}{\sqrt{\mytr(\Sigma^2)}} \bigg).
+            \label{balanced}
     \end{align}
-    If~\eqref{mu2} holds, the theorem follows by Lemma~\ref{theoremChen2} and the fact that if~\eqref{mu2} holds, the coefficient of $\xi_\alpha^*$ in~\eqref{powerEq2} tends to $0$.
+    If $c=0$, then~\eqref{oPower} follows from (i) of Theorem~\ref{prop:spiked1}, (i) of Theorem~\ref{ourTheorem}, Slutsky's theorem and Lemma~\ref{lemmaUniformSimple}.
+    If $c>0$, (i) of Theorem~\ref{ourTheorem} can not be applied. Hence we use Markov's inequality to bound $q^*_{\alpha}$.
+    For any $t>0$,
+    $$
+    \begin{aligned}
+        &\Pr\bigg(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_n X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}>t\bigg| X_1,\ldots,X_n\bigg)
+        \\
+        \leq &
+       \frac{2}{{n(n-1)}\mytr(\Sigma^2) t^2}  \myE\big(T^2(\epsilon_1 X_1,\ldots, \epsilon_n X_n)\big| X_1,\ldots,X_n\big)
+        =\frac{2\sum_{j<i}(X_i^T X_j)^2}{{n(n-1)}\mytr(\Sigma^2) t^2}.
+    \end{aligned}
+    $$
+    We take
+    $$t=
+    \sqrt{
+        \frac{2\sum_{j<i}(X_i^T X_j)^2}{{n(n-1)}\mytr(\Sigma^2) \alpha}
+    },
+    $$
+    then
+    $$
+    \begin{aligned}
+        &\Pr\bigg(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_n X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}>
+\sqrt{\frac{2\sum_{j<i}(X_i^T X_j)^2}{{n(n-1)}\mytr(\Sigma^2) \alpha}}
+        \bigg| X_1,\ldots,X_n\bigg)
+        \leq 
+        \alpha.
+    \end{aligned}
+    $$
+    This implies
+    $$
+    q_{\alpha}^*\leq
+\sqrt{\frac{2\sum_{j<i}(X_i^T X_j)^2}{{n(n-1)}\mytr(\Sigma^2) \alpha}}.
+    $$
+    Then
+    $$
+   \myE (q_{\alpha}^{*2})\leq  \frac{\mytr(\Sigma+\mu\mu^T)^2}{\mytr(\Sigma^2)\alpha}\leq  2\alpha^{-1} \Big(1+\frac{(\mu^T \mu)^2}{\mytr(\Sigma^2)}\Big).
+    $$
+    Thus, $|q_{\alpha}^{*}|=O_P(1+\sqrt{c})$.
+    Therefore, the probability~\eqref{balanced} equals
+    $$
+    \Pr\Big(O_P(\sqrt{c})>-\sqrt{\frac{n(n-1)}{2}}\sqrt{c}\Big)\to 1.
+    $$
+This completes the proof of~\eqref{oPower}.
 
-    If~\eqref{mu3} holds, the theorem follows by noting that
-    \begin{equation*}
-        \begin{aligned}
-            &\Pr\bigg(\frac{T( X_1,\ldots, X_n)}{\sqrt{\sum_{1\leq j<i\leq n}{(X_i^T X_j)}^2}}>\xi_{\alpha}^* \bigg)\\
+Now we prove~\eqref{oPower2}.
+    Note that
+    \begin{align}
+        &\Pr\bigg(\frac{T( X_1,\ldots, X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}>q_{\alpha}^* \bigg)\nonumber\\
             =&
-            \Pr\bigg(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}}>
-            -(1+o_P(1))\frac{\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{{(n-1)}^2 n \mu^T\Sigma\mu}} \bigg).
-        \end{aligned}
-    \end{equation*}
-\end{proof}
+            \Pr\bigg(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{(n-1)\sqrt{ n \mu^T\Sigma\mu}}>
+            \sqrt{\frac{\mytr(\Sigma^2)}{2(n-1)\mu^T\Sigma\mu}}q_{\alpha}^*-\frac{\sqrt{n}\mu^T\mu}{{2}\sqrt{  \mu^T\Sigma\mu}} \bigg).
+        \notag
+    \end{align}
+    If $c=0$, then it follows from $n^{-1}\mytr(\Sigma^2)=o(\mu^T \Sigma \mu)$ and $|q_{\alpha}^*|=O_P(1+\sqrt{c})$ that
+    $$
+    \sqrt{\frac{\mytr(\Sigma^2)}{2(n-1)\mu^T\Sigma\mu}}q_{\alpha}^*=o_P(1).
+    $$
+    Then~\eqref{oPower2} follows from Slutsky's theorem.
+    If $c>0$, then
+    $$
+    {
+        \sqrt{\frac{\mytr(\Sigma^2)}{2(n-1)\mu^T\Sigma\mu}}q_{\alpha}^*
+    }\bigg/{
+        \frac{\sqrt{n}\mu^T\mu}{{2}\sqrt{  \mu^T\Sigma\mu}} 
+    }
+    =\sqrt{\frac{2}{n(n-1)}}\frac{\sqrt{\mytr(\Sigma^2)}}{\mu^T \mu} q_{\alpha}^*
+    =O_P\Big(\frac{1}{n}\frac{1}{\sqrt{c}}\sqrt{c}\Big)=o_P(1).
+    $$
+    And~\eqref{oPower2} follows.
 
 
 
