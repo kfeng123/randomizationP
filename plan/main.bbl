@@ -1,4 +1,4 @@
-\begin{thebibliography}{18}
+\begin{thebibliography}{19}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -105,6 +105,17 @@
   \bibinfo{year}{2005}.
 \newblock \bibinfo{title}{Testing Statistical Hypotheses}.
 \newblock \bibinfo{edition}{3rd} ed., \bibinfo{publisher}{Springer New York}.
+%Type = Article
+\bibitem[{Ma et~al.(2015)Ma, Lan and Wang}]{MA2015162}
+\bibinfo{author}{Ma, Y.}, \bibinfo{author}{Lan, W.}, \bibinfo{author}{Wang,
+  H.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{A high dimensional two-sample test under a low
+  dimensional factor structure}.
+\newblock \bibinfo{journal}{Journal of Multivariate Analysis}
+  \bibinfo{volume}{140}, \bibinfo{pages}{162 -- 170}.
+\newblock \URLprefix
+  \url{http://www.sciencedirect.com/science/article/pii/S0047259X15001207},
+  \DOIprefix\doi{https://doi.org/10.1016/j.jmva.2015.05.005}.
 %Type = Book
 \bibitem[{Pollard(1984)}]{pollard1984convergence}
 \bibinfo{author}{Pollard, D.}, \bibinfo{year}{1984}.
