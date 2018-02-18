@@ -88,14 +88,12 @@ Suppose $X_{1},\ldots,X_{n}$ are $p$-variate independent and identically distrib
 \begin{equation}\label{ourHy}
     H_0:\mu=0_p\quad \textrm{versus} \quad H_1:\mu\neq 0_p.
 \end{equation}
-
-
 %Tests for hypotheses~\eqref{ourHy} has been extensively studied by many researchers.
 A classical test statistic for hypotheses~\eqref{ourHy} is Hotelling's $T^2$, defined as
     $
     n\bar{X}^T S^{-1}\bar{X}
     $,
-where $\bar{X}=n^{-1}\sum_{i=1}^n X_i$ and $S=(n-1)^{-1}\sum_{i=1}^n (X_i-\bar{X}) (X_i-\bar{X})^T$ are the sample mean vector and sample covariance matrix, respectively.
+where $\bar{X}=n^{-1}\sum_{i=1}^n X_i$ is the sample mean vector and $S=(n-1)^{-1}\sum_{i=1}^n (X_i-\bar{X}) (X_i-\bar{X})^T$ is the sample covariance matrix.
 Under normal distribution, Hotelling's $T^2$ is the likelihood ratio test and enjoys desirable properties in fixed $p$ setting. See, for example,~\citet{andersonMultivariate}.
 However, Hotelling's test can not be defined when $p>n-1$ due to the singularity of $S$.
 In a seminal paper,~\citet{Bai1996Efiect} considered two sample testing problem and proposed a statistic by removing $S^{-1}$ from Hotelling's $T^2$ statistic.
@@ -112,10 +110,12 @@ Many subsequent papers generalized the idea of~\citet{Bai1996Efiect} to more gen
 %~\cite{Wang2015A} proposed a test based on  $\sum_{i\neq j}\|X_i\|^{-1}\|X_j\|^{-1}X_i^T X_j$.
 %~\cite{Zhao2016A} proposed a test based on $\bar{X}^T (I_p-\BP_S)\bar{X}$, where $\BP_S$ is the orthogonal projection matrix on the column space of $S$.
 %All these high dimensional statistics can be written as generalized quadratic forms of data, see~\cite{Jong1987A}. And the asymptotic properties of these statistics are mostly derived by martingale central limit theorem (MCLT).
-The critical values of existing high dimensional tests are mostly determined by asymptotic distribution. 
+The critical values of existing high dimensional tests mostly rely on the asymptotic normality of the test statistics. 
 We call it asymptotic method.
- In many real world problems, e.g., gene testing~\citep{efron2007on}, sample size $n$ may be very small.
-In this case, the Type I error rate of the asymptotic method may be far away from nominal level. 
+ %In many real world problems, e.g., gene testing~\citep{efron2007on}, sample size $n$ may be very small.
+%In this case, the Type I error rate of the asymptotic method may be far away from nominal level. 
+  However, if $\Sigma$ has spiked eigenvalues, the asymptotic normality of the test statistics is not be valid \citep{KATAYAMA2013410}.
+  In this case, the asymptotic methods can not satisfactorily control the level.
 
 The randomization test method is a tool to determine the critical value for a given test statistic.
 The idea of randomization tests dates back to~\citet{Fisher}.
@@ -134,20 +134,21 @@ Let $\epsilon_1,\ldots,\epsilon_n$ be iid Rademacher variables ($\Pr(\epsilon_i=
     %\mathcal{L}\big(T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)|X_1,\ldots,X_n\big)
     %$
  %the distribution of $T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)$ conditioning on $X_1,\ldots,X_n$.
- The randomization test rejects the null hypothesis when $T(X_1,\ldots, X_n)$ is greater than the $1-\alpha$ quantile of the conditional distribution of $T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)$ with respect to $X_1,\ldots,X_n$,
+ The randomization test rejects the null hypothesis when $T(X_1,\ldots, X_n)$ is greater than the $1-\alpha$ quantile of the conditional distribution of $T(\epsilon_1 X_1,\ldots,\epsilon_i X_i,\ldots,\epsilon_n X_n)$ given $X_1,\ldots,X_n$,
  and accepts the null hypothesis otherwise, where $\alpha$ is the significant level and the $1-\alpha$ quantile of a distribution function $F(\cdot)$ is defined as $\inf\{y: F(y)\geq 1-\alpha\}$.
 In fixed $p$ setting, it's well known that randomization tests consume much more computing time than the asymptotic method, which  historically  hampered the use of randomization tests. 
 The goal of this paper is to show that in high dimensional setting, randomization tests can be computationally feasible and have desirable statistic properties.
 Inspired by the work of~\citet{Bai1996Efiect} and~\citet{Chen2010A}, we propose a randomization test for hypotheses~\eqref{ourHy}.
 We give a fast implementation of the proposed randomization test, the computational complexity of which is low.
-When $p$ is large, our method even consumes less computing time  than the asymptotic method.
+%When $p$ is large, our method even consumes less computing time  than the asymptotic method.
 We also investigate the asymptotic behavior of the test procedure.
-Our results show that even if the null distribution of $X_1$ is not symmetric, the randomization test is still asymptotically exact under mild assumptions. 
+Our results show that even if the null distribution of $X_1$ is not symmetric, the randomization test is still asymptotically exact under fairly general assumptions. 
 Hence the test procedure is robust.
-The local asymptotic power function is also given.
+In particular, the proposed test can be applied to situations where the asymptotic method is not valid.
+We also derive the asymptotic power function of the proposed test.
 To the best of our knowledge, this is the first work which gives the asymptotic behavior of randomization tests in high dimensional setting.
-A simulation study is carried out to examine the numerical performance of the proposed randomization test and compare with the asymptotic method.
-The simulation results show that the size of the proposed randomization test is closer to the nominal level than the asymptotic method while the power behaviors of the proposed randomization test and the asymptotic method are similar.
+A simulation study is carried out to examine the numerical performance of the proposed test and compare with the asymptotic method and the bootstrap method.
+Compared with its competitors, the proposed test reduces the size distortion while still possesses reasonable test power.
 
 %Existing works of randomization test mainly focus on single variate case. A recent work of EunYi Chung consider multivariate case.
 
@@ -157,7 +158,7 @@ The simulation results show that the size of the proposed randomization test is 
 %There's no need to estimate the variance of the statistic.
 
 
-The rest of the paper is organized in the following way. In Section 2, we propose a randomization test and give a fast implementation.  In Section 3, we investigate the asymptotic behavior of the proposed test. The simulation results are reported in Section 4. The technical proofs are presented in Appendix.
+The rest of the paper is organized in the following way. In Section 2, we propose a randomization test and give a fast implementation.  In Section 3, we investigate the asymptotic behavior of the proposed test. The simulation results are reported in Section 4. The technical proofs are presented in Appendices.
 
 
 
@@ -169,15 +170,18 @@ Their idea can also be used for testing hypotheses~\eqref{ourHy} and the statist
 The asymptotic properties of the statistic requires $p/n$ tends to a positive constant.
  ~\citet{Chen2010A} found that the restriction on $p$ and $n$ can be considerably relaxed by removing the diagonal elements in the statistic of~\citet{Bai1996Efiect}.
  For hypotheses~\eqref{ourHy}, their statistic is $\sum_{i \neq j}X_i^T X_j$.
- Inspired by the statistic of~\citet{Bai1996Efiect} and~\citet{Chen2010A}, we consider the statistic
+ Inspired by the statistics of~\citet{Bai1996Efiect} and~\citet{Chen2010A}, we consider the statistic
 \begin{equation}\label{Statistic}
     T(X_1,\ldots,X_n)=\sum_{j<i}X_i^T X_j.
 \end{equation}
 ~\citet{Bai1996Efiect} and~\citet{Chen2010A} used asymptotic method to determine the critical value of $T(X_1,\ldots,X_n)$.
-However, as will be shown in Section 3, the asymptotic method is not valid in some cases.
+However, as will be shown in Section 3, the critical value determined by the asymptotic method is not valid in some important cases.
+Hence it is desirable to find a better critical value.
 
-A popular method to determine the critical value is bootstrap.
-A basic bootstrap critical value for $T(X_1,\ldots,X_n)$ is defined as the $1-\alpha$ quantile of the conditional distribution
+
+The bootstrap and the randomization method are two popular methods to determine the critical value.
+We first consider the bootstrap method.
+A basic bootstrap critical value for $T(X_1,\ldots,X_n)$ is defined to be the $1-\alpha$ quantile of the conditional distribution
  \begin{equation}\label{bootstrapD}
  \mathcal{L}(T(X_1^*,\ldots,X_n^*)|X_1,\ldots,X_n),
  \end{equation}
@@ -199,6 +203,7 @@ $$
 As pointed out by~\cite{Bai1996Efiect}, however, $\big((n-1)/{n}\big)^2 \mytr(S^2)$ is not even a ratio consistent estimator of $\mytr(\Sigma^2)$.
 Thus, the bootstrap procedure may not be a good choice for our problem.
 
+Now we consider the following randomization method.
 Let $\epsilon_1,\ldots,\epsilon_n$ be iid Rademacher variables which are independent of data.
 Denote by
 \begin{equation}\label{ranDis}
@@ -230,7 +235,6 @@ In our problem, the Type I error of $\phi(X_1,\ldots,X_n)$ is not larger than $\
  By refined definition of $\phi(X_1,\ldots,X_n)$ on the boundary of rejection region, one can obtain a test procedure with exact significant  level. 
  %See, for example,~\cite{Romano1990On}.
 Such refinement only has minor effect on the test procedure and won't be considered in this paper.
-
 The test procedure $\phi(X_1,\ldots, X_n)$ can be equivalently implemented by $p$-value. Define 
 \begin{equation}\label{firstPvalue}
         p(X_1,\ldots, X_n)
@@ -238,7 +242,8 @@ The test procedure $\phi(X_1,\ldots, X_n)$ can be equivalently implemented by $p
 \end{equation}
 Then our test procedure rejects the null hypothesis when $p(X_1,\ldots, X_n)\leq \alpha$. 
 
- The randomized statistic $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)$ is uniformly distributed on $2^n$ values conditioning on $X_1,\ldots, X_n$.
+ Given the data $X_1,\ldots, X_n$,
+ the randomized statistic $T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)$ is uniformly distributed on $2^n$ values.
 To compute the exact quantile of~\eqref{ranDis} or the $p$-value~\eqref{firstPvalue}, one needs to calculate at least $2^n$ values, which is not feasible even when $n$ is moderate.
 In practice, randomization test is often realized through an approximation of $p$-value~\eqref{firstPvalue}.
 More specifically, we sample  $\epsilon_1^*,\ldots,\epsilon_n^*$ and compute the randomized statistic $T^*=T(\epsilon_1^* X_1,\ldots,\epsilon_n^* X_n)$.
@@ -249,7 +254,8 @@ Let $T_0=T(X_1,\ldots,X_n)$ be the original statistic and define
 \tilde{p}(X_1,\ldots,X_n)=\frac{1}{B+1}\big(1+\sum_{i=1}^B \mathbf{1}_{\{T_i^*\geq T_0\}}\big).
 \end{equation*}
 The null hypothesis is rejected when $\tilde{p}(X_1,\ldots,X_n)\leq \alpha$.
-Although $\tilde{p}(X_1,\ldots, X_n)$ is an approximation of $p(X_1,\ldots, X_n)$, the resulting test procedure can still control the significant level.
+%Although $\tilde{p}(X_1,\ldots, X_n)$ is an approximation of $p(X_1,\ldots, X_n)$,
+This test procedure can still control the significant level.
 In fact, we have
 $\Pr(\tilde{p}(X_1,\ldots,X_n)\leq u)\leq u$ for all $0\leq u\leq 1$ and all positive integer $B$.
 See~\citet[Page $636$]{Lehmann}.
@@ -373,7 +379,7 @@ Algorithm~\ref{theAlgorithm} summarizes our computing method.
 %test procedure $\phi(X_1,\ldots,X_n)$
 As we have noted, the randomization test is exact provided that $X_1$ and $-X_1$ have the same distribution under null hypothesis.
 However, under this condition, all variables are symmetric about $0$, which is unrealistic for many applications.
-In this section, we investigate the asymptotic properties of the test procedure $\phi(X_1,\ldots,X_n)$ without symmetric assumption.
+In this section, we investigate the asymptotic properties of the test procedure $\phi(X_1,\ldots,X_n)$ without symmetry assumption.
 
 We assume, like~\citet{Chen2010A} and~\citet{Bai1996Efiect}, the following multivariate model:
 \begin{equation}\label{chenC1}
@@ -417,7 +423,7 @@ Suppose that there is a fixed integer $r\geq 0$ and positive constants $\kappa_1
     \quad
     \frac{\lambda_{i}(\Sigma)}{\sqrt{\mytr(\Sigma^2)}}\to 0 \text{ for }\,\, i> r.
 \end{equation}
-The following proposition gives the asymptotic distribution of $T(X_1,\ldots,X_n)$ under~\eqref{chenC1},~\eqref{chenC2} and~\eqref{spikedC}.
+The following theorem gives the asymptotic distribution of $T(X_1,\ldots,X_n)$ under~\eqref{chenC1},~\eqref{chenC2} and~\eqref{spikedC}.
 \begin{theorem}\label{prop:spiked1}
     Under~\eqref{chenC1},~\eqref{chenC2} and~\eqref{spikedC},
     we have
@@ -438,19 +444,31 @@ $$
     \end{enumerate}
 \end{theorem}
 \begin{remark}
-    A similar result has been provided by~\citet[Theorem 3.1]{KATAYAMA2013410}.
+    If $r=0$, Theorem~\ref{prop:spiked1} implies that $T(X_1,\ldots, X_n)$ is asymptotically normal distributed under the null hypothesis. This is a known result~\citep[Theorem 1]{Chen2010A}.
+    However, if $r>0$, i.e. $\Sigma$ has a few spiked eigenvalues, $T(X_1,\ldots,X_n)$ is not asymptotically normal distributed.
+    Note that a similar result has been provided by~\citet[Theorem 3.1]{KATAYAMA2013410}.
     Compared with their result, Theorem~\ref{prop:spiked1} doesn't need the normal assumption.
 \end{remark}
 
-    If $r=0$, Theorem~\ref{prop:spiked1} implies that $T(X_1,\ldots, X_n)$ is asymptotically normal distributed under the null hypothesis. This is a known result~\citep[Theorem 1]{Chen2010A}.
-    However, if $r>0$, i.e. $\Sigma$ has a few spiked eigenvalues, $T(X_1,\ldots,X_n)$ is not asymptotically normal distributed.
+    %Since the critical value of the asymptotic method is determined by the normal quantile, the asymptotic method .
+    
+The asymptotic method of~\citet{Chen2010A} rejects the null hypothesis when
+\begin{equation*}
+    \frac{\sum_{j< i}X_i^T X_j}{\sqrt{\frac{n(n-1)}{2}\widehat{\mytr(\Sigma^2)}}}>\Phi^{-1}(1-\alpha),
+\end{equation*}
+where $\Phi(\cdot)$ is the distribution function of the standard normal distribution,
+ \begin{equation*}
+ \widehat{\mytr(\Sigma^2)}=\frac{1}{n(n-1)}\mytr\Big(\sum_{i\neq j}(X_i-\bar{X}_{(i,j)})X_i^T (X_j-\bar{X}_{(i,j)})X_j^T\Big)
+ \end{equation*}
+is a ratio consistent estimator of $\mytr(\Sigma^2)$ and $\bar{X}_{(i,j)}$ is the sample mean after excluding $X_i$ and $X_j$.
+Since the critical value is determined by normal distribution, (i) of Theorem~\ref{prop:spiked1} implies that the critical value of the asymptotic method is not valid if $\Sigma$ has a few spiked eigenvalues.
 
 
 
 Now we study the asymptotic properties of the randomization test.
 The conditional distribution
         \begin{equation}\label{randomizationD}
-            \mathcal{L}\bigg(\frac{T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}\bigg|X_1,\ldots,X_n\bigg)
+            \mathcal{L}\Bigg(\frac{T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}\bigg|X_1,\ldots,X_n\Bigg)
         \end{equation}
  plays an important role in our analysis.
 Let $q_{\alpha}^*$ be the $1-\alpha$ quantile of the distribution~\eqref{randomizationD}.
@@ -460,15 +478,7 @@ Then the test function $\phi(X_1,\ldots,X_n)$ equals to $1$ if
 \end{equation}
 and equals to $0$ otherwise.
 The asymptotic behavior of the left hand side of~\eqref{rejectRe} is given by Theorem~\ref{prop:spiked1}.
-To obtain the asymptotic property of $q^*_{\alpha}$, we need to investigate the asymptotic behavior of the distribution~\eqref{randomizationD}.
-Note that the distribution~\eqref{randomizationD} itself is random.  To study its asymptotic behavior, we need to define in what sense the convergence is. Let $F$ and $G$ be two distribution functions on $\mathbb{R}$, Levy metric $\rho$ of $F$ and $G$ is defined as
-    \begin{equation*}
-    \begin{aligned}
-        \rho(F,G)
-        =\inf\{\epsilon:F(x-\epsilon)-\epsilon\leq G(x)\leq F(x+\epsilon)+\epsilon  \textrm{ for all } x\}.
-    \end{aligned}
-    \end{equation*}
-It is well known that $\rho(F_n,F)\to 0$ if and only if  $F_n\xrightarrow{\mathcal{L}}F$.
+We need to investigate the asymptotic property of $q^*_{\alpha}$.
 Denote by $F^*(\cdot)$ the distribution function of
             $$
             \frac{\sqrt{2}}{2}\sum_{i=1}^r \kappa_i (\xi_i^2-1)+(1-\sum_{i=1}^r \kappa_i^2)^{1/2} \xi_{r+1},
@@ -482,33 +492,41 @@ Denote by $F^*(\cdot)$ the distribution function of
     we have
     \begin{enumerate}[(i)]
         \item
-            if $(\mu^T \mu)^2=o\big(\mytr(\Sigma^2)\big)$, then
+            if $\mu^T \mu=o\big(\sqrt{\mytr(\Sigma^2)}\big)$, then
             $
             q_{\alpha}^*\xrightarrow{P}F^{*-1}(1-\alpha)
             $;
 \item
-    if $\mytr(\Sigma^2)=o\big((\mu^T \mu)^2\big)$, $q_{\alpha}^*$ converges in probability to the $1-\alpha$ quantile of  $(\chi^2_1-1)/\sqrt{2}$, the centralized chi-squared distribution with degree of freedom $1$.
+    if $\sqrt{\mytr(\Sigma^2)}=o\big(\mu^T \mu\big)$, $q_{\alpha}^*$ converges in probability to the $1-\alpha$ quantile of  $(\chi^2_1-1)/\sqrt{2}$, the centralized chi-squared distribution with degree of freedom $1$.
     \end{enumerate}
 \end{theorem}
+From (i) of Theorem~\ref{ourTheorem} we can see that under the null hypothesis, the randomization can produce the correct level asymptotically.
+Note that this result doesn't assume that the distribution of $X_1$ is symmetric under null hypothesis.
+This implies that the proposed test is robust when the symmetry assumption is break down.
+This property is not held by all randomization tests.
+See, for example,~\cite{Romano1990On}.
+Compared with the asymptotic method, the validity of the proposed test does not rely on the asymptotic normality of $T(X_1,\ldots,X_n)$ and thus has a wider application scope.
+
+
 
 The asymptotic power function of the randomization test can be derived using Theorem~\ref{prop:spiked1} and Theorem~\ref{ourTheorem}.
 
 \begin{theorem}\label{theoremPower}
-    Under \eqref{chenC1},~\eqref{chenC2} and~\eqref{spikedC}, then
+    Under \eqref{chenC1},~\eqref{chenC2} and~\eqref{spikedC}, we have
     \begin{enumerate}[(i)]
         \item
-if $\mu^T \Sigma \mu= o(n^{-1}\mytr(\Sigma^2)$,
+            if $\mu^T \Sigma \mu= o\big(n^{-1}\mytr(\Sigma^2)\big)$,
     \begin{equation}\label{oPower}
         \begin{aligned}
             \myE \phi(X_1,\ldots,X_n)=
-            F^*\Big(-F^{*-1}(1-\alpha)+\sqrt{\frac{n(n-1)}{2}}\frac{\mu^T\mu}{\sqrt{\mytr (\Sigma^2)}}\Big)+o(1);
+            F^*\bigg(-F^{*-1}(1-\alpha)+\sqrt{\frac{n(n-1)}{2}}\frac{\mu^T\mu}{\sqrt{\mytr (\Sigma^2)}}\bigg)+o(1);
         \end{aligned}
     \end{equation}
 \item
     if $n^{-1}\mytr(\Sigma^2)=o(\mu^T \Sigma \mu )$,
             \begin{equation}\label{oPower2}
             \myE \phi(X_1,\ldots,X_n)=
-            \Phi(\frac{\sqrt{n}\mu^T\mu}{2\sqrt{\mu^T \Sigma \mu}})+o(1).
+            \Phi\Big(\frac{\sqrt{n}\mu^T\mu}{2\sqrt{\mu^T \Sigma \mu}}\Big)+o(1).
     \end{equation}
 
     \end{enumerate}
@@ -528,11 +546,6 @@ if $\mu^T \Sigma \mu= o(n^{-1}\mytr(\Sigma^2)$,
     %\end{equation*}
 %\end{remark}
 
-From (i) of Theorem~\ref{theoremPower} we can see that under \eqref{chenC1},~\eqref{chenC2} and~\eqref{spikedC}, the Type I error rate of the randomization test tends to the nominal level.
-Note that this result doesn't assume that the distribution of $X_1$ is symmetric under null hypothesis.
-This implies that our test procedure is robust when the symmetry assumption is break down.
-This property is not held by all randomization tests.
-See, for example,~\cite{Romano1990On}.
 
 
 
@@ -565,24 +578,16 @@ See, for example,~\cite{Romano1990On}.
 %\end{equation*}
 %which tends to $1$ when~\eqref{mu2} holds, and tends to $\infty$ when~\eqref{mu3} holds.
 %Hence randomization may loss some power.
-
-The asymptotic method of~\citet{Chen2010A} rejects the null hypothesis when
-\begin{equation*}
-\frac{\sum_{i\neq j}X_i^T X_j}{\sqrt{2n(n-1)\widehat{\mytr(\Sigma^2)}}}>\Phi^{-1}(1-\alpha),
-\end{equation*}
-where $\Phi(\cdot)$ is the distribution function of the standard normal distribution,
- \begin{equation*}
- \widehat{\mytr(\Sigma^2)}=\frac{1}{n(n-1)}\mytr\Big(\sum_{i\neq j}(X_i-\bar{X}_{(i,j)})X_i^T (X_j-\bar{X}_{(i,j)})X_j^T\Big)
- \end{equation*}
-is a ratio consistent estimator of $\mytr(\Sigma^2)$ and $\bar{X}_{(i,j)}$ is the sample mean after excluding $X_i$ and $X_j$.
-Since the critical value is determined by normal distribution, (i) of Theorem~\ref{prop:spiked1} implies the asymptotic method can not be applied if $\Sigma$ has a few spiked eigenvalues.
-Therefore, compared with the asymptotic meothod, the randomization method has a wider application scope.
+The condition $\mu^T \Sigma \mu= o\big(n^{-1}\mytr(\Sigma^2)\big)$ can be viewed as a high-dimnsional version of the local alternative hypothesis, and its opposite, $n^{-1}\mytr(\Sigma^2)= o\big(\mu^T \Sigma \mu\big)$, can be viewed as a version of fixed alternatives. See~\cite{Chen2010A}.
+Hence (i) and (ii) of Theorem~\ref{theoremPower} give the asymptotic power under the local and fixed alternatives, respectively.
+Compared Theorem~\ref{theoremPower} with the results given by~\cite{Chen2010A}, it can be seen that under the condition~\eqref{chenC3}, the proposed randomization test has the same asymptotic power as the asymptotic method.
+In summary, our theoretical results show that the proposed test has a wider application scope while still has good power behavior compared with the asymptotic method.
 
 
 \section{Simulation Studies}
 
-In this section, we report the simulation performance of the randomization test in various settings.
-For comparison purposes, we also carried out simulations for the bootstrap method and the asymptotic method of~\citet{Chen2010A}.
+In this section, we report the simulation performance of the proposed randomization method (RM) in various settings.
+For comparison purposes, we also carried out simulations for the bootstrap method (BM) and the asymptotic method (AM) of~\citet{Chen2010A}.
 Throughout the simulation, the randomization method and the bootstrap method are calculated by $1000$ resamplings.
 %$$
  %\widehat{\mytr(\Sigma^2)}=\frac{1}{n(n-1)}\sum_{i\neq j}(\frac{1}{n-1}\|X_i\|^2+\frac{n-1}{n-2}X_i^T X_j-\frac{n}{n-2}X_i^T \bar{X})(\frac{n-1}{n-2}X_i X_j^T +\frac{1}{n-2}\|X_j\|^2-\frac{n}{n-2}X_i^T \bar{X})
@@ -610,31 +615,38 @@ The data is generated by model
 $i=1,\ldots, n$, $j=1,\ldots, p$,
 where $a_{jk}=0$ except that $a_{j1}=a_j$ for $j=1,\ldots,\frac{1}{3}p$, $a_{j2}=a_j$ for $\frac{1}{3}p+1,\ldots,\frac{2}{3}p$ and $a_{j3}=a_j$ for $\frac{2}{3}p+1,\ldots,p$.
 As in~\citet{fan2007to}, we consider two configurations of factor loadings. In  case I we set $a_j=0.25$ and $b_j=0.1$ for $j=1,\ldots, p$. In case II, $a_i$ and $b_i$ are generated independently from $U(0,0.4)$ and $U(0,0.2)$.
-We also consider the compound symmetry structure
+We also consider the compound symmetry structure:
 $$X_i\sim N(0,(1-c)I_p+c 1_{p}1_{p}^T),$$
 where $0<c<1$ and $1_{p}$ is the $p$ dimensional vector with all entries one.
-As shown by~\cite{KATAYAMA2013410}, this structure violates~\eqref{chenC3}.
+As shown by~\cite{KATAYAMA2013410}, this structure violates~\eqref{chenC3}. 
 
 To control the significant level, the null distribution of a $p$-value should be close to $U(0,1)$, the uniform distribution on $(0,1)$.
 We simulate the $p$-value of the randomization method $\tilde{p}(X_1,\ldots,X_n)$, the $p$-value of the asymptotic method
 \begin{equation*}
-p_{CQ}(X_1,\ldots,X_n)=1-\Phi\left(\frac{\sum_{i\neq j}X_i^T X_j}{\sqrt{2n(n-1)\widehat{\mytr(\Sigma^2)}}}\right),
+    p_{CQ}(X_1,\ldots,X_n)=1-\Phi\Bigg(\frac{\sum_{j<i}X_i^T X_j}{\sqrt{\frac{n(n-1)}{2}\widehat{\mytr(\Sigma^2)}}}\Bigg),
 \end{equation*}
 and the bootstrap $p$-value.
-Figure~\ref{figure:ECDF} shows the empirical distribution function (ECDF) of $p$-values.
-It can be seen that the $p$-values of the randomization test method are uniform distributed in all cases.
-{\color{red}
-For asymptotic method, the uniformity of $p$-values depends on model.
-Under the moving average model, the empirical distribution of $p_{CQ}$ is close to uniform distribution for $k=3$ but is far away from uniform distribution for $k=500$.
-In factor model, the empirical distribution of $p_{CQ}$ slightly deviates from uniform distribution.
-}
+Figures~\ref{figure:ECDF} and~\ref{figure:ECDF2} show the empirical distribution function (ECDF) of three $p$-values.
+It can be seen that the $p$-values of RM are uniformly distributed in all cases.
+In contrast, the uniformity of $p$-values of AM and BM depends on the innovation structure.
+The $p$-value of AM is not uniformly distributed when variables are strongly correlated.
+This is not surprising since the strongly correlated variables often produce a strongly spiked covariance matrix which exceeds the application scope of AM.
+In comparison, the $p$-value of BM is not uniformly distributed when variables are weakly correlated.
+
+%Under the moving average model, the empirical distribution of $p_{CQ}$ is close to uniform distribution for $k=3$ but is far away from uniform distribution for $k=500$.
+%In factor model, the empirical distribution of $p_{CQ}$ slightly deviates from uniform distribution.
 
 \begin{figure*}[htbp]
     \centering
     \includegraphics[ width=\textwidth]{Fig1}
-    \caption{The ECDF of $2000$ independent $p$-values for the asymptotic method (AM), the bootstrap method (BM) and the randomization method (RM).  $p=600$, $n=100$.}\label{figure:ECDF}
+    \caption{The ECDF of $2000$ independent $p$-values of AM, BM and RM.   $n=100$, $p=600$.}\label{figure:ECDF}
 \end{figure*}
 
+\begin{figure*}[htbp]
+    \centering
+    \includegraphics[ width=\textwidth]{Fig2}
+    \caption{The ECDF of $2000$ independent $p$-values of AM, BM and RM.   $n=100$, $p=600$.}\label{figure:ECDF2}
+\end{figure*}
 %In Theorem~\ref{shaziCLT}, we showed that the randomization distribution tends to a standard normal distribution under certain conditions.
 %In Figure~\ref{figure:histogram}, we plot the histograms of the randomization distribution under null hypothesis.
 %For comparison, we also plot the standard normal density.
@@ -659,36 +671,33 @@ In factor model, the empirical distribution of $p_{CQ}$ slightly deviates from u
 
 
 
-Now we simulate the empirical power and size of the randomization test and the asymptotic method.
-Let 
+Now we simulate the empirical size and power of AM, BM and RM.
+It can be seen from (i) of Theorem~\ref{theoremPower} that the local asymptotic power of RM is an increasing function of the following signal to noise ratio (SNR):
 \begin{equation*}
-    \mathrm{SNR}=\frac{\sqrt{n(n-1)}\mu^T \mu}{\sqrt{2\mytr \Sigma^2}}
+    \mathrm{SNR}=\sqrt{\frac{n(n-1)}{2}}
+    \frac{\mu^T \mu}{\sqrt{\mytr (\Sigma^2)}}.
 \end{equation*}
-be the signal to noise ratio (SNR).
 %The theoretic asymptotic power is an increasing function of SNR\@.
 We scale $\mu$ to reach different levels of SNR\@.
-Our simulations consider two mean structure: dense mean and sparse mean.
+Our simulations consider two mean structures: dense mean and sparse mean.
 In the dense mean setting,  we independently generate each coordinate of $\mu$ from $U(2,3)$ and then scale $\mu$ to reach a given SNR\@.
 In the sparse mean setting, we randomly select $5\%$ of $\mu$'s $p$ coordinates to be non-zero.
 Each non-zero coordinate is again independently generated from $U(2,3)$ and then scaled to reach a given SNR\@.
-The empirical power and size are computed based on $2000$ simulations.
+The empirical size and power are computed based on $2000$ simulations.
 The nominal level $\alpha$ is $0.05$.
-
-Table~\ref{table1} and Table~\ref{table2} list the empirical power and size for the moving average model.
-It's not surprising that the randomization test can  control the Type I error rate well in normal case.
-The results also show that the randomization method can control the Type I error rate well in gamma case even if gamma distribution is not symmetric under null.
-It justifies the robustness of the randomization method.
-{\color{red}
-On the other hand, the asymptotic method has small size when the correlations between variables are weak and has inflated size when the correlations are strong.
-}
-The empirical power of the randomization method is similar to the asymptotic method.
-%They are both similar to theoretical asymptotic power~\eqref{oPower} when $k$ is small and are both lower than theoretical asymptotic power when $k$ is large.
-Table~\ref{table3} lists the empirical power and size under factor model.
-Although the distribution is not symmetric, the results show that the level of the randomization method is close to nominal level while the asymptotic method suffers from level inflation.
-In summary, the simulation results show that the randomization method is robust and has similar power with asymptotic method.
+Tables~\ref{table1}-\ref{table4} list the empirical size and power for AM, BM and RM.
+%It's not surprising that RM can control the Type I error rate well when $X_1$ is symmetric.
+The results show that RM can control the Type I error rate well even when the distribution of $X_1$ is not symmetric under the null hypothesis.
+This justifies the robustness of the randomization method.
+Also, RM has reasonable power behavior.
+In contrast, the size of AM is inflated when the correlations between variables are strong and the size of BM is too conservative when the correlations between variables are weak.
+%Table~\ref{table3} lists the empirical size and power under factor model.
+%Although the distribution is not symmetric, the results show that the level of the randomization method is close to nominal level while the asymptotic method suffers from level inflation.
+%In summary, the simulation results show that the randomization method is robust and has similar power with asymptotic method.
 
 \begin{table*}[ht]
-    \caption{Empirical power and size of moving average model with normal innovation. TP represents the theoretical asymptotic power, RM represents the randomization method, AM represents the asymptotic method.}
+    \caption{Empirical size and power of moving average model with normal innovation.
+    }
 \label{table1}
 \footnotesize
     \centering
@@ -707,8 +716,16 @@ In summary, the simulation results show that the randomization method is robust 
 &2 & 0.800 & 0.819 & 0.398 & 0.378 & 0.438 & 0.385 & 0.863 & 0.880 & 0.400 & 0.378 & 0.542 & 0.376 \\ 
 &2.5 & 0.906 & 0.915 & 0.612 & 0.470 & 0.530 & 0.476 & 0.961 & 0.966 & 0.642 & 0.644 & 0.826 & 0.640 \\ 
 &3 & 0.966 & 0.970 & 0.792 & 0.554 & 0.622 & 0.562 & 0.992 & 0.994 & 0.846 & 0.867 & 0.975 & 0.858 \\ 
+        \midrule
+$(200,1002)$&0 (size) & 0.046 & 0.052 & 0.003 & 0.054 & 0.076 & 0.056 & 0.042 & 0.048 & 0.002 & 0.044 & 0.064 & 0.044 \\
+&0.5 & 0.184 & 0.200 & 0.028 & 0.126 & 0.154 & 0.129 & 0.174 & 0.186 & 0.024 & 0.090 & 0.120 & 0.088 \\
+&1 & 0.386 & 0.404 & 0.102 & 0.226 & 0.268 & 0.230 & 0.385 & 0.400 & 0.074 & 0.151 & 0.204 & 0.152 \\
+&1.5 & 0.656 & 0.672 & 0.271 & 0.308 & 0.366 & 0.302 & 0.669 & 0.688 & 0.240 & 0.240 & 0.316 & 0.236 \\
+&2 & 0.824 & 0.836 & 0.484 & 0.406 & 0.472 & 0.406 & 0.860 & 0.874 & 0.482 & 0.395 & 0.536 & 0.393 \\
+&2.5 & 0.934 & 0.939 & 0.693 & 0.492 & 0.552 & 0.494 & 0.965 & 0.971 & 0.746 & 0.642 & 0.810 & 0.642 \\
+&3 & 0.972 & 0.974 & 0.846 & 0.574 & 0.634 & 0.580 & 0.996 & 0.996 & 0.895 & 0.882 & 0.984 & 0.872 \\
+
 % new simulations
-        %\midrule
         %200&1000&0.0 (size) & 0.050 & 0.0505 & 0.0550 & 0.0505 & 0.0695 & 0.0520 & 0.0575 & 0.0510 & 0.0700 \\ 
           %&&0.5 & 0.126 & 0.1885 & 0.2025 & 0.1410 & 0.1680 & 0.1745 & 0.1865 & 0.0855 & 0.1165 \\ 
             %&&1.0 & 0.260 & 0.3875 & 0.4050 & 0.2090 & 0.2620 & 0.4010 & 0.4160 & 0.1485 & 0.2075 \\ 
@@ -721,11 +738,11 @@ In summary, the simulation results show that the randomization method is robust 
 \end{table*}
 
 \begin{table*}[ht]
-    \caption{Empirical power and size of moving average model with Gamma innovation.   TP is the theoretical asymptotic power, RM represents the randomization method, AM represents the asymptotic method.}
+    \caption{Empirical size and power of moving average model with Gamma innovation. }
 \label{table2}
 \footnotesize
     \centering
-    \begin{tabular}{cccccccccccccc}
+    \begin{tabular}{clcccccccccccc}
           \toprule
           & & \multicolumn{6}{c}{Dense means} &\multicolumn{6}{c}{Sparse means}\\
           \cmidrule(r){3-8}\cmidrule(r){9-14}
@@ -733,9 +750,25 @@ In summary, the simulation results show that the randomization method is robust 
           \cmidrule(r){3-5}  \cmidrule(r){6-8} \cmidrule(r){9-11}  \cmidrule(r){12-14}
            $(n,p)$&SNR & RM & AM & BM & RM & AM & BM & RM & AM & BM & RM & AM & BM  \\ 
             \midrule
-        $(100,600)$ &0.0 (size) & 0.05 & 0.044 & 0.051 & 0.053 & 0.074 & 0.050 & 0.058 & 0.051 & 0.071 \\ 
+$(100,600)$ &0 (size) & 0.050 & 0.056 & 0.002 & 0.048 & 0.070 & 0.050 & 0.046 & 0.049 & 0.002 & 0.048 & 0.068 & 0.052 \\ 
+&0.5 & 0.181 & 0.194 & 0.016 & 0.136 & 0.183 & 0.141 & 0.172 & 0.186 & 0.013 & 0.080 & 0.112 & 0.082 \\ 
+&1 & 0.382 & 0.408 & 0.091 & 0.218 & 0.268 & 0.222 & 0.397 & 0.420 & 0.066 & 0.148 & 0.210 & 0.149 \\ 
+&1.5 & 0.628 & 0.648 & 0.198 & 0.294 & 0.352 & 0.300 & 0.662 & 0.680 & 0.194 & 0.247 & 0.338 & 0.248 \\ 
+&2 & 0.808 & 0.821 & 0.418 & 0.406 & 0.463 & 0.411 & 0.858 & 0.872 & 0.397 & 0.368 & 0.512 & 0.372 \\ 
+&2.5 & 0.910 & 0.921 & 0.607 & 0.479 & 0.552 & 0.490 & 0.966 & 0.970 & 0.668 & 0.624 & 0.823 & 0.616 \\ 
+&3 & 0.970 & 0.976 & 0.776 & 0.548 & 0.604 & 0.551 & 0.994 & 0.996 & 0.849 & 0.882 & 0.974 & 0.878 \\ 
+        \midrule
+$(200,1002)$ &0 (size) & 0.042 & 0.046 & 0.002 & 0.049 & 0.074 & 0.050 & 0.054 & 0.058 & 0.004 & 0.048 & 0.068 & 0.050 \\
+&0.5 & 0.181 & 0.194 & 0.024 & 0.127 & 0.162 & 0.128 & 0.166 & 0.183 & 0.018 & 0.089 & 0.128 & 0.086 \\
+&1 & 0.388 & 0.407 & 0.098 & 0.222 & 0.270 & 0.222 & 0.384 & 0.402 & 0.082 & 0.158 & 0.217 & 0.158 \\
+&1.5 & 0.634 & 0.649 & 0.258 & 0.327 & 0.378 & 0.329 & 0.668 & 0.692 & 0.240 & 0.227 & 0.318 & 0.234 \\
+&2 & 0.828 & 0.840 & 0.485 & 0.412 & 0.460 & 0.411 & 0.851 & 0.864 & 0.468 & 0.392 & 0.519 & 0.392 \\
+&2.5 & 0.938 & 0.942 & 0.691 & 0.512 & 0.564 & 0.515 & 0.960 & 0.967 & 0.714 & 0.620 & 0.792 & 0.616 \\
+&3 & 0.983 & 0.984 & 0.852 & 0.591 & 0.658 & 0.598 & 0.992 & 0.994 & 0.890 & 0.874 & 0.980 & 0.874 \\
+
+
+
 % new simulations
-        %\midrule
         %200&1000&0.0 (size) & 0.050 & 0.0505 & 0.0550 & 0.0505 & 0.0695 & 0.0520 & 0.0575 & 0.0510 & 0.0700 \\ 
           %&&0.5 & 0.126 & 0.1885 & 0.2025 & 0.1410 & 0.1680 & 0.1745 & 0.1865 & 0.0855 & 0.1165 \\ 
             %&&1.0 & 0.260 & 0.3875 & 0.4050 & 0.2090 & 0.2620 & 0.4010 & 0.4160 & 0.1485 & 0.2075 \\ 
@@ -748,7 +781,7 @@ In summary, the simulation results show that the randomization method is robust 
 \end{table*}
 
 \begin{table*}[ht]
-    \caption{Empirical power and size of factor model innovation.  TP is the theoretical asymptotic power, RM represents the randomization method, AM represents the asymptotic method.}
+    \caption{Empirical size and power of factor model innovation.}
 \label{table3}
 \footnotesize
     \centering
@@ -779,7 +812,7 @@ In summary, the simulation results show that the randomization method is robust 
     \end{tabular}
 \end{table*}
 \begin{table*}[ht]
-    \caption{Empirical power and size of compound symmetry structure innovation.  TP is the theoretical asymptotic power, RM represents the randomization method, AM represents the asymptotic method.}
+    \caption{Empirical size and power of compound symmetry structure innovation.}
 \label{table4}
 \footnotesize
     \centering
@@ -799,14 +832,13 @@ In summary, the simulation results show that the randomization method is robust 
         &2.5 & 0.454 & 0.526 & 0.459 & 0.454 & 0.520 & 0.462 & 0.621 & 0.840 & 0.618 & 0.600 & 0.832 & 0.592 \\ 
         &3 & 0.522 & 0.590 & 0.525 & 0.525 & 0.590 & 0.528 & 0.856 & 0.980 & 0.849 & 0.872 & 0.978 & 0.862 \\ 
         \midrule
-% new simulations
-        %200&1000&0.0 (size) & 0.050 & 0.0505 & 0.0550 & 0.0505 & 0.0695 & 0.0520 & 0.0575 & 0.0510 & 0.0700 \\ 
-          %&&0.5 & 0.126 & 0.1885 & 0.2025 & 0.1410 & 0.1680 & 0.1745 & 0.1865 & 0.0855 & 0.1165 \\ 
-            %&&1.0 & 0.260 & 0.3875 & 0.4050 & 0.2090 & 0.2620 & 0.4010 & 0.4160 & 0.1485 & 0.2075 \\ 
-              %&&1.5 & 0.442 & 0.6425 & 0.6600 & 0.3180 & 0.3715 & 0.6725 & 0.6895 & 0.2355 & 0.3290 \\ 
-                %&&2.0 & 0.639 & 0.8245 & 0.8355 & 0.4210 & 0.4760 & 0.8710 & 0.8845 & 0.3855 & 0.5310 \\ 
-                  %&&2.5 & 0.804 & 0.9210 & 0.9265 & 0.4885 & 0.5475 & 0.9690 & 0.9710 & 0.6290 & 0.8050 \\ 
-                    %&&3.0 & 0.912 & 0.9820 & 0.9830 & 0.6045 & 0.6530 & 0.9940 & 0.9960 & 0.8670 & 0.9780 \\ 
+        $(200,1002)$ & 0 (size) & 0.050 & 0.071 & 0.050 & 0.064 & 0.082 & 0.064 & 0.056 & 0.074 & 0.058 & 0.051 & 0.069 & 0.050 \\
+        &0.5 & 0.126 & 0.166 & 0.130 & 0.130 & 0.162 & 0.130 & 0.080 & 0.106 & 0.082 & 0.074 & 0.112 & 0.077 \\
+        &1 & 0.214 & 0.257 & 0.214 & 0.221 & 0.268 & 0.220 & 0.136 & 0.194 & 0.136 & 0.128 & 0.175 & 0.133 \\
+        &1.5 & 0.292 & 0.344 & 0.294 & 0.298 & 0.359 & 0.299 & 0.216 & 0.300 & 0.214 & 0.204 & 0.275 & 0.204 \\
+        &2 & 0.384 & 0.450 & 0.392 & 0.371 & 0.436 & 0.377 & 0.304 & 0.466 & 0.310 & 0.330 & 0.502 & 0.333 \\
+        &2.5 & 0.478 & 0.545 & 0.484 & 0.455 & 0.516 & 0.464 & 0.582 & 0.862 & 0.586 & 0.576 & 0.853 & 0.574 \\
+        &3 & 0.538 & 0.591 & 0.533 & 0.511 & 0.572 & 0.509 & 0.870 & 0.992 & 0.876 & 0.887 & 0.994 & 0.894 \\
         \bottomrule
     \end{tabular}
 \end{table*}
@@ -847,13 +879,14 @@ In summary, the simulation results show that the randomization method is robust 
 In this paper, we considered a randomization test for mean vector in high dimensional setting.
 A fast implementation was provided.
 We also derived some asymptotic properties of the test procedure.
-We showed that even if the symmetric assumption is violated, the randomization test also has correct level asymptotically.
-Hence the test procedure is robust.
- In fact, the algorithm and the proof method can also be applied to other quadratic based statistics.
+%We showed that even if the symmetric assumption is violated, the randomization test also has correct level asymptotically.
+%Hence the test procedure is robust.
+Our theoretical results and simulations show that the porposed test is very competitive compared with the asymptotic method and the bootstrap method.
+ In fact, the algorithm and the proof method can also be applied to other quadratic form statistics.
 %It is interesting to investigate the robustness of randomization test in finite sample case.
 
 In classical statistics, randomization test procedures are time consuming.
-Nevertheless, the computational complexity of our randomization test procedure is not affected by the data dimension $p$. 
+Nevertheless, the computational complexity of our randomization test procedure (which is $O(n^2 B)$) is not affected by the data dimension $p$. 
 Hence we have reason to believe that randomization tests may be generally suitable for high dimensional problems.
 
 
@@ -1237,6 +1270,16 @@ We state in this section some technical results that are used in the proofs of t
 
 
 \section{Proof of Theorem~\ref{ourTheorem}}
+
+To obtain the asymptotic property of $q^*_{\alpha}$, we need to investigate the asymptotic behavior of the distribution~\eqref{randomizationD}.
+Note that the distribution~\eqref{randomizationD} itself is random.  To study its asymptotic behavior, we need to define in what sense the convergence is. Let $F$ and $G$ be two distribution functions on $\mathbb{R}$, Levy metric $\rho$ of $F$ and $G$ is defined as
+    \begin{equation*}
+    \begin{aligned}
+        \rho(F,G)
+        =\inf\{\epsilon:F(x-\epsilon)-\epsilon\leq G(x)\leq F(x+\epsilon)+\epsilon  \textrm{ for all } x\}.
+    \end{aligned}
+    \end{equation*}
+It is well known that $\rho(F_n,F)\to 0$ if and only if  $F_n\xrightarrow{\mathcal{L}}F$.
 
 \paragraph{A central limit theorem for quadratic form of Rademacher variables}
 The proof of the Theorem~\ref{shaziCLT} is based on a central limit theorem of the quadratic form of Rademacher variables. 
