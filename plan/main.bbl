@@ -41,10 +41,6 @@
 \newblock \bibinfo{title}{Tests for high-dimensional covariance matrices}.
 \newblock \bibinfo{journal}{Journal of the American Statistical Association}
   \bibinfo{volume}{105}, \bibinfo{pages}{810--819}.
-\newblock \URLprefix \url{https://doi.org/10.1198/jasa.2010.tm09560},
-  \DOIprefix\doi{10.1198/jasa.2010.tm09560},
-  \href{http://arxiv.org/abs/https://doi.org/10.1198/jasa.2010.tm09560}{\tt
-  arXiv:https://doi.org/10.1198/jasa.2010.tm09560}.
 %Type = Article
 \bibitem[{Chung and Romano(2016)}]{Chung2016Multivariate}
 \bibinfo{author}{Chung, E.}, \bibinfo{author}{Romano, J.P.},
@@ -80,9 +76,6 @@
   the mean vector with fewer observations than the dimension}.
 \newblock \bibinfo{journal}{Journal of Multivariate Analysis}
   \bibinfo{volume}{116}, \bibinfo{pages}{410 -- 421}.
-\newblock \URLprefix
-  \url{http://www.sciencedirect.com/science/article/pii/S0047259X13000092},
-  \DOIprefix\doi{https://doi.org/10.1016/j.jmva.2013.01.008}.
 %Type = Article
 \bibitem[{Ko et~al.(2016)Ko, Kim and Sun}]{Ko2016}
 \bibinfo{author}{Ko, H.}, \bibinfo{author}{Kim, K.}, \bibinfo{author}{Sun, H.},
@@ -113,9 +106,6 @@
   dimensional factor structure}.
 \newblock \bibinfo{journal}{Journal of Multivariate Analysis}
   \bibinfo{volume}{140}, \bibinfo{pages}{162 -- 170}.
-\newblock \URLprefix
-  \url{http://www.sciencedirect.com/science/article/pii/S0047259X15001207},
-  \DOIprefix\doi{https://doi.org/10.1016/j.jmva.2015.05.005}.
 %Type = Book
 \bibitem[{Pollard(1984)}]{pollard1984convergence}
 \bibinfo{author}{Pollard, D.}, \bibinfo{year}{1984}.

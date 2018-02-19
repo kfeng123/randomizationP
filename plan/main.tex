@@ -72,7 +72,7 @@
     We investigate the asymptotic behavior of the proposed randomization test in high dimensional setting.
     It turns out that even if the symmetry assumption is violated, the proposed randomization test still has correct level asymptotically.
     The asymptotic power function is also given.
-    A simulation study is carried out to verify our theoretical results.
+Our theoretical and simulation results show that the proposed test has a wide application scope while still has good power behavior.
     
 
 \end{abstract}
@@ -497,7 +497,7 @@ Denote by $F^*(\cdot)$ the distribution function of
             q_{\alpha}^*\xrightarrow{P}F^{*-1}(1-\alpha)
             $;
 \item
-    if $\sqrt{\mytr(\Sigma^2)}=o\big(\mu^T \mu\big)$, $q_{\alpha}^*$ converges in probability to the $1-\alpha$ quantile of  $(\chi^2_1-1)/\sqrt{2}$, the centralized chi-squared distribution with degree of freedom $1$.
+    if $\sqrt{\mytr(\Sigma^2)}=o\big(\mu^T \mu\big)$, $\big(\sqrt{\mytr(\Sigma^2)}/(\mu^T \mu)\big)q_{\alpha}^*$ converges in probability to the $1-\alpha$ quantile of  $(\chi^2_1-1)/\sqrt{2}$, the centralized chi-squared distribution with degree of freedom $1$.
     \end{enumerate}
 \end{theorem}
 From (i) of Theorem~\ref{ourTheorem} we can see that under the null hypothesis, the randomization can produce the correct level asymptotically.
@@ -516,18 +516,18 @@ The asymptotic power function of the randomization test can be derived using The
     \begin{enumerate}[(i)]
         \item
             if $\mu^T \Sigma \mu= o\big(n^{-1}\mytr(\Sigma^2)\big)$,
-    \begin{equation}\label{oPower}
+    \begin{equation*}\label{oPower}
         \begin{aligned}
             \myE \phi(X_1,\ldots,X_n)=
             F^*\bigg(-F^{*-1}(1-\alpha)+\sqrt{\frac{n(n-1)}{2}}\frac{\mu^T\mu}{\sqrt{\mytr (\Sigma^2)}}\bigg)+o(1);
         \end{aligned}
-    \end{equation}
+    \end{equation*}
 \item
     if $n^{-1}\mytr(\Sigma^2)=o(\mu^T \Sigma \mu )$,
-            \begin{equation}\label{oPower2}
+    \begin{equation*}\label{oPower2}
             \myE \phi(X_1,\ldots,X_n)=
             \Phi\Big(\frac{\sqrt{n}\mu^T\mu}{2\sqrt{\mu^T \Sigma \mu}}\Big)+o(1).
-    \end{equation}
+    \end{equation*}
 
     \end{enumerate}
 \end{theorem}
@@ -904,7 +904,7 @@ The proof method used in this paper can not be applied to two sample permutation
 
 \appendix
 \appendixpage
-    
+    The following notations are used throughout the proofs.
     Denote by $\Gamma^T \Gamma= Q\Lambda Q^T$ the spectral decomposition of $\Gamma^T \Gamma$, where  $Q$ is a $m\times p$ column orthogonal matrix and $\Lambda=\mydiag(\lambda_1(\Sigma),\ldots,\lambda_p(\Sigma))$.
     Let $\Lambda_{1}=\mydiag(\lambda_1(\Sigma),\ldots,\lambda_r(\Sigma))$, $\Lambda_{2}=\mydiag(\lambda_{r+1}(\Sigma),\ldots,\lambda_p(\Sigma))$.
     Write $Q=(Q_{1},Q_{2})$ where $Q_{1}$ and $Q_{2}$ are the first $r$ columns and last $p-r$ columns of $Q$ respectively.
@@ -916,18 +916,21 @@ $$
     Y^*_i=n^{-1/2} Q_1^T Z_i.
 $$
 
-\section{Preparatory technical results}
-We state in this section some technical results that are used in the proofs of the main results.
-
-\begin{lemma}\label{lemmaUniformSimple}
-    Suppose $\{\eta_n\}_{n=1}^{\infty}$ is a sequence of random variables, weakly converges to $\eta$, a random variable with continuous distribution function.
-    Then we have
-    \begin{equation*}
-        \sup_{x\in\mathbb{R}}|\Pr(\eta_n\leq x)-\Pr(\eta\leq x)|\to 0.
-    \end{equation*}
-\end{lemma}
+%\section{Preparatory technical results}
+%We state in this section some technical results that are used in the proofs of the main results.
 
 
+
+
+
+
+
+
+
+
+
+
+\section{Proof of Theorem~\ref{prop:spiked1}}
 \begin{lemma}\label{lemma:zhong1}
     Under the condition~\eqref{chenC2}, we have
     \begin{enumerate}[(i)]
@@ -950,7 +953,7 @@ We state in this section some technical results that are used in the proofs of t
             \end{equation*}
     \end{enumerate}
 \end{lemma}
-\begin{proof}
+\begin{proof}[\textbf{Proof of Lemma~\ref{lemma:zhong1}}]
     The inequality~\eqref{zhong1} follows from (i) of \citet[Proposition A.1]{songxi2010}.
     The inequality~\eqref{zhong2} is obtained by using~\eqref{zhong1} twice:
     $$
@@ -967,18 +970,7 @@ We state in this section some technical results that are used in the proofs of t
     $$
 
 \end{proof}
-
-
-
-
-
-
-
-
-
-
-\section{Proof of Theorem~\ref{prop:spiked1}}
-
+The following proposition gives the asymptotic distribution of $T(X_1,\ldots,X_n)$ under the null hypothesis.
 \begin{proposition}\label{prop:spiked2}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{spikedC},
     we have
@@ -990,7 +982,7 @@ We state in this section some technical results that are used in the proofs of t
     where $\xi_1,\ldots \xi_{r+1}$ are iid standard normal random variables.
 \end{proposition}
 
-\begin{proof}
+\begin{proof}[\textbf{Proof of Proposition~\ref{prop:spiked2}}]
     Note that
     $$
     \begin{aligned}
@@ -1014,7 +1006,7 @@ We state in this section some technical results that are used in the proofs of t
         .
     \end{aligned}
     $$
-    Next we show that 
+    To deal with the asymptotic distribution of the first two terms, we would like to show that
     \begin{equation}\label{eq:toProveCLT}
         \big(
         (\sum_{i=1}^n Y_i^*)^T,
@@ -1067,7 +1059,7 @@ We state in this section some technical results that are used in the proofs of t
          .
          \label{eq:shiwu}
      \end{align}
-     The first term satisfies
+     The first term of~\eqref{eq:shiwu} satisfies
      $$
      \begin{aligned}
 \myE\sum_{j=1}^{n} (n-j) Z_{j}^T Q_2 \Lambda_2^2 Q_2^T  Z_{j}=
@@ -1116,9 +1108,10 @@ We state in this section some technical results that are used in the proofs of t
          \leq  n^4 \lambda_{r+1}^2(\Sigma)\mytr(\Lambda_2^2)
          =
          o\Big(\big(\frac{n(n-1)}{2}\mytr (\Sigma^2)\big)^2\Big)
-         .
+         ,
      \end{aligned}
      $$
+     where the last equality follows from the assumption $\lambda_{r+1}(\Sigma)/\sqrt{\mytr (\Sigma^2)}\to 0$.
      Hence
      \begin{equation}\label{eq:shiwu3}
      \begin{aligned}
@@ -1148,7 +1141,7 @@ We state in this section some technical results that are used in the proofs of t
          \myE\big( Z_i^T Q_2 \Lambda_2 Q_2^T \sum_{j:j<i}Z_j\big)^4.
      \end{aligned}
      $$
-    Applying (i) of Lemma~\ref{lemma:zhong1} yields
+    Apply (i) of Lemma~\ref{lemma:zhong1}, we have
     $$
 \myE \big(t^T Q_1^T Z_i\big)^4\leq
          \myE \big( Z_i^T Q_1 t t^T Q_1^T Z_i\big)^2
@@ -1174,6 +1167,9 @@ We state in this section some technical results that are used in the proofs of t
         \\
         = &
         (3+\Delta)\myE  \Big(\sum_{j:j<i}Z_j^T Q_2 \Lambda_2^2 Q_2^T Z_j \Big)^2+4(3+\Delta)\myE \Big(\sum_{j,k:k<j<i}Z_j^T Q_2 \Lambda_2^2 Q_2^T Z_k\Big)^2
+        \\
+        \leq &
+        (3+\Delta) (i-1)^2 \myE (Z_1^T Q_2 \Lambda_2^2 Q_2^T Z_1)^2 +4(3+\Delta)\frac{(i-1)(i-2)}{2} \myE (Z_2^T Q_2 \Lambda_2^2 Q_2^T Z_1)^2
         \\
         \leq &
         (3+\Delta)^2 (i-1)^2 \mytr^2 (\Lambda_2^2)  +2(3+\Delta)(i-1)(i-2)\mytr(\Lambda_2^4)
@@ -1230,7 +1226,7 @@ We state in this section some technical results that are used in the proofs of t
         \big(2\frac{n-1}{n}\mytr(\Sigma^2)\big)^{-1/2}
         \sum_{i=1}^n Y_i^{*T}\Lambda_1 Y_i^*
             \Big)
-            =\big(2\frac{n-1}{n}\mytr(\Sigma^2)\big)^{-1} \frac{(2+\Delta)\mytr(\Lambda_1^2)}{n}=o(1).
+            \leq \big(2\frac{n-1}{n}\mytr(\Sigma^2)\big)^{-1} \frac{(2+\Delta)\mytr(\Lambda_1^2)}{n}=o(1).
         \end{aligned}
         $$
         This completes the proof.
@@ -1271,6 +1267,8 @@ We state in this section some technical results that are used in the proofs of t
 
 \section{Proof of Theorem~\ref{ourTheorem}}
 
+
+
 To obtain the asymptotic property of $q^*_{\alpha}$, we need to investigate the asymptotic behavior of the distribution~\eqref{randomizationD}.
 Note that the distribution~\eqref{randomizationD} itself is random.  To study its asymptotic behavior, we need to define in what sense the convergence is. Let $F$ and $G$ be two distribution functions on $\mathbb{R}$, Levy metric $\rho$ of $F$ and $G$ is defined as
     \begin{equation*}
@@ -1282,8 +1280,8 @@ Note that the distribution~\eqref{randomizationD} itself is random.  To study it
 It is well known that $\rho(F_n,F)\to 0$ if and only if  $F_n\xrightarrow{\mathcal{L}}F$.
 
 \paragraph{A central limit theorem for quadratic form of Rademacher variables}
-The proof of the Theorem~\ref{shaziCLT} is based on a central limit theorem of the quadratic form of Rademacher variables. 
-Such a central limit theorem can be also used to study the asymptotic behavior of many other randomization test.
+The proof of Theorem~\ref{ourTheorem} is based on a central limit theorem of the quadratic form of Rademacher variables. 
+Such a central limit theorem can be also used to study the asymptotic behavior of many other randomization tests.
  Let $\epsilon_1,\ldots,\epsilon_n$ be independent Rademacher  variables. 
  Consider the quadratic form $W_n=\sum_{1\leq j<i\leq n} a_{ij}\epsilon_i \epsilon_j+\sum_{i=1}^n b_i \epsilon_i$, where $\{a_{ij}\}_{1\leq j <i \leq n}$ and $\{b_i\}_{1\leq i\leq n}$ are nonrandom numbers.
  Here $\{\epsilon_i\}$, $\{a_{ij}\}$ and $\{b_{i}\}$ may depend on $n$, a parameter we suppress.
@@ -1308,21 +1306,21 @@ Such a central limit theorem can be also used to study the asymptotic behavior o
      \end{equation}
  \end{proposition}
 
- \begin{proof}
+ \begin{proof}[\textbf{Proof of Proposition~\ref{CLTprop}}]
      Note that we have the decomposition $W_n=\sum_{i=1}^n U_{in}$, where $U_{in} =\epsilon_i (\sum_{j:j<i} a_{ij}\epsilon_j+b_i )$, $i=1,\ldots,n$.
     Let $\mathcal{F}_{in}$ be the $\sigma$-field generated by $\epsilon_1,\ldots,\epsilon_i$, $i=1,\ldots, n$.
      Then $\{U_{in}\}_{i=1}^n$ is a martingale difference array with respect to $\{\mathcal{F}_{in}\}_{i=1}^n$. 
      By the martingale central limit theorem~\citep[Theorem 1 of Chapter VIII ]{pollard1984convergence}, the conclusion holds if the following two conditions are satisfied:
      \begin{equation}\label{MCLTcondition1}
-         \frac{\sum_{i=2}^n \myE(U_{in}^2 |\mathcal{F}_{i-1,n})}{\sum_{j<i} a_{ij}^2+\sum_{i=1}^n b_i^2}\xrightarrow{P} 1,
+         \frac{\sum_{i=1}^n \myE(U_{in}^2 |\mathcal{F}_{i-1,n})}{\sum_{j<i} a_{ij}^2+\sum_{i=1}^n b_i^2}\xrightarrow{P} 1,
      \end{equation}
      and
      \begin{equation}\label{MCLTcondition2}
-         \frac{\sum_{i=2}^n \myE\big(U_{in}^2\big\{U_{in}^2>\epsilon (\sum_{j<i} a_{ij}^2+\sum_{i=1}^n b_i^2)\big\}\big|\mathcal{F}_{i-1,n}\big)}{\sum_{ j<i} a_{ij}^2+\sum_{i=1}^n b_i^2}\xrightarrow{P} 0,
+         \frac{\sum_{i=1}^n \myE\big(U_{in}^2\big\{U_{in}^2>\epsilon (\sum_{j<i} a_{ij}^2+\sum_{i=1}^n b_i^2)\big\}\big|\mathcal{F}_{i-1,n}\big)}{\sum_{ j<i} a_{ij}^2+\sum_{i=1}^n b_i^2}\xrightarrow{P} 0,
      \end{equation}
      for every $\epsilon>0$.
 
-     \paragraph{Proof of~\eqref{MCLTcondition1}}
+     We first verify~\eqref{MCLTcondition1}.
 By direct calculation, we have
      \begin{equation*}
          \begin{aligned}
@@ -1351,7 +1349,8 @@ By direct calculation, we have
              o\big((\sum_{j<i} a_{ij}^2 +\sum_{i=1}^n b_i^2)^2\big)
      $$
      Hence~\eqref{MCLTcondition1} holds.
-     \paragraph{Proof of~\eqref{MCLTcondition2}}
+
+     Now we verify~\eqref{MCLTcondition2}.
      By Markov inequality, it's sufficient to prove
      \begin{equation}\label{temp1}
          \frac{\sum_{i=1}^n \myE\big(U_{in}^4\big|\mathcal{F}_{i-1,n}\big)}{{\big(\sum_{j<i} a_{ij}^2+\sum_{i=1}^n b_i^2\big)}^2}\xrightarrow{P} 0.
@@ -1412,7 +1411,7 @@ By direct calculation, we have
         &c^2 \sum_{j<i}Y_{ij}^2+\sum_{i=1}^n (t^T Y_i^*)^2=c^2(1-\sum_{i=1}^r \kappa_i^2)+\|t\|^2+o_P(1).\label{lemma2Rn}
     \end{align}
 \end{proposition}
-\begin{proof}
+\begin{proof}[\textbf{Proof of Proposition~\ref{proposition:jxz}}]
 To prove~\eqref{lemma2R1}, we only need to show that the left hand side of~\eqref{lemma2R1} converges to $0$ in mean.
     For the first three terms of~\eqref{lemma2R1}, we have
     \begin{equation*}
@@ -1438,7 +1437,7 @@ To prove~\eqref{lemma2R1}, we only need to show that the left hand side of~\eqre
         +\frac{n(n-1)}{2}\myE Y_{21}^4
         \\
         \leq &
-        \frac{(n-2)(n-3) \mytr(\Lambda_2^4)}{3n(n-1)\mytr^2(\Sigma^2)}
+        \frac{(n-2)(n-3) \lambda_{r+1}(\Sigma)\mytr(\Lambda_2^2)}{3n(n-1)\mytr^2(\Sigma^2)}
         +\Big(\frac{n(n-1)(n-2)}{3} +\frac{n(n-1)}{2}\Big)\myE Y_{21}^4
         \\
         \leq &
@@ -1448,7 +1447,7 @@ To prove~\eqref{lemma2R1}, we only need to show that the left hand side of~\eqre
         \to  0,
     \end{aligned}
     \end{equation*}
-    where the last inequality follows from (ii) of Lemma~\ref{lemma:zhong1}.
+    where the last inequality follows from the assumption $\lambda_{r+1}(\Sigma)/\sqrt{\mytr (\Sigma^2)}\to 0$ and (ii) of Lemma~\ref{lemma:zhong1}.
     As for the fourth term of~\eqref{lemma2R1}, we have
 $$
 \begin{aligned}
@@ -1471,7 +1470,7 @@ $$
 \end{aligned}
 $$
     where the last inequality follows from (i) of Lemma~\ref{lemma:zhong1}. 
-    The last term of~\eqref{lemma2R1} satifies 
+    Also by (i) of Lemma~\ref{lemma:zhong1}, the last term of~\eqref{lemma2R1} satisfies 
 $$
         \myE\sum_{i=1}^n (t^T Y_i^*)^4=n \myE (t^T Y_i^*)^4
 =\frac{1}{n} \myE (Z_1^T Q_1 t t^T Q_1^T Z_1)^2
@@ -1491,7 +1490,7 @@ To prove~\eqref{lemma2Rn}, we show that
 \end{align}
 To prove~\eqref{eq:lemma2:1}, note that
 $$
-    \myE \big(\sum_{j<i} Y_{ij}^2\big)= \frac{\mytr(\Lambda_2^2)}{\mytr(\Sigma^2)}=(1-\sum_{i=1}^r \kappa_i^2)+o(1).
+    \myE \sum_{j<i} Y_{ij}^2= \frac{\mytr(\Lambda_2^2)}{\mytr(\Sigma^2)}=(1-\sum_{i=1}^r \kappa_i^2)+o(1).
 $$
     Hence we only need to show $\myVar\big(\sum_{j<i} Y_{ij}^2)=o(1)$. 
     Write $\big(\sum_{j<i}Y_{ij}^2\big)^2=
@@ -1554,24 +1553,25 @@ This completes the proof.
 
 
 
+The following proposition gives the asymptotic behavior of~\eqref{randomizationD} under the null hypothesis.
 
 \begin{proposition}\label{nomuProp}
     Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{spikedC},
     we have
     $$
-        \rho\Big(
-        \mathcal{L}\Big(
+        \rho\Bigg(
+        \mathcal{L}\bigg(
     \frac{\sum_{j<i} Z_i^T \Gamma^T \Gamma Z_j \epsilon_i \epsilon_j}
     {\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
-        \Big|Z_1,\ldots,Z_n\Big)
+        \bigg|Z_1,\ldots,Z_n\bigg)
         ,
         \mathcal{L}\big(\frac{\sqrt{2}}{2}\sum_{i=1}^r \kappa_i (\xi_i^2-1) + (1-\sum_{i=1}^r \kappa_i^2)^{1/2}\xi_{r+1}\big)
-        \Big)
+        \Bigg)
         \xrightarrow{P}0,
     $$
     where $\xi_1,\ldots,\xi_{r+1}$ are iid standard normal random variables.
 \end{proposition}
-\begin{proof}
+\begin{proof}[\textbf{Proof of Proposition~\ref{nomuProp}}]
     Note that
     $$
     \begin{aligned}
@@ -1595,7 +1595,7 @@ This completes the proof.
         .
     \end{aligned}
     $$
-    Now we prove that
+    To deal with the asymptotic distribution of the first two terms, we would like to show that
     \begin{equation}\label{xz:toProve}
     \rho\Big(\mathcal{L}\big(
     \big( (\sum_{i=1}^n Y_i^* \epsilon_i)^T ,
@@ -1603,7 +1603,7 @@ This completes the proof.
     \big|Z_1,\ldots,Z_n\big), N_{r+1}\big(0_{r+1},\mydiag(I_r,1-\sum_{i=1}^r \kappa_i^2)\big)\Big)
         \xrightarrow{P}0.
     \end{equation}
-    It suffices to show that for every nonzero constants $t\in\mathbb{R}^r$ and $c\in\mathbb{R}$,
+    To prove this, it suffices to show that for every nonzero constants $t\in\mathbb{R}^r$ and $c\in\mathbb{R}$,
     \begin{equation*}
         \begin{aligned}
             \rho\Big(\mathcal{L}\big( \sum_{i=1}^n t^T Y_i^* \epsilon_i+c\sum_{j<i} Y_{ij} \epsilon_i \epsilon_j \big| Z_1,\ldots,Z_n\big)
@@ -1623,25 +1623,25 @@ $.
     \sum_{j<i} a_{ij}^2+\sum_{i=1}^n b_i^2\xrightarrow{a.s.} \|t\|^2+c^2(1-\sum_{i=1}^r \kappa_i^2)
     \end{equation}
     and~\eqref{complC} holds almost surely.
-    Then it follows from Proposition~\ref{CLTprop},~\eqref{small:jxz} and Slutsky theorem that
+    Then it follows from Proposition~\ref{CLTprop},~\eqref{small:jxz} and Slutsky's theorem that
     \begin{equation*}
         \begin{aligned}
-            \rho\Big(\mathcal{L}\Big( \frac{\sum_{i=1}^n t^T Y_i^* \epsilon_i+c\sum_{j<i} Y_{ij} \epsilon_i \epsilon_j}{\sqrt{\|t\|^2+c^2(1-\sum_{i=1}^r \kappa_i^r)}} \Big| Z_1,\ldots,Z_n\Big)
+            \rho\Bigg(\mathcal{L}\bigg( \frac{\sum_{i=1}^n t^T Y_i^* \epsilon_i+c\sum_{j<i} Y_{ij} \epsilon_i \epsilon_j}{\sqrt{\|t\|^2+c^2(1-\sum_{i=1}^r \kappa_i^r)}} \Big| Z_1,\ldots,Z_n\bigg)
             ,
-            N (0,1)\Big)\xrightarrow{a.s.} 0
+            N (0,1)\Bigg)\xrightarrow{a.s.} 0
         \end{aligned}
     \end{equation*}
     along this further subsequence.
     That is to say,
     \begin{equation*}
         \begin{aligned}
-            \rho\Big(\mathcal{L}\Big( \frac{\sum_{i=1}^n t^T Y_i^* \epsilon_i+c\sum_{j<i} Y_{ij} \epsilon_i \epsilon_j}{\sqrt{\|t\|^2+c^2(1-\sum_{i=1}^r \kappa_i^r)}} \Big| Z_1,\ldots,Z_n\Big)
+            \rho\Bigg(\mathcal{L}\bigg( \frac{\sum_{i=1}^n t^T Y_i^* \epsilon_i+c\sum_{j<i} Y_{ij} \epsilon_i \epsilon_j}{\sqrt{\|t\|^2+c^2(1-\sum_{i=1}^r \kappa_i^r)}} \Big| Z_1,\ldots,Z_n\bigg)
             ,
-            N (0,1)\Big)\xrightarrow{P} 0.
+            N (0,1)\Bigg)\xrightarrow{P} 0.
         \end{aligned}
     \end{equation*}
     Hence~\eqref{xz:toProve} holds.
-    Slutsky theorem implies that
+    Then Slutsky's theorem implies that
     \begin{equation}\label{xz:haveP}
     \begin{aligned}
         \rho\Big(&
@@ -1661,7 +1661,7 @@ $.
         \sum_{i=1}^n Y_i^{*T}\Lambda_1 Y_i^*
       \xrightarrow{P}\frac{\sqrt{2}}{2}\sum_{i=1}^r \kappa_i.
         \end{equation}
-        Then the conclusion follows from~\eqref{xz:haveP2},~\eqref{xz:haveP} and Slutsky theorem.
+        Then the conclusion follows from~\eqref{xz:haveP2},~\eqref{xz:haveP} and Slutsky's theorem.
         
 
 \end{proof}
@@ -1686,7 +1686,7 @@ Note that
     \end{equation*}
     The asymptotic behavior of $C_1$ is given by Proposition~\ref{nomuProp}.
     Note that $C_4$ is independent of $X_1,\ldots,X_n$.
-    By central limit theorem and Slutsky theorem,
+    By central limit theorem and Slutsky's theorem,
     \begin{equation*}
         \begin{aligned}
             \frac{C_4}
@@ -1695,10 +1695,10 @@ Note that
         \end{aligned}
     \end{equation*}
 
-    Suppose $(\mu^T \mu)^2=o(\mytr(\Sigma^2))$. It can be seen that 
+    Suppose $\mu^T \mu=o(\sqrt{\mytr(\Sigma^2)})$. It can be seen that 
     $$
         \frac{C_4}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
-        \xrightarrow{P} 0,\quad i=2,3.
+        \xrightarrow{P} 0.
     $$
     The cross terms satisfy
     \begin{equation*}
@@ -1709,23 +1709,23 @@ Note that
     By Markov's inequality, we have
     %By a standard subsequence argument and Slutsky's theorem,  the conclusion holds provided
     \begin{equation*}
-        \myE\Big(\Big(\frac{C_i}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
-        \Big)^2\Big|X_1,\ldots,X_n\Big)\xrightarrow{P} 0,\quad i=2,3.
+        \myE\Bigg(\bigg(\frac{C_i}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
+        \bigg)^2\Bigg|X_1,\ldots,X_n\Bigg)\xrightarrow{P} 0,\quad i=2,3.
     \end{equation*}
     Then a standard subsequence argument yields
     $$
-            \rho\Big(\mathcal{L}\Big(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_n X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}\Big| X_1,\ldots,X_n\Big)
+            \rho\Bigg(\mathcal{L}\bigg(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_n X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}\bigg| X_1,\ldots,X_n\bigg)
             ,
             \mathcal{L}\big(\frac{\sqrt{2}}{2}\sum_{i=1}^r \kappa_i (\xi_i^2-1)+(1-\sum_{i=1}^r \kappa_i^2)^{1/2} \xi_{r+1}\big)
-            \Big)\xrightarrow{P}0.
+            \Bigg)\xrightarrow{P}0.
     $$
 And (i) of Theorem~\ref{ourTheorem} follows.
 
 
 
-    If $\mytr(\Sigma^2)=o\big((\mu^T \mu)^2\big)$, it can be similarly shown that $C_4$ is the dominating term and 
+    If $\sqrt{\mytr(\Sigma^2)}=o(\mu^T \mu)$, it can be similarly shown that $C_4$ is the dominating term and 
     $$
-                \rho\Big(\mathcal{L}\Big(\frac{T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)}{\sqrt{\frac{n(n-1)}{2}(\mu^T \mu)^2}}\Big| X_1,\ldots,X_n\Big),\frac{\sqrt{2}}{2}(\chi^2_1-1)\Big)
+                \rho\Bigg(\mathcal{L}\bigg(\frac{T(\epsilon_1 X_1,\ldots,\epsilon_n X_n)}{\sqrt{\frac{n(n-1)}{2}(\mu^T \mu)^2}}\bigg| X_1,\ldots,X_n\bigg),\frac{\sqrt{2}}{2}(\chi^2_1-1)\Bigg)
             \xrightarrow{P} 0.
     $$
     This proves (ii) of Theorem~\ref{ourTheorem}.
@@ -1734,16 +1734,25 @@ And (i) of Theorem~\ref{ourTheorem} follows.
 
 
 \section{Proof of Theorem~\ref{theoremPower}}
+\begin{lemma}\label{lemmaUniformSimple}
+    Suppose $\{\eta_n\}_{n=1}^{\infty}$ is a sequence of random variables, weakly converges to $\eta$, a random variable with continuous distribution function.
+    Then we have
+    \begin{equation*}
+        \sup_{x\in\mathbb{R}}|\Pr(\eta_n\leq x)-\Pr(\eta\leq x)|\to 0.
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}[\textbf{Proof of Theorem~\ref{theoremPower}}]
 By a standard subsequence argument, we can without loss of generality and assume
 $$
-\frac{(\mu^T \mu)^2}{\mytr(\Sigma^2)}\to c\in [0,+\infty].
+\frac{\mu^T \mu}{\sqrt{\mytr(\Sigma^2)}}\to c\in [0,+\infty].
 $$
 
-
-First we prove~\eqref{oPower}.
+    First we prove (i) of Theorem~\ref{theoremPower}.
+    Suppose $\mu^T \Sigma \mu= o\big(n^{-1}\mytr(\Sigma^2)\big)$.
     Note that
     \begin{align}
-        &\myE \phi(X_1,\ldots, X_n)=\Pr\Big(\frac{T( X_1,\ldots, X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}>q_{\alpha}^* \Big)\notag
+        &\myE \phi(X_1,\ldots, X_n)=\Pr\bigg(\frac{T( X_1,\ldots, X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}>q_{\alpha}^* \bigg)\notag
         \\
             =&
             \Pr\bigg(\frac{T( X_1,\ldots, X_n)-\frac{n(n-1)}{2}\mu^T\mu}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}+F^{*-1}(1-\alpha)-q_{\alpha}^*>
@@ -1751,7 +1760,7 @@ F^{*-1}(1-\alpha)
             -\sqrt{\frac{n(n-1)}{2}}\frac{\mu^T\mu}{\sqrt{\mytr(\Sigma^2)}} \bigg).
             \label{balanced}
     \end{align}
-    If $c=0$, then~\eqref{oPower} follows from (i) of Theorem~\ref{prop:spiked1}, (i) of Theorem~\ref{ourTheorem}, Slutsky's theorem and Lemma~\ref{lemmaUniformSimple}.
+    If $c=0$, then the conclusion follows from (i) of Theorem~\ref{prop:spiked1}, (i) of Theorem~\ref{ourTheorem}, Slutsky's theorem and Lemma~\ref{lemmaUniformSimple}.
     If $c>0$, (i) of Theorem~\ref{ourTheorem} can not be applied. Hence we use Markov's inequality to bound $q^*_{\alpha}$.
     For any $t>0$,
     $$
@@ -1788,14 +1797,17 @@ F^{*-1}(1-\alpha)
     $$
    \myE (q_{\alpha}^{*2})\leq  \frac{\mytr(\Sigma+\mu\mu^T)^2}{\mytr(\Sigma^2)\alpha}\leq  2\alpha^{-1} \Big(1+\frac{(\mu^T \mu)^2}{\mytr(\Sigma^2)}\Big).
     $$
-    Thus, $|q_{\alpha}^{*}|=O_P(1+\sqrt{c})$.
+    Hence
+    \begin{equation}\label{finally}
+        |q_{\alpha}^{*}|=O_P\Big(1+\frac{\mu^T \mu}{\sqrt{\mytr(\Sigma^2)}}\Big).
+    \end{equation}
     Therefore, the probability~\eqref{balanced} equals
     $$
-    \Pr\Big(O_P(\sqrt{c})>-\sqrt{\frac{n(n-1)}{2}}\sqrt{c}\Big)\to 1.
+    \Pr\bigg(O_P(1)+O_P\Big(1+\frac{\mu^T \mu}{\sqrt{\mytr(\Sigma^2)}}\Big)>O_P(1)-\sqrt{\frac{n(n-1)}{2}}\frac{\mu^T \mu}{\sqrt{\mytr(\Sigma^2)}}\bigg)\to 1.
     $$
-This completes the proof of~\eqref{oPower}.
+This completes the proof of (i) of Theorem~\ref{theoremPower}.
 
-Now we prove~\eqref{oPower2}.
+Now we prove (ii) of Theorem~\ref{theoremPower}.
     Note that
     \begin{align}
         &\Pr\bigg(\frac{T( X_1,\ldots, X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}>q_{\alpha}^* \bigg)\nonumber\\
@@ -1804,12 +1816,11 @@ Now we prove~\eqref{oPower2}.
             \sqrt{\frac{\mytr(\Sigma^2)}{2(n-1)\mu^T\Sigma\mu}}q_{\alpha}^*-\frac{\sqrt{n}\mu^T\mu}{{2}\sqrt{  \mu^T\Sigma\mu}} \bigg).
         \notag
     \end{align}
-    If $c=0$, then it follows from $n^{-1}\mytr(\Sigma^2)=o(\mu^T \Sigma \mu)$ and $|q_{\alpha}^*|=O_P(1+\sqrt{c})$ that
+    If $c=0$, then it follows from $n^{-1}\mytr(\Sigma^2)=o(\mu^T \Sigma \mu)$ and~\eqref{finally} that
     $$
     \sqrt{\frac{\mytr(\Sigma^2)}{2(n-1)\mu^T\Sigma\mu}}q_{\alpha}^*=o_P(1).
     $$
-    Then~\eqref{oPower2} follows from Slutsky's theorem.
-    If $c>0$, then
+    If $c>0$, then~\eqref{finally} implies
     $$
     {
         \sqrt{\frac{\mytr(\Sigma^2)}{2(n-1)\mu^T\Sigma\mu}}q_{\alpha}^*
@@ -1817,9 +1828,10 @@ Now we prove~\eqref{oPower2}.
         \frac{\sqrt{n}\mu^T\mu}{{2}\sqrt{  \mu^T\Sigma\mu}} 
     }
     =\sqrt{\frac{2}{n(n-1)}}\frac{\sqrt{\mytr(\Sigma^2)}}{\mu^T \mu} q_{\alpha}^*
-    =O_P\Big(\frac{1}{n}\frac{1}{\sqrt{c}}\sqrt{c}\Big)=o_P(1).
+    =O_P\Big(\frac{1}{n}\big(\frac{\sqrt{\mytr(\Sigma^2)}}{\mu^T \mu}+1\big)\Big)=o_P(1).
     $$
-    And~\eqref{oPower2} follows.
+    Then the conclusion follows from (ii) of Theorem~\ref{prop:spiked1}, Slutsky's theorem and Lemma~\ref{lemmaUniformSimple}.
+\end{proof}
 
 
 
