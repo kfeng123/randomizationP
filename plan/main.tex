@@ -64,7 +64,7 @@
 \begin{abstract}
     The strength of randomization tests is that they are exact tests under certain symmetry assumption for distributions.
     In this paper, we propose a randomization test for the mean vector in high dimensional setting. 
-    We give an implementation of the proposed randomization test procedure, which has low computational complexity.
+    We give an implementation of the proposed randomization test procedure, which is computationally feasible.
     %In classical statistics, randomization tests are computationally intensive.    
     %Surprisingly, it is not the case in high dimensional setting. 
     %The theoretical property of the randomization test is another important issue.
@@ -139,7 +139,7 @@ Let $\epsilon_1,\ldots,\epsilon_n$ be iid Rademacher variables ($\Pr(\epsilon_i=
 In fixed $p$ setting, it's well known that randomization tests consume much more computing time than the asymptotic method, which  historically  hampered the use of randomization tests. 
 The goal of this paper is to show that in high dimensional setting, randomization tests can be computationally feasible and have desirable statistic properties.
 Inspired by the work of~\citet{Bai1996Efiect} and~\citet{Chen2010A}, we propose a randomization test for hypotheses~\eqref{ourHy}.
-We give a fast implementation of the proposed randomization test, the computational complexity of which is low.
+We give an implementation of the proposed randomization test, which is computationally feasible.
 %When $p$ is large, our method even consumes less computing time  than the asymptotic method.
 We also investigate the asymptotic behavior of the test procedure.
 Our results show that even if the null distribution of $X_1$ is not symmetric, the randomization test is still asymptotically exact under fairly general assumptions. 
@@ -180,14 +180,18 @@ Hence it is desirable to find a better critical value.
 
 
 The bootstrap and the randomization method are two popular methods to determine the critical value.
-We first consider the bootstrap method.
-A basic bootstrap critical value for $T(X_1,\ldots,X_n)$ is defined to be the $1-\alpha$ quantile of the conditional distribution
- \begin{equation}\label{bootstrapD}
+%A popular method to determine the critical value is the bootstrap.
+However, the bootstrap method may not be a good choice for our problem.
+To see this, consider the following basic bootstrap procedure.
+Let $X_1^*,\ldots,X_n^*$ be a bootstrap sample which is randomly drawn from $\{X_1-\bar{X},\ldots,X_n-\bar{X}\}$ with replacement.
+Denote by 
+\begin{equation}\label{bootstrapD}
  \mathcal{L}(T(X_1^*,\ldots,X_n^*)|X_1,\ldots,X_n),
- \end{equation}
-        where $X_1^*,\ldots,X_n^*$ are iid samples drawn from $\{X_1-\bar{X},\ldots,X_n-\bar{X}\}$ without replacement.
-        If the bootstrap method works well, the bootstrap distribution~\eqref{bootstrapD} should mimic the distribution of $T(X_1,\ldots,X_n)$.
-Then one may expect the first two moments of~\eqref{bootstrapD} and $T(X_1,\ldots,X_n)$ are close.
+\end{equation}
+the distribution of $T(X_1^*,\ldots,X_n^*)$ conditioning on $X_1,\ldots,X_n$.
+Then the bootstrap critical value for the statistic $T(X_1,\ldots,X_n)$ is defined to be the $1-\alpha$ quantile of the bootstrap distribution~\eqref{bootstrapD}.
+If this bootstrap method worked well, the bootstrap distribution~\eqref{bootstrapD} should mimic the null distribution of $T(X_1,\ldots,X_n)$.
+Then one may expect that the first two moments of~\eqref{bootstrapD} are close to the first two moments of $T(X_1,\ldots,X_n)$.
         Under the null hypothesis,
         $$
  \myE T(X_1,\ldots,X_n)=0,
@@ -200,8 +204,8 @@ $$
  \quad
  \myVar(T(X_1^*,\ldots,X_n^*)|X_1,\ldots,X_n)=\frac{n(n-1)}{2}\big(\frac{n-1}{n}\big)^2 \mytr(S^2).
 $$
-As pointed out by~\cite{Bai1996Efiect}, however, $\big((n-1)/{n}\big)^2 \mytr(S^2)$ is not even a ratio consistent estimator of $\mytr(\Sigma^2)$.
-Thus, the bootstrap procedure may not be a good choice for our problem.
+However, as pointed out by~\cite{Bai1996Efiect}, $\big((n-1)/{n}\big)^2 \mytr(S^2)$ is not even a ratio consistent estimator of $\mytr(\Sigma^2)$ in high dimensional setting.
+%Thus, the bootstrap procedure may not be a good choice for our problem.
 
 Now we consider the following randomization method.
 Let $\epsilon_1,\ldots,\epsilon_n$ be iid Rademacher variables which are independent of data.
@@ -229,9 +233,9 @@ Hence the randomization test $\phi(X_1,\ldots,X_n)$ may be a good choice for our
  Here we can see that the randomization test automatically removes the unwanted diagonal elements.
 
 
-Under certain symmetric assumption, randomization tests are exact tests, which is a desirable property.
+Under certain symmetry assumption, randomization tests are exact tests, which is a desirable property.
  See, for example,~\citet[Chapter 15]{Lehmann}.
-In our problem, the Type I error of $\phi(X_1,\ldots,X_n)$ is not larger than $\alpha$ provided that $X_1$ and $-X_1$ have the same distribution under null hypothesis.
+In our problem, the Type I error rate of $\phi(X_1,\ldots,X_n)$ does not exceed $\alpha$ provided that $X_1$ and $-X_1$ have the same distribution under null hypothesis.
  By refined definition of $\phi(X_1,\ldots,X_n)$ on the boundary of rejection region, one can obtain a test procedure with exact significant  level. 
  %See, for example,~\cite{Romano1990On}.
 Such refinement only has minor effect on the test procedure and won't be considered in this paper.
@@ -378,7 +382,7 @@ Algorithm~\ref{theAlgorithm} summarizes our computing method.
 \section{Asymptotic properties}
 %test procedure $\phi(X_1,\ldots,X_n)$
 As we have noted, the randomization test is exact provided that $X_1$ and $-X_1$ have the same distribution under null hypothesis.
-However, under this condition, all variables are symmetric about $0$, which is unrealistic for many applications.
+However, under this condition, all $p$ variables are symmetric about $0$, which is unrealistic for many applications.
 In this section, we investigate the asymptotic properties of the test procedure $\phi(X_1,\ldots,X_n)$ without symmetry assumption.
 
 We assume, like~\citet{Chen2010A} and~\citet{Bai1996Efiect}, the following multivariate model:
@@ -502,7 +506,7 @@ Denote by $F^*(\cdot)$ the distribution function of
 \end{theorem}
 From (i) of Theorem~\ref{ourTheorem} we can see that under the null hypothesis, the randomization can produce the correct level asymptotically.
 Note that this result doesn't assume that the distribution of $X_1$ is symmetric under null hypothesis.
-This implies that the proposed test is robust when the symmetry assumption is break down.
+This implies that the proposed test is robust when the symmetry assumption breaks down.
 This property is not held by all randomization tests.
 See, for example,~\cite{Romano1990On}.
 Compared with the asymptotic method, the validity of the proposed test does not rely on the asymptotic normality of $T(X_1,\ldots,X_n)$ and thus has a wider application scope.
@@ -578,7 +582,7 @@ The asymptotic power function of the randomization test can be derived using The
 %\end{equation*}
 %which tends to $1$ when~\eqref{mu2} holds, and tends to $\infty$ when~\eqref{mu3} holds.
 %Hence randomization may loss some power.
-The condition $\mu^T \Sigma \mu= o\big(n^{-1}\mytr(\Sigma^2)\big)$ can be viewed as a high-dimnsional version of the local alternative hypothesis, and its opposite, $n^{-1}\mytr(\Sigma^2)= o\big(\mu^T \Sigma \mu\big)$, can be viewed as a version of fixed alternatives. See~\cite{Chen2010A}.
+The condition $\mu^T \Sigma \mu= o\big(n^{-1}\mytr(\Sigma^2)\big)$ can be viewed as a high-dimensional version of the local alternative hypothesis, and its opposite, $n^{-1}\mytr(\Sigma^2)= o\big(\mu^T \Sigma \mu\big)$, can be viewed as a version of fixed alternative hypothesis. See~\cite{Chen2010A}.
 Hence (i) and (ii) of Theorem~\ref{theoremPower} give the asymptotic power under the local and fixed alternatives, respectively.
 Compared Theorem~\ref{theoremPower} with the results given by~\cite{Chen2010A}, it can be seen that under the condition~\eqref{chenC3}, the proposed randomization test has the same asymptotic power as the asymptotic method.
 In summary, our theoretical results show that the proposed test has a wider application scope while still has good power behavior compared with the asymptotic method.
@@ -690,7 +694,15 @@ Tables~\ref{table1}-\ref{table4} list the empirical size and power for AM, BM an
 The results show that RM can control the Type I error rate well even when the distribution of $X_1$ is not symmetric under the null hypothesis.
 This justifies the robustness of the randomization method.
 Also, RM has reasonable power behavior.
-In contrast, the size of AM is inflated when the correlations between variables are strong and the size of BM is too conservative when the correlations between variables are weak.
+In contrast, the size of AM is a little inflated when the correlations between variables are strong and the size of BM is too conservative when the correlations between variables are weak.
+
+One may argue that even in the worst case, the asymptotic method exhibits only a slight size distortion (about 2\%).
+For a standard testing problem, such a size distortion may be tolerable.
+For some advanced applications, however, the test is the basic component of a multiple comparison procedure.
+See, for example, Section 4 of~\cite{Chen2010A}.
+It is shown by~\cite{fan2007to} that small size distortion for component $p$-values may have a great impact on the overall size.
+In such applications, the proposed test may establish a clear superiority.
+
 %Table~\ref{table3} lists the empirical size and power under factor model.
 %Although the distribution is not symmetric, the results show that the level of the randomization method is close to nominal level while the asymptotic method suffers from level inflation.
 %In summary, the simulation results show that the randomization method is robust and has similar power with asymptotic method.
@@ -881,9 +893,12 @@ A fast implementation was provided.
 We also derived some asymptotic properties of the test procedure.
 %We showed that even if the symmetric assumption is violated, the randomization test also has correct level asymptotically.
 %Hence the test procedure is robust.
-Our theoretical results and simulations show that the porposed test is very competitive compared with the asymptotic method and the bootstrap method.
+Our theoretical results and simulations showed that the proposed test has better performance than the asymptotic method and the bootstrap method.
  In fact, the algorithm and the proof method can also be applied to other quadratic form statistics.
 %It is interesting to investigate the robustness of randomization test in finite sample case.
+
+
+
 
 In classical statistics, randomization test procedures are time consuming.
 Nevertheless, the computational complexity of our randomization test procedure (which is $O(n^2 B)$) is not affected by the data dimension $p$. 
@@ -899,7 +914,9 @@ The proof method used in this paper can not be applied to two sample permutation
 
 
 \section*{Acknowledgments}
-{This work was supported by the National Natural Science Foundation of China under Grant No. 11471035, 11471030.
+{
+The authors thank two anonymous referees for their constructive comments that lead to substantial improvement for the article.
+    This work was supported by the National Natural Science Foundation of China under Grant No. 11471035, 11471030.
 }
 
 \appendix
@@ -909,7 +926,7 @@ The proof method used in this paper can not be applied to two sample permutation
     Let $\Lambda_{1}=\mydiag(\lambda_1(\Sigma),\ldots,\lambda_r(\Sigma))$, $\Lambda_{2}=\mydiag(\lambda_{r+1}(\Sigma),\ldots,\lambda_p(\Sigma))$.
     Write $Q=(Q_{1},Q_{2})$ where $Q_{1}$ and $Q_{2}$ are the first $r$ columns and last $p-r$ columns of $Q$ respectively.
     Then $\Gamma^T \Gamma=Q_1\Lambda_1 Q_1^T + Q_2 \Lambda_2 Q_2^T$.
-For nonzero constants $c\in\mathbb{R}$ and $t\in\mathbb{R}^r$, we denote
+We denote
 $$
     Y_{ij}=\big(\frac{n(n-1)}{2} \mytr(\Sigma^2)\big)^{-1/2}Z_i^T Q_2 \Lambda_2 Q_2^T Z_j,
     \quad
@@ -932,7 +949,7 @@ $$
 
 \section{Proof of Theorem~\ref{prop:spiked1}}
 \begin{lemma}\label{lemma:zhong1}
-    Under the condition~\eqref{chenC2}, we have
+    Under~\eqref{chenC2}, we have
     \begin{enumerate}[(i)]
         \item
             for any $m\times m$ positive semidefinite matrix $B$,
@@ -972,7 +989,7 @@ $$
 \end{proof}
 The following proposition gives the asymptotic distribution of $T(X_1,\ldots,X_n)$ under the null hypothesis.
 \begin{proposition}\label{prop:spiked2}
-    Under~\eqref{chenC1},~\eqref{chenC2},~\eqref{spikedC},
+    Under~\eqref{chenC2} and~\eqref{spikedC},
     we have
     $$
     \frac{\sum_{j<i} Z_i^T \Gamma^T \Gamma Z_j }
@@ -1024,7 +1041,7 @@ The following proposition gives the asymptotic distribution of $T(X_1,\ldots,X_n
     $U_{in}=
     t^T Y_i^*+c  \sum_{j: j<i}Y_{ij}
     $.
-    Let $\mathcal{F}_{in}$ be the $\sigma$-field generated by $X_1,\dots, X_i$, $k=1,\ldots,n$.
+    Let $\mathcal{F}_{in}$ be the $\sigma$-field generated by $X_1,\dots, X_i$, $i=1,\ldots,n$.
     Then $\{U_{in}\}_{i=1}^n$ is a martingale difference array with respect to $\{\mathcal{F}_{in}\}_{i=1}^n$.
     By the martingale central limit theorem~\citep[Chapter VIII, Theorem 1]{pollard1984convergence},~\eqref{eq:univariateCLT} holds provided
      \begin{equation}\label{eq:MCLTcondition1}
@@ -1136,7 +1153,7 @@ The following proposition gives the asymptotic distribution of $T(X_1,\ldots,X_n
          &\myE\big(U_{in}^4\big)
          \leq
          8n^{-2}\myE \big(t^T Q_1^T Z_i\big)^4+
-         8c^2  
+         8c^4  
          \big(\frac{n(n-1)}{2} \mytr(\Sigma^2)\big)^{-2}
          \myE\big( Z_i^T Q_2 \Lambda_2 Q_2^T \sum_{j:j<i}Z_j\big)^4.
      \end{aligned}
@@ -1182,7 +1199,7 @@ The following proposition gives the asymptotic distribution of $T(X_1,\ldots,X_n
      $$
          \myE\big(U_{in}^4\big)
          \leq 8 (3+\Delta)\|t\|^4 n^{-2}+
-         16 c^2 (3+\Delta)^2 i^2 \big(\frac{n(n-1)}{2}\big)^{-2}.
+         16 c^4 (3+\Delta)^2 i^2 \big(\frac{n(n-1)}{2}\big)^{-2}.
      $$
      It follows that
      $
@@ -1295,7 +1312,7 @@ Such a central limit theorem can be also used to study the asymptotic behavior o
      \end{equation*}
      is that
      \begin{equation}\label{complC}
-         \sum_{k<j}{(\sum_{i:i>j}a_{ij}a_{ik})}^2+
+         \sum_{k<j}(\sum_{i:i>j}a_{ij}a_{ik})^2+
          \sum_{j<i}a_{ij}^4+
          \sum_{k<j<i}a_{ij}^2 a_{ik}^2
          +
@@ -1346,7 +1363,7 @@ By direct calculation, we have
      =
      \sum_{j=1}^n (\sum_{i:i>j} a_{ij}b_i)^2 
              =
-             o\big((\sum_{j<i} a_{ij}^2 +\sum_{i=1}^n b_i^2)^2\big)
+             o\big((\sum_{j<i} a_{ij}^2 +\sum_{i=1}^n b_i^2)^2\big).
      $$
      Hence~\eqref{MCLTcondition1} holds.
 
@@ -1391,14 +1408,14 @@ By direct calculation, we have
  \end{proof}
 
 \begin{proposition}\label{proposition:jxz}
-    Suppose~\eqref{chenC2} and~\eqref{spikedC} holds.
+    Under~\eqref{chenC2} and~\eqref{spikedC},
     %Let
 %$$
     %a_{ij}=c\big(\frac{n(n-1)}{2} \mytr(\Sigma^2)\big)^{-1/2}Z_i^T Q_2 \Lambda_2 Q_2^T Z_j,
     %\quad
     %b_i=n^{-1/2} t^T Q_1^T Z_i.
 %$$
-    For nonzero constants $c\in\mathbb{R}$ and $t\in\mathbb{R}^r$,
+    for nonzero constants $c\in\mathbb{R}$ and $t\in\mathbb{R}^r$,
     we have
     \begin{align}
     \label{lemma2R1}
@@ -1447,7 +1464,7 @@ To prove~\eqref{lemma2R1}, we only need to show that the left hand side of~\eqre
         \to  0,
     \end{aligned}
     \end{equation*}
-    where the last inequality follows from the assumption $\lambda_{r+1}(\Sigma)/\sqrt{\mytr (\Sigma^2)}\to 0$ and (ii) of Lemma~\ref{lemma:zhong1}.
+    where the last inequality follows from (ii) of Lemma~\ref{lemma:zhong1} and the assumption $\lambda_{r+1}(\Sigma)/\sqrt{\mytr (\Sigma^2)}\to 0$.
     As for the fourth term of~\eqref{lemma2R1}, we have
 $$
 \begin{aligned}
@@ -1472,7 +1489,7 @@ $$
     where the last inequality follows from (i) of Lemma~\ref{lemma:zhong1}. 
     Also by (i) of Lemma~\ref{lemma:zhong1}, the last term of~\eqref{lemma2R1} satisfies 
 $$
-        \myE\sum_{i=1}^n (t^T Y_i^*)^4=n \myE (t^T Y_i^*)^4
+        \myE\sum_{i=1}^n (t^T Y_i^*)^4=n \myE (t^T Y_1^*)^4
 =\frac{1}{n} \myE (Z_1^T Q_1 t t^T Q_1^T Z_1)^2
 \leq \frac{(3+\Delta)\|t\|^4}{n}\to 0.
 $$
@@ -1482,10 +1499,10 @@ This completes the proof of~\eqref{lemma2R1}.
 
 To prove~\eqref{lemma2Rn}, we show that
 \begin{align}
-    \sum_{j<i} Y_{ij}^2&= (1-\sum_{i=1}^r \kappa_i^2)+o_P(1),
+    &\sum_{j<i} Y_{ij}^2= (1-\sum_{i=1}^r \kappa_i^2)+o_P(1),
     \label{eq:lemma2:1}
     \\
-    \sum_{i=1}^n (t^T Y_i^*)^2&=\|t\|^2 +o_P(1).
+    &\sum_{i=1}^n (t^T Y_i^*)^2=\|t\|^2 +o_P(1).
     \label{eq:lemma2:2}
 \end{align}
 To prove~\eqref{eq:lemma2:1}, note that
@@ -1515,9 +1532,9 @@ $$
     %For the three summations on the right hand side of equation~\eqref{eq:1},
     There are  $n(n-1)(n-2)(n-3)/4$, $n(n-1)(n-2)/6$ and $n(n-1)/2$ terms in each sum, respectively.
     For distinct $i,j,k,l$, 
-    $$\myE Y_{ij}^2 Y_{kl}^2=(\myE Y_{12}^2)^2=\frac{4\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}.$$
+    $$\myE Y_{ij}^2 Y_{kl}^2=(\myE Y_{21}^2)^2=\frac{4\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}.$$
     Otherwise, if $\text{card}(\{i,j\},\{k,l\})\geq 1$, by (ii) of Lemma~\ref{lemma:zhong1},
-    $$\myE Y_{ij}^2 Y_{kl}^2\leq \myE Y_{12}^4\leq \frac{4(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}.$$
+    $$\myE Y_{ij}^2 Y_{kl}^2\leq \myE Y_{21}^4\leq \frac{4(3+\Delta)^2\mytr^2(\Lambda_2^2)}{n^2(n-1)^2\mytr^2(\Sigma^2)}.$$
     Thus,
     \begin{equation*}
     \begin{aligned}
@@ -1538,11 +1555,11 @@ $$
 
     Finally, \eqref{eq:lemma2:2} follows from
 $
-\myE \big(\sum_{i=1}^n b_i^2\big)=\|t\|^2
+\myE \sum_{i=1}^n (t^T Y_i^{*})^2=\|t\|^2
 $
 and
 $$
-\myVar \big(\sum_{i=1}^n b_i^2 \big)=\frac{1}{n}\myVar (Z_1^T Q_1 t t^T Q_1^T Z_1)
+\myVar \big(\sum_{i=1}^n (t^T Y_i^{*})^2 \big)=\frac{1}{n}\myVar (Z_1^T Q_1 t t^T Q_1^T Z_1)
 \leq \frac{1}{n}(2+\Delta)\|t\|^4\to 0,
 $$
 where the last inequality follows from (i) of Lemma~\ref{lemma:zhong1}.
@@ -1712,7 +1729,7 @@ Note that
         \myE\Bigg(\bigg(\frac{C_i}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}
         \bigg)^2\Bigg|X_1,\ldots,X_n\Bigg)\xrightarrow{P} 0,\quad i=2,3.
     \end{equation*}
-    Then a standard subsequence argument yields
+    Then Proposition~\ref{nomuProp} and a standard subsequence argument yields
     $$
             \rho\Bigg(\mathcal{L}\bigg(\frac{T(\epsilon_1 X_1,\ldots, \epsilon_n X_n)}{\sqrt{\frac{n(n-1)}{2}\mytr(\Sigma^2)}}\bigg| X_1,\ldots,X_n\bigg)
             ,
