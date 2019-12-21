@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.9.4)  27 FEB 2018 16:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.15)  21 DEC 2019 22:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -574,10 +574,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8
 ] [9]
 Package epstopdf Info: Source file: <Fig1.eps>
-(epstopdf)                    date: 2018-02-15 20:26:17
+(epstopdf)                    date: 2018-02-27 18:54:27
 (epstopdf)                    size: 280973 bytes
 (epstopdf)             Output file: <Fig1-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-02-17 11:47:31
+(epstopdf)                    date: 2018-02-27 18:54:27
 (epstopdf)                    size: 89206 bytes
 (epstopdf)             Command: <repstopdf --outfile=Fig1-eps-converted-to.pdf 
 Fig1.eps>
@@ -591,10 +591,10 @@ File: Fig1-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: Fig1-eps-converted-to.pdf used on input line 645.
 (pdftex.def)             Requested size: 468.0pt x 468.01038pt.
 Package epstopdf Info: Source file: <Fig2.eps>
-(epstopdf)                    date: 2018-02-15 20:25:26
+(epstopdf)                    date: 2018-02-27 18:54:27
 (epstopdf)                    size: 275907 bytes
 (epstopdf)             Output file: <Fig2-eps-converted-to.pdf>
-(epstopdf)                    date: 2018-02-17 11:47:32
+(epstopdf)                    date: 2018-02-27 18:54:27
 (epstopdf)                    size: 86925 bytes
 (epstopdf)             Command: <repstopdf --outfile=Fig2-eps-converted-to.pdf 
 Fig2.eps>
@@ -630,8 +630,8 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1864.
  ) 
 Here is how much of TeX's memory you used:
  9060 strings out of 493029
- 128410 string characters out of 6136235
- 274399 words of memory out of 5000000
+ 128410 string characters out of 6136233
+ 274401 words of memory out of 5000000
  12299 multiletter control sequences out of 15000+600000
  16213 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -659,7 +659,7 @@ fonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/
 msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/m
 sbm7.pfb>
-Output written on main.pdf (27 pages, 532147 bytes).
+Output written on main.pdf (27 pages, 532015 bytes).
 PDF statistics:
  665 PDF objects out of 1000 (max. 8388607)
  600 compressed objects within 6 object streams
